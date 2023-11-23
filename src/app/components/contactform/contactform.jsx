@@ -16,14 +16,14 @@ export default function ContactFm() {
             <h2 className="text-center">Get in Touch with Us!</h2>
             <div className="container">
               <div className="row">
-                <div className="col-lg-7">
+                <div className="col-lg-6">
                   <div className="box">
                     <div className="left">
                       <img src="/assets/image/contactphoto1.png" alt="" />
                     </div>
                   </div>
                 </div>
-                <div className="col-lg-4">
+                <div className="col-lg-6">
                   <div className="box">
                     <div className={styles.right}>
                       <form action="">
