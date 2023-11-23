@@ -1,0 +1,76 @@
+.AboutRm {
+  background: #181818;
+  position: relative;
+  height: 100vh;
+}
+.AboutRm .rowAll {
+  padding-top: 200px;
+}
+
+.AboutRm h2 {
+  color: #c9beb1;
+  font-family: var(--montaga);
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-transform: uppercase;
+}
+
+.AboutRm .imgEdit {
+  object-fit: cover;
+  width: 100%;
+}
+ 
+.AboutRm h3 {
+  color: #c9beb1;
+
+  font-family: var(--montserrat);
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.AboutRm h4 {
+  color: #c3924e;
+  margin-top: 10px;
+  font-family: var(--montserrat);
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.AboutRm p {
+  color: #fff;
+  margin-bottom: 30px;
+  font-family: var(--montserrat);
+  margin-top: 30px;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 28px; /* 155.556% */
+}
+.AboutRm .right {
+  margin-top: 125px;
+}
+.AboutRm span {
+  color: #fff;
+
+  font-family: var(--montserrat);
+
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px; /* 133.333% */
+}
+/* .AboutRm .backGrCircle img {
+  position: absolute;
+  top: -5%;
+  right: 10%;
+  z-index: 222222;
+  width: 30%;
+  border-radius: 863.823px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  flex-shrink: 0;
+  transform: rotate(145deg);
+} */

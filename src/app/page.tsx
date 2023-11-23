@@ -1,8 +1,9 @@
+import Main from "./main";
 
 export default function Home() {
   return (
     <div>
-      Hello WORLD!
+      <Main />
     </div>
-  )
+  );
 }

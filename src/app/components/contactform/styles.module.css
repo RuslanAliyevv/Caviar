@@ -1,0 +1,124 @@
+.ContactFm {
+  background-image: url("../../../../public//assets/image/contactphoto.png");
+  width: 100%;
+  height: 70vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+  z-index: 1;
+}
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.58);
+  z-index: -1; /* Şeffaf bir beyaz renk (0.5 opaklık) */
+  /* veya başka bir renk, opaklık değeri 0 ile 1 arasında olmalıdır */
+}
+.Large {
+  padding-top: 200px !important;
+  position: relative;
+  background: #181818;
+  text-align: center;
+}
+.Large h2 {
+  color: #c9beb1;
+  margin-bottom: 20px;
+  text-align: center;
+  font-family: var(--montaga);
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.Large .contactBorder {
+  position: absolute;
+  z-index: 11111;
+  left: 50%;
+  top: -30%;
+  transform: translate(-50%, -50%);
+  border: 1px solid #333;
+  padding: 50px;
+  background: #333;
+  border-radius: 10px;
+  width: 70%;
+}
+.Large .right {
+  position: relative;
+  width: 300px;
+  margin-top: -30px;
+  display: flex;
+  justify-content: center;
+}
+.Large .inputBox {
+  position: relative;
+  width: 370px;
+  margin: 30px 0;
+  border-bottom: 2px solid #c9beb1;
+}
+
+.inputBox label {
+  position: absolute;
+  top: 50%;
+  left: 5px;
+  transform: translateY(-50%);
+  color: #c9beb1;
+  pointer-events: none;
+  font-family: var(--montaga);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  transition: 0.5s;
+}
+.inputBox input:focus + label,
+.inputBox input:valid + label,
+.inputBox input:not(:placeholder-shown) + label {
+  top: -5px;
+}
+
+.inputBox input {
+  width: 100%;
+  height: 50px;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 1em;
+  color: #c9beb1;
+  padding: 0px 35px 0 5px;
+}
+.inputBox .input3 {
+  height: 50px !important;
+}
+.inputBox .messageLabel {
+  height: 30px !important;
+}
+
+.contactBorder button {
+  background: #c3924e;
+  color: #fff;
+  margin-top: 20px;
+  width: 92%;
+  padding: 20px 10px;
+  border: none;
+  text-align: center;
+  font-family: var(--montserrat);
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+@media (max-width: 360px) {
+  .right {
+    width: 100%;
+    height: 100vh;
+    border: none;
+    border-radius: 0;
+  }
+  .inputBox {
+    width: 290px;
+  }
+}
