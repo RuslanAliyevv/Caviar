@@ -34,7 +34,7 @@ export default function Aboutcn() {
             <img src="/assets/image/JaneSmith.png" alt="" />
           </div>
           <div className={styles.subtract}>
-            <img src="/assets/image/Subtract.png" alt="" />
+            {/* //For Image */}
           </div>
         </div>
       </div>

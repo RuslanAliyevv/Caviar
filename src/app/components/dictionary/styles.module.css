@@ -1,20 +1,13 @@
 .Dictionary {
   width: 100%;
   height: 270px;
-  background: rgba(84, 84, 84, 0.3);
+  background: rgba(84, 84, 84, 0.3) ;
   backdrop-filter: blur(4px);
   position: relative;
+  z-index: 222222;
 }
 
-.overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.78);
-  z-index: -1;
-}
+
 
 .Dictionary .content {
   padding-top: 60px;

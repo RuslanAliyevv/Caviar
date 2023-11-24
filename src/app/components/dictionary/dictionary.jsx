@@ -5,7 +5,6 @@ export default function Dictionary() {
   return (
     <>
       <div className={styles.Dictionary}>
-        <div className={styles.overlay}></div>
 
         <div className={styles.content}>
           <div className={styles.h2Edit}>
