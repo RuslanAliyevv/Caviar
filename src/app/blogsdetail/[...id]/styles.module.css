@@ -2,6 +2,13 @@
   padding: 150px 0 50px 0;
   background: #181818;
 }
+.BlDetail .caviarPhoto{
+  background-image: url("../../../../public/assets/image/redblackcaviar.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 90%;
+  height: 100vh;
+}
 .BlDetail h2 {
   color: #c9beb1;
 
@@ -16,7 +23,7 @@
 }
 .BlDetail p {
   color: #fff;
-  width: 85%;
+  width: 89%;
   font-family: var(--montserrat);
   font-size: 18px;
   font-style: normal;
@@ -24,9 +31,10 @@
   line-height: 28px; /* 155.556% */
 }
 .BlDetail .pEdit {
+  padding-left: 110px;
   margin-top: 40px;
-  display: flex;
-  justify-content: center;
+  width: 100%;
+  
 }
 
 .BlDetail .boxContent img {
