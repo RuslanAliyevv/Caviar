@@ -6,7 +6,8 @@
   color: #c9beb1;
 
   text-align: center;
-  font-family: var(--montaga);
+  font-family: "Montaga", serif;
+
   font-size: 30px;
   font-style: normal;
   font-weight: 400;
@@ -50,7 +51,8 @@
   color: #c9beb1;
   text-align: center;
   width: 32%;
-  font-family: var(--montaga);
+  font-family: "Montaga", serif;
+
   font-size: 30px;
   font-style: normal;
   font-weight: 400;

@@ -12,7 +12,8 @@
 .PrInfo h2 {
   color: #c9beb1;
 
-  font-family: var(--montaga);
+  font-family: 'Montaga', serif;
+
   font-size: 40px;
   font-style: normal;
   font-weight: 400;

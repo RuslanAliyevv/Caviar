@@ -14,7 +14,8 @@
 .Footer .boxContentFirst .spanLogo1 {
   color: #c3924e;
 
-  font-family: var(--montaga);
+  font-family: 'Montaga', serif;
+
   font-size: 40px;
   font-style: normal;
   font-weight: 400;
@@ -22,7 +23,8 @@
 }
 .Footer .boxContentFirst .spanLogo2 {
   color: #fff;
-  font-family: var(--montaga);
+  font-family: 'Montaga', serif;
+
   margin-left: 10px;
   font-size: 40px;
   font-style: normal;

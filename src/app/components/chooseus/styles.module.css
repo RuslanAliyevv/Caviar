@@ -5,7 +5,8 @@
 .ChooseUs h2 {
   color: #c9beb1;
 
-  font-family: var(--montaga);
+  font-family: "Montaga", serif;
+
   font-size: 30px;
   font-style: normal;
   font-weight: 400;
@@ -30,7 +31,7 @@
   font-size: 18px;
   font-style: normal;
   font-weight: 500;
-  line-height: 24px; 
+  line-height: 24px;
 }
 .ChooseUs img {
   margin-top: -20px;
@@ -49,5 +50,3 @@
   display: flex;
   justify-content: center;
 }
-
-

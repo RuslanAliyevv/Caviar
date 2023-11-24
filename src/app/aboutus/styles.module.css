@@ -1,7 +1,7 @@
 .About h2 {
   color: #c9beb1;
   text-align: center;
-  font-family: var(--montaga);
+  font-family: "Montaga", serif;
   font-size: 30px;
   font-style: normal;
   font-weight: 400;
@@ -13,6 +13,7 @@
   background: #181818;
 }
 .About .img {
+  margin-top: 30px;
   background-image: url("../../../public/assets/image/contactphoto.png");
   width: 100%;
   height: 40vh;
@@ -22,7 +23,7 @@
 }
 .overlay {
   position: absolute;
-  top: 174px;
+  top: 194.5px;
   left: 0;
   width: 100%;
   height: 40vh;
@@ -30,7 +31,7 @@
   z-index: 1111;
 }
 .aboutContent {
-  padding: 50px 20px 60px 40px;
+  padding: 50px 20px 70px 0px;
   background: #2b2b2b;
 }
 .aboutContent h4 {
