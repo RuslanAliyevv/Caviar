@@ -1,0 +1,52 @@
+.ChooseUs {
+  padding: 20px 0 100px 0;
+  background: #181818;
+}
+.ChooseUs h2 {
+  color: #c9beb1;
+
+  font-family: "Montaga", serif;
+
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-transform: uppercase;
+}
+.ChooseUs .box {
+  border-radius: 6px;
+  background: rgba(84, 84, 84, 0.3);
+  backdrop-filter: blur(3px);
+  margin-top: 30px;
+}
+.ChooseUs .boxContent {
+  text-align: center;
+  padding-top: 15px;
+}
+.ChooseUs h5 {
+  color: #fff;
+
+  text-align: center;
+  font-family: var(--montserrat);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+}
+.ChooseUs img {
+  margin-top: -20px;
+}
+.ChooseUs p {
+  color: #fff;
+  font-family: var(--montserrat);
+  width: 90%;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+}
+.ChooseUs .pEdit {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}

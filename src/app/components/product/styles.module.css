@@ -1,0 +1,108 @@
+.Product {
+  background: #181818;
+  width: 100%;
+  padding: 200px 0 100px 0;
+}
+.Product h4 {
+  color: #fff;
+  text-align: center;
+  font-family: var(--montserrat);
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  text-transform: uppercase;
+}
+.Product h2 {
+  color: #c9beb1;
+  margin-top: 5px;
+
+  text-align: center;
+  font-family: 'Montaga', serif;
+
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-transform: uppercase;
+}
+.Product .rowAll {
+  flex-flow: wrap;
+  flex-direction: row;
+  align-items: center;
+}
+.Product .line {
+  position: absolute;
+  z-index: 9999;
+  width: 1px;
+  height: 120px;
+  margin-left: 20px;
+  margin-top: -40px;
+  background: #c3924e;
+  color: #c3924e;
+}
+.Product img {
+  width: 100%;
+  margin-top: 15px;
+}
+.Product h3 {
+  color: #fff;
+  margin-left: 25px;
+  font-family: var(--montserrat);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.Product .h3Edit {
+  color: #fff;
+
+  text-align: right;
+  font-family: var(--montserrat);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.Product .boxDown {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+.Product .box {
+  position: relative;
+}
+.Product p {
+  color: #c3924e;
+  text-transform: uppercase;
+  font-family: var(--montserrat);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  margin-left: 25px;
+  margin-top: 10px;
+}
+.Product .forButton {
+  text-align: center;
+  margin-top: 50px;
+}
+.Product .forButton button {
+  border-radius: 6px;
+  border: 2px solid #c3924e;
+  color: #c3924e;
+  padding: 10px 10px;
+  width: 15%;
+  height: 3.6rem;
+  background-color: transparent;
+  text-align: center;
+  font-family: var(--montserrat);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  text-transform: uppercase;
+}

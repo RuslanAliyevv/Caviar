@@ -1,0 +1,39 @@
+.Dictionary {
+  width: 100%;
+  height: 270px;
+  background: rgba(84, 84, 84, 0.3) ;
+  backdrop-filter: blur(4px);
+  position: relative;
+  z-index: 222222;
+}
+
+
+
+.Dictionary .content {
+  padding-top: 60px;
+}
+.Dictionary h2 {
+  color: #c9beb1;
+  width: 80%;
+  text-align: center;
+  font-family: 'Herr Von Muellerhoff', cursive;
+  font-style: normal;
+  font-size: 40px;
+  font-weight: 500;
+  line-height: normal;
+}
+.Dictionary h4 {
+  color: #c3924e;
+  margin-top: 20px;
+  text-align: center;
+  font-family: 'Montaga', serif;
+
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.Dictionary .h2Edit {
+  display: flex;
+  justify-content: center;
+}

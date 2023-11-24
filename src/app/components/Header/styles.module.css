@@ -1,0 +1,41 @@
+.Header {
+  padding: 25px 0 0 0;
+  position: fixed;
+  z-index: 999999;
+  background-color:#181818;
+  width: 100%;
+}
+.Header .rowAll {
+  align-items: baseline;
+}
+
+.Header ul {
+  display: flex;
+  align-items: center;
+}
+.Header li {
+  list-style: none;
+}
+.Header .left a span {
+  color: #c3924e;
+  font-family: var(--montana);
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  font-family: 'Montaga', serif;
+}
+.Header .left .caviarSpan {
+  color: #fff;
+  margin-left: 7px;
+}
+.Header .right span {
+  color: #fff;
+  margin-left: 40px;
+  font-family: var(--montserrat);
+
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}

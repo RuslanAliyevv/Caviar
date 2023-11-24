@@ -1,0 +1,30 @@
+.Privacy {
+  padding: 170px 0 50px 0;
+  background: #181818;
+}
+.Privacy .privacyContent h2 {
+  color: #c9beb1;
+  font-family: 'Montaga', serif;
+
+  text-align: center;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-transform: uppercase;
+}
+.privacyContent p {
+  color: #fff;
+  width: 85%;
+  font-family: var(--montserrat);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 28px; /* 155.556% */
+}
+.privacyContent .pEdit {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
