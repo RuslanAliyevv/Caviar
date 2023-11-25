@@ -1,11 +1,10 @@
 .AboutRm {
   background: #181818;
   position: relative;
-  height: 100vh;
+  padding: 200px 0 0 0;
 }
-.AboutRm .rowAll {
-  padding-top: 200px;
-}
+  
+
 
 .AboutRm h2 {
   color: #c9beb1;

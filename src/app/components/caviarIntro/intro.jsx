@@ -24,7 +24,8 @@ export default function CaviarIntro() {
             <button>shop now</button>
           </Link>
         </div>
-        <div className={styles.Content}></div>
+        <div className={styles.Content}>
+        </div>
       </div>
     </>
   );

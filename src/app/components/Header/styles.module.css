@@ -30,6 +30,7 @@
   margin-left: 7px;
 }
 .Header .right span {
+  position: relative;
   color: #fff;
   margin-left: 40px;
   font-family: var(--montserrat);
@@ -39,3 +40,24 @@
   font-weight: 500;
   line-height: normal;
 }
+
+
+
+/* @media screen and (min-width: 800px) and (max-width: 1400px) {
+  .Header {
+    padding: 20px 0px 10px 0px;
+  }
+
+  .Header .left a span {
+    font-size: 24px;
+  }
+
+  .Header .right span {
+    margin-left: 25px;
+    font-size: 16px;
+  }
+} */
+
+  
+
+

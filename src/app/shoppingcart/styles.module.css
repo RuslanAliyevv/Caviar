@@ -1,0 +1,22 @@
+.Shopping {
+  padding: 150px 0 0px 0;
+  background: #181818;
+}
+.Shopping h2 {
+  color: #c9beb1;
+  text-align: center;
+  font-family: "Montaga", serif;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.Shopping .tableBorder{
+    height: 400px;
+    width: 100%;
+    background: #2B2B2B;
+}
+
+

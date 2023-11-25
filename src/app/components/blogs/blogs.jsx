@@ -54,7 +54,7 @@ export default function Blogs() {
                     <h2>Blog Name</h2>
                     <p>
                       Lorem Ipsum is simply dummy text of the printing and
-                      typesetting industry.{" "}
+                      typesetting industry.
                     </p>
                   </div>
                 </div>
