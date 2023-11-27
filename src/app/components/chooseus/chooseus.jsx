@@ -11,18 +11,14 @@ export default function ChooseUs() {
             <div className="col-lg-4">
               <div className={styles.box}>
                 <div className={styles.boxContent}>
-                  <h5>
-                    Lorem Ipsum is simply <br />
-                    dummy text of the
-                  </h5>
+                  <h5>Unmatched Quality</h5>
                   <img src="/assets/image/chooseline.png" alt="" />
                   <div className={styles.pEdit}>
                     <p>
-                      Lorem Ipsum is simply dummy text of the printing and
-                      typesetting industry. Lorem Ipsum has been the industry's
-                      standard dummy text ever since the 1500s, when an unknown
-                      printer took a galley of type and It has survived not only
-                      five
+                      Get ready to savor caviar like you've never experienced
+                      before, thanks to BB Caviar. We're on a mission to source
+                      the absolute best caviar, delivering an unmatched level of
+                      quality that's simply exceptional.
                     </p>
                   </div>
                 </div>
@@ -31,19 +27,15 @@ export default function ChooseUs() {
             <div className="col-lg-4">
               <div className={styles.box}>
                 <div className={styles.boxContent}>
-                  <h5>
-                    Lorem Ipsum is simply <br />
-                    dummy text of the
-                  </h5>
+                  <h5>Dedication to Sustainability</h5>
                   <img src="/assets/image/chooseline.png" alt="" />
                   <div className={styles.pEdit}>
-                  
                     <p>
-                      Lorem Ipsum is simply dummy text of the printing and
-                      typesetting industry. Lorem Ipsum has been the industry's
-                      standard dummy text ever since the 1500s, when an unknown
-                      printer took a galley of type and It has survived not only
-                      five
+                      Sustainability is our guiding principle. With every
+                      delightful bite of caviar, you can indulge guilt-free,
+                      thanks to our eco-conscious practices that not only
+                      guarantee exceptional taste but also safeguard sturgeon
+                      populations and secure the future of caviar.
                     </p>
                   </div>
                 </div>
@@ -52,19 +44,15 @@ export default function ChooseUs() {
             <div className="col-lg-4">
               <div className={styles.box}>
                 <div className={styles.boxContent}>
-                  <h5>
-                    Lorem Ipsum is simply <br />
-                    dummy text of the
-                  </h5>
+                  <h5>Dedicated to Your Satisfaction</h5>
                   <img src="/assets/image/chooseline.png" alt="" />
                   <div className={styles.pEdit}>
-                   
                     <p>
-                      Lorem Ipsum is simply dummy text of the printing and
-                      typesetting industry. Lorem Ipsum has been the industry's
-                      standard dummy text ever since the 1500s, when an unknown
-                      printer took a galley of type and It has survived not only
-                      five
+                      When it comes to your satisfaction, we don't compromise.
+                      Our team is dedicated to providing you with service that
+                      goes above and beyond. We're here to guide you on your
+                      caviar journey, making sure your experience is truly
+                      extraordinary.
                     </p>
                   </div>
                 </div>

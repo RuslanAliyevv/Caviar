@@ -6,9 +6,11 @@ export default function Product() {
     <>
       <div className={styles.Product}>
         <h4 className="text-center">Our Product</h4>
-        <h2 className="text-center">
-          It is a long cAVIAR established <br /> fact reader
+       <div className={styles.h2Edit}>
+       <h2 className="text-center">
+        Explore our curated caviar collection for a taste of pure luxury.
         </h2>
+       </div>
         <div className="container">
           <div className={`row ${styles.rowAll}`}>
             <div className="col-lg-3 col-12">
@@ -18,7 +20,7 @@ export default function Product() {
                   <div className={styles.line}></div>
                 </div>
                 <div className={styles.boxDown}>
-                  <h3>Product Name</h3>
+                  <h3>Black Caviar 50 gr</h3>
                   <h3 className={styles.h3Edit}>$60.00</h3>
                 </div>
                 <p>Add to cart +</p>
@@ -31,7 +33,7 @@ export default function Product() {
                   <div className={styles.line}></div>
                 </div>
                 <div className={styles.boxDown}>
-                  <h3>Product Name</h3>
+                  <h3>Black Caviar 250 gr</h3>
                   <h3 className={styles.h3Edit}>$60.00</h3>
                 </div>
                 <p>Add to cart +</p>
@@ -44,7 +46,7 @@ export default function Product() {
                   <div className={styles.line}></div>
                 </div>
                 <div className={styles.boxDown}>
-                  <h3>Product Name</h3>
+                  <h3>Black Caviar 28 gr</h3>
                   <h3 className={styles.h3Edit}>$60.00</h3>
                 </div>
                 <p>Add to cart +</p>
@@ -57,8 +59,8 @@ export default function Product() {
                   <div className={styles.line}></div>
                 </div>
                 <div className={styles.boxDown}>
-                  <h3>Product Name</h3>
-                  <h3 className={styles.h3Edit}>$60.00</h3>
+                  <h3>Caviar Set</h3>
+                  <h3 className={styles.h3Edit}>$200.00</h3>
                 </div>
                 <p>Add to cart +</p>
               </div>
@@ -66,7 +68,9 @@ export default function Product() {
           </div>
         </div>
         <div className={styles.forButton}>
-          <button>All Product</button>
+         <Link href="./productspage">
+         <button className={styles.buttonHover}>All Product</button>
+         </Link>
         </div>
       </div>
     </>

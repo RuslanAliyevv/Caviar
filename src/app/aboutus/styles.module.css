@@ -31,33 +31,29 @@
   z-index: 1111;
 }
 .aboutContent {
-  padding: 50px 20px 70px 0px;
+  padding: 50px 20px 70px 110px;
   background: #2b2b2b;
 }
 .aboutContent h4 {
   color: #c3924e;
-  width: 86%;
+  width: 100%;
   font-family: var(--montserrat);
   font-size: 22px;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
 }
-.aboutContent .h4Edit {
-  display: flex;
-  justify-content: center;
-}
+
 .aboutContent p {
   color: #fff;
-  width: 86%;
+  width: 85%;
   font-family: var(--montserrat);
   font-size: 18px;
   font-style: normal;
   font-weight: 300;
   line-height: 28px;
 }
-.aboutContent .pEdit {
-  display: flex;
-  justify-content: center;
-  width: 100%;
+
+.About .aboutContent{
+  padding-left: 110px !important;
 }

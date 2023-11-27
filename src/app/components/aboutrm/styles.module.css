@@ -1,7 +1,7 @@
 .AboutRm {
   background: #181818;
-  position: relative;
   padding: 200px 0 0 0;
+  position: relative;
 }
   
 
@@ -9,7 +9,7 @@
 .AboutRm h2 {
   color: #c9beb1;
   font-family: 'Montaga', serif;
-
+  width: 90%;
   font-size: 40px;
   font-style: normal;
   font-weight: 400;
