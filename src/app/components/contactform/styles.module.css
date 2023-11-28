@@ -84,9 +84,9 @@
   width: 100%;
   height: 50px;
   background: transparent;
+  font-size: 1em;
   border: none;
   outline: none;
-  font-size: 1em;
   color: #c9beb1;
   padding: 0px 35px 0 5px;
 }
@@ -96,6 +96,7 @@
 .inputBox .messageLabel {
   height: 30px !important;
 }
+
 
 .contactBorder button {
   background: #c3924e;

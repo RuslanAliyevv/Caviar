@@ -1,23 +1,110 @@
 import React from "react";
 import styles from "./styles.module.css";
 import Cards from "../components/Cards/card";
+import Box from "@mui/material/Box";
+import InputLabel from "@mui/material/InputLabel";
+import FormControl from "@mui/material/FormControl";
+import NativeSelect from "@mui/material/NativeSelect";
+import { noSSR } from "next/dynamic";
 
 export default function Products() {
   return (
     <>
       <div className={styles.Products}>
         <h2>PRODUCT</h2>
-        <div className={styles.tableBorder}></div>
+        <div className={styles.tableBorder}>
+          <div className="container">
+            <div className="row">
+              <div className="col-lg-4">
+                <div className="box">
+                  <FormControl fullWidth>
+                    <InputLabel
+                      variant="standard"
+                      htmlFor="uncontrolled-native"
+                      className={styles.inputLabel}
+                    >
+                      Categories
+                    </InputLabel>
+                    <NativeSelect
+                    style={{color:"#fff"}}
+                      defaultValue={0}
+                      inputProps={{
+                        name: "categories",
+                        id: "uncontrolled-native",
+                      }}
+                    >
+                      <option style={{display:"none"}} value={0}></option>
+                      <option value={10}>Ten</option>
+                      <option value={20}>Twenty</option>
+                      <option value={30}>Thirty</option>
+                    </NativeSelect>
+                  </FormControl>
+                </div>
+              </div>
+              <div className="col-lg-4">
+                <div className="box">
+                <FormControl fullWidth>
+                    <InputLabel
+                      variant="standard"
+                      htmlFor="uncontrolled-native"
+                      className={styles.inputLabel}
+                    >
+                    Grams
+                    </InputLabel>
+                    <NativeSelect
+                    style={{color:"#fff"}}
+                      defaultValue={0}
+                      inputProps={{
+                        name: "categories",
+                        id: "uncontrolled-native",
+                      }}
+                    >
+                      <option style={{display:"none"}} value={0}></option>
+                      <option value={10}>Ten</option>
+                      <option value={20}>Twenty</option>
+                      <option value={30}>Thirty</option>
+                    </NativeSelect>
+                  </FormControl>
+                </div>
+              </div>
+              <div className="col-lg-4">
+                <div className="box">
+                <FormControl fullWidth>
+                    <InputLabel
+                      variant="standard"
+                      htmlFor="uncontrolled-native"
+                      className={styles.inputLabel}
+                    >
+                      Price
+                    </InputLabel>
+                    <NativeSelect
+                    style={{color:"#fff"}}
+                      defaultValue={0}
+                      inputProps={{
+                        name: "categories",
+                        id: "uncontrolled-native",
+                      }}
+                    >
+                      <option style={{display:"none"}} value={0}></option>
+                      <option value={10}>Ten</option>
+                      <option value={20}>Twenty</option>
+                      <option value={30}>Thirty</option>
+                    </NativeSelect>
+                  </FormControl>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
         <Cards />
 
         <div className={styles.getInTouch}>
           <h2>Get in Touch with Us!</h2>
           <div className={styles.pEdit}>
             <p>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book.{" "}
+              Questions or thoughts about our caviar? Our BB Caviar team is
+              ready to assist. Reach out to us for any inquiries or feedback –
+              we're here to help and always eager to connect!
             </p>
           </div>
           <button className={styles.buttonHover}>Call us</button>

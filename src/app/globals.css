@@ -28,5 +28,19 @@ a {
 }
 @import url("https://fonts.googleapis.com/css2?family=Borel&family=Montaga&family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
-
+.MuiNativeSelect-outlined{
+  border-bottom: 2px solid #888;
+  border-top: none;
+  outline: none;
+  color: #c9beb1;
+}
+.MuiSlider-root:hover {
+  color: #888 !important;
+}
+.MuiInput-underline {
+  width: 75%;
+}
+.MuiSvgIcon-root{
+  color: #888;
+}
 
