@@ -13,12 +13,15 @@ export default function ContactUs() {
   const handleInput = (event) => {
     setPost({ ...post, [event.target.name]: event.target.value });
   };
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
-    axios
-      .post("http://18.130.240.204:3000/contact/form", { post })
-      .then((response) => console.log(response))
-      .catch((err) => console.log(err));
+    try {
+      // Send the request to the Next.js API route
+      const response = await axios.post('http://localhost:3000/api/contact', post);
+      console.log(response.data); // Handle the response
+    } catch (error) {
+      console.error('Error making POST request:', error);
+    }
   }
   return (
     <>
