@@ -2,7 +2,7 @@
   padding: 150px 0 50px 0;
   background: #181818;
 }
-.BlDetail .caviarPhoto{
+.BlDetail .caviarPhoto {
   background-image: url("../../../../public/assets/image/redblackcaviar.png");
   background-position: center;
   background-repeat: no-repeat;
@@ -14,12 +14,26 @@
 
   text-align: center;
   font-family: "Montaga", serif;
-
+  width: 55%;
   font-size: 30px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
   text-transform: uppercase;
+}
+.BlDetail .h2Edit {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.BlDetail h4 {
+  color: #fff;
+
+  font-family: var(--montserrat);
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 28px; /* 127.273% */
 }
 .BlDetail p {
   color: #fff;
@@ -34,7 +48,6 @@
   padding-left: 110px;
   margin-top: 40px;
   width: 100%;
-  
 }
 
 .BlDetail .boxContent img {

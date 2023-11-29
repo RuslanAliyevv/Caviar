@@ -28,11 +28,11 @@ a {
 }
 @import url("https://fonts.googleapis.com/css2?family=Borel&family=Montaga&family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
-.MuiNativeSelect-outlined{
-  border-bottom: 2px solid #888;
-  border-top: none;
-  outline: none;
-  color: #c9beb1;
+.MuiNativeSelect-outlined {
+  border-bottom: 2px solid #888 !important;
+  border-top: none !important;
+  outline: none !important;
+  color: #c9beb1 !important;
 }
 .MuiSlider-root:hover {
   color: #888 !important;
@@ -40,7 +40,45 @@ a {
 .MuiInput-underline {
   width: 75%;
 }
-.MuiSvgIcon-root{
+.MuiSvgIcon-root {
   color: #888;
 }
 
+#justify-tab-example-tab-profile {
+  /* background: #c3924e; */
+  color: #fff;
+  border: none;
+  outline: none;
+  font-family: var(--montserrat);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+#justify-tab-example-tab-home{
+  color: #fff;
+  border: none;
+  outline: none;
+  font-family: var(--montserrat);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+#justify-tab-example-tab-longer-tab{
+  color: #fff;
+  border: none;
+  outline: none;
+  font-family: var(--montserrat);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.nav-tabs .nav-link.active{
+  background: #C3924E !important;
+}
+.nav-tabs {
+  border-color: #C3924E !important;
+}

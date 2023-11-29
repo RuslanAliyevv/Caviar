@@ -70,16 +70,15 @@
   margin-top: 15px;
 }
 
-.Products .inputLabel{
-  color: #C9BEB1;
+.Products .inputLabel {
+  color: #c9beb1;
   font-family: "Montaga", serif;
 
-font-size: 22px !important;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
+  font-size: 22px !important;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
-
 
 .buttonHover {
   cursor: pointer;

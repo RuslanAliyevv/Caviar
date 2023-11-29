@@ -133,18 +133,7 @@
 
 .buttonHover:before {
   content: "";
-  background: linear-gradient(
-    45deg,
-    #ff0000,
-    #ff7300,
-    #fffb00,
-    #48ff00,
-    #00ffd5,
-    #002bff,
-    #7a00ff,
-    #ff00c8,
-    #ff0000
-  );
+  background: linear-gradient(45deg, #FFD700, #8B4513, #DAA520, #D2691E, #eac625, #FF4500, #ff9100, rgb(250, 172, 4), #FFD700);
   position: absolute;
   top: -2px;
   left: -2px;
