@@ -1,0 +1,61 @@
+.Cards .rowAll {
+    flex-flow: wrap;
+    flex-direction: row;
+    align-items: center;
+  }
+  .Cards .line {
+    position: absolute;
+    z-index: 9999;
+    width: 1px;
+    height: 120px;
+    margin-left: 20px;
+    margin-top: -40px;
+    background: #c3924e;
+    color: #c3924e;
+  }
+  .Cards img {
+    width: 100%;
+    margin-top: 15px;
+  }
+  .Cards h3 {
+    color: #fff;
+    margin-left: 25px;
+    font-family: var(--montserrat);
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+  .Cards .h3Edit {
+    color: #fff;
+  
+    text-align: right;
+    font-family: var(--montserrat);
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
+  
+  .Cards .boxDown {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+  .Cards .box {
+    position: relative;
+    margin-top: 20px;
+  }
+  .Cards p {
+    color: #c3924e;
+    text-transform: uppercase;
+    font-family: var(--montserrat);
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    margin-left: 25px;
+    margin-top: 10px;
+  }

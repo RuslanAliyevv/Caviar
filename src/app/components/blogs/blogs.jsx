@@ -13,8 +13,9 @@ export default function Blogs() {
           <div className={styles.contentUp}>
             <div className={styles.pEdit}>
               <p>
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry.
+                Explore our blog for a wealth of culinary inspiration, valuable
+                caviar insights, and gourmet tips that will enrich your dining
+                journey.
               </p>
             </div>
           </div>
@@ -54,7 +55,7 @@ export default function Blogs() {
                     <h2>Blog Name</h2>
                     <p>
                       Lorem Ipsum is simply dummy text of the printing and
-                      typesetting industry.{" "}
+                      typesetting industry.
                     </p>
                   </div>
                 </div>

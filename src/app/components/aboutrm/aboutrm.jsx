@@ -11,7 +11,9 @@ export default function AboutRm() {
           <div className={`row ${styles.rowAll}`}>
             <div className="col-lg-6">
               <div className={styles.left}>
-                <h2>It is a long cAVIAR established fact reader</h2>
+                <div className={styles.h2Edit}>
+                  <h2>A Fusion of Excellence and Tradition</h2>
+                </div>
                 <img
                   className={`mt-2 ${styles.imgEdit}`}
                   src="/assets/image/aboutrm.png"
@@ -23,20 +25,18 @@ export default function AboutRm() {
               <div className={styles.right}>
                 <h3>ABOUT US</h3>
                 <h4>
-                  It is a long caviar established fact
+                  We are dedicated to excellence in the world of caviar.
                   <br />
                   reader
                 </h4>
                 <p>
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry. Lorem Ipsum has been the industry's
-                  standard dummy text ever since the 1500s, when an unknown
-                  printer took a galley of type and scrambled it to make a type
-                  specimen book. It has survived not only five centuries, but
-                  also the leap into electronic typesetting, Lorem Ipsum is
-                  simply dummy text of the printing and typesetting industry.
-                  Lorem Ipsum has been the industry's standard dummy text ever
-                  since the 1500s, when an unknown
+                  With a rich heritage, a commitment to quality, and a legacy of
+                  sustainability, we invite you to join us on a culinary journey
+                  like no other. Our commitment to quality is unwavering. We
+                  take immense pride in sourcing caviar that's free from
+                  hormones, antibiotics, dyes, or preservatives, ensuring a pure
+                  and authentic taste experience. Our legacy spans generations,
+                  and our expertise is reflected in every jar we produce.  
                 </p>
                 <Link href="/aboutus">
                   <span>Read more</span>

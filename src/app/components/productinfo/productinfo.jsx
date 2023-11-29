@@ -12,22 +12,23 @@ export default function ProductInfo() {
               <div className="box">
                 <div className="left">
                   <h2>
-                    It is a long cAVIAR established fact <br />
-                    reader
+                    Explore Exceptional Culinary Excellence with BB Caviar
+                    Selection
                   </h2>
                   <div className={styles.pEdit}>
                     {" "}
                     <p>
-                      Lorem Ipsum is simply dummy text of the printing and
-                      typesetting industry. Lorem Ipsum has been the industry's
-                      standard dummy text ever since the 1500s, when an unknown
-                      printer took a galley of type and scrambled it to make a
-                      type specimen book. It has survived not only five
-                      centuries, but also the leap into electronic typesetting,{" "}
+                      Are you ready for an exceptional culinary journey? Begin
+                      your exploration of our exquisite caviar collection and
+                      elevate your dining experience. Whether you're a seasoned
+                      caviar aficionado or new to this delicacy, BB Caviar
+                      promises a delightful taste adventure that will satisfy
+                      your palate. Shop now to relish the unparalleled luxury of
+                      BB Caviar.
                     </p>
                   </div>
                   <Link href="/">
-                    <button>shop now</button>
+                    <button className={styles.buttonHover}>shop now</button>
                   </Link>
                 </div>
               </div>

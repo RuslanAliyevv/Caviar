@@ -34,7 +34,7 @@ export default function Header() {
                         </Link>
                       </li>
                       <li>
-                        <Link href="/">
+                        <Link href="/productspage">
                           <span>Products</span>
                         </Link>
                       </li>
@@ -59,9 +59,15 @@ export default function Header() {
                         </span>
                       </li>
                       <li>
-                        <span>
-                          <img src="/assets/image/bagicon.png" alt="" />
-                        </span>
+                        <Link href="/shoppingcart">
+                          <span className={styles.shopSpan}>
+                            <img
+                              style={{ position: "relative" }}
+                              src="/assets/image/bagicon.png"
+                              alt=""
+                            />
+                          </span>
+                        </Link>
                       </li>
                     </ul>
                   </nav>

@@ -16,9 +16,8 @@ export default function Footer() {
                     <span className={styles.spanLogo2}>Caviar</span>
                     <div className={styles.pEdit}>
                       <p>
-                        All the Lorem Ipsum generators on the Internet tend to
-                        repeat predefined chunks as necessary, making this the
-                        first true generator on the Internet.
+                        Delight in the epitome of pure, unmatched, and exquisite
+                        luxury caviar. Taste the perfection today!
                       </p>
                     </div>
                   </div>

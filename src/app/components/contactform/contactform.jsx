@@ -66,7 +66,7 @@ export default function ContactFm() {
               </div>
             </div>
             <Link href="/">
-              <button>Send Message</button>
+              <button className={styles.buttonHover}>Send Message</button>
             </Link>
           </div>
         </div>

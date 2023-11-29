@@ -9,19 +9,17 @@ export default function CaviarIntro() {
         <div className={styles.overlay}></div>
         <div className={styles.introContent}>
           <h1>
-            IT IS A LONG <span>CAVIAR</span> ESTABLISHED
-            <br />
-            FACT READER
+            Experience luxury with <br />
+            <span>BB Caviar</span>, a story of elegance and <br /> tradition.
           </h1>
           <p>
-            Many desktop publishing packages and web page editors now
-            <br />
-            use Lorem Ipsum as their default model text, and a search for
-            <br />
-            'lorem ipsum' will uncover
+            At BB Caviar, we take immense pride in our unwavering <br /> commitment to
+            natural quality and ensuring the utmost <br /> customer satisfaction.
           </p>
-          <Link href="/">
-            <button>shop now</button>
+          <Link href="/productspage">
+            <div className={styles.wrapper}>
+              <button className={styles.buttonHover}>shop now</button>
+            </div>
           </Link>
         </div>
         <div className={styles.Content}></div>

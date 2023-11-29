@@ -66,7 +66,7 @@
   transform: translateY(-50%);
   color: #c9beb1;
   pointer-events: none;
-  font-family: 'Montaga', serif;
+  font-family: "Montaga", serif;
 
   font-size: 18px;
   font-style: normal;
@@ -84,9 +84,9 @@
   width: 100%;
   height: 50px;
   background: transparent;
+  font-size: 1em;
   border: none;
   outline: none;
-  font-size: 1em;
   color: #c9beb1;
   padding: 0px 35px 0 5px;
 }
@@ -96,6 +96,7 @@
 .inputBox .messageLabel {
   height: 30px !important;
 }
+
 
 .contactBorder button {
   background: #c3924e;
@@ -121,5 +122,62 @@
   }
   .inputBox {
     width: 290px;
+  }
+}
+
+.buttonHover {
+  cursor: pointer;
+  position: relative;
+  z-index: 0;
+}
+
+.buttonHover:before {
+  content: "";
+  background: linear-gradient(45deg, #FFD700, #8B4513, #DAA520, #D2691E, #eac625, #FF4500, #ff9100, rgb(250, 172, 4), #FFD700);
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background-size: 400%;
+  z-index: -1;
+  filter: blur(5px);
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  animation: glowing 20s linear infinite;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  border-radius: 10px;
+}
+
+
+
+.buttonHover:active:after {
+  background: transparent;
+}
+
+.buttonHover:hover:before {
+  opacity: 1;
+}
+
+.buttonHover:after {
+  z-index: -1;
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+
+  left: 0;
+  top: 0;
+  border-radius: 10px;
+}
+
+@keyframes glowing {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 400% 0;
+  }
+  100% {
+    background-position: 0 0;
   }
 }

@@ -1,6 +1,25 @@
+"use client";
 import React from "react";
 import styles from "./styles.module.css";
+import { useState } from "react";
+import axios from "axios";
+
 export default function ContactUs() {
+  const [post, setPost] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+  const handleInput = (event) => {
+    setPost({ ...post, [event.target.name]: event.target.value });
+  };
+  function handleSubmit(event) {
+    event.preventDefault();
+    axios
+      .post("http://18.130.240.204:3000/contact/form", { post })
+      .then((response) => console.log(response))
+      .catch((err) => console.log(err));
+  }
   return (
     <>
       <div className={styles.ContactUs}>
@@ -13,12 +32,12 @@ export default function ContactUs() {
             <div className="col-lg-7">
               <div className={styles.box}>
                 <div className={styles.boxContent}>
-                  <h3>It is a long caviar established fact reader</h3>
+                  <h3>Need assistance or have a question?</h3>
                   <div className={styles.pEdit}>
                     <p>
-                      Lorem Ipsum is simply dummy text of the printing and
-                      typesetting industry. Lorem Ipsum has been the industry's
-                      standard dummy text ever since the 1500s
+                       Feel free to contact us at BB Caviar for any inquiries or
+                      assistance. Our team is always available and delighted to
+                      support your caviar journey.
                     </p>
                     <div className={styles.contactInfo}>
                       <img src="/assets/image/contactletter.png" alt="" />
@@ -39,11 +58,14 @@ export default function ContactUs() {
             </div>
           </div>
           <div className={styles.personalInfo}>
-            <form action="">
+            <form onSubmit={handleSubmit} action="">
               <div className={`row ${styles.rowAll2}`}>
                 <div className="col-lg-5">
                   <div className={styles.inputBox}>
                     <input
+                      onChange={handleInput}
+                      name="name"
+                      value={post.name}
                       id="my1"
                       className={styles.input}
                       placeholder=""
@@ -56,6 +78,9 @@ export default function ContactUs() {
                 <div className="col-lg-5">
                   <div className={styles.inputBox}>
                     <input
+                      name="message"
+                      value={post.message}
+                      onChange={handleInput}
                       id="my1"
                       className={styles.input}
                       placeholder=""
@@ -68,6 +93,9 @@ export default function ContactUs() {
                 <div className="col-lg-5">
                   <div className={styles.inputBox}>
                     <input
+                      name="email"
+                      value={post.email}
+                      onChange={handleInput}
                       id="my1"
                       className={styles.input}
                       placeholder=""
@@ -80,11 +108,14 @@ export default function ContactUs() {
                 <div className="col-lg-5">
                   <div className={styles.inputBox}>
                     <input
+                      onChange={handleInput}
                       id="my1"
                       className={styles.input}
                       placeholder=""
                       type="text"
                       required
+                      name="message"
+                      value={post.message}
                     />
                     <label htmlFor="my1">Postal code</label>
                   </div>
@@ -92,17 +123,20 @@ export default function ContactUs() {
                 <div className="col-lg-10">
                   <div className={styles.inputBoxMessage}>
                     <input
+                      onChange={handleInput}
                       id="my2"
                       className={styles.input3}
                       placeholder=""
                       type="text"
                       required
+                      name="message"
+                      value={post.message}
                     />
                     <label className={styles.messageLabel} htmlFor="2">
                       Your message
                     </label>
                   </div>
-                  <button>Send Message</button>
+                  <button className={styles.buttonHover}>Send Message</button>
                 </div>
               </div>
             </form>
@@ -113,10 +147,9 @@ export default function ContactUs() {
           <h2>Get in Touch with Us!</h2>
           <div className={styles.pEdit}>
             <p>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book.{" "}
+              Questions or thoughts about our caviar? Our BB Caviar team is
+              ready to assist. Reach out to us for any inquiries or feedback –
+              we're here to help and always eager to connect!
             </p>
           </div>
           <button>Call us</button>

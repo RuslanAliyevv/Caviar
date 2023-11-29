@@ -48,7 +48,7 @@
   width: 15%;
   height: 3.6rem;
   font-family: var(--montserrat);
-
+  
   font-size: 18px;
   font-style: normal;
   font-weight: 500;
@@ -60,7 +60,7 @@
   position: absolute;
   right: 0;
   width: 73%;
-  margin-top: 100px;
+  margin-top: 60px;
   height: 180px;
   border-radius: 10px;
   background: rgba(51, 51, 51, 0.76);
@@ -73,3 +73,74 @@
   color: #fff;
   text-align: center;
 }
+.wrapper{
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  transition: 0.5s;
+}
+
+
+/* //for hover button */
+
+.buttonHover {
+  /* width: 220px;
+  height: 50px;
+  border: none;
+  outline: none;
+  color: #fff;
+  background: #111; */
+  cursor: pointer;
+  position: relative;
+  z-index: 0;
+  /* border-radius: 10px; */
+}
+
+.buttonHover:before {
+  content: '';
+  background: linear-gradient(45deg, #FFD700, #8B4513, #DAA520, #D2691E, #eac625, #FF4500, #ff9100, rgb(250, 172, 4), #FFD700);
+  position: absolute;
+  top: -2px;
+  left:-2px;
+  background-size: 400%;
+  z-index: -1;
+  filter: blur(5px);
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  animation: glowing 20s linear infinite;
+  opacity: 0;
+  transition: opacity .3s ease-in-out;
+  border-radius: 10px;
+}
+
+
+
+.buttonHover:active:after {
+  background: transparent;
+}
+
+.buttonHover:hover:before {
+  opacity: 1;
+}
+
+.buttonHover:after {
+  z-index: -1;
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  left: 0;
+  top: 0;
+  border-radius: 10px;
+}
+
+@keyframes glowing {
+  0% { background-position: 0 0; }
+  50% { background-position: 400% 0; }
+  100% { background-position: 0 0; }
+}
+
+
+
+
