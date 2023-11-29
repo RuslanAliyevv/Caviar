@@ -82,3 +82,6 @@ a {
 .nav-tabs {
   border-color: #C3924E !important;
 }
+button{
+  font-weight: 700 !important;
+}

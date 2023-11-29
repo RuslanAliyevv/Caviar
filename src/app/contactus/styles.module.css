@@ -4,9 +4,9 @@
 }
 .ContactUs h2 {
   color: #c9beb1;
+  font-family: "Montaga", serif;
 
   text-align: center;
-  font-family: var(--montaga);
   font-size: 30px;
   font-style: normal;
   font-weight: 400;
@@ -97,7 +97,7 @@
   transform: translateY(-50%);
   color: #c9beb1;
   pointer-events: none;
-  font-family: 'Montaga', serif;
+  font-family: "Montaga", serif;
 
   font-size: 18px;
   font-style: normal;
@@ -157,7 +157,7 @@
   color: #c9beb1;
 
   text-align: center;
-  font-family: 'Montaga', serif;
+  font-family: "Montaga", serif;
 
   font-size: 30px;
   font-style: normal;
@@ -229,8 +229,6 @@
   transition: opacity 0.3s ease-in-out;
   border-radius: 10px;
 }
-
-
 
 .buttonHover:active:after {
   background: transparent;

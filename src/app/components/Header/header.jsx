@@ -55,7 +55,7 @@ export default function Header() {
                       </li>
                       <li>
                         <span>
-                          <img src="/assets/image/searchicon.png" alt="" />
+                          <img src="/assets/image/heart.png" alt="" />
                         </span>
                       </li>
                       <li>

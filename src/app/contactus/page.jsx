@@ -13,10 +13,20 @@ export default function ContactUs() {
   const handleInput = (event) => {
     setPost({ ...post, [event.target.name]: event.target.value });
   };
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
-    axios
-      .post("http://18.130.240.204:3000/contact/form", { post })
+    await axios
+      .post(
+        "http://18.130.240.204:3000/contact/form",
+        { post },
+        {
+          headers: {
+            Authorization: "Bearer dummy_token",
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "http://localhost:3000",
+          },
+        }
+      )
       .then((response) => console.log(response))
       .catch((err) => console.log(err));
   }
