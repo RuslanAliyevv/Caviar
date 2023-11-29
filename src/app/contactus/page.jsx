@@ -15,20 +15,16 @@ export default function ContactUs() {
   };
   async function handleSubmit(event) {
     event.preventDefault();
-    await axios
-      .post(
-        "http://18.130.240.204:3000/contact/form",
-        { post },
-        {
-          headers: {
-            Authorization: "Bearer dummy_token",
-            "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "http://localhost:3000",
-          },
-        }
-      )
-      .then((response) => console.log(response))
-      .catch((err) => console.log(err));
+    try {
+      // Send the request to the Next.js API route
+      const response = await axios.post(
+        "http://localhost:3000/api/contact",
+        post
+      );
+      console.log(response.data); // Handle the response
+    } catch (error) {
+      console.error("Error making POST request:", error);
+    }
   }
   return (
     <>
