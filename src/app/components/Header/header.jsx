@@ -1,24 +1,45 @@
+"use client"
+
 import React from "react";
 import styles from "./styles.module.css";
 import Image from "next/image";
 import { AiOutlineSearch } from "react-icons/ai";
 import Link from "next/link";
+import { useState,useEffect } from "react";
 
 export default function Header() {
+  const [scrolling, setScrolling] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 100) {
+        setScrolling(true);
+      } else {
+        setScrolling(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  const headerStyle = {
+    background: scrolling ? '#181818' : 'transparent',
+    // diğer stil özellikleri buraya eklenebilir
+  };
   return (
     <>
-      <div className={`${styles.Header}`}>
+      <div  style={headerStyle} className={`${styles.Header}`}>
         <div className="container">
           <div className={`row ${styles.rowAll}`}>
             <div className="col-lg-5">
               <div className={styles.box}>
                 <div className={styles.left}>
                   <Link href="/">
-                    {" "}
-                    <span>BB</span>
-                  </Link>
-                  <Link href="/">
-                    <span className={styles.caviarSpan}>Caviar</span>
+                    <img src="/assets/image/headerlogo.png" alt="" />
                   </Link>
                 </div>
               </div>
@@ -54,9 +75,11 @@ export default function Header() {
                         </Link>
                       </li>
                       <li>
-                        <span>
+                      <Link href="./wishlist">
+                      <span>
                           <img src="/assets/image/heart.png" alt="" />
                         </span>
+                        </Link>
                       </li>
                       <li>
                         <Link href="/shoppingcart">

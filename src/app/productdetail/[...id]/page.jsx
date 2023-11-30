@@ -23,12 +23,12 @@ export default function ProductDetail() {
         <div className={styles.backFone}></div>
         <div className="container">
           <div className={`row ${styles.rowAll}`}>
-            <div className="col-lg-6">
+            <div className="col-lg-5">
               <div className="box">
                 <img src="/assets/image/productdetail1.png" alt="" />
               </div>
             </div>
-            <div className="col-lg-6">
+            <div className="col-lg-7">
               <div className="box">
                 <div className={styles.spanEdit}>
                   <span>

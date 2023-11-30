@@ -50,7 +50,7 @@
 
   font-size: 22px;
   font-style: normal;
-  font-weight: 500;
+  font-weight: 700 !important;
   line-height: normal;
 }
 .ContactUs .boxContent span {
@@ -206,15 +206,15 @@
   content: "";
   background: linear-gradient(
     45deg,
-    #ff0000,
-    #ff7300,
-    #fffb00,
-    #48ff00,
-    #00ffd5,
-    #002bff,
-    #7a00ff,
-    #ff00c8,
-    #ff0000
+    #ffd700,
+    #8b4513,
+    #daa520,
+    #d2691e,
+    #eac625,
+    #ff4500,
+    #ff9100,
+    rgb(250, 172, 4),
+    #ffd700
   );
   position: absolute;
   top: -2px;

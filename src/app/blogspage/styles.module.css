@@ -49,7 +49,7 @@
   font-family: var(--montserrat);
   font-size: 20px;
   font-style: normal;
-  font-weight: 600;
+  font-weight: 700 !important;
   text-align: left;
   line-height: normal;
 }

@@ -158,7 +158,7 @@ export default function ContactUs() {
               we're here to help and always eager to connect!
             </p>
           </div>
-          <button>Call us</button>
+          <button className={styles.buttonHover}>Call us</button>
         </div>
       </div>
     </>

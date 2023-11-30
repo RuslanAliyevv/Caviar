@@ -38,7 +38,7 @@
   font-family: var(--montserrat);
   font-size: 20px !important;
   font-style: normal;
-  font-weight: 500;
+  font-weight: 700 !important;
   line-height: normal;
 }
 
@@ -54,7 +54,7 @@
 
   font-size: 20px;
   font-style: normal;
-  font-weight: 500;
+  font-weight: 700 !important;
   line-height: normal;
 }
 .qty span {
@@ -63,7 +63,7 @@
   font-family: var(--montserrat);
   font-size: 22px;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 700 !important;
   line-height: normal;
   cursor: pointer;
 }

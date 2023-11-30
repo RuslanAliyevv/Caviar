@@ -1,3 +1,4 @@
+@import url(https://db.onlinewebfonts.com/c/31ed0189fe1ff1e740a652e0f75b77dc?family=Snell+Roundhand+Script);
 * {
   box-sizing: border-box;
   padding: 0;
@@ -8,8 +9,9 @@ body {
   max-width: 100vw;
   overflow-x: hidden;
   background: #181818 !important;
-  overflow-y: scroll; /* Yalnızca yatay eksende scroll olmasını istiyorsanız 'scroll' yerine 'auto' kullanabilirsiniz */
+  overflow-y: scroll; 
   scroll-behavior: smooth;
+  
 }
 
 body::-webkit-scrollbar {
@@ -26,7 +28,6 @@ body::-webkit-scrollbar-track {
 a {
   text-decoration: none !important;
 }
-@import url("https://fonts.googleapis.com/css2?family=Borel&family=Montaga&family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
 .MuiNativeSelect-outlined {
   border-bottom: 2px solid #888 !important;

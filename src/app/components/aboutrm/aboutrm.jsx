@@ -16,7 +16,7 @@ export default function AboutRm() {
                 </div>
                 <img
                   className={`mt-2 ${styles.imgEdit}`}
-                  src="/assets/image/aboutrm.png"
+                  src="/assets/image/aboutrm2.png"
                   alt=""
                 />
               </div>
@@ -36,7 +36,7 @@ export default function AboutRm() {
                   take immense pride in sourcing caviar that's free from
                   hormones, antibiotics, dyes, or preservatives, ensuring a pure
                   and authentic taste experience. Our legacy spans generations,
-                  and our expertise is reflected in every jar we produce.  
+                  and our expertise is reflected in every jar we produce. 
                 </p>
                 <Link href="/aboutus">
                   <span>Read more</span>
@@ -54,7 +54,7 @@ export default function AboutRm() {
           </div>
         </div>
         {/* <div className={styles.backGrCircle}>
-           <img src="./assets/image/backgroundicon.png" alt="" />
+           <img src="./assets/image/circle.png" alt="" />
         </div> */}
       </div>
     </>
