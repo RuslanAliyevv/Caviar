@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import styles from "./styles.module.css";
 import Cards from "../components/Cards/card";
@@ -6,8 +7,26 @@ import InputLabel from "@mui/material/InputLabel";
 import FormControl from "@mui/material/FormControl";
 import NativeSelect from "@mui/material/NativeSelect";
 import { noSSR } from "next/dynamic";
-
+import { useState, useEffect } from "react";
 export default function Products() {
+  // const [products, setProducts] = useState([]);
+  // const [selectedCategory,setSelectedCategory] = useState(null)
+
+  // const getProducts = async () => {
+  //   try {
+  //     const response = await axios.get("https://fakestoreapi.com/products");
+  //     const data = response.data;
+  //     setProducts(data);
+  //   } catch (error) {
+  //     console.error("Hata oluştu:", error);
+  //   }
+  // }
+
+  // useEffect(() => {
+  //   getproducts();
+  // }, []);
+
+ 
   return (
     <>
       <div className={styles.Products}>
@@ -26,14 +45,15 @@ export default function Products() {
                       Categories
                     </InputLabel>
                     <NativeSelect
-                    style={{color:"#fff"}}
+                      style={{ color: "#fff" }}
                       defaultValue={0}
                       inputProps={{
                         name: "categories",
                         id: "uncontrolled-native",
                       }}
                     >
-                      <option style={{display:"none"}} value={0}></option>
+                      
+                      <option style={{ display: "none" }} value={0}></option>
                       <option value={10}>Ten</option>
                       <option value={20}>Twenty</option>
                       <option value={30}>Thirty</option>
@@ -43,23 +63,23 @@ export default function Products() {
               </div>
               <div className="col-lg-4">
                 <div className="box">
-                <FormControl fullWidth>
+                  <FormControl fullWidth>
                     <InputLabel
                       variant="standard"
                       htmlFor="uncontrolled-native"
                       className={styles.inputLabel}
                     >
-                    Grams
+                      Grams
                     </InputLabel>
                     <NativeSelect
-                    style={{color:"#fff"}}
+                      style={{ color: "#fff" }}
                       defaultValue={0}
                       inputProps={{
                         name: "categories",
                         id: "uncontrolled-native",
                       }}
                     >
-                      <option style={{display:"none"}} value={0}></option>
+                      <option style={{ display: "none" }} value={0}></option>
                       <option value={10}>Ten</option>
                       <option value={20}>Twenty</option>
                       <option value={30}>Thirty</option>
@@ -69,7 +89,7 @@ export default function Products() {
               </div>
               <div className="col-lg-4">
                 <div className="box">
-                <FormControl fullWidth>
+                  <FormControl fullWidth>
                     <InputLabel
                       variant="standard"
                       htmlFor="uncontrolled-native"
@@ -78,14 +98,14 @@ export default function Products() {
                       Price
                     </InputLabel>
                     <NativeSelect
-                    style={{color:"#fff"}}
+                      style={{ color: "#fff" }}
                       defaultValue={0}
                       inputProps={{
                         name: "categories",
                         id: "uncontrolled-native",
                       }}
                     >
-                      <option style={{display:"none"}} value={0}></option>
+                      <option style={{ display: "none" }} value={0}></option>
                       <option value={10}>Ten</option>
                       <option value={20}>Twenty</option>
                       <option value={30}>Thirty</option>

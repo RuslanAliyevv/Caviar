@@ -26,7 +26,7 @@
   line-height: normal;
   text-transform: uppercase;
 }
-.Product .h2Edit{
+.Product .h2Edit {
   width: 100%;
   display: flex;
   justify-content: center;
@@ -118,27 +118,28 @@
   font-weight: 700 !important;
   line-height: normal;
   text-transform: uppercase;
-}
-
-.buttonHover {
-  /* width: 220px;
-  height: 50px;
-  border: none;
-  outline: none;
-  color: #fff;
-  background: #111; */
   cursor: pointer;
   position: relative;
   z-index: 0;
-  /* border-radius: 10px; */
 }
 
 .buttonHover:before {
-  content: '';
-  background: linear-gradient(45deg, #FFD700, #8B4513, #DAA520, #D2691E, #eac625, #FF4500, #ff9100, rgb(250, 172, 4), #FFD700);
+  content: "";
+  background: linear-gradient(
+    45deg,
+    #ffd700,
+    #8b4513,
+    #daa520,
+    #d2691e,
+    #eac625,
+    #ff4500,
+    #ff9100,
+    rgb(250, 172, 4),
+    #ffd700
+  );
   position: absolute;
   top: -2px;
-  left:-2px;
+  left: -2px;
   background-size: 400%;
   z-index: -1;
   filter: blur(5px);
@@ -146,11 +147,9 @@
   height: calc(100% + 4px);
   animation: glowing 20s linear infinite;
   opacity: 0;
-  transition: opacity .3s ease-in-out;
+  transition: opacity 0.3s ease-in-out;
   border-radius: 10px;
 }
-
-
 
 .buttonHover:active:after {
   background: transparent;
@@ -162,7 +161,7 @@
 
 .buttonHover:after {
   z-index: -1;
-  content: '';
+  content: "";
   position: absolute;
   width: 100%;
   height: 100%;
@@ -173,7 +172,13 @@
 }
 
 @keyframes glowing {
-  0% { background-position: 0 0; }
-  50% { background-position: 400% 0; }
-  100% { background-position: 0 0; }
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 400% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
 }

@@ -27,7 +27,7 @@ export default function ProductInfo() {
                       BB Caviar.
                     </p>
                   </div>
-                  <Link href="/">
+                  <Link href="/productspage">
                     <button className={styles.buttonHover}>shop now</button>
                   </Link>
                 </div>

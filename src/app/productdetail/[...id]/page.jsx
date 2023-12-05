@@ -143,32 +143,7 @@ export default function ProductDetail() {
                   dish. 
                 </p>
               </Tab>
-              <Tab eventKey="longer-tab" title="Review">
-                <p>
-                  Delight in the luxurious taste of American Sturgeon Caviar, a
-                  top choice for caviar aficionados. Harvested from the pristine
-                  North American waters, this caviar is a symbol of gastronomic
-                  opulence. Each grain promises a smooth, buttery texture and a
-                  rich, nuanced flavor, ideal for enhancing any special occasion
-                  or adding a touch of sophistication to your culinary
-                  creations.
-                </p>
-                <h4>Taste the Elegance:</h4>
-                <p>
-                  Texture: Silky and smooth, offering a melt-in-the-mouth
-                  experience. Flavor: A perfect balance of rich buttery notes
-                  and a subtle nuttiness, creating a memorable taste sensation.
-                </p>
-                <h4>Key Features:</h4>
-                <p>
-                  Species: Genuine American Sturgeon (Acipenser species) Origin:
-                  Ethically sourced from North American waters Available Sizes:
-                  Choose from 28g, 50g, 150g, and 250g Freshness Guaranteed:
-                  Best enjoyed within 4 weeks, stored under refrigeration
-                  Packaging: Comes in specially sealed containers to ensure peak
-                  freshness
-                </p>
-              </Tab>
+              <Tab eventKey="longer-tab" title="Review"></Tab>
             </Tabs>
           </div>
         </div>
@@ -235,11 +210,9 @@ export default function ProductDetail() {
               </div>
             </div>
             <div className={styles.buttonEdit}>
-            <Link href="./productspage">
-                <button className={styles.buttonHover}>
-                 All Product
-                </button>
-            </Link>
+              <Link href="./productspage">
+                <button className={styles.buttonHover}>All Product</button>
+              </Link>
             </div>
           </div>
         </div>

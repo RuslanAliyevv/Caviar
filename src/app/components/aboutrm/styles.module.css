@@ -1,6 +1,6 @@
 .AboutRm {
   background: #181818;
-  padding: 100px 0 0 0;
+  padding: 150px 0 0 0;
   position: relative;
 }
   
@@ -34,15 +34,18 @@
 .AboutRm h4 {
   color: #c3924e;
   margin-top: 10px;
+  width: 55%;
   font-family: var(--montserrat);
   font-size: 22px;
   font-style: normal;
   font-weight: 700 !important;
   line-height: normal;
 }
+
 .AboutRm p {
   color: #fff;
-  margin-bottom: 30px;
+  margin-bottom: 70px;
+  width: 90%;
   font-family: var(--montserrat);
   margin-top: 30px;
   font-size: 18px;
@@ -50,27 +53,30 @@
   font-weight: 300;
   line-height: 28px; /* 155.556% */
 }
+.AboutRm .pEdit{
+
+}
 .AboutRm .right {
   margin-top: 125px;
 }
 .AboutRm span {
   color: #fff;
-
   font-family: var(--montserrat);
-
   font-size: 18px;
   font-style: normal;
   font-weight: 700 !important;
   line-height: 24px; /* 133.333% */
 }
-/* .AboutRm .backGrCircle img {
+
+
+ /* .AboutRm .backGrCircle img {
   position: absolute;
   top: -5%;
   right: 0%;
   z-index: 222222;
-  /* width: 50%; */
-  /* border-radius: 863.823px; */
-  /* border: 1px solid rgba(255, 255, 255, 0.1); */
-  /* flex-shrink: 0; */
-  /* transform: rotate(145deg); */
-/* } */ 
+  width: 50%;
+  border-radius: 863.823px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  flex-shrink: 0;
+  transform: rotate(145deg);
+ }   */

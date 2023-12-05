@@ -12,8 +12,9 @@ export default function Footer() {
               <div className="col-lg-4">
                 <div className={styles.box}>
                   <div className={styles.boxContentFirst}>
-                    <span className={styles.spanLogo1}>BB</span>
-                    <span className={styles.spanLogo2}>Caviar</span>
+                  <Link href="/">
+                    <img src="/assets/image/headerlogo.png" alt="" />
+                  </Link>
                     <div className={styles.pEdit}>
                       <p>
                         Delight in the epitome of pure, unmatched, and exquisite

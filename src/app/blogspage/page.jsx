@@ -95,7 +95,9 @@ export default function BlogsPage() {
             </div>
           </div>
         </div>
-        <div className={styles.backFone2}></div>
+        <div className={styles.backFone2}>
+          
+        </div>
       </div>
     </>
   );

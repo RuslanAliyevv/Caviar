@@ -12,7 +12,7 @@ const inter = Inter({ subsets: ["latin"] });
 const montserrat = Montserrat({
   subsets: ["latin"],
   variable: "--montserrat",
-  weight:"100",
+  weight:"200",
 });
 const montaga = Montserrat({
   subsets: ["latin"],

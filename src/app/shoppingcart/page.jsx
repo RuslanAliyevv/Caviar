@@ -2,8 +2,17 @@
 import React from "react";
 import styles from "./styles.module.css";
 import {useState} from "react"
+// import { remove } from '@/Redux/Cartslice';
+// import { useDispatch,useSelector } from 'react-redux';
 
 export default function Shopping() {
+  // const dispatch=useDispatch();
+  // const cartitems = useSelector((state)=>state.cart)
+  // const handleremove =(id)=>{
+  //     dispatch(remove(id))
+  // }
+
+
   const[count,setCount] = useState(1)
   const handleMinus = () =>{
     if(count-1){
@@ -73,6 +82,9 @@ export default function Shopping() {
                   <h5 style={{ color: "#fff" }} className="">
                     $20.00
                   </h5>
+                </div>
+                <div className={styles.remove}>
+                  <button className={styles.buttonHover}>remove</button>
                 </div>
               </div>
             </div>
