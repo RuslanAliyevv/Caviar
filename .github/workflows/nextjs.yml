@@ -36,4 +36,5 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             cd /home/ubuntu/actions-runner
+            pm2 delete all
             pm2 restart "npm run dev"  --name caviar-front
