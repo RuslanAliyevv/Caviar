@@ -36,5 +36,4 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             cd /home/ubuntu/actions-runner
-          run:
-            npm run dev
+            pm2 restart npm -- dev
