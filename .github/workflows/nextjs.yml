@@ -37,4 +37,4 @@ jobs:
           script: |
             cd /home/ubuntu/actions-runner
             pm2 delete all
-            pm2 restart "npm run dev"  --name caviar-front
+            pm2 start "npm run dev"  --name caviar-front
