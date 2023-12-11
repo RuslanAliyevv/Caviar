@@ -1,5 +1,6 @@
 .Shopping {
-  padding: 150px 0 0px 0;
+  height: 100vh;
+  padding-top: 150px;
   background: #181818;
 }
 .Shopping h2 {
@@ -8,7 +9,7 @@
   font-family: "Montaga", serif;
   font-size: 30px;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 400 !important;
   line-height: normal;
   text-transform: uppercase;
   margin-bottom: 20px;
@@ -32,31 +33,38 @@
 .Shopping .box {
   width: 100%;
 }
+.Shopping img{
+  width: 25%;
+}
 .Shopping .spanEdit {
   color: #fff !important;
-
   font-family: var(--montserrat);
   font-size: 20px !important;
   font-style: normal;
   font-weight: 700 !important;
   line-height: normal;
+  display: block;
+  padding: 0px 20px 0px 0px;
+  width: 250px; 
+  margin-top: -15px;
+  white-space: nowrap;
 }
 
 .Shopping .priceDiv {
-  margin-top: 5px;
   margin-left: 10px;
-  width: 100% !important;
 }
+  
 .Shopping .priceEdit {
   color: #c3924e;
-
   font-family: var(--montserrat);
-
   font-size: 20px;
+  margin-top: 3px;
   font-style: normal;
   font-weight: 700 !important;
   line-height: normal;
 }
+
+  
 .qty span {
   color: #fff;
   margin-left: 5px;
@@ -68,16 +76,21 @@
   cursor: pointer;
 }
 .qty {
-  border: 1px solid red;
+  border: 1px solid #c3924e;
   padding: 0px 15px;
   border-radius: 3px;
+  width: 80px;
   border: 1px solid #c3924e;
   height: 30px;
+}
+.qtyBox{
+  background-color: transparent;
 }
 .h5Edit {
   display: flex !important;
   justify-content: end !important;
   align-items: center;
+  width: 50px;
 }
 .h5Edit h5 {
   margin-top: 5px;
@@ -92,6 +105,9 @@
   border: 1px solid #c3924e;
   background-color: transparent;
 }
+.spanDiv{
+  width: 100%;
+}
 .buttonHover {
   /* width: 220px;
   height: 50px;
@@ -99,10 +115,10 @@
   outline: none;
   color: #fff;
   background: #111; */
+  /* border-radius: 10px; */
   cursor: pointer;
   position: relative;
   z-index: 0;
-  /* border-radius: 10px; */
 }
 
 .buttonHover:before {
@@ -148,4 +164,11 @@
   0% { background-position: 0 0; }
   50% { background-position: 400% 0; }
   100% { background-position: 0 0; }
+}
+.Message{
+  color: #fff;
+  font-size: 25px;
+  font-weight: 100 !important;
+  font-family: var(--montserrat);
+  padding: 180px 0 180px 0;
 }

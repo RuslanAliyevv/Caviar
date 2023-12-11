@@ -73,12 +73,13 @@
 .Products .inputLabel {
   color: #c9beb1;
   font-family: "Montaga", serif;
-
+  margin-top: -10px;
   font-size: 22px !important;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
 }
+
 
 .buttonHover {
   /* width: 220px;

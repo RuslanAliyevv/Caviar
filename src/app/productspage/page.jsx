@@ -8,25 +8,42 @@ import FormControl from "@mui/material/FormControl";
 import NativeSelect from "@mui/material/NativeSelect";
 import { noSSR } from "next/dynamic";
 import { useState, useEffect } from "react";
+import axios from "axios";
 export default function Products() {
-  // const [products, setProducts] = useState([]);
-  // const [selectedCategory,setSelectedCategory] = useState(null)
+  const [products, setproducts] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState("");
 
-  // const getProducts = async () => {
-  //   try {
-  //     const response = await axios.get("https://fakestoreapi.com/products");
-  //     const data = response.data;
-  //     setProducts(data);
-  //   } catch (error) {
-  //     console.error("Hata oluştu:", error);
+  const getProducts = async () => {
+    try {
+      const response = await axios.get("http://localhost:3000/api/products");
+      const data = response.data;
+      console.log(response.data);
+      setproducts(data);
+    } catch (error) {
+      console.error("Error Message:", error);
+    }
+  };
+  useEffect(() => {
+    getProducts();
+  }, []);
+  const categories = Array.from(new Set(products.map((res) => res.category)));
+   
+  // Category filter
+
+
+  // const handleCategoryChange = (event) => {
+  //   const value = event.target.value;
+  //   setSelectedCategory(value === "All" ? "" : value);
+  // };
+  // const filterProducts = (products, selectedCategory) => {
+  //   if (!selectedCategory) {
+  //     return products;
   //   }
-  // }
 
-  // useEffect(() => {
-  //   getproducts();
-  // }, []);
-
- 
+  //   return products.filter((product) => product.category === selectedCategory);
+  // };
+  
+  // const filteredProducts = filterProducts(products, selectedCategory);
   return (
     <>
       <div className={styles.Products}>
@@ -46,17 +63,20 @@ export default function Products() {
                     </InputLabel>
                     <NativeSelect
                       style={{ color: "#fff" }}
-                      defaultValue={0}
+                      // value={selectedCategory}
+                      // onChange={handleCategoryChange}
                       inputProps={{
                         name: "categories",
                         id: "uncontrolled-native",
                       }}
                     >
-                      
                       <option style={{ display: "none" }} value={0}></option>
-                      <option value={10}>Ten</option>
-                      <option value={20}>Twenty</option>
-                      <option value={30}>Thirty</option>
+                      <option value="All">All</option>
+                      {categories.map((category,index) => (
+                        <option key={index} value={category}>
+                          {category}
+                        </option>
+                      ))}
                     </NativeSelect>
                   </FormControl>
                 </div>
@@ -116,7 +136,7 @@ export default function Products() {
             </div>
           </div>
         </div>
-        <Cards />
+        <Cards products={products} />     /products filteredProductsla evez oluncaq/
 
         <div className={styles.getInTouch}>
           <h2>Get in Touch with Us!</h2>

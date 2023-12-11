@@ -6,11 +6,11 @@ import Image from "next/image";
 import { AiOutlineSearch } from "react-icons/ai";
 import Link from "next/link";
 import { useState,useEffect } from "react";
-// import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 export default function Header() {
   const [scrolling, setScrolling] = useState(false);
-  // const item = useSelector((state)=>state.cart)
+  const item = useSelector((state)=>state.cart)
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 0) {
@@ -87,12 +87,16 @@ export default function Header() {
                           <span className={styles.shopSpan}>
                             <img
                               style={{ position: "relative" }}
-                              src="/assets/image/bagicon.png"
+                              src="/assets/image/shoppingcart.png"
                               alt=""
                             />
                           </span>
                         </Link>
                       </li>
+                      <li >
+                      <span className={styles.number}>{item.length}</span>
+                      </li>
+
                     </ul>
                   </nav>
                 </div>

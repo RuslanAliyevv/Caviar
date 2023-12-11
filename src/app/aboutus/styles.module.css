@@ -19,16 +19,14 @@
   height: 40vh;
   background-size: cover;
   background-repeat: no-repeat;
-  z-index: 11111;
 }
 .overlay {
   position: absolute;
-  top: 214.5px;
+  top: 217.5px;
   left: 0;
   width: 100%;
   height: 40vh;
   background: rgba(0, 0, 0, 0.58);
-  z-index: 1111;
 }
 .aboutContent {
   padding: 50px 20px 70px 110px;

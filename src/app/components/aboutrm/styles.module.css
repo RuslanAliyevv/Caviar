@@ -53,11 +53,10 @@
   font-weight: 300;
   line-height: 28px; /* 155.556% */
 }
-.AboutRm .pEdit{
 
-}
 .AboutRm .right {
   margin-top: 125px;
+  margin-left: 20px;
 }
 .AboutRm span {
   color: #fff;

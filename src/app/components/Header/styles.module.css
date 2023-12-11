@@ -32,12 +32,16 @@
 .Header .right span {
   position: relative;
   color: #fff;
-  margin-left: 40px;
+  margin-left: 45px;
   font-family: var(--montserrat);
   font-size: 18px;
   font-style: normal;
   font-weight: 700 !important;
   line-height: normal;
+}
+.Header .number{
+  display: inline-block;
+  margin-left: 10px !important;
 }
 
 
