@@ -8,15 +8,24 @@
 }
 .ProductDetail h2 {
   color: #c9beb1;
-
   text-align: center;
   font-family: "Montaga", serif;
-
   font-size: 30px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
   text-transform: uppercase;
+}
+
+
+.contentImg{
+  width: 100%;
+}
+.boxDiv{
+  margin-top: -10px;
+  width: 466px;
+  height: 475px;
+  object-fit: cover;
 }
 .ProductDetail {
   padding: 150px 0 0px 0;

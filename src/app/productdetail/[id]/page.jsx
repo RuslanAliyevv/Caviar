@@ -6,31 +6,26 @@ import Tabs from "react-bootstrap/Tabs";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { useRouter, useParams } from "next/navigation";
+import { useParams } from "next/navigation";
 
 export default function ProductDetail() {
-  // const router = useRouter();
   const { id } = useParams();
-  console.log("Id ni goster", id);
   const [post, setPost] = useState({
     name: "",
     imageUrl: "",
   });
   useEffect(() => {
-    console.log("salam");
     
-    const fetchPost = () => {
+    const fetchPost = async () => {
       try {
-        const response = axios.get("http://localhost:3000/api/products");
+        const response = await axios.get("http://localhost:3000/api/products");
         const data = response.data;
-        console.log(data);
         setPost(data && data.find((u) => u.id === Number(id)));
-        console.log(data);
       } catch (error) {
         console.error("Error fetching product:", error);
       }
-      fetchPost();
     };
+    fetchPost();
   }, [id]);
 
   const [count, setCount] = useState(1);
@@ -51,10 +46,12 @@ export default function ProductDetail() {
           <div className={`row ${styles.rowAll}`}>
             <div className="col-lg-5">
               <div className="box">
-                <img src={post.imageUrl} />
+               <div className={styles.boxDiv}>
+               <img className={styles.contentImg} src={post.imageUrl} />
+               </div>
               </div>
             </div>
-            <div className="col-lg-7">
+            <div style={{marginLeft:"0px"}} className="col-lg-7">
               <div className="box">
                 <div className={styles.spanEdit}>
                   <span>
@@ -79,7 +76,8 @@ export default function ProductDetail() {
                 >
                   <div className="col-lg-8">
                     <div className={styles.h3Edit}>
-                      <h3>{post.name}</h3>
+                      <h3>{post.name} :</h3>
+                      <h4 style={{fontSize:"30px",marginTop:"-5px"}}> A Gourmet's Treasure</h4>
                     </div>
                   </div>
                   <div className="col-lg-4">

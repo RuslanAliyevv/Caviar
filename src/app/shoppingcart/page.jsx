@@ -56,7 +56,7 @@ export default function Shopping() {
                       <div className={styles.priceDiv}>
                        <div className={styles.spanContentdiv}>
                        <span className={`font-weight-bold ${styles.spanEdit}`}>
-                          {item.name}
+                          {item.name} 28gr
                         </span>
                        </div>
                         <h5
