@@ -9,13 +9,20 @@ import axios from "axios";
 import { useParams } from "next/navigation";
 
 export default function ProductDetail() {
+  const [selectedOption, setSelectedOption] = useState(null);
+
+  const handleRadioChange = (index) => {
+    setSelectedOption(index);
+  };
+
+  // const radioOptions = [10, 11, 12, 13, 14];
   const { id } = useParams();
   const [post, setPost] = useState({
     name: "",
     imageUrl: "",
+    price: "",
   });
   useEffect(() => {
-    
     const fetchPost = async () => {
       try {
         const response = await axios.get("http://localhost:3000/api/products");
@@ -46,12 +53,12 @@ export default function ProductDetail() {
           <div className={`row ${styles.rowAll}`}>
             <div className="col-lg-5">
               <div className="box">
-               <div className={styles.boxDiv}>
-               <img className={styles.contentImg} src={post.imageUrl} />
-               </div>
+                <div className={styles.boxDiv}>
+                  <img className={styles.contentImg} src={post.imageUrl} />
+                </div>
               </div>
             </div>
-            <div style={{marginLeft:"0px"}} className="col-lg-7">
+            <div style={{ marginLeft: "0px" }} className="col-lg-7">
               <div className="box">
                 <div className={styles.spanEdit}>
                   <span>
@@ -77,7 +84,9 @@ export default function ProductDetail() {
                   <div className="col-lg-8">
                     <div className={styles.h3Edit}>
                       <h3>{post.name} :</h3>
-                      <h4 style={{fontSize:"30px",marginTop:"-5px"}}> A Gourmet's Treasure</h4>
+                      <h4 style={{ fontSize: "30px", marginTop: "-5px" }}>
+                        A Gourmet's Treasure
+                      </h4>
                     </div>
                   </div>
                   <div className="col-lg-4">
@@ -85,6 +94,21 @@ export default function ProductDetail() {
                       <img src="/assets/image/heart.png" alt="" />
                     </span>
                   </div>
+                </div>
+                <div className={styles.radioGroup}>
+                  {post && post.price && (
+                    <div className={styles.radioContainer}>
+                      <input
+                        type="radio"
+                        id={`radioInput${post.price}`}
+                        checked={selectedOption === post.price}
+                        onChange={() => handleRadioChange(post.price)}
+                      />
+                      <label htmlFor={`radioInput${post.price}`}>
+                        {post.price} gr
+                      </label>
+                    </div>
+                  )}
                 </div>
                 <h4>In Stock</h4>
                 <h6>$60.00</h6>

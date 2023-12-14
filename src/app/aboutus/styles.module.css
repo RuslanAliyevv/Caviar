@@ -9,7 +9,7 @@
   text-transform: uppercase;
 }
 .About {
-  padding: 150px 0 0px 0;
+  padding: 150px 0px 0px 0px;
   background: #181818;
 }
 .About .img {
@@ -29,11 +29,12 @@
   background: rgba(0, 0, 0, 0.58);
 }
 .aboutContent {
-  padding: 50px 20px 70px 110px;
+  padding: 50px 20px 150px 110px;
   background: #2b2b2b;
+  height: 100%;
 }
 .aboutContent h4 {
-  color: #c3924e;
+  color: #C9BEB1;
   width: 100%;
   font-family: var(--montserrat);
   font-size: 22px;
@@ -41,10 +42,15 @@
   font-weight: 700 !important;
   line-height: normal;
 }
+.aboutContent h4:nth-last-child(1){
+  color: #c3924e !important;
+}
 
 .aboutContent p {
   color: #fff;
   width: 85%;
+  margin-top: 20px;
+  margin-bottom: 30px;
   font-family: var(--montserrat);
   font-size: 18px;
   font-style: normal;

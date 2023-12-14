@@ -204,6 +204,41 @@
   line-height: normal;
   text-transform: uppercase;
 }
+.radioContainer {
+  position: relative;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.radioContainer input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.radioContainer label {
+  display: inline-block;
+  padding: 10px;
+  color: #FFF;
+  cursor: pointer;
+
+  font-family: var(--montserrat);
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 700 !important;
+  line-height: normal;
+}
+
+.radioContainer input[type="radio"]:checked + label {
+  background-color: #c3924e; 
+  color: #fff; 
+  border-color: #c3924e; 
+  border-radius: 5px;
+}
+.radioGroup {
+  display: flex;
+  gap: 30px; /* İstediğiniz boşluğu belirleyin */
+}
 .TopProducts .buttonHover {
   color: #c3924e;
   font-family: var(--montserrat);

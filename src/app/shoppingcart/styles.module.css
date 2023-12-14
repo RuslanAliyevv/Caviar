@@ -1,5 +1,4 @@
 .Shopping {
-  height: 100vh;
   padding-top: 150px;
   background: #181818;
 }
@@ -88,12 +87,13 @@
 }
 .h5Edit {
   display: flex !important;
-  justify-content: end !important;
+  justify-content: center !important;
   align-items: center;
-  width: 50px;
+  width: 120px;
 }
 .h5Edit h5 {
   margin-top: 5px;
+  width: 100px;
 }
 .remove button{
   font-size: 16px;
@@ -167,7 +167,7 @@
 }
 .Message{
   color: #fff;
-  font-size: 25px;
+  font-size: 30px;
   font-weight: 100 !important;
   font-family: var(--montserrat);
   padding: 180px 0 180px 0;

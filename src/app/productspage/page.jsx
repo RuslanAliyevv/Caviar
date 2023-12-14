@@ -9,9 +9,12 @@ import NativeSelect from "@mui/material/NativeSelect";
 import { noSSR } from "next/dynamic";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useParams } from "next/navigation";
+
 export default function Products() {
   const [products, setproducts] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("");
+  
 
   const getProducts = async () => {
     try {
@@ -50,10 +53,10 @@ export default function Products() {
         <h2>PRODUCT</h2>
         <div className={styles.tableBorder}>
           <div className="container">
-            <div className="row">
-              <div className="col-lg-4">
+            <div  className="row">
+              <div  className="col-lg-4">
                 <div className="box">
-                  <FormControl fullWidth>
+                  <FormControl fullWidth className={styles.formControl}>
                     <InputLabel
                       variant="standard"
                       htmlFor="uncontrolled-native"
@@ -83,7 +86,7 @@ export default function Products() {
               </div>
               <div className="col-lg-4">
                 <div className="box">
-                  <FormControl fullWidth>
+                  <FormControl className={styles.formControl} fullWidth>
                     <InputLabel
                       variant="standard"
                       htmlFor="uncontrolled-native"
@@ -109,7 +112,7 @@ export default function Products() {
               </div>
               <div className="col-lg-4">
                 <div className="box">
-                  <FormControl fullWidth>
+                  <FormControl className={styles.formControl} fullWidth>
                     <InputLabel
                       variant="standard"
                       htmlFor="uncontrolled-native"

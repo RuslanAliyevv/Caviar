@@ -61,7 +61,7 @@ export default function Shopping() {
                        </div>
                         <h5
                           className={styles.priceEdit}
-                        >{`$${item.price}.00`}</h5>
+                        >{`$ ${item.price}.00`}</h5>
                       </div>
                     </div>
 
@@ -96,7 +96,7 @@ export default function Shopping() {
                     </div>
                     <div className={styles.h5Edit}>
                       <h5 style={{ color: "#fff" }} className="">
-                        {`$${calculateTotalPrice(item)}.00`}
+                        {`$ ${calculateTotalPrice(item)}.00`}
                       </h5>
                     </div>
                     <div className={styles.remove}>

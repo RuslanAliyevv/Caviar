@@ -43,7 +43,7 @@ export default function Product() {
         </div>
         <div className="container">
           <div className={`row ${styles.rowAll}`}>
-            {products.map((product) => (
+            {products.slice(0,4).map((product) => (
               <div key={product.id} className="col-lg-3 col-12">
                 <div className={styles.box}>
                   <div className={styles.boxUp}>
@@ -60,7 +60,7 @@ export default function Product() {
                   <div className={styles.boxDown}>
                     <div className={styles.boxDowncontent}>
                       <div className={styles.prNameEdit}>
-                        <h3>{product.name}</h3>
+                        <h3>{product.name} 28gr</h3>
                       </div>
                       <div className={styles.priceEdit}>
                         <h3 className={styles.h3Edit}>{`$${product.price}`}</h3>
@@ -72,32 +72,7 @@ export default function Product() {
               </div>
             ))}
 
-            <div className="col-lg-3 col-12">
-            <div className={styles.box}>
-                  <div className={styles.boxUp}>
-                    <img
-                      onClick={() =>
-                        router.push(`/productdetail/${product.id}`)
-                      }
-                      src="/assets/image/product2.png"
-                      alt=""
-                    />
-
-                    <div className={styles.line}></div>
-                  </div>
-                  <div className={styles.boxDown}>
-                    <div className={styles.boxDowncontent}>
-                      <div className={styles.prNameEdit}>
-                        <h3>AAAAAA</h3>
-                      </div>
-                      <div className={styles.priceEdit}>
-                        <h3 className={styles.h3Edit}>1111</h3>
-                      </div>
-                    </div>
-                    <p>Add to cart +</p>
-                  </div>
-                </div>
-            </div>
+           
             {/* <div className="col-lg-3 col-12">
               <div className={styles.box}>
                 <div className={styles.boxUp}>

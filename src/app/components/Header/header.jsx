@@ -1,5 +1,4 @@
 "use client"
-
 import React from "react";
 import styles from "./styles.module.css";
 import Image from "next/image";
@@ -10,6 +9,7 @@ import { useSelector } from 'react-redux';
 
 export default function Header() {
   const [scrolling, setScrolling] = useState(false);
+  
   const item = useSelector((state)=>state.cart)
   useEffect(() => {
     const handleScroll = () => {
@@ -40,7 +40,7 @@ export default function Header() {
               <div className={styles.box}>
                 <div className={styles.left}>
                   <Link href="/">
-                    <img src="/assets/image/headerlogo.png" alt="" />
+                    <img src="/assets/image/headerlogo1.png" alt="" />
                   </Link>
                 </div>
               </div>

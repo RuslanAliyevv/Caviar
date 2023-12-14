@@ -25,38 +25,51 @@ export default function Blogs() {
               <div className="col-lg-3">
                 <div className={styles.box}>
                   <div className={styles.boxContent}>
+                    <div className={styles.imgBox}>
                     <img src="/assets/image/blogs1.png" alt="" />
-                    <h2>Blog Name</h2>
+                    </div>
+                 <div className={styles.Content}>
+                 <h2>Blog Name</h2>
                     <div className={styles.pEdit2}>
                       <p>
-                        Lorem Ipsum is simply dummy text of the printing and
-                        typesetting industry.{" "}
+                      Join us at BB Caviar on a delightful journey through the captivating...
                       </p>
                     </div>
+                 </div>
                   </div>
                 </div>
               </div>
               <div className="col-lg-3">
                 <div className={styles.box}>
-                  <div className={styles.boxContent}>
+                <div className={styles.boxContent}>
+                    <div className={styles.imgBox}>
                     <img src="/assets/image/blogs2.png" alt="" />
-                    <h2>Blog Name</h2>
-                    <p>
-                      Lorem Ipsum is simply dummy text of the printing and
-                      typesetting industry.{" "}
-                    </p>
+                    </div>
+                 <div className={styles.Content}>
+                 <h2>Blog Name</h2>
+                    <div className={styles.pEdit2}>
+                      <p>
+                      Join us at BB Caviar on a delightful journey through the captivating...
+                      </p>
+                    </div>
+                 </div>
                   </div>
                 </div>
               </div>
               <div className="col-lg-3">
                 <div className={styles.box}>
-                  <div className={styles.boxContent}>
+                <div className={styles.boxContent}>
+                    <div className={styles.imgBox}>
                     <img src="/assets/image/blogs3.png" alt="" />
-                    <h2>Blog Name</h2>
-                    <p>
-                      Lorem Ipsum is simply dummy text of the printing and
-                      typesetting industry.
-                    </p>
+                    </div>
+                 <div className={styles.Content}>
+                 <h2>Blog Name</h2>
+                    <div className={styles.pEdit2}>
+                      <p>
+                      Join us at BB Caviar on a delightful journey through the captivating...
+                      </p>
+                    </div>
+                 </div>
                   </div>
                 </div>
               </div>

@@ -40,7 +40,7 @@ a {
   color: #888 !important;
 }
 .MuiInput-underline {
-  width: 75%;
+  width: 80%;
 }
 .MuiSvgIcon-root {
   color: #888 !important;
@@ -103,6 +103,8 @@ a {
   transform: translate(0, 20px) scale(1);
   transition: color 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms,transform 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms,max-width 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;
 } */
+
+
 /* for TABS */
 
 #justify-tab-example-tab-profile {

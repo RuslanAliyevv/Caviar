@@ -14,11 +14,13 @@ export default function AboutRm() {
                 <div className={styles.h2Edit}>
                   <h2>A Fusion of Excellence and Tradition</h2>
                 </div>
-                <img
+             <div className={styles.hoverEdit}>
+             <img
                   className={`mt-2 ${styles.imgEdit}`}
                   src="/assets/image/aboutrm3.png"
                   alt=""
                 />
+             </div>
               </div>
             </div>
             <div className="col-lg-6">
@@ -55,9 +57,9 @@ export default function AboutRm() {
             </div>
           </div>
         </div>
-        {/* <div className={styles.backGrCircle}>
-           <img src="./assets/image/circle.png" alt="" />
-        </div> */}
+        <div className={styles.backGrCircle}>
+           <img src="./assets/image/circle01.png" alt="" />
+        </div>
       </div>
     </>
   );

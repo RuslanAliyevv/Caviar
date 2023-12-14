@@ -36,11 +36,16 @@ export default function ProductInfo() {
             <div className="col-lg-7">
               <div className="box">
                 <div className="right">
-                  <img src="/assets/image/productinfo.png" alt="" />
+                 <div className={styles.hoverEdit}>
+                 <img src="/assets/image/productinfo.png" alt="" />
+                 </div>
                 </div>
               </div>
             </div>
           </div>
+        </div>
+        <div className={styles.backGrCircle}>
+           <img src="./assets/image/circle02.png" alt="" />
         </div>
       </div>
     </>

@@ -2,10 +2,12 @@ import React from "react";
 import styles from "./styles.module.css";
 import { useDispatch } from "react-redux";
 import { add } from "../../Redux/CartSlice";
+import { useRouter } from "next/navigation";
 
 
 export default function Cards({products}) {
   const dispatch = useDispatch();
+  const router = useRouter();
   const handleadd = (product) => {
     dispatch(add(product));
   };
@@ -17,7 +19,13 @@ export default function Cards({products}) {
           <div key={product.id} className="col-lg-3 col-12">
             <div className={styles.box}>
               <div className={styles.boxUp}>
-                <img src={product.imageUrl} alt="" />
+              <img
+                      onClick={() =>
+                        router.push(`/productdetail/${product.id}`)
+                      }
+                      src="/assets/image/product2.png"
+                      alt=""
+                    />
                 <div className={styles.line}></div>
               </div>
               <div className={styles.boxDown}>

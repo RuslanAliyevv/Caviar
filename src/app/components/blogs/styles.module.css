@@ -45,37 +45,22 @@
 }
 .Blogs .contentDown img {
   width: 100%;
-  object-fit: contain;
+  height: 450px;
+  object-fit: cover;
 }
 .Blogs .contentDown .box {
   width: 100%;
+  cursor: pointer;
+
 }
 .Blogs .contentDown {
   width: 100%;
   position: relative;
 }
-.Blogs .contentDown h2 {
-  color: #fff;
-  margin-top: 15px;
-  font-family: var(--montserrat);
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;
-}
-.Blogs .contentDown p {
-  color: #fff;
-  margin-top: 15px;
-  font-family: var(--montserrat);
-  width: 100%;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 300;
-  line-height: normal;
-}
+
 .Blogs .contentDown span {
   position: absolute;
-  bottom: 35%;
+  bottom: 17%;
   display: block;
   color: #c9beb1;
   transform: rotate(-90deg);
@@ -98,4 +83,109 @@
   font-weight: 700 !important;
   line-height: normal;
   cursor: pointer;
+}
+
+.boxContent{
+  position:relative;
+  background:#000;
+  /* float:left; */
+  width: 100%;
+  height: 450px;
+  margin:15px;
+  box-sizing:border-box;
+  overflow:hidden;
+  box-shadow:0 5px 10px rgba(0,0,0,.8);
+}
+.Blogs .boxContent:before {
+  content:'';
+  position:absolute;
+  top:10px;
+  left:10px;
+  right:10px;
+  bottom:10px;
+  border-top:1px solid #fff;
+  border-bottom:1px solid #fff;
+  box-sizing:border-box;
+  transition:0.5s;
+  transform: scaleX(0);
+  opacity:0;
+}
+.Blogs .boxContent:hover:before {
+  transform:scaleX(1);
+  opacity:1;
+}
+.Blogs .boxContent:after {
+  content:'';
+  position:absolute;
+  top:10px;
+  left:10px;
+  right:10px;
+  bottom:10px;
+  border-left:1px solid #fff;
+  border-right:1px solid #fff;
+  box-sizing:border-box;
+  transition:0.5s;
+  transform: scaleY(0);
+  opacity:0;
+}
+.Blogs .boxContent:hover:after {
+  transform:scaleY(1);
+  opacity:1;
+}
+.Blogs .boxContent .imgBox {
+  position:relative;
+}
+.Blogs .boxContent .imgBox img {
+  width:100%;
+  transition:0.5s;
+}
+.Blogs .boxContent:hover .imgBox img {
+  opacity:.2;
+  transform:scale(1.2);
+}
+.Blogs .boxContent .Content {
+  position:absolute;
+  width:100%;
+  top:50%;
+  transform:translateY(-50%);
+  z-index:2;
+  padding:20px;
+  box-sizing:border-box;
+  text-align:center;
+}
+.Blogs .boxContent .Content h2 {
+  color: #fff;
+  margin-top: 15px;
+  font-family: var(--montserrat);
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  margin: 0 0 10px;
+  padding:0;
+  transition:0.5s;
+  transform:translateY(-50px);
+  opacity:0;
+  visibility:hidden;
+}
+.Blogs .boxContent .Content p {
+  color: #fff;
+  margin-top: 15px;
+  font-family: var(--montserrat);
+  width: 100%;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  margin:0;
+  padding:0;
+  transform:translateY(50px);
+  opacity:0;
+  visibility:hidden;
+}
+.Blogs .boxContent:hover .Content h2,
+.Blogs .boxContent:hover .Content p {
+  opacity:1;
+  visibility:visible;
+  transform:translateY(0px);
 }

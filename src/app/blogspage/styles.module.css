@@ -20,7 +20,7 @@
   height: 400px;
   background: #2b2b2b;
   position: absolute;
-  top: 9%;
+  top: 12%;
   z-index: 0;
 }
 .Blogs .backFone2 {
@@ -34,35 +34,123 @@
   justify-content: center;
 }
 .Blogs .boxContent img {
+  object-fit: cover;
   width: 100%;
+  height: 450px;
   z-index: 11111;
   position: relative;
-  z-index: 111;
 }
 .Blogs .box {
   margin-top: 70px;
+  width: 100%;
 }
 
-.Blogs .boxContent h2 {
+
+
+
+.boxContent{
+  position:relative;
+  background:#000;
+  /* float:left; */
+  width: 100%;
+  height: 450px;
+  margin:15px;
+  box-sizing:border-box;
+  overflow:hidden;
+  box-shadow:0 5px 10px rgba(0,0,0,.8);
+}
+.Blogs .boxContent:before {
+  content:'';
+  position:absolute;
+  top:10px;
+  left:10px;
+  right:10px;
+  bottom:10px;
+  border-top:1px solid #fff;
+  border-bottom:1px solid #fff;
+  box-sizing:border-box;
+  transition:0.5s;
+  transform: scaleX(0);
+  opacity:0;
+}
+.Blogs .boxContent:hover:before {
+  transform:scaleX(1);
+  opacity:1;
+}
+.Blogs .boxContent:after {
+  content:'';
+  position:absolute;
+  top:10px;
+  left:10px;
+  right:10px;
+  bottom:10px;
+  border-left:1px solid #fff;
+  border-right:1px solid #fff;
+  box-sizing:border-box;
+  transition:0.5s;
+  transform: scaleY(0);
+  opacity:0;
+}
+.Blogs .boxContent:hover:after {
+  transform:scaleY(1);
+  opacity:1;
+}
+.Blogs .boxContent .imgBox {
+  position:relative;
+}
+.Blogs .boxContent .imgBox img {
+  width:100%;
+  transition:0.5s;
+}
+.Blogs .boxContent:hover .imgBox img {
+  opacity:.2;
+  transform:scale(1.2);
+}
+.Blogs .boxContent .Content {
+  position:absolute;
+  width:100%;
+  top:50%;
+  transform:translateY(-50%);
+  z-index:2;
+  padding:20px;
+  box-sizing:border-box;
+  text-align:center;
+}
+.Blogs .boxContent .Content h2 {
   color: #fff;
   margin-top: 15px;
   font-family: var(--montserrat);
   font-size: 20px;
   font-style: normal;
-  font-weight: 700 !important;
-  text-align: left;
+  font-weight: 600;
   line-height: normal;
+  margin: 0 0 10px;
+  padding:0;
+  transition:0.5s;
+  text-align: center;
+  transform:translateY(-50px);
+  opacity:0;
+  visibility:hidden;
+  
 }
-.Blogs .boxContent p {
+.Blogs .boxContent .Content p {
   color: #fff;
-  width: 55%;
+  margin-top: 15px;
   font-family: var(--montserrat);
+  width: 100%;
   font-size: 18px;
   font-style: normal;
   font-weight: 300;
   line-height: normal;
+  margin:0;
+  padding:0;
+  transform:translateY(50px);
+  opacity:0;
+  visibility:hidden;
 }
-.Blogs .pEdit {
-  display: flex;
-  justify-content: left;
+.Blogs .boxContent:hover .Content h2,
+.Blogs .boxContent:hover .Content p {
+  opacity:1;
+  visibility:visible;
+  transform:translateY(0px);
 }

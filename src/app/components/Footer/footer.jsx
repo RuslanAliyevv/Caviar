@@ -13,7 +13,7 @@ export default function Footer() {
                 <div className={styles.box}>
                   <div className={styles.boxContentFirst}>
                   <Link href="/">
-                    <img src="/assets/image/headerlogo.png" alt="" />
+                    <img src="/assets/image/headerlogo1.png" alt="" />
                   </Link>
                     <div className={styles.pEdit}>
                       <p>
