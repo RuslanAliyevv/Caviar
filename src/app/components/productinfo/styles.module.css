@@ -1,10 +1,13 @@
 .PrInfo {
   background: #181818;
   padding: 50px 0 100px 0;
+  position: relative;
 }
 .PrInfo img {
-  width: 90%;
+  width: 100%;
 }
+
+ 
 .PrInfo .pEdit {
   display: flex;
   justify-content: left;
@@ -37,7 +40,7 @@
   border: 2px solid #c3924e;
   background-color: transparent;
   padding: 10px 10px;
-  width: 35%;
+  width: 40%;
   height: 3.6rem;
   font-family: var(--montserrat);
 
@@ -50,24 +53,31 @@
 }
 
 .buttonHover {
+  /* width: 220px;
+  height: 50px;
+  border: none;
+  outline: none;
+  color: #fff;
+  background: #111; */
   cursor: pointer;
   position: relative;
   z-index: 0;
+  /* border-radius: 10px; */
 }
 
 .buttonHover:before {
   content: "";
   background: linear-gradient(
     45deg,
-    #ff0000,
-    #ff7300,
-    #fffb00,
-    #48ff00,
-    #00ffd5,
-    #002bff,
-    #7a00ff,
-    #ff00c8,
-    #ff0000
+    #ffd700,
+    #8b4513,
+    #daa520,
+    #d2691e,
+    #eac625,
+    #ff4500,
+    #ff9100,
+    rgb(250, 172, 4),
+    #ffd700
   );
   position: absolute;
   top: -2px;
@@ -97,7 +107,7 @@
   position: absolute;
   width: 100%;
   height: 100%;
-  background: #181818;
+  background: transparent;
   left: 0;
   top: 0;
   border-radius: 10px;
@@ -114,3 +124,42 @@
     background-position: 0 0;
   }
 }
+
+.PrInfo .backGrCircle{
+  position: absolute;
+  top: -2%;
+  left: 0%;
+  z-index: 222222;
+  width: 40%;
+ }  
+
+ .hoverEdit{
+  position: relative;
+ }
+ .hoverEdit::before {
+  right: 0;
+  opacity:0.7;
+  top: 0;
+}
+.hoverEdit::after {
+  bottom: 0;
+  opacity: 0.7;
+  left: 0;
+}
+.hoverEdit::before, .hoverEdit::after {
+  content: "";
+  background: #c3924e;
+  height: 0;
+  width: 0;
+  z-index: 1;
+  position: absolute;
+  -webkit-transition-duration: 1s !important;
+  -o-transition-duration: 1s;
+transition-duration: 1s !important;
+}
+.hoverEdit:hover::after, .hoverEdit:hover::before {
+  height: 100%;
+  opacity: 0;
+  width: 100%;
+}
+

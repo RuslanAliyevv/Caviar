@@ -34,19 +34,22 @@
   text-align: center;
   margin-top: 15px;
 }
+.AboutCn .spanEdit img{
+  margin-left: 3px;
+}
 .AboutCn .Smith {
   text-align: center;
   margin-top: 25px;
 }
 .AboutCn .subtract {
- background-image: url("../../../../public/assets/image/Subtract.png");
+ background-image: url("../../../../public/assets/image/dictionaryslide.png");
   background-position: center;
   background-repeat: no-repeat;
   width: 100%;
   height: 50vh;
   position: absolute;
   left: 50%;
-  top: 50%;
+  top: 40%;
   transform: translate(-50%, -50%);
 }
 .AboutCn .content {

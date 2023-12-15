@@ -25,28 +25,7 @@ export default function About() {
               </p>
             </div>
             <div className={styles.pEdit}>
-              <p>
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry's standard dummy
-                text ever since the 1500s, when an unknown Lorem Ipsum is simply
-                dummy text of the printing and typesetting industry. Lorem Ipsum
-                has been the industry's standard dummy text ever since the
-                1500s, when an unknown printer took a galley of type and
-                scrambled it to make a type specimen book. It has survived not
-                only five centuries, but also the leap into electronic
-                typesetting, Lorem Ipsum is simply dummy text of the printing
-                and typesetting industry. Lorem Ipsum has been the industry's
-                standard dummy text ever since the 1500s, when an unknown Lorem
-                Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry's standard dummy
-                text ever since the 1500s, when an unknown Lorem Ipsum is simply
-                dummy text of the printing and typesetting industry. Lorem Ipsum
-                has been the industry's standard dummy text ever since the
-                1500s, when an unknown printer took a galley of type and
-                scrambled it to make a type specimen book. It has survived not
-                only five centuries, but also the leap into electronic
-                typesetting
-              </p>
+             
               <h4>Our Mission</h4>
               <p>
                 Our mission is to enchant your palate with the world's finest
@@ -59,21 +38,20 @@ export default function About() {
               </p>
               <h4>Our Values</h4>
               <p>
-                {" "}
                 At the heart of BB Caviar lies a set of core values that guide
                 every aspect of our business, from sourcing to serving our
                 esteemed customers. These principles not only define who we are
-                but also shape the exceptional experiences we deliver: Integrity
+                but also shape the exceptional experiences we deliver: <br /> * Integrity
                 and Authenticity: We believe in honest and transparent
                 practices, ensuring the authenticity and purity of every caviar
-                pearl we offer. Uncompromised Quality: Our relentless pursuit of
+                pearl we offer. <br /> * Uncompromised Quality: Our relentless pursuit of
                 perfection is evident in the taste, texture, and quality of our
-                caviar, setting new standards in the industry. Sustainable
+                caviar, setting new standards in the industry. <br /> * Sustainable
                 Elegance: We intertwine sustainability with luxury, ensuring our
                 harvesting practices contribute to the conservation of marine
-                life and ecosystems. Customer Centricity: Your satisfaction is
+                life and ecosystems. <br /> * Customer Centricity: Your satisfaction is
                 our priority. We strive to deliver not just caviar, but an
-                experience that delights and exceeds expectations. Join us at BB
+                experience that delights and exceeds expectations. <br /> Join us at BB
                 Caviar, where every jar tells a story of tradition, quality, and
                 a journey towards sustainable luxury.
               </p>

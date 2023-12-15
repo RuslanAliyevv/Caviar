@@ -14,30 +14,34 @@ export default function AboutRm() {
                 <div className={styles.h2Edit}>
                   <h2>A Fusion of Excellence and Tradition</h2>
                 </div>
-                <img
+             <div className={styles.hoverEdit}>
+             <img
                   className={`mt-2 ${styles.imgEdit}`}
-                  src="/assets/image/aboutrm.png"
+                  src="/assets/image/aboutrm3.png"
                   alt=""
                 />
+             </div>
               </div>
             </div>
             <div className="col-lg-6">
               <div className={styles.right}>
                 <h3>ABOUT US</h3>
-                <h4>
-                  We are dedicated to excellence in the world of caviar.
-                  <br />
-                  reader
-                </h4>
-                <p>
+                <div className={styles.h4Edit}>
+                  <h4>
+                    We are dedicated to excellence in the world of caviar.
+                  </h4>
+                </div>
+               <div className={styles.pEdit}>
+               <p>
                   With a rich heritage, a commitment to quality, and a legacy of
                   sustainability, we invite you to join us on a culinary journey
-                  like no other. Our commitment to quality is unwavering. We
+                  like no other. <br /> Our commitment to quality is unwavering. We
                   take immense pride in sourcing caviar that's free from
                   hormones, antibiotics, dyes, or preservatives, ensuring a pure
                   and authentic taste experience. Our legacy spans generations,
-                  and our expertise is reflected in every jar we produce.  
+                  and our expertise is reflected in every jar we produce.
                 </p>
+               </div>
                 <Link href="/aboutus">
                   <span>Read more</span>
                 </Link>
@@ -53,9 +57,9 @@ export default function AboutRm() {
             </div>
           </div>
         </div>
-        {/* <div className={styles.backGrCircle}>
-           <img src="./assets/image/backgroundicon.png" alt="" />
-        </div> */}
+        <div className={styles.backGrCircle}>
+           <img src="./assets/image/circle01.png" alt="" />
+        </div>
       </div>
     </>
   );

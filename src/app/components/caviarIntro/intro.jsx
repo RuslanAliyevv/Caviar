@@ -22,7 +22,6 @@ export default function CaviarIntro() {
             </div>
           </Link>
         </div>
-        <div className={styles.Content}></div>
       </div>
     </>
   );

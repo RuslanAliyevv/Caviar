@@ -42,11 +42,23 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-top: 10px;
+    margin-top: 30px;
   }
   .Cards .box {
     position: relative;
     margin-top: 20px;
+  }
+  .Cards .boxUp{
+    height: 390px;
+    width: 286px;
+  }
+  .Cards img{
+    width: 100%;
+    max-width: 100%;
+    height: 100% !important;
+    transition: transform 0.3s ease;
+    object-fit: cover;
+    margin-top: 15px;
   }
   .Cards p {
     color: #c3924e;

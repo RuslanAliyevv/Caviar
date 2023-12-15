@@ -8,9 +8,10 @@ export default function Aboutcn() {
         <div className={styles.content}>
           <div className={styles.pEdit}>
             <p>
-              All the Lorem Ipsum generators on the Internet tend to repeat
-              predefined chunks as necessary, making this the first true
-              generator on the Internet.
+              I must say, BB Caviar has completely exceeded my expectations. The
+              caviar is simply exceptional in taste and quality. Knowing that
+              it's sourced sustainably makes the experience even more
+              satisfying.
             </p>
           </div>
           <div className={styles.spanEdit}>
@@ -33,9 +34,7 @@ export default function Aboutcn() {
           <div className={styles.Smith}>
             <img src="/assets/image/JaneSmith.png" alt="" />
           </div>
-          <div className={styles.subtract}>
-            {/* //For Image */}
-          </div>
+          <div className={styles.subtract}>{/* //For Image */}</div>
         </div>
       </div>
     </>

@@ -1,5 +1,5 @@
 .ChooseUs {
-  padding: 20px 0 100px 0;
+  padding: 20px 0 150px 0;
   background: #181818;
 }
 .ChooseUs h2 {
@@ -32,7 +32,7 @@
   font-family: var(--montserrat);
   font-size: 18px;
   font-style: normal;
-  font-weight: 500;
+  font-weight: 700 !important;
   line-height: 24px;
 }
 .ChooseUs img {

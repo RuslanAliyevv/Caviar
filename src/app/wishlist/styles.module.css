@@ -1,0 +1,10 @@
+.Wishlist{
+    padding: 200px 0 300px 0;
+}
+.Wishlist h1{
+    margin-top: 100px;
+    font-size: 40px;
+    color: white;
+    font-family: var(--montserrat);
+    font-weight: 700 !important;
+}

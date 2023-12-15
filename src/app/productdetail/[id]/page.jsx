@@ -1,12 +1,40 @@
 "use client";
 import React from "react";
 import styles from "./styles.module.css";
-import { useState } from "react";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
 import Link from "next/link";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import { useParams } from "next/navigation";
 
 export default function ProductDetail() {
+  const [selectedOption, setSelectedOption] = useState(null);
+
+  const handleRadioChange = (index) => {
+    setSelectedOption(index);
+  };
+
+  // const radioOptions = [10, 11, 12, 13, 14];
+  const { id } = useParams();
+  const [post, setPost] = useState({
+    name: "",
+    imageUrl: "",
+    price: "",
+  });
+  useEffect(() => {
+    const fetchPost = async () => {
+      try {
+        const response = await axios.get("http://localhost:3000/api/products");
+        const data = response.data;
+        setPost(data && data.find((u) => u.id === Number(id)));
+      } catch (error) {
+        console.error("Error fetching product:", error);
+      }
+    };
+    fetchPost();
+  }, [id]);
+
   const [count, setCount] = useState(1);
   const handleMinus = () => {
     if (count - 1) {
@@ -23,12 +51,14 @@ export default function ProductDetail() {
         <div className={styles.backFone}></div>
         <div className="container">
           <div className={`row ${styles.rowAll}`}>
-            <div className="col-lg-6">
+            <div className="col-lg-5">
               <div className="box">
-                <img src="/assets/image/productdetail1.png" alt="" />
+                <div className={styles.boxDiv}>
+                  <img className={styles.contentImg} src={post.imageUrl} />
+                </div>
               </div>
             </div>
-            <div className="col-lg-6">
+            <div style={{ marginLeft: "0px" }} className="col-lg-7">
               <div className="box">
                 <div className={styles.spanEdit}>
                   <span>
@@ -53,7 +83,10 @@ export default function ProductDetail() {
                 >
                   <div className="col-lg-8">
                     <div className={styles.h3Edit}>
-                      <h3>American Sturgeon Caviar: A Gourmet's Treasure</h3>
+                      <h3>{post.name} :</h3>
+                      <h4 style={{ fontSize: "30px", marginTop: "-5px" }}>
+                        A Gourmet's Treasure
+                      </h4>
                     </div>
                   </div>
                   <div className="col-lg-4">
@@ -61,6 +94,21 @@ export default function ProductDetail() {
                       <img src="/assets/image/heart.png" alt="" />
                     </span>
                   </div>
+                </div>
+                <div className={styles.radioGroup}>
+                  {post && post.price && (
+                    <div className={styles.radioContainer}>
+                      <input
+                        type="radio"
+                        id={`radioInput${post.price}`}
+                        checked={selectedOption === post.price}
+                        onChange={() => handleRadioChange(post.price)}
+                      />
+                      <label htmlFor={`radioInput${post.price}`}>
+                        {post.price} gr
+                      </label>
+                    </div>
+                  )}
                 </div>
                 <h4>In Stock</h4>
                 <h6>$60.00</h6>
@@ -143,32 +191,7 @@ export default function ProductDetail() {
                   dish. 
                 </p>
               </Tab>
-              <Tab eventKey="longer-tab" title="Review">
-                <p>
-                  Delight in the luxurious taste of American Sturgeon Caviar, a
-                  top choice for caviar aficionados. Harvested from the pristine
-                  North American waters, this caviar is a symbol of gastronomic
-                  opulence. Each grain promises a smooth, buttery texture and a
-                  rich, nuanced flavor, ideal for enhancing any special occasion
-                  or adding a touch of sophistication to your culinary
-                  creations.
-                </p>
-                <h4>Taste the Elegance:</h4>
-                <p>
-                  Texture: Silky and smooth, offering a melt-in-the-mouth
-                  experience. Flavor: A perfect balance of rich buttery notes
-                  and a subtle nuttiness, creating a memorable taste sensation.
-                </p>
-                <h4>Key Features:</h4>
-                <p>
-                  Species: Genuine American Sturgeon (Acipenser species) Origin:
-                  Ethically sourced from North American waters Available Sizes:
-                  Choose from 28g, 50g, 150g, and 250g Freshness Guaranteed:
-                  Best enjoyed within 4 weeks, stored under refrigeration
-                  Packaging: Comes in specially sealed containers to ensure peak
-                  freshness
-                </p>
-              </Tab>
+              <Tab eventKey="longer-tab" title="Review"></Tab>
             </Tabs>
           </div>
         </div>
@@ -235,11 +258,9 @@ export default function ProductDetail() {
               </div>
             </div>
             <div className={styles.buttonEdit}>
-            <Link href="./productspage">
-                <button className={styles.buttonHover}>
-                 All Product
-                </button>
-            </Link>
+              <Link href="/productspage">
+                <button className={styles.buttonHover}>All Product</button>
+              </Link>
             </div>
           </div>
         </div>
