@@ -6,7 +6,9 @@ import { Montaga } from "next/font/google";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Header from "./components/Header/header";
 import Footer from "./components/Footer/footer";
-import Prvider from "./Redux/Prvider" 
+import Prvider from "./Redux/Prvider"
+
+
 
 const inter = Inter({ subsets: ["latin"] });
 const montserrat = Montserrat({
