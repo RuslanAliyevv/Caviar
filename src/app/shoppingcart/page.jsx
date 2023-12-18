@@ -4,16 +4,8 @@ import styles from "./styles.module.css";
 import { useState } from "react";
 import { remove } from "../Redux/CartSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
 
 export default function Shopping() {
-  const [isClient, setIsClient] = useState(false)
- 
-  useEffect(() => {
-    setIsClient(true)
-  }, [])
-
-
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart);
 
@@ -24,19 +16,19 @@ export default function Shopping() {
     return item.price * item.count;
   };
 
-  // const handleMinus = (id) => {
-  //   const updatedCart = cartItems.map((item) =>
-  //     item.id === id ? { ...item, count: Math.max(item.count - 1, 1) } : item
-  //   );
-  //   dispatch({ type: "Cart/updateCart", payload: updatedCart });
-  // };
+  const handleMinus = (id) => {
+    const updatedCart = cartItems.map((item) =>
+      item.id === id ? { ...item, count: Math.max(item.count - 1, 1) } : item
+    );
+    dispatch({ type: "Cart/updateCart", payload: updatedCart });
+  };
 
-  // const handlePlus = (id) => {
-  //   const updatedCart = cartItems.map((item) =>
-  //     item.id === id ? { ...item, count: item.count + 1 } : item
-  //   );
-  //   dispatch({ type: "Cart/updateCart", payload: updatedCart });
-  // };
+  const handlePlus = (id) => {
+    const updatedCart = cartItems.map((item) =>
+      item.id === id ? { ...item, count: item.count + 1 } : item
+    );
+    dispatch({ type: "Cart/updateCart", payload: updatedCart });
+  };
 
   return (
     <div className={styles.Shopping}>
@@ -83,7 +75,7 @@ export default function Shopping() {
                       >
                         <div className={styles.spanDiv}>
                           <span
-                            // onClick={() => handleMinus(item.id)}
+                            onClick={() => handleMinus(item.id)}
                             style={{ marginRight: "5px" }}
                           >
                             -
@@ -98,9 +90,7 @@ export default function Shopping() {
                           </h5>
                         </div>
                         <div className={styles.spanDiv}>
-                          <span 
-                          // onClick={() => handlePlus(item.id)}
-                          >+</span>
+                          <span onClick={() => handlePlus(item.id)}>+</span>
                         </div>
                       </div>
                     </div>

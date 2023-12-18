@@ -19,7 +19,7 @@
 
   text-align: center;
   font-family: "Montaga", serif;
-  width: 45%;
+  width: 50%;
   font-size: 30px;
   font-style: normal;
   font-weight: 400;
@@ -46,7 +46,7 @@
   background: #c3924e;
   color: #c3924e;
 }
-.Product .boxUp{
+.Product .boxUp {
   height: 390px;
   width: 100%;
 }
@@ -72,16 +72,6 @@
   font-weight: 700 !important;
   line-height: normal;
 }
-/* .Product .h3Edit {
-  color: #fff;
-  width: 30%;
-  text-align: center;
-  font-family: var(--montserrat);
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;
-} */
 
 .Product .boxDowncontent {
   width: 100%;
@@ -90,15 +80,15 @@
   justify-content: space-between;
   margin: 0;
 }
-.Product .boxDown{
+.Product .boxDown {
   margin-top: 30px;
   height: 100px;
 }
-.Product .prNameEdit{
+.Product .prNameEdit {
   width: 100%;
   height: 40px;
 }
-.priceEdit{
+.priceEdit {
   width: 35%;
   height: 40px;
 }

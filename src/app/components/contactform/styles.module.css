@@ -17,8 +17,7 @@
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.58);
-  z-index: -1; /* Şeffaf bir beyaz renk (0.5 opaklık) */
-  /* veya başka bir renk, opaklık değeri 0 ile 1 arasında olmalıdır */
+  z-index: -1; 
 }
 .Large {
   padding-top: 210px !important;

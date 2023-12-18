@@ -42,7 +42,7 @@ export default function Product() {
         </div>
         <div className="container">
           <div className={`row ${styles.rowAll}`}>
-            {products.slice(0,4).map((product) => (
+            {products.slice(0, 4).map((product) => (
               <div key={product.id} className="col-lg-3 col-12">
                 <div className={styles.box}>
                   <div className={styles.boxUp}>
@@ -71,7 +71,6 @@ export default function Product() {
               </div>
             ))}
 
-           
             {/* <div className="col-lg-3 col-12">
               <div className={styles.box}>
                 <div className={styles.boxUp}>

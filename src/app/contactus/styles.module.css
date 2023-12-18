@@ -301,7 +301,7 @@
   display: inline;
   width: 24px;
   height: 24px;
-  fill: #4caf50; /* Yeşil renk, istediğiniz rengi seçebilirsiniz */
+  fill: #4caf50;
 }
 /* Animasyon */
 @keyframes slideInRight {
