@@ -50,7 +50,7 @@
   }
   .Cards .boxUp{
     height: 390px;
-    width: 286px;
+    width: 100%;
   }
   .Cards img{
     width: 100%;
@@ -59,6 +59,7 @@
     transition: transform 0.3s ease;
     object-fit: cover;
     margin-top: 15px;
+    border-radius: 10px;
   }
   .Cards p {
     color: #c3924e;

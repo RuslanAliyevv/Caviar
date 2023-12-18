@@ -84,10 +84,16 @@ export default function ProductDetail() {
                   <div className="col-lg-8">
                     <div className={styles.h3Edit}>
                       <h3>{post.name} :</h3>
-                      <h4 style={{ fontSize: "30px", marginTop: "-5px" }}>
-                        A Gourmet's Treasure
-                      </h4>
                     </div>
+                    <h6>$60.00</h6>
+                    <span className={styles.h5CheckOut}>Shipping</span>
+                    <span className={styles.h5CheckOut}>
+                      calculated at checkout.
+                    </span>
+                    <div className={styles.line}></div>
+                    <p className={styles.pStock}>
+                      107 in stock, ready to ship.
+                    </p>
                   </div>
                   <div className="col-lg-4">
                     <span>
@@ -110,8 +116,6 @@ export default function ProductDetail() {
                     </div>
                   )}
                 </div>
-                <h4>In Stock</h4>
-                <h6>$60.00</h6>
                 <div className="row align-items-baseline">
                   <div className="col-lg-6">
                     <div className={styles.qty}>
@@ -193,6 +197,53 @@ export default function ProductDetail() {
               </Tab>
               <Tab eventKey="longer-tab" title="Review"></Tab>
             </Tabs>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div className={styles.infoLine}></div>
+        <div className={styles.Delivery}>
+          <h2 className="text-center">DELIVERY & RETURNS</h2>
+          <div className="container">
+            <div className={`row ${styles.rowAll}`}>
+              <div className="col-lg-4">
+                <div className="box">
+                  <div className={styles.imgEdit}>
+                    <img src="/assets/image/truck.png" alt="" />
+                  </div>
+                  <h4>NEXT DAY DELIVERY</h4>
+                  <div className={styles.pEdit}>
+                  <p>Priority delivery options available for all orders</p>
+
+                  </div>
+                </div>
+              </div>
+              <div className="col-lg-4">
+                <div className="box">
+                  <div className={styles.imgEdit}>
+                    <img src="/assets/image/booking.png" alt="" />
+                  </div>
+                  <h4>QUALITY GUARANTEE</h4>
+                  <div className={styles.pEdit}>
+                  <p>Guaranteed freshness and quality of products</p>
+
+                  </div>
+                </div>
+              </div>
+              <div className="col-lg-4">
+                <div className="box">
+                  <div className={styles.imgEdit}>
+                    <img src="/assets/image/chat.png" alt="" />
+                  </div>
+                  <h4>SUPPORT AVAILABLE</h4>
+                  <div className={styles.pEdit}>
+                  <p>Through our contact form or by phone during our hours</p>
+
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>

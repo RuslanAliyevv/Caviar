@@ -17,7 +17,6 @@ export default function Product() {
     try {
       const response = await axios.get("http://localhost:3000/api/products");
       const data = response.data;
-      console.log(response.data);
       setproducts(data);
     } catch (error) {
       console.error("Error Message:", error);

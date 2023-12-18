@@ -39,6 +39,7 @@
   height: 450px;
   z-index: 11111;
   position: relative;
+  border-radius: 2px;
 }
 .Blogs .box {
   margin-top: 70px;

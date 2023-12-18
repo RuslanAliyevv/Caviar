@@ -32,7 +32,7 @@ export default function ContactFm() {
         post
       );
       openModal("Message sent successfully!");
-      console.log(response.data); 
+      console.log(response.data);
     } catch (error) {
       console.error("Error making POST request:", error);
     }
@@ -48,13 +48,12 @@ export default function ContactFm() {
       <section>
         <div className={styles.Large}>
           <div className={styles.contactBorder}>
-            <h2 className="text-center">Get in Touch with Us!</h2>
             <div className="container">
               <div className="row">
                 <div className="col-lg-6">
                   <div className="box">
                     <div className="left">
-                      <img src="/assets/image/contactphoto1.png" alt="" />
+                      <img src="/assets/image/contactstock.png" alt="" />
                     </div>
                   </div>
                 </div>
@@ -62,6 +61,7 @@ export default function ContactFm() {
                   <div className="box">
                     <div className={styles.right}>
                       <form onSubmit={handleSubmit} action="">
+                        <h2 className="text-start">Get in Touch with Us!</h2>
                         <div className={styles.inputBox}>
                           <input
                             onChange={handleInput}

@@ -4,7 +4,8 @@
   position: relative;
 }
 .PrInfo img {
-  width: 100%;
+  width: 95%;
+  border-radius: 10px;
 }
 
  
@@ -130,7 +131,7 @@
   top: -2%;
   left: 0%;
   z-index: 222222;
-  width: 40%;
+  width: 47%;
  }  
 
  .hoverEdit{

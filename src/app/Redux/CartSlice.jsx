@@ -1,9 +1,19 @@
-"use client"
+"use client";
 import { createSlice } from "@reduxjs/toolkit";
+
+const getInitialCartState = () => {
+  try {
+    const storedCart = localStorage.getItem("cart");
+    return storedCart ? JSON.parse(storedCart) : [];
+  } catch (error) {
+    console.error("Error parsing cart data from localStorage:", error);
+    return [];
+  }
+};
 
 const cartSlice = createSlice({
   name: "Cart",
-  initialState: JSON.parse(localStorage.getItem("cart")) || [],
+  initialState: getInitialCartState(),
   reducers: {
     add(state, action) {
       const existingItem = state.find((item) => item.id === action.payload.id);
@@ -14,19 +24,35 @@ const cartSlice = createSlice({
         state.push({ ...action.payload, count: 1 });
       }
 
-      localStorage.setItem("cart", JSON.stringify(state));
+      try {
+        localStorage.setItem("cart", JSON.stringify(state));
+      } catch (error) {
+        console.error("Error storing cart data in localStorage:", error);
+      }
     },
     
     remove(state, action) {
       const updatedCart = state.filter((item) => item.id !== action.payload);
-      localStorage.setItem("cart", JSON.stringify(updatedCart));
+
+      try {
+        localStorage.setItem("cart", JSON.stringify(updatedCart));
+      } catch (error) {
+        console.error("Error storing cart data in localStorage:", error);
+      }
+
       return updatedCart;
     },
+
     updateCart(state, action) {
+      try {
+        localStorage.setItem("cart", JSON.stringify(action.payload));
+      } catch (error) {
+        console.error("Error storing cart data in localStorage:", error);
+      }
+
       return action.payload;
     },
   },
-  
 });
 
 export const { add, remove, updateCart } = cartSlice.actions;

@@ -160,3 +160,10 @@ button {
 .css-1elwnq4-MuiPaper-root-MuiAccordion-root {
   background-color: #333 !important;
 }
+
+.css-1elwnq4-MuiPaper-root-MuiAccordion-root{
+  border-bottom-color: #888 !important;
+}
+.css-1elwnq4-MuiPaper-root-MuiAccordion-root.Mui-expanded:first-of-type {
+  margin-top: 0  !important;
+}

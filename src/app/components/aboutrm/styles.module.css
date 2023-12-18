@@ -20,6 +20,7 @@
 .AboutRm .imgEdit {
   object-fit: cover;
   width: 100%;
+  border-radius: 10px;
 }
  
 .AboutRm h3 {

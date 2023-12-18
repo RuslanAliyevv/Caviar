@@ -8,6 +8,11 @@ import { useState,useEffect } from "react";
 import { useSelector } from 'react-redux';
 
 export default function Header() {
+  const [isClient, setIsClient] = useState(false)
+ 
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
   const [scrolling, setScrolling] = useState(false);
   
   const item = useSelector((state)=>state.cart)
@@ -94,7 +99,7 @@ export default function Header() {
                         </Link>
                       </li>
                       <li >
-                      <span className={styles.number}>{item.length}</span>
+                      <span className={styles.number}>{isClient && item.length}</span>
                       </li>
 
                     </ul>
