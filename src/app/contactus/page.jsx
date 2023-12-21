@@ -3,6 +3,7 @@ import React from "react";
 import styles from "./styles.module.css";
 import { useState } from "react";
 import axios from "axios";
+import Image from "next/image";
 
 export default function ContactUs() {
   const [showModal, setShowModal] = useState(false);
@@ -43,7 +44,12 @@ export default function ContactUs() {
         <div className="container">
           <div className={`row ${styles.rowAll}`}>
             <div className="col-lg-5">
-              <img src="/assets/image/contactus.png" alt="" />
+              <Image
+                width={720}
+                height={480}
+                src="/assets/image/contactus.png"
+                alt=""
+              />
             </div>
             <div className="col-lg-7">
               <div className={styles.box}>
@@ -56,17 +62,17 @@ export default function ContactUs() {
                       support your caviar journey.
                     </p>
                     <div className={styles.contactInfo}>
-                      <img src="/assets/image/contactletter.png" alt="" />
+                      <Image width={30} height={30} src="/assets/image/contactletter.png" alt="" />
                       <span>deluxecaviar@gmail.com</span>
                     </div>
                     <div className={styles.contactInfo}>
-                      <img src="/assets/image/contactphone.png" alt="" />
+                      <Image width={30} height={30} src="/assets/image/contactphone.png" alt="" />
                       <span>+01 434 346 34 64 36</span>
                     </div>
                     <div className={styles.iconInfo}>
-                      <img src="/assets/image/contactinsta.png" alt="" />
-                      <img src="/assets/image/contactlinkedin.png" alt="" />
-                      <img src="/assets/image/contactcall.png" alt="" />
+                      <Image width={30} height={30} src="/assets/image/contactinsta.png" alt="" />
+                      <Image width={30} height={30} src="/assets/image/contactlinkedin.png" alt="" />
+                      <Image width={30} height={30} src="/assets/image/contactcall.png" alt="" />
                     </div>
                   </div>
                 </div>

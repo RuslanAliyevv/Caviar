@@ -46,7 +46,7 @@
 .Blogs .contentDown img {
   width: 100%;
   height: 450px;
-  object-fit: cover;
+  /* object-fit: cover; */
   border-radius: 5px;
 }
 .Blogs .contentDown .box {

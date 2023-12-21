@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./styles.module.css";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Footer() {
   return (
@@ -33,21 +34,27 @@ export default function Footer() {
                         <label htmlFor="my">Email</label>
                       </div>
                      <Link className={styles.imgVector} href="/">
-                     <img src="/assets/image/vector.png" alt="" />
+                     <Image width={26} height={20} src="/assets/image/vector.png" alt="" />
                      </Link>
                     </form>
                     <div className={styles.imgBorder}>
-                      <img
+                      <Image
+                      width={64}
+                      height={44}
                         className={styles.imgPay}
                         src="/assets/image/applepay.png"
                         alt=""
                       />
-                      <img
+                      <Image
+                       width={64}
+                       height={44}
                         className={styles.imgPay}
                         src="/assets/image/googlepay.png"
                         alt=""
                       />
-                      <img
+                      <Image
+                       width={64}
+                       height={44}
                         className={styles.imgPay}
                         src="/assets/image/shoppay.png"
                         alt=""
@@ -169,17 +176,23 @@ export default function Footer() {
                     </div>
                     <div className={styles.linkEdit}>
                       <div>
-                        <img
+                        <Image
+                          width={28}
+                          height={28}
                           className={styles.imgIcon}
                           src="/assets/image/linkedingold.png"
                           alt=""
                         />
-                        <img
+                        <Image
+                         width={28}
+                         height={28}
                           className={styles.imgIcon}
                           src="/assets/image/facebookgold.png"
                           alt=""
                         />
-                        <img
+                        <Image
+                         width={28}
+                         height={28}
                           className={styles.imgIcon}
                           src="/assets/image/instagramgold.png"
                           alt=""
@@ -195,14 +208,14 @@ export default function Footer() {
             <div className={styles.boxDownContent}>
               <div className={styles.line}></div>
 
-              <div className={styles.flex}>
+              <div className={styles.flexy}>
                 <div className={styles.box}>
                   <p>© Deluxe Caviar World. All rights reserved. </p>
                 </div>
                 <div className={styles.box}>
                   <div className={styles.h5Edit}>
                   <h5>Powered by </h5>
-                  <img src="/assets/image/koikom.png" alt="" />
+                  <Image width={100} height={16} src="/assets/image/koikom.png" alt="" />
                   </div>
                  
                 </div>

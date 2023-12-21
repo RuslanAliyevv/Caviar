@@ -7,6 +7,7 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "next/navigation";
+import Image from "next/image";
 
 export default function ProductDetail() {
   const [selectedOption, setSelectedOption] = useState(null);
@@ -62,19 +63,44 @@ export default function ProductDetail() {
               <div className="box">
                 <div className={styles.spanEdit}>
                   <span>
-                    <img src="/assets/image/staricon.png" alt="" />
+                    <Image
+                      width={20}
+                      height={20}
+                      src="/assets/image/staricon.png"
+                      alt=""
+                    />
                   </span>
                   <span>
-                    <img src="/assets/image/staricon.png" alt="" />
+                    <Image
+                      width={20}
+                      height={20}
+                      src="/assets/image/staricon.png"
+                      alt=""
+                    />
                   </span>
                   <span>
-                    <img src="/assets/image/staricon.png" alt="" />
+                    <Image
+                      width={20}
+                      height={20}
+                      src="/assets/image/staricon.png"
+                      alt=""
+                    />
                   </span>
                   <span>
-                    <img src="/assets/image/staricon.png" alt="" />
+                    <Image
+                      width={20}
+                      height={20}
+                      src="/assets/image/staricon.png"
+                      alt=""
+                    />
                   </span>
                   <span>
-                    <img src="/assets/image/staricon.png" alt="" />
+                    <Image
+                      width={20}
+                      height={20}
+                      src="/assets/image/staricon.png"
+                      alt=""
+                    />
                   </span>
                 </div>
                 <div
@@ -97,7 +123,12 @@ export default function ProductDetail() {
                   </div>
                   <div className="col-lg-4">
                     <span>
-                      <img src="/assets/image/heart.png" alt="" />
+                      <Image
+                        width={26}
+                        height={23}
+                        src="/assets/image/heart.png"
+                        alt=""
+                      />
                     </span>
                   </div>
                 </div>
@@ -210,36 +241,48 @@ export default function ProductDetail() {
               <div className="col-lg-4">
                 <div className="box">
                   <div className={styles.imgEdit}>
-                    <img src="/assets/image/truck.png" alt="" />
+                    <Image
+                      width={85}
+                      height={85}
+                      src="/assets/image/truck.png"
+                      alt=""
+                    />
                   </div>
                   <h4>NEXT DAY DELIVERY</h4>
                   <div className={styles.pEdit}>
-                  <p>Priority delivery options available for all orders</p>
-
+                    <p>Priority delivery options available for all orders</p>
                   </div>
                 </div>
               </div>
               <div className="col-lg-4">
                 <div className="box">
                   <div className={styles.imgEdit}>
-                    <img src="/assets/image/booking.png" alt="" />
+                    <Image
+                      width={85}
+                      height={85}
+                      src="/assets/image/booking.png"
+                      alt=""
+                    />
                   </div>
                   <h4>QUALITY GUARANTEE</h4>
                   <div className={styles.pEdit}>
-                  <p>Guaranteed freshness and quality of products</p>
-
+                    <p>Guaranteed freshness and quality of products</p>
                   </div>
                 </div>
               </div>
               <div className="col-lg-4">
                 <div className="box">
                   <div className={styles.imgEdit}>
-                    <img src="/assets/image/chat.png" alt="" />
+                    <Image
+                      width={85}
+                      height={85}
+                      src="/assets/image/chat.png"
+                      alt=""
+                    />
                   </div>
                   <h4>SUPPORT AVAILABLE</h4>
                   <div className={styles.pEdit}>
-                  <p>Through our contact form or by phone during our hours</p>
-
+                    <p>Through our contact form or by phone during our hours</p>
                   </div>
                 </div>
               </div>
@@ -257,7 +300,12 @@ export default function ProductDetail() {
                 <div className="col-lg-3 col-12">
                   <div className={styles.box}>
                     <div className={styles.boxUp}>
-                      <img src="/assets/image/product1.png" alt="" />
+                      <Image
+                        width={289}
+                        height={434}
+                        src="/assets/image/product1.png"
+                        alt=""
+                      />
                       <div className={styles.line}></div>
                     </div>
                     <div className={styles.boxDown}>
@@ -270,7 +318,13 @@ export default function ProductDetail() {
                 <div className="col-lg-3 col-12">
                   <div className={styles.box}>
                     <div className={styles.boxUp}>
-                      <img src="/assets/image/product2.png" alt="" />
+                      <Image
+                        width={289}
+                        height={434}
+                        src="/assets/image/product2.png"
+                        alt=""
+                      />
+
                       <div className={styles.line}></div>
                     </div>
                     <div className={styles.boxDown}>
@@ -283,7 +337,13 @@ export default function ProductDetail() {
                 <div className="col-lg-3 col-12">
                   <div className={styles.box}>
                     <div className={styles.boxUp}>
-                      <img src="/assets/image/product3.png" alt="" />
+                      <Image
+                        width={289}
+                        height={434}
+                        src="/assets/image/product3.png"
+                        alt=""
+                      />
+
                       <div className={styles.line}></div>
                     </div>
                     <div className={styles.boxDown}>
@@ -296,7 +356,13 @@ export default function ProductDetail() {
                 <div className="col-lg-3 col-12">
                   <div className={styles.box}>
                     <div className={styles.boxUp}>
-                      <img src="/assets/image/product4.png" alt="" />
+                      <Image
+                        width={289}
+                        height={434}
+                        src="/assets/image/product4.png"
+                        alt=""
+                      />
+
                       <div className={styles.line}></div>
                     </div>
                     <div className={styles.boxDown}>

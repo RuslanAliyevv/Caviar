@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./styles.module.css";
+import Image from "next/image";
 
 export default function ChooseUs() {
   return (
@@ -12,7 +13,7 @@ export default function ChooseUs() {
               <div className={styles.box}>
                 <div className={styles.boxContent}>
                   <h5>Unmatched Quality</h5>
-                  <img src="/assets/image/chooseline.png" alt="" />
+                  <Image width={280} height={1} src="/assets/image/chooseline.png" alt="" />
                   <div className={styles.pEdit}>
                     <p>
                       Get ready to savor caviar like you've never experienced
@@ -28,7 +29,8 @@ export default function ChooseUs() {
               <div className={styles.box}>
                 <div className={styles.boxContent}>
                   <h5>Dedication to Sustainability</h5>
-                  <img src="/assets/image/chooseline.png" alt="" />
+                  <Image width={280} height={1} src="/assets/image/chooseline.png" alt="" />
+
                   <div className={styles.pEdit}>
                     <p>
                       Sustainability is our guiding principle. With every
@@ -45,7 +47,8 @@ export default function ChooseUs() {
               <div className={styles.box}>
                 <div className={styles.boxContent}>
                   <h5>Dedicated to Your Satisfaction</h5>
-                  <img src="/assets/image/chooseline.png" alt="" />
+                  <Image width={280} height={1} src="/assets/image/chooseline.png" alt="" />
+
                   <div className={styles.pEdit}>
                     <p>
                       When it comes to your satisfaction, we don't compromise.

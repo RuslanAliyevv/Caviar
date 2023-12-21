@@ -4,6 +4,7 @@ import styles from "./styles.module.css";
 import { useState } from "react";
 import { remove } from "../Redux/CartSlice";
 import { useDispatch, useSelector } from "react-redux";
+import Image from "next/image";
 
 export default function Shopping() {
   const dispatch = useDispatch();

@@ -16,13 +16,11 @@
   text-transform: uppercase;
 }
 
-
-.contentImg{
+.contentImg {
   width: 100%;
   border-radius: 10px;
-  
 }
-.boxDiv{
+.boxDiv {
   margin-top: -15px;
   width: 466px;
   height: 475px;
@@ -33,17 +31,17 @@
   background: #181818;
   position: relative;
 }
-.ProductDetail .h5CheckOut{
-  color: #FFF;
+.ProductDetail .h5CheckOut {
+  color: #fff;
   cursor: pointer;
   text-decoration: underline;
-font-family: var(--montserrat);
-font-size: 18px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
+  font-family: var(--montserrat);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
-.ProductDetail .h5CheckOut:nth-child(4){
+.ProductDetail .h5CheckOut:nth-child(4) {
   margin-left: 5px;
   cursor: auto;
   text-decoration: none;
@@ -93,25 +91,25 @@ line-height: normal;
   font-weight: 700 !important;
   line-height: normal;
 }
-.ProductDetail .line{
+.ProductDetail .line {
   width: 583px;
   height: 0.5px;
   margin-top: 20px;
   background: #848484;
 }
-.ProductDetail .pStock{
-  color: #FFF;
-margin-top: 20px;
-font-family: var(--montserrat);
-font-size: 18px;
-font-style: normal;
-font-weight: 700;
-line-height: normal;
+.ProductDetail .pStock {
+  color: #fff;
+  margin-top: 20px;
+  font-family: var(--montserrat);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
 }
 .ProductDetail h5 {
   color: #c3924e;
   font-family: var(--montserrat);
-
+  cursor: pointer;
   font-size: 22px;
   font-style: normal;
   font-weight: 700 !important;
@@ -247,7 +245,7 @@ line-height: normal;
 .radioContainer label {
   display: inline-block;
   padding: 10px;
-  color: #FFF;
+  color: #fff;
   cursor: pointer;
 
   font-family: var(--montserrat);
@@ -258,9 +256,9 @@ line-height: normal;
 }
 
 .radioContainer input[type="radio"]:checked + label {
-  background-color: #c3924e; 
-  color: #fff; 
-  border-color: #c3924e; 
+  background-color: #c3924e;
+  color: #fff;
+  border-color: #c3924e;
   border-radius: 5px;
 }
 .radioGroup {
@@ -292,7 +290,18 @@ line-height: normal;
 }
 .buttonHover:before {
   content: "";
-  background: linear-gradient(45deg, #FFD700, #8B4513, #DAA520, #D2691E, #eac625, #FF4500, #ff9100, rgb(250, 172, 4), #FFD700);
+  background: linear-gradient(
+    45deg,
+    #ffd700,
+    #8b4513,
+    #daa520,
+    #d2691e,
+    #eac625,
+    #ff4500,
+    #ff9100,
+    rgb(250, 172, 4),
+    #ffd700
+  );
 
   position: absolute;
   top: -2px;
@@ -307,8 +316,6 @@ line-height: normal;
   transition: opacity 0.3s ease-in-out;
   border-radius: 10px;
 }
-
-
 
 .buttonHover:hover:before {
   opacity: 1;
@@ -338,60 +345,61 @@ line-height: normal;
 }
 
 /* // Delivery */
-.infoLine{
+.infoLine {
   width: 100%;
   height: 0.5px;
-  background: #C9BEB1;
+  background: #c9beb1;
 }
-.Delivery h2{
-  color: #C9BEB1;
+.Delivery h2 {
+  color: #c9beb1;
 
-text-align: center;
-font-family: "Montaga", serif;
+  text-align: center;
+  font-family: "Montaga", serif;
 
-font-size: 30px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
-text-transform: uppercase;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-transform: uppercase;
 }
-.Delivery{
+.Delivery {
   padding: 50px 0 0px 0;
 }
-.Delivery .rowAll{
+.Delivery .rowAll {
   margin-top: 50px;
   align-items: center;
   justify-content: center !important;
 }
-.Delivery h4{
-  color: #FFF;
-font-family: var(--montserrat);
-text-align: center;
-margin-top: 3px;
-font-size: 18px;
-font-style: normal;
-font-weight: 700 !important;
-line-height: 28px; /* 155.556% */
+.Delivery h4 {
+  color: #fff;
+  font-family: var(--montserrat);
+  text-align: center;
+  margin-top: 3px;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700 !important;
+  line-height: 28px; /* 155.556% */
 }
-.Delivery .pEdit{
+.Delivery .pEdit {
   display: flex;
   justify-content: center;
   width: 100%;
   height: 110px;
 }
-.Delivery p{
-  color: #FFF;
-font-family: var(--montserrat);
-text-align: center;
-font-size: 18px;
-width: 54%;
-font-style: normal;
-font-weight: 300;
-line-height: 28px; /* 155.556% */
+.Delivery p {
+  color: #fff;
+  font-family: var(--montserrat);
+  text-align: center;
+  font-size: 18px;
+  width: 54%;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 28px; /* 155.556% */
 }
-.Delivery .imgEdit{
+.Delivery .imgEdit {
   text-align: center !important;
 }
-.Delivery img{
+.Delivery img {
   width: 20%;
+  object-fit: cover;
 }

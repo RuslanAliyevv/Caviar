@@ -45,7 +45,7 @@ export default function Header() {
               <div className={styles.box}>
                 <div className={styles.left}>
                   <Link href="/">
-                    <img src="/assets/image/headerlogo1.png" alt="" />
+                    <Image width={64} height={64} src="/assets/image/headerlogo1.png" alt="" />
                   </Link>
                 </div>
               </div>
@@ -83,17 +83,24 @@ export default function Header() {
                       <li>
                       <Link href="./wishlist">
                       <span>
-                          <img src="/assets/image/heart.png" alt="" />
+                          <Image 
+                          src="/assets/image/heart.png" 
+                          alt="heart"
+                          width={23}
+                          height={23} 
+                          />
                         </span>
                         </Link>
                       </li>
                       <li>
                         <Link href="/shoppingcart">
                           <span className={styles.shopSpan}>
-                            <img
+                            <Image
                               style={{ position: "relative" }}
                               src="/assets/image/shoppingcart.png"
-                              alt=""
+                              alt="shopping"
+                              width={26}
+                              height={26}
                             />
                           </span>
                         </Link>

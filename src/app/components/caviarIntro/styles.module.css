@@ -48,7 +48,6 @@
   width: 15%;
   height: 3.6rem;
   font-family: var(--montserrat);
-  
   font-size: 18px;
   font-style: normal;
   font-weight: 500;
@@ -72,6 +71,8 @@
   z-index: 111;
   color: #fff;
   text-align: center;
+}
+.Intro a{
 }
 .wrapper{
   position: relative;

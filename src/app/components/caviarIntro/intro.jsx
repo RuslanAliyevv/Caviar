@@ -16,11 +16,11 @@ export default function CaviarIntro() {
             At BB Caviar, we take immense pride in our unwavering <br /> commitment to
             natural quality and ensuring the utmost <br /> customer satisfaction.
           </p>
-          <Link href="/productspage">
             <div className={styles.wrapper}>
+          <Link href="/productspage">
               <button className={styles.buttonHover}>shop now</button>
-            </div>
           </Link>
+            </div>
         </div>
       </div>
     </>

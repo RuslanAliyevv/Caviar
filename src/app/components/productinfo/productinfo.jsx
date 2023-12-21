@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./styles.module.css";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function ProductInfo() {
   return (
@@ -37,7 +38,7 @@ export default function ProductInfo() {
               <div className="box">
                 <div className="right">
                   <div className={styles.hoverEdit}>
-                    <img src="/assets/image/productinfo.png" alt="" />
+                    <Image width={655} height={501} src="/assets/image/productinfo.png" alt="" />
                   </div>
                 </div>
               </div>
@@ -45,7 +46,12 @@ export default function ProductInfo() {
           </div>
         </div>
         <div className={styles.backGrCircle}>
-          <img src="./assets/image/circle02.png" alt="" />
+          <Image
+            height={870}
+            width={800}
+            src="/assets/image/circle02.png"
+            alt=""
+          />
         </div>
       </div>
     </>

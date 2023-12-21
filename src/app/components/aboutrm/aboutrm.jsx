@@ -58,7 +58,14 @@ export default function AboutRm() {
           </div>
         </div>
         <div className={styles.backGrCircle}>
-           <img src="./assets/image/circle01.png" alt="" />
+          <Image 
+          src="./assets/image/circle01.png"
+          height={800}
+          width={800}
+          unoptimized
+          alt="readmore"
+          />
+
         </div>
       </div>
     </>

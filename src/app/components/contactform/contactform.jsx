@@ -4,6 +4,7 @@ import styles from "./styles.module.css";
 import Link from "next/link";
 import { useState } from "react";
 import axios from "axios";
+import Image from "next/image";
 
 export default function ContactFm() {
   const [showModal, setShowModal] = useState(false);
@@ -53,7 +54,7 @@ export default function ContactFm() {
                 <div className="col-lg-6">
                   <div className="box">
                     <div className="left">
-                      <img src="/assets/image/contactstock.png" alt="" />
+                      <Image width={611} height={430} src="/assets/image/contactstock.png" alt="" />
                     </div>
                   </div>
                 </div>

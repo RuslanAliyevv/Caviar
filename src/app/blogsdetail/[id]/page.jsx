@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./styles.module.css";
+import Image from "next/image";
 export default function BlogsDetail() {
   return (
     <>
@@ -123,7 +124,7 @@ export default function BlogsDetail() {
                   <div className={styles.box}>
                     <div className={styles.boxContent}>
                     <div className={styles.imgBox}>
-                    <img src="/assets/image/blogspage1.png" alt="" />
+                    <Image width={450} height={450} src="/assets/image/blogspage1.png" alt="" />
                     </div>
                  <div className={styles.Content}>
                  <h2>Blog Name</h2>
@@ -140,7 +141,7 @@ export default function BlogsDetail() {
                   <div className={styles.box}>
                     <div className={styles.boxContent}>
                     <div className={styles.imgBox}>
-                    <img src="/assets/image/blogspage2.png" alt="" />
+                    <Image width={450} height={450} src="/assets/image/blogspage2.png" alt="" />
                     </div>
                  <div className={styles.Content}>
                  <h2>Blog Name</h2>

@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { add } from "../../Redux/CartSlice";
 import axios from "axios";
 import React from "react";
+import Image from "next/image";
 import styles from "./styles.module.css";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -46,12 +47,14 @@ export default function Product() {
               <div key={product.id} className="col-lg-3 col-12">
                 <div className={styles.box}>
                   <div className={styles.boxUp}>
-                    <img
+                    <Image
                       onClick={() =>
                         router.push(`/productdetail/${product.id}`)
                       }
                       src="/assets/image/product2.png"
                       alt=""
+                      width={289}
+                      height={0}
                     />
 
                     <div className={styles.line}></div>
