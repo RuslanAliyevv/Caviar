@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./styles.module.css";
+import Image from "next/image";
 export default function BlogsDetail() {
   return (
     <>
@@ -122,28 +123,34 @@ export default function BlogsDetail() {
                 <div className="col-lg-6">
                   <div className={styles.box}>
                     <div className={styles.boxContent}>
-                      <img src="/assets/image/blogspage1.png" alt="" />
-                      <h2>Blog Name</h2>
-                      <div className={styles.pEditDown}>
-                        <p>
-                          Lorem Ipsum is simply dummy text of the printing and
-                          typesetting industry.{" "}
-                        </p>
-                      </div>
+                    <div className={styles.imgBox}>
+                    <Image width={450} height={450} src="/assets/image/blogspage1.png" alt="" />
+                    </div>
+                 <div className={styles.Content}>
+                 <h2>Blog Name</h2>
+                    <div className={styles.pEdit2}>
+                      <p>
+                      Join us at BB Caviar on a delightful journey through the captivating...
+                      </p>
+                    </div>
+                 </div>
                     </div>
                   </div>
                 </div>
                 <div className="col-lg-6">
                   <div className={styles.box}>
                     <div className={styles.boxContent}>
-                      <img src="/assets/image/blogspage2.png" alt="" />
-                      <h2>Blog Name</h2>
-                      <div className={styles.pEditDown}>
-                        <p>
-                          Lorem Ipsum is simply dummy text of the printing and
-                          typesetting industry.{" "}
-                        </p>
-                      </div>
+                    <div className={styles.imgBox}>
+                    <Image width={450} height={450} src="/assets/image/blogspage2.png" alt="" />
+                    </div>
+                 <div className={styles.Content}>
+                 <h2>Blog Name</h2>
+                    <div className={styles.pEdit2}>
+                      <p>
+                      Join us at BB Caviar on a delightful journey through the captivating...
+                      </p>
+                    </div>
+                 </div>
                     </div>
                   </div>
                 </div>

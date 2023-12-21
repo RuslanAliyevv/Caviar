@@ -4,6 +4,7 @@ import styles from "./styles.module.css";
 import Link from "next/link";
 import { useState } from "react";
 import axios from "axios";
+import Image from "next/image";
 
 export default function ContactFm() {
   const [showModal, setShowModal] = useState(false);
@@ -32,7 +33,7 @@ export default function ContactFm() {
         post
       );
       openModal("Message sent successfully!");
-      console.log(response.data); 
+      console.log(response.data);
     } catch (error) {
       console.error("Error making POST request:", error);
     }
@@ -48,13 +49,12 @@ export default function ContactFm() {
       <section>
         <div className={styles.Large}>
           <div className={styles.contactBorder}>
-            <h2 className="text-center">Get in Touch with Us!</h2>
             <div className="container">
               <div className="row">
                 <div className="col-lg-6">
                   <div className="box">
                     <div className="left">
-                      <img src="/assets/image/contactphoto1.png" alt="" />
+                      <Image width={611} height={430} src="/assets/image/contactstock.png" alt="" />
                     </div>
                   </div>
                 </div>
@@ -62,6 +62,7 @@ export default function ContactFm() {
                   <div className="box">
                     <div className={styles.right}>
                       <form onSubmit={handleSubmit} action="">
+                        <h2 className="text-start">Get in Touch with Us!</h2>
                         <div className={styles.inputBox}>
                           <input
                             onChange={handleInput}

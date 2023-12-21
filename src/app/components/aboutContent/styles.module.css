@@ -34,15 +34,27 @@
   text-align: center;
   margin-top: 15px;
 }
-.AboutCn .spanEdit img{
+.AboutCn .spanEdit img {
   margin-left: 3px;
 }
 .AboutCn .Smith {
   text-align: center;
   margin-top: 25px;
 }
+.AboutCn .Smith h5 {
+  color: #c3924e;
+
+  text-align: center;
+  font-family: 'Pinyon Script', cursive;
+
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
 .AboutCn .subtract {
- background-image: url("../../../../public/assets/image/dictionaryslide.png");
+  background-image: url("../../../../public/assets/image/dictionaryslide.png");
   background-position: center;
   background-repeat: no-repeat;
   width: 100%;

@@ -1,15 +1,13 @@
 .Footer {
   background: #181818;
-  padding: 50px 0 20px 0;
+  padding: 0px 0 20px 0;
 }
-.Footer .boxContentFirst {
-  margin-top: -50px;
-}
+
 .Footer .rowAll {
   justify-content: space-between;
 }
 .Footer .boxUp {
-  padding: 100px 0;
+  padding: 100px 0 0px 0;
 }
 .Footer .boxContentFirst .spanLogo1 {
   color: #c3924e;
@@ -35,21 +33,22 @@
   color: #fff;
   margin-top: 20px;
   font-family: var(--montserrat);
-  font-size: 19px;
+  font-size: 18px;
   font-style: normal;
   font-weight: 300;
   line-height: normal;
 }
+
 .Footer .boxContent span {
   color: #fff;
   font-family: var(--montserrat);
-  font-size: 18px;
+  font-size: 16px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
 }
 .Footer .linkEdit {
-  margin-top: 20px;
+  margin-top: 10px;
 }
 .Footer .boxContent .firstSpan {
   width: 40%;
@@ -60,14 +59,12 @@
   font-weight: 600;
   line-height: normal;
 }
-
-.Footer .boxDownContent {
-  text-align: center;
+.Footer .boxDown{
+  padding: 0px !important;
 }
+
 .Footer .boxDownContent p {
   color: #fff;
-  margin-top: 35px;
-  text-align: center;
   font-feature-settings: "clig" off, "liga" off;
   font-family: var(--montserrat);
   font-size: 16px;
@@ -75,9 +72,201 @@
   font-weight: 300;
   line-height: normal;
 }
+
 .Footer .line {
   margin-top: 20px;
   background: #c9beb1;
   width: 100%;
   height: 0.5px;
 }
+.Footer  .imgIcon{
+  width: 15%;
+}
+.Footer .imgIcon:nth-child(2){
+  margin-left: 20px;
+}
+.Footer .imgIcon:nth-last-child(1){
+  margin-left: 20px;
+}
+
+.Footer .boxContentFirst .imgPay{
+  width: 20%;
+  height: 40px;
+  object-fit: cover;
+  margin-top: 30px;
+  border-radius: 4px;
+  border: 0.5px solid #848484;
+  
+}
+.Footer .imgPay:nth-child(2){
+  margin-left: 15px;
+}
+.Footer .imgPay:nth-last-child(1){
+  margin-left: 15px;
+}
+
+.Footer .imgContentBorder{
+  display: inline;
+}
+.Footer .boxContentFirst h5{
+  color: #FFF;
+margin-top: 20px;
+font-feature-settings: 'clig' off, 'liga' off;
+font-family: var(--montserrat);
+font-size: 14px;
+font-style: normal;
+font-weight: 400;
+line-height: 150%; /* 21px */
+}
+
+.Footer .flexy{
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-top: 30px;
+}
+.flexy img{
+  width: 100%;
+  object-fit: cover;
+}
+/* .Footer .flexy .imgKoikom{
+  display: flex;
+  justify-content: flex-end;
+  text-align: end;
+} */
+.Footer .boxDown .box{
+  width: 100%;
+}
+.Footer .boxDown .h5Edit{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.Footer .boxDown img{
+  width: 13%;
+  margin-top: -8px;
+  object-fit: cover;
+  margin-left: 10px;
+}
+.Footer .boxDown h5{
+  color: #FFF;
+font-family: var(--montserrat);
+text-align: end;
+font-size: 16px;
+font-style: normal;
+font-weight: 300;
+line-height: normal;
+}
+
+
+
+
+
+.Footer .inputBox {
+  position: relative;
+  width: 310px;
+  border-bottom: 1px solid #C3924E;
+}
+.Footer form img{
+  position: absolute;
+  width: 6%;
+  right: 0;
+  top: 20px;
+}
+.Footer form{
+  position: relative;
+}
+
+
+.inputBox label {
+  position: absolute;
+  top: 50%;
+  left: 5px;
+  transform: translateY(-50%);
+  color: #C3924E;
+  pointer-events: none;
+  font-family: "Montaga", serif;
+
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  transition: 0.5s;
+}
+.inputBox input:focus + label,
+.inputBox input:valid + label,
+.inputBox input:not(:placeholder-shown) + label {
+  top: -1px;
+}
+
+.inputBox input {
+  width: 100%;
+  height: 50px;
+  background: transparent;
+  font-size: 1em;
+  border: none;
+  outline: none;
+  color: #C3924E;
+  padding: 0px 35px 0 5px;
+}
+.inputBox .input3 {
+  height: 50px !important;
+}
+.inputBox .messageLabel {
+  height: 30px !important;
+}
+.modal {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  position: fixed;
+  top: 40%;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  z-index: 1000;
+}
+
+/* Modal Content */
+.modalContent {
+  background: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  animation: slideInRight 0.5s ease-out;
+  display: flex;
+ 
+  align-items: center;
+  justify-content: center;
+  width: 350px; 
+}
+.modalContent span{
+  color: #181818;
+  font-family:var(--montserrat);
+  margin-left: 5px;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700 !important;
+  line-height: normal;
+}
+.checkIcon {
+  display: inline;
+  width: 24px;
+  height: 24px;
+  fill: #4caf50; 
+}
+/* Animasyon */
+@keyframes slideInRight {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+
+

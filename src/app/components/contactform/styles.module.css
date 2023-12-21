@@ -17,8 +17,7 @@
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.58);
-  z-index: -1; /* Şeffaf bir beyaz renk (0.5 opaklık) */
-  /* veya başka bir renk, opaklık değeri 0 ile 1 arasında olmalıdır */
+  z-index: -1; 
 }
 .Large {
   padding-top: 210px !important;
@@ -28,7 +27,6 @@
 }
 .Large h2 {
   color: #c9beb1;
-  margin-bottom: 20px;
   text-align: center;
   font-family: "Montaga", serif;
 
@@ -52,14 +50,14 @@
 .Large .right {
   position: relative;
   width: 540px;
-  margin-top: -50px;
+  margin-top: 0px;
   display: flex;
   justify-content: center;
 }
 .Large .inputBox {
   position: relative;
   width: 545px;
-  margin: 45px 0;
+  margin: 30px 0;
   border-bottom: 2px solid #c9beb1;
 }
 
@@ -169,6 +167,7 @@
   background: #c3924e;
   color: #fff;
   margin-top: 20px;
+  border-radius: 6px;
   width: 100%;
   padding: 20px 10px;
   border: none;

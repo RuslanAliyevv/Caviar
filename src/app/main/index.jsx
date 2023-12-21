@@ -8,6 +8,7 @@ import Dictionary from "../components/dictionary/dictionary";
 import Blogs from "../components/blogs/blogs";
 import AboutCn from "../components/aboutContent/aboutcontent";
 import ContactFm from "../components/contactform/contactform";
+import Receipe from "../components/receipe/receipe"
 export default function Main() {
   return (
     <>
@@ -19,6 +20,7 @@ export default function Main() {
       <Dictionary />
       <Blogs />
       <AboutCn />
+      <Receipe />
       <ContactFm />
     </>
   );

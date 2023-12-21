@@ -90,7 +90,6 @@ export default function Faq() {
                 id="panel2a-header"
               >
                 <Typography style={{ color: "#fff" }}>
-                  {" "}
                   Can I return a product if I’m not satisfied?
                 </Typography>
               </AccordionSummary>
@@ -124,7 +123,6 @@ export default function Faq() {
                 id="panel2a-header"
               >
                 <Typography style={{ color: "#fff" }}>
-                  {" "}
                   How long does the caviar last once opened?
                 </Typography>
               </AccordionSummary>
@@ -156,7 +154,6 @@ export default function Faq() {
                 id="panel2a-header"
               >
                 <Typography style={{ color: "#fff" }}>
-                  {" "}
                   What payment methods do you accept?
                 </Typography>
               </AccordionSummary>
@@ -188,7 +185,6 @@ export default function Faq() {
                 id="panel2a-header"
               >
                 <Typography style={{ color: "#fff" }}>
-                  {" "}
                   Do you offer any discounts or promotions?
                 </Typography>
               </AccordionSummary>
@@ -220,7 +216,6 @@ export default function Faq() {
                 id="panel2a-header"
               >
                 <Typography style={{ color: "#fff" }}>
-                  {" "}
                   How can I learn more about caviar and its culinary uses?
                 </Typography>
               </AccordionSummary>

@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./styles.module.css";
+import Image from "next/image";
 export default function Aboutcn() {
   return (
     <>
@@ -16,23 +17,27 @@ export default function Aboutcn() {
           </div>
           <div className={styles.spanEdit}>
             <span>
-              <img src="/assets/image/staricon.png" alt="" />
+              <Image width={20} height={20} src="/assets/image/staricon.png" alt="" />
             </span>
             <span>
-              <img src="/assets/image/staricon.png" alt="" />
+            <Image width={20} height={20} src="/assets/image/staricon.png" alt="" />
+
             </span>
             <span>
-              <img src="/assets/image/staricon.png" alt="" />
+            <Image width={20} height={20} src="/assets/image/staricon.png" alt="" />
+
             </span>
             <span>
-              <img src="/assets/image/staricon.png" alt="" />
+            <Image width={20} height={20} src="/assets/image/staricon.png" alt="" />
+
             </span>
             <span>
-              <img src="/assets/image/staricon.png" alt="" />
+            <Image width={20} height={20} src="/assets/image/staricon.png" alt="" />
+
             </span>
           </div>
           <div className={styles.Smith}>
-            <img src="/assets/image/JaneSmith.png" alt="" />
+            <h5>Jane Smith</h5>
           </div>
           <div className={styles.subtract}>{/* //For Image */}</div>
         </div>

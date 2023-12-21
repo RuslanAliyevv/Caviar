@@ -2,6 +2,7 @@
   padding: 150px 0 0px 0;
   background: #181818;
 }
+
 .ContactUs h2 {
   color: #c9beb1;
   font-family: "Montaga", serif;
@@ -301,7 +302,7 @@
   display: inline;
   width: 24px;
   height: 24px;
-  fill: #4caf50; /* Yeşil renk, istediğiniz rengi seçebilirsiniz */
+  fill: #4caf50;
 }
 /* Animasyon */
 @keyframes slideInRight {

@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { add } from "../../Redux/CartSlice";
 import axios from "axios";
 import React from "react";
+import Image from "next/image";
 import styles from "./styles.module.css";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -17,7 +18,6 @@ export default function Product() {
     try {
       const response = await axios.get("http://localhost:3000/api/products");
       const data = response.data;
-      console.log(response.data);
       setproducts(data);
     } catch (error) {
       console.error("Error Message:", error);
@@ -43,16 +43,18 @@ export default function Product() {
         </div>
         <div className="container">
           <div className={`row ${styles.rowAll}`}>
-            {products.slice(0,4).map((product) => (
+            {products.slice(0, 4).map((product) => (
               <div key={product.id} className="col-lg-3 col-12">
                 <div className={styles.box}>
                   <div className={styles.boxUp}>
-                    <img
+                    <Image
                       onClick={() =>
                         router.push(`/productdetail/${product.id}`)
                       }
                       src="/assets/image/product2.png"
                       alt=""
+                      width={289}
+                      height={0}
                     />
 
                     <div className={styles.line}></div>
@@ -72,7 +74,6 @@ export default function Product() {
               </div>
             ))}
 
-           
             {/* <div className="col-lg-3 col-12">
               <div className={styles.box}>
                 <div className={styles.boxUp}>
