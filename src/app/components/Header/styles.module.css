@@ -15,12 +15,13 @@
 }
 .Header li {
   list-style: none;
+  margin-left: 45px;
+
 }
 
 .Header .right span {
   position: relative;
   color: #fff;
-  margin-left: 45px;
   font-family: var(--montserrat);
   font-size: 18px;
   font-style: normal;
@@ -31,11 +32,9 @@
   display: inline-block;
   margin-left: 10px !important;
 }
-.Header a {
-  display: inline-block;
-  width: 0%;
+.numberLi{
+  margin-left: 0px !important;
 }
-
 /* @media screen and (min-width: 800px) and (max-width: 1400px) {
   .Header {
     padding: 20px 0px 10px 0px;
