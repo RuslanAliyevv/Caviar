@@ -105,7 +105,7 @@ export default function Header() {
                           </span>
                         </Link>
                       </li>
-                      <li >
+                      <li className={styles.numberLi}>
                       <span className={styles.number}>{isClient && item.length}</span>
                       </li>
 

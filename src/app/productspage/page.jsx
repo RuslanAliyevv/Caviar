@@ -2,19 +2,23 @@
 import React from "react";
 import styles from "./styles.module.css";
 import Cards from "../components/Cards/card";
-import Box from "@mui/material/Box";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import Tab from "react-bootstrap/Tab";
+import Tabs from "react-bootstrap/Tabs";
+
 import InputLabel from "@mui/material/InputLabel";
 import FormControl from "@mui/material/FormControl";
 import NativeSelect from "@mui/material/NativeSelect";
-import { noSSR } from "next/dynamic";
-import { useState, useEffect } from "react";
-import axios from "axios";
-import { useParams } from "next/navigation";
 
 export default function Products() {
+  const [selectedValue, setSelectedValue] = useState(0);
+
+  const handleRangeChange = (event) => {
+    setSelectedValue(event.target.value);
+  };
   const [products, setproducts] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("");
-  
 
   const getProducts = async () => {
     try {
@@ -30,9 +34,8 @@ export default function Products() {
     getProducts();
   }, []);
   const categories = Array.from(new Set(products.map((res) => res.category)));
-   
-  // Category filter
 
+  // Category filter
 
   // const handleCategoryChange = (event) => {
   //   const value = event.target.value;
@@ -45,101 +48,141 @@ export default function Products() {
 
   //   return products.filter((product) => product.category === selectedCategory);
   // };
-  
+
   // const filteredProducts = filterProducts(products, selectedCategory);
   return (
     <>
       <div className={styles.Products}>
         <h2>PRODUCT</h2>
-        <div className={styles.tableBorder}>
-          <div className="container">
-            <div  className="row">
-              <div  className="col-lg-4">
-                <div className="box">
-                  <FormControl fullWidth className={styles.formControl}>
-                    <InputLabel
-                      variant="standard"
-                      htmlFor="uncontrolled-native"
-                      className={styles.inputLabel}
-                    >
-                      Categories
-                    </InputLabel>
-                    <NativeSelect
-                      style={{ color: "#fff" }}
-                      // value={selectedCategory}
-                      // onChange={handleCategoryChange}
-                      inputProps={{
-                        name: "categories",
-                        id: "uncontrolled-native",
-                      }}
-                    >
-                      <option style={{ display: "none" }} value={0}></option>
-                      <option value="All">All</option>
-                      {categories.map((category,index) => (
-                        <option key={index} value={category}>
-                          {category}
-                        </option>
-                      ))}
-                    </NativeSelect>
-                  </FormControl>
-                </div>
-              </div>
-              <div className="col-lg-4">
-                <div className="box">
-                  <FormControl className={styles.formControl} fullWidth>
-                    <InputLabel
-                      variant="standard"
-                      htmlFor="uncontrolled-native"
-                      className={styles.inputLabel}
-                    >
-                      Grams
-                    </InputLabel>
-                    <NativeSelect
-                      style={{ color: "#fff" }}
-                      defaultValue={0}
-                      inputProps={{
-                        name: "categories",
-                        id: "uncontrolled-native",
-                      }}
-                    >
-                      <option style={{ display: "none" }} value={0}></option>
-                      <option value={10}>Ten</option>
-                      <option value={20}>Twenty</option>
-                      <option value={30}>Thirty</option>
-                    </NativeSelect>
-                  </FormControl>
-                </div>
-              </div>
-              <div className="col-lg-4">
-                <div className="box">
-                  <FormControl className={styles.formControl} fullWidth>
-                    <InputLabel
-                      variant="standard"
-                      htmlFor="uncontrolled-native"
-                      className={styles.inputLabel}
-                    >
-                      Price
-                    </InputLabel>
-                    <NativeSelect
-                      style={{ color: "#fff" }}
-                      defaultValue={0}
-                      inputProps={{
-                        name: "categories",
-                        id: "uncontrolled-native",
-                      }}
-                    >
-                      <option style={{ display: "none" }} value={0}></option>
-                      <option value={10}>Ten</option>
-                      <option value={20}>Twenty</option>
-                      <option value={30}>Thirty</option>
-                    </NativeSelect>
-                  </FormControl>
+        <Tabs
+          defaultActiveKey="home"
+          transition={false}
+          id="noanim-tab-example"
+          className="mb-3 productTab"
+        >
+          <Tab eventKey="home" title=" Caviar">
+            <div className={styles.tableBorder}>
+              <div className="container">
+                <div className="row">
+                  <div className="col-lg-3">
+                    <div className="box">
+                      <FormControl fullWidth className={styles.formControl}>
+                        <InputLabel
+                          variant="standard"
+                          htmlFor="uncontrolled-native"
+                          className={styles.inputLabel}
+                        >
+                          Size
+                        </InputLabel>
+                        <NativeSelect
+                          style={{ color: "#fff" }}
+                          // value={selectedCategory}
+                          // onChange={handleCategoryChange}
+                          inputProps={{
+                            name: "categories",
+                            id: "uncontrolled-native",
+                          }}
+                        >
+                          <option
+                            style={{ display: "none" }}
+                            value={0}
+                          ></option>
+                          <option value="All">All</option>
+                          {categories.map((category, index) => (
+                            <option key={index} value={category}>
+                              {category}
+                            </option>
+                          ))}
+                        </NativeSelect>
+                      </FormControl>
+                    </div>
+                  </div>
+                  <div className="col-lg-3">
+                    <div className="box">
+                      <FormControl className={styles.formControl} fullWidth>
+                        <InputLabel
+                          variant="standard"
+                          htmlFor="uncontrolled-native"
+                          className={styles.inputLabel}
+                        >
+                          Color
+                        </InputLabel>
+                        <NativeSelect
+                          style={{ color: "#fff" }}
+                          defaultValue={0}
+                          inputProps={{
+                            name: "categories",
+                            id: "uncontrolled-native",
+                          }}
+                        >
+                          <option
+                            style={{ display: "none" }}
+                            value={0}
+                          ></option>
+                          <option value={10}>Ten</option>
+                          <option value={20}>Twenty</option>
+                          <option value={30}>Thirty</option>
+                        </NativeSelect>
+                      </FormControl>
+                    </div>
+                  </div>
+                  <div className="col-lg-3">
+                    <div className="box">
+                      <FormControl className={styles.formControl} fullWidth>
+                        <InputLabel
+                          variant="standard"
+                          htmlFor="uncontrolled-native"
+                          className={styles.inputLabel}
+                        >
+                          Fish
+                        </InputLabel>
+                        <NativeSelect
+                          style={{ color: "#fff" }}
+                          defaultValue={0}
+                          inputProps={{
+                            name: "categories",
+                            id: "uncontrolled-native",
+                          }}
+                        >
+                          <option
+                            style={{ display: "none" }}
+                            value={0}
+                          ></option>
+                          <option value={10}>Ten</option>
+                          <option value={20}>Twenty</option>
+                          <option value={30}>Thirty</option>
+                        </NativeSelect>
+                      </FormControl>
+                    </div>
+                  </div>
+                  <div className="col-lg-3">
+                    <div className="box">
+                     <div className={styles.priceBox}>
+                     <label className={styles.priceLabel} htmlFor="">Price</label>
+                     </div>
+                        <div className={styles.rangeBox}>
+                          <label style={{color:"#fff"}} htmlFor="range">{selectedValue}$</label>
+                          <input
+                            type="range"
+                            id="range"
+                            name="range"
+                            min="0"
+                            max="500"
+                            value={selectedValue}
+                            onChange={handleRangeChange}
+                            className={styles.rangeInput}
+                          />
+                        </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-        <Cards products={products} />     /products filteredProductsla evez oluncaq/
+            <Cards products={products} /> /products filteredProductsla evez
+            oluncaq/
+          </Tab>
+          <Tab eventKey="profile" title="Grocery"></Tab>
+        </Tabs>
 
         <div className={styles.getInTouch}>
           <h2>Get in Touch with Us!</h2>
