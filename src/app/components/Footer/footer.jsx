@@ -119,7 +119,7 @@ export default function Footer() {
                       </Link>
                     </div>
                     <div className={styles.linkEdit}>
-                      <Link href="/">
+                      <Link href="/productspage">
                         <span>Products</span>
                       </Link>
                     </div>
