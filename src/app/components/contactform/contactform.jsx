@@ -54,7 +54,8 @@ export default function ContactFm() {
                 <div className="col-lg-6">
                   <div className="box">
                     <div className="left">
-                      <Image width={611} height={430} src="/assets/image/contactstock.png" alt="" />
+            
+                      <Image   width={611} height={430}  src="/assets/image/contactstock.png" alt="Tos" />
                     </div>
                   </div>
                 </div>

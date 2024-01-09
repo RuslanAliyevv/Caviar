@@ -1,9 +1,15 @@
+ 'use client'
 import React from "react";
 import styles from "./styles.module.css";
 import Link from "next/link";
 import Image from "next/image";
 
 export default function Footer() {
+  
+  const handleKoikomclick = () => {
+    window.location.href = "https://www.koikom.com";
+  };
+
   return (
     <>
       <div className={styles.Footer}>
@@ -34,7 +40,7 @@ export default function Footer() {
                         <label htmlFor="my">Email</label>
                       </div>
                      <Link className={styles.imgVector} href="/">
-                     <Image width={26} height={20} src="/assets/image/vector.png" alt="" />
+                     <Image  width={26} height={20} src="/assets/image/vector.png" alt="" />
                      </Link>
                     </form>
                     <div className={styles.imgBorder}>
@@ -67,9 +73,7 @@ export default function Footer() {
                 <div className={styles.box}>
                   <div className={styles.boxContent}>
                     <div className={styles.linkEdit}>
-                      <Link href="/">
                         <span className={styles.firstSpan}>Categories</span>
-                      </Link>
                     </div>
                     <div className={styles.linkEdit}>
                       <Link href="/aboutus">
@@ -83,9 +87,7 @@ export default function Footer() {
                 <div className={styles.box}>
                   <div className={styles.boxContent}>
                     <div className={styles.linkEdit}>
-                      <Link href="/">
                         <span className={styles.firstSpan}>Our Policy</span>
-                      </Link>
                     </div>
                     <div className={styles.linkEdit}>
                       <Link href="/aboutus">
@@ -109,9 +111,7 @@ export default function Footer() {
                 <div className={styles.box}>
                   <div className={styles.boxContent}>
                     <div className={styles.linkEdit}>
-                      <Link href="/">
                         <span className={styles.firstSpan}>Quick Links</span>
-                      </Link>
                     </div>
                     <div className={styles.linkEdit}>
                       <Link href="/aboutus">
@@ -150,9 +150,7 @@ export default function Footer() {
                 <div className={styles.box}>
                   <div className={styles.boxContent}>
                     <div className={styles.linkEdit}>
-                      <Link href="/">
                         <span className={styles.firstSpan}>Contact</span>
-                      </Link>
                     </div>
                     <div className={styles.linkEdit}>
                       <Link href="/">
@@ -215,7 +213,7 @@ export default function Footer() {
                 <div className={styles.box}>
                   <div className={styles.h5Edit}>
                   <h5>Powered by </h5>
-                  <Image width={100} height={16} src="/assets/image/koikom.png" alt="" />
+                  <Image style={{cursor:"pointer"}} onClick={handleKoikomclick} width={100} height={16} src="/assets/image/koikom.png" alt="" />
                   </div>
                  
                 </div>

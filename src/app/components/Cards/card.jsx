@@ -15,7 +15,7 @@ export default function Cards({ products }) {
     <div className={styles.Cards}>
       <div className="container">
         <div className={`row ${styles.rowAll}`}>
-          {products.map((product) => (
+          {products.map((product,index) => (
             <div key={product.id} className="col-lg-3 col-12">
               <div className={styles.box}>
                 <div className={styles.boxUp}>
@@ -23,14 +23,14 @@ export default function Cards({ products }) {
                     onClick={() => router.push(`/productdetail/${product.id}`)}
                     width={289}
                     height={0}
-                    src="/assets/image/product2.png"
+                    src={`http://68.183.53.2:3000/images/${product.images[0].filename}`}
                     alt=""
                   />
                   <div className={styles.line}></div>
                 </div>
                 <div className={styles.boxDown}>
                   <h3>{product.name}</h3>
-                  <h3 className={styles.h3Edit}>{product.price}</h3>
+                  <h3 className={styles.h3Edit}>{product.details[0].price}</h3>
                 </div>
                 <p onClick={() => handleadd(product)}>Add to cart +</p>
               </div>

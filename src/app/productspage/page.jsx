@@ -6,25 +6,25 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
-
+import Select from "@mui/material/Select";
 import InputLabel from "@mui/material/InputLabel";
 import FormControl from "@mui/material/FormControl";
 import NativeSelect from "@mui/material/NativeSelect";
+import MultiRangeSlider from "../components/multi/multirangeslider";
 
 export default function Products() {
-  const [selectedValue, setSelectedValue] = useState(0);
-
   const handleRangeChange = (event) => {
     setSelectedValue(event.target.value);
   };
-  const [products, setproducts] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("");
+  const [products, setproducts] = useState([]);
+
 
   const getProducts = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/api/products");
+      const response = await axios.get("http://68.183.53.2:3000/products");
       const data = response.data;
-      console.log(response.data);
+      // console.log(response.data);
       setproducts(data);
     } catch (error) {
       console.error("Error Message:", error);
@@ -34,6 +34,7 @@ export default function Products() {
     getProducts();
   }, []);
   const categories = Array.from(new Set(products.map((res) => res.category)));
+
 
   // Category filter
 
@@ -50,6 +51,16 @@ export default function Products() {
   // };
 
   // const filteredProducts = filterProducts(products, selectedCategory);
+
+
+  //range filter
+  // const [filteredProducts, setFilteredProducts] = useState([]);
+  // const RangeChange = (min, max) => {
+  //   const filteredProducts = products.filter(
+  //     (product) => product.price >= min && product.price <= max
+  //   );
+  //   setFilteredProducts(filteredProducts);
+  // };
   return (
     <>
       <div className={styles.Products}>
@@ -88,11 +99,11 @@ export default function Products() {
                             value={0}
                           ></option>
                           <option value="All">All</option>
-                          {categories.map((category, index) => (
+                          {/* {categories.map((category, index) => (
                             <option key={index} value={category}>
                               {category}
                             </option>
-                          ))}
+                          ))} */}
                         </NativeSelect>
                       </FormControl>
                     </div>
@@ -157,29 +168,27 @@ export default function Products() {
                   </div>
                   <div className="col-lg-3">
                     <div className="box">
-                     <div className={styles.priceBox}>
-                     <label className={styles.priceLabel} htmlFor="">Price</label>
-                     </div>
-                        <div className={styles.rangeBox}>
-                          <label style={{color:"#fff"}} htmlFor="range">{selectedValue}$</label>
-                          <input
-                            type="range"
-                            id="range"
-                            name="range"
-                            min="0"
-                            max="500"
-                            value={selectedValue}
-                            onChange={handleRangeChange}
-                            className={styles.rangeInput}
-                          />
-                        </div>
+                      <div className={styles.priceBox}>
+                        <label className={styles.priceLabel} htmlFor="">
+                          Price
+                        </label>
+                      </div>
+                      <div className={styles.rangeBox}>
+                        <MultiRangeSlider
+                          min={0}
+                          max={1000}
+                          onChange={({ min, max }) =>
+                            `min = ${min}, max = ${max}`
+                          }
+                        />
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
             <Cards products={products} /> /products filteredProductsla evez
-            oluncaq/
+            olunacaq oluncaq/
           </Tab>
           <Tab eventKey="profile" title="Grocery"></Tab>
         </Tabs>

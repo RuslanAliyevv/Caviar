@@ -45,11 +45,12 @@ export default function Shopping() {
                   <div
                     className={`d-flex flex-row justify-content-between align-items-center p-1  mt-4 px-3 rounded ${styles.border}`}
                   >
-                    <div className="mr-1 d-flex align-items-center">
+                    <div className={`mr-1 d-flex align-items-center ${styles.imgBox}`}>
                       <img
                         style={{ position: "relative" }}
                         className={`rounded`}
-                        src={item.imageUrl}
+                        src={`http://68.183.53.2:3000/images/${item.images[0].filename}`}
+
                         alt={item.name}
                         width="100"
                         height="70"
