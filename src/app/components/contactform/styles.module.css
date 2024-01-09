@@ -256,3 +256,13 @@
     background-position: 0 0;
   }
 }
+
+
+@media screen and (min-width: 1200px) and (max-width: 1399px) {
+  .Large .inputBox{
+    width: 460px !important;
+  }
+  .Large .right{
+    width: 483px !important;
+  }
+}

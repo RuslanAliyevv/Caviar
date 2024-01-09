@@ -1,5 +1,7 @@
 "use client";
 import React from "react";
+import { useDispatch } from "react-redux";
+import { add } from "../../Redux/CartSlice";
 import styles from "./styles.module.css";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
@@ -11,22 +13,22 @@ import Image from "next/image";
 
 export default function ProductDetail() {
   const [selectedOption, setSelectedOption] = useState(null);
+  const { id } = useParams();
+  const [post, setPost] = useState({
+    name: "",
+    images: [],
+    price: "",
+  });
 
   const handleRadioChange = (index) => {
     setSelectedOption(index);
   };
 
   // const radioOptions = [10, 11, 12, 13, 14];
-  const { id } = useParams();
-  const [post, setPost] = useState({
-    name: "",
-    imageUrl: "",
-    price: "",
-  });
   useEffect(() => {
     const fetchPost = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/api/products");
+        const response = await axios.get("http://68.183.53.2:3000/products");
         const data = response.data;
         setPost(data && data.find((u) => u.id === Number(id)));
       } catch (error) {
@@ -45,6 +47,13 @@ export default function ProductDetail() {
   const handlePlus = () => {
     setCount(count + 1);
   };
+  const dispatch = useDispatch();
+
+  const handleadd = () => {
+    if (post) {
+      dispatch(add(post));
+    }
+  };
   return (
     <>
       <div className={styles.ProductDetail}>
@@ -55,12 +64,18 @@ export default function ProductDetail() {
             <div className="col-lg-5">
               <div className="box">
                 <div className={styles.boxDiv}>
-                  <img className={styles.contentImg} src={post.imageUrl} />
+                  {post.images && post.images.length > 0 && (
+                    <img
+                      className={styles.contentImg}
+                      src={`http://68.183.53.2:3000/images/${post.images[0].filename}`}
+                      alt=""
+                    />
+                  )}
                 </div>
               </div>
             </div>
             <div style={{ marginLeft: "0px" }} className="col-lg-7">
-              <div className="box">
+              <div className={styles.box}>
                 <div className={styles.spanEdit}>
                   <span>
                     <Image
@@ -111,7 +126,9 @@ export default function ProductDetail() {
                     <div className={styles.h3Edit}>
                       <h3>{post.name} :</h3>
                     </div>
-                    <h6>$60.00</h6>
+                    {post.details && post.details.length > 0 && (
+                      <h6>{post.details[0].price}</h6>
+                    )}
                     <span className={styles.h5CheckOut}>Shipping</span>
                     <span className={styles.h5CheckOut}>
                       calculated at checkout.
@@ -142,7 +159,7 @@ export default function ProductDetail() {
                         onChange={() => handleRadioChange(post.price)}
                       />
                       <label htmlFor={`radioInput${post.price}`}>
-                        {post.price} gr
+                        {post.details[0].gram} gr
                       </label>
                     </div>
                   )}
@@ -158,7 +175,7 @@ export default function ProductDetail() {
                     </div>
                   </div>
                   <div className="col-lg-6">
-                    <h5 style={{ marginTop: "10px" }}>Add to Cart</h5>
+                    <h5 onClick={handleadd} style={{ marginTop: "10px" }}>Add to Cart</h5>
                   </div>
                 </div>
               </div>

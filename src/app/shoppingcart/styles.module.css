@@ -19,7 +19,9 @@
   width: 100%;
   background: #2b2b2b;
 }
-
+.imgBox{
+  width: 330px;
+}
 
 .border {
   border: 2px solid #333;
@@ -33,9 +35,10 @@
   width: 100%;
 }
 .Shopping img{
-  width: 20%;
-  object-fit: cover;
-  height: 70px;
+  width: 100px;
+  height: 100%;
+  object-fit: fill;
+  height: 60px;
 }
 .Shopping .spanEdit {
   color: #fff !important;
@@ -47,7 +50,7 @@
   display: block;
   padding: 0px 20px 0px 0px;
   width: 250px; 
-  margin-top: -15px;
+  margin-top: -5px;
   white-space: nowrap;
 }
 

@@ -2,12 +2,12 @@
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { add } from "../../Redux/CartSlice";
+import { useRouter } from "next/navigation";
 import axios from "axios";
 import React from "react";
 import Image from "next/image";
 import styles from "./styles.module.css";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 
 export default function Product() {
   const router = useRouter();
@@ -16,21 +16,20 @@ export default function Product() {
 
   const getProducts = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/api/products");
+      const response = await axios.get("http://68.183.53.2:3000/products");
       const data = response.data;
       setproducts(data);
     } catch (error) {
       console.error("Error Message:", error);
     }
   };
+  useEffect(() => {
+    getProducts();
+  }, []);
 
   const handleadd = (product) => {
     dispatch(add(product));
   };
-
-  useEffect(() => {
-    getProducts();
-  }, []);
 
   return (
     <>
@@ -51,7 +50,7 @@ export default function Product() {
                       onClick={() =>
                         router.push(`/productdetail/${product.id}`)
                       }
-                      src="/assets/image/product2.png"
+                      src={`http://68.183.53.2:3000/images/${product.images[0].filename}`}
                       alt=""
                       width={289}
                       height={0}
@@ -62,10 +61,14 @@ export default function Product() {
                   <div className={styles.boxDown}>
                     <div className={styles.boxDowncontent}>
                       <div className={styles.prNameEdit}>
-                        <h3>{product.name} 28gr</h3>
+                        <h3>
+                          {product.name} {`${product.details[0].gram} gr`}
+                        </h3>
                       </div>
                       <div className={styles.priceEdit}>
-                        <h3 className={styles.h3Edit}>{`$${product.price}`}</h3>
+                        <h3
+                          className={styles.h3Edit}
+                        >{`$${product.details[0].price}`}</h3>
                       </div>
                     </div>
                     <p onClick={() => handleadd(product)}>Add to cart +</p>

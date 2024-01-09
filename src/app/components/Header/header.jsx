@@ -13,6 +13,7 @@ export default function Header() {
   useEffect(() => {
     setIsClient(true)
   }, [])
+
   const [scrolling, setScrolling] = useState(false);
   
   const item = useSelector((state)=>state.cart)
@@ -41,7 +42,7 @@ export default function Header() {
       <div  style={headerStyle} className={`${styles.Header}`}>
         <div className="container">
           <div className={`row ${styles.rowAll}`}>
-            <div className="col-lg-5 col-12">
+            <div className="col-lg-5 col-5">
               <div className={styles.box}>
                 <div className={styles.left}>
                   <Link href="/">
@@ -50,7 +51,7 @@ export default function Header() {
                 </div>
               </div>
             </div>
-            <div className="col-lg-7 col-6">
+            <div className="col-lg-7 col-7">
               <div className={styles.box}>
                 <div className={styles.right}>
                   <nav>
