@@ -12,31 +12,42 @@ import { useParams } from "next/navigation";
 import Image from "next/image";
 
 export default function ProductDetail() {
-  const [selectedOption, setSelectedOption] = useState(null);
   const { id } = useParams();
+  const guid = id;
   const [post, setPost] = useState({
-    name: "",
-    images: [],
+    title: "",
+    product_attachments: [],
     price: "",
+    grams: [],
   });
 
-  const handleRadioChange = (index) => {
-    setSelectedOption(index);
+  const [selectedGram, setSelectedGram] = useState("");
+  const sortedVariants =
+    post.variants &&
+    post.variants.slice().sort((a, b) => a.grams.weight - b.grams.weight);
+
+  useEffect(() => {
+    if (post && post.variants && post.variants.length > 0 && !selectedGram) {
+      setSelectedGram(post.variants[0].grams.weight);
+    }
+  }, [post, selectedGram]);
+
+  const handleGramChange = (event) => {
+    setSelectedGram(event.target.value);
   };
 
-  // const radioOptions = [10, 11, 12, 13, 14];
   useEffect(() => {
     const fetchPost = async () => {
       try {
         const response = await axios.get("http://68.183.53.2:3000/products");
         const data = response.data;
-        setPost(data && data.find((u) => u.id === Number(id)));
+        setPost(data && data.find((u) => u.guid === guid));
       } catch (error) {
         console.error("Error fetching product:", error);
       }
     };
     fetchPost();
-  }, [id]);
+  }, [guid]);
 
   const [count, setCount] = useState(1);
   const handleMinus = () => {
@@ -64,17 +75,39 @@ export default function ProductDetail() {
             <div className="col-lg-5">
               <div className="box">
                 <div className={styles.boxDiv}>
-                  {post.images && post.images.length > 0 && (
-                    <img
-                      className={styles.contentImg}
-                      src={`http://68.183.53.2:3000/images/${post.images[0].filename}`}
-                      alt=""
+                  {post &&
+                  post.variants &&
+                  post.variants.find(
+                    (variant) => variant.grams.weight === selectedGram
+                  ) &&
+                  post.variants.find(
+                    (variant) => variant.grams.weight === selectedGram
+                  ).product_attachments &&
+                  post.variants.find(
+                    (variant) => variant.grams.weight === selectedGram
+                  ).product_attachments.length > 0 ? (
+                    <Image
+                      className={styles.detailImg}
+                      width={390}
+                      height={450}
+                      src={
+                        post.variants.find(
+                          (variant) => variant.grams.weight === selectedGram
+                        ).product_attachments[0].filePath
+                      }
+                      alt={
+                        post.variants.find(
+                          (variant) => variant.grams.weight === selectedGram
+                        ).product_attachments[0].altText
+                      }
                     />
+                  ) : (
+                    <p>No image available</p>
                   )}
                 </div>
               </div>
             </div>
-            <div style={{ marginLeft: "0px" }} className="col-lg-7">
+            <div style={{ marginLeft: "0px" }} className="col-lg-6">
               <div className={styles.box}>
                 <div className={styles.spanEdit}>
                   <span>
@@ -124,18 +157,36 @@ export default function ProductDetail() {
                 >
                   <div className="col-lg-8">
                     <div className={styles.h3Edit}>
-                      <h3>{post.name} :</h3>
+                      <h3>{post && post.name} :</h3>
                     </div>
-                    {post.details && post.details.length > 0 && (
-                      <h6>{post.details[0].price}</h6>
-                    )}
+                    {post &&
+                      post.variants &&
+                      post.variants.find(
+                        (variant) => variant.grams.weight === selectedGram
+                      ) && (
+                        <h6>
+                          {
+                            post.variants.find(
+                              (variant) => variant.grams.weight === selectedGram
+                            ).price
+                          }
+                          $
+                        </h6>
+                      )}
                     <span className={styles.h5CheckOut}>Shipping</span>
                     <span className={styles.h5CheckOut}>
                       calculated at checkout.
                     </span>
                     <div className={styles.line}></div>
                     <p className={styles.pStock}>
-                      107 in stock, ready to ship.
+                      {post &&
+                        post.variants &&
+                        post.variants.length > 0 &&
+                        post.variants.map(
+                          (variant) =>
+                            variant.grams.weight === selectedGram &&
+                            `${variant.quantity} in stock, ready to ship.`
+                        )}
                     </p>
                   </div>
                   <div className="col-lg-4">
@@ -150,19 +201,44 @@ export default function ProductDetail() {
                   </div>
                 </div>
                 <div className={styles.radioGroup}>
-                  {post && post.price && (
-                    <div className={styles.radioContainer}>
-                      <input
-                        type="radio"
-                        id={`radioInput${post.price}`}
-                        checked={selectedOption === post.price}
-                        onChange={() => handleRadioChange(post.price)}
-                      />
-                      <label htmlFor={`radioInput${post.price}`}>
-                        {post.details[0].gram} gr
-                      </label>
-                    </div>
-                  )}
+                  {sortedVariants &&
+                    sortedVariants.map((variant) => (
+                      <div className={styles.radioContainer} key={variant.guid}>
+                        <input
+                          type="radio"
+                          id={`radioInput${variant.grams.weight}`}
+                          value={variant.grams.weight}
+                          checked={selectedGram === variant.grams.weight}
+                          onChange={handleGramChange}
+                        />
+                        <label htmlFor={`radioInput${variant.grams.weight}`}>
+                          {variant.grams.weight} gr
+                        </label>
+
+                        {/* Eğer seçili gram, bu variant'ın gramı ise, bilgileri göster */}
+                        {/* {selectedGram === variant.grams.weight && (
+                              <div className={styles.selectedGramInfo}>
+                                <p>Price: ${variant.price}</p>
+                                {variant.product_attachments &&
+                                  variant.product_attachments.length > 0 && (
+                                    <div className={styles.selectedGramImage}>
+                                      <Image
+                                        width={100}
+                                        height={100}
+                                        src={
+                                          variant.product_attachments[0]
+                                            .filePath
+                                        }
+                                        alt={
+                                          variant.product_attachments[0].altText
+                                        }
+                                      />
+                                    </div>
+                                  )}
+                              </div>
+                            )} */}
+                      </div>
+                    ))}
                 </div>
                 <div className="row align-items-baseline">
                   <div className="col-lg-6">
@@ -175,7 +251,9 @@ export default function ProductDetail() {
                     </div>
                   </div>
                   <div className="col-lg-6">
-                    <h5 onClick={handleadd} style={{ marginTop: "10px" }}>Add to Cart</h5>
+                    <h5 onClick={handleadd} style={{ marginTop: "10px" }}>
+                      Add to Cart
+                    </h5>
                   </div>
                 </div>
               </div>
@@ -194,16 +272,36 @@ export default function ProductDetail() {
               justify
             >
               <Tab eventKey="profile" title=" Description">
-                <p>
-                  Delight in the luxurious taste of American Sturgeon Caviar, a
-                  top choice for caviar aficionados. Harvested from the pristine
-                  North American waters, this caviar is a symbol of gastronomic
-                  opulence. Each grain promises a smooth, buttery texture and a
-                  rich, nuanced flavor, ideal for enhancing any special occasion
-                  or adding a touch of sophistication to your culinary
-                  creations.
-                </p>
-                <h4>Taste the Elegance:</h4>
+                {post &&
+                  post.productDescription &&
+                  post.productDescription.map((description, index) => (
+                    <div key={index}>
+                      <p>{description.description}</p>
+                      {description.productDescriptionRows &&
+                        description.productDescriptionRows.map(
+                          (row, rowIndex) => (
+                            <div key={rowIndex}>
+                              <h4>{row.title}</h4>
+                              {row.description.includes("*") ? (
+                                <p>
+                                  {row.description
+                                    .split("*")
+                                    .map((item, index) => (
+                                      <span key={index}>
+                                        {item}
+                                        <br />
+                                      </span>
+                                    ))}
+                                </p>
+                              ) : (
+                                <p>{row.description}</p>
+                              )}
+                            </div>
+                          )
+                        )}
+                    </div>
+                  ))}
+                {/* <h4>Taste the Elegance:</h4>
                 <p>
                   Texture: Silky and smooth, offering a melt-in-the-mouth
                   experience. Flavor: A perfect balance of rich buttery notes
@@ -218,10 +316,41 @@ export default function ProductDetail() {
                   under refrigeration <br />
                   Packaging: Comes in specially sealed containers to ensure peak
                   freshness
-                </p>
+                </p> */}
               </Tab>
               <Tab eventKey="home" title="Additional Information">
-                <p>
+                {post &&
+                  post.productAdditionalInformation &&
+                  post.productAdditionalInformation.map(
+                    (description, index) => (
+                      <div key={index}>
+                        <p>{description.description}</p>
+                        {description.productAdditionalInformationRows &&
+                          description.productAdditionalInformationRows.map(
+                            (row, rowIndex) => (
+                              <div key={rowIndex}>
+                                <h4>{row.title}</h4>
+                                {row.description.includes("*") ? (
+                                  <p>
+                                    {row.description
+                                      .split("*")
+                                      .map((item, index) => (
+                                        <span key={index}>
+                                          {item}
+                                          <br />
+                                        </span>
+                                      ))}
+                                  </p>
+                                ) : (
+                                  <p>{row.description}</p>
+                                )}
+                              </div>
+                            )
+                          )}
+                      </div>
+                    )
+                  )}
+                {/* <p>
                   Best enjoyed chilled, complemented by simple accompaniments
                   like blinis, mild crème fraîche, and pairs wonderfully with
                   champagne or select white wines. An exquisite garnish for
@@ -241,7 +370,7 @@ export default function ProductDetail() {
                   Discover the distinct taste and quality of American Sturgeon
                   Caviar, a culinary gem that adds a touch of luxury to every
                   dish. 
-                </p>
+                </p> */}
               </Tab>
               <Tab eventKey="longer-tab" title="Review"></Tab>
             </Tabs>

@@ -15,9 +15,10 @@ export default function BliniDetail() {
       }, 1800);
     };
     const [post, setPost] = useState({
-      name: "",
+      // name: "",
       email: "",
       message: "",
+      contact_type : 'Receipt',
     });
     const handleInput = (event) => {
       setPost({ ...post, [event.target.name]: event.target.value });
@@ -26,7 +27,7 @@ export default function BliniDetail() {
       event.preventDefault();
       try {
         const response = await axios.post(
-          "http://localhost:3000/api/contact",
+          "http://68.183.53.2:3000/contacts",
           post
         );
         openModal("Message sent successfully!");
@@ -95,8 +96,8 @@ export default function BliniDetail() {
                   <div className={styles.inputBox}>
                     <input
                       onChange={handleInput}
-                      name="name"
-                      value={post.name}
+                      name="email"
+                      value={post.email}
                       id="my1"
                       className={styles.input}
                       placeholder=""

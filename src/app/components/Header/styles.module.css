@@ -60,3 +60,47 @@
     font-size: 16px;
   }
 } */
+.nav{
+  display: flex;
+}
+ 
+@media screen and (max-width: 1024px) {
+  .left img{
+    width: 100px !important;
+    height: 100px !important;
+  }
+  .rowAll{
+    align-items: center !important;
+  }
+  .right{
+    display: flex;
+    justify-content: flex-end;
+  }
+  .nav li img{
+    display: block;
+    margin-right: 10px;
+    width: 45px;
+    height: 45px;
+  }
+  .number{
+    position: relative !important;
+    right: 60% !important;
+    top: 0;
+  }
+  .wishlist{
+    display: none;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -18,7 +18,21 @@ export default function Products() {
   };
   const [selectedCategory, setSelectedCategory] = useState("");
   const [products, setproducts] = useState([]);
+  const [categoryname, setCategoryname] = useState([]);
 
+  const getCategoryname = async () => {
+    try {
+      const response = await axios.get("http://68.183.53.2:3000/category/");
+      const data = response.data;
+      // console.log(response.data);
+      setCategoryname(data);
+    } catch (error) {
+      console.error("Error Message:", error);
+    }
+  };
+  useEffect(() => {
+    getCategoryname();
+  }, []);
 
   const getProducts = async () => {
     try {
@@ -35,7 +49,6 @@ export default function Products() {
   }, []);
   const categories = Array.from(new Set(products.map((res) => res.category)));
 
-
   // Category filter
 
   // const handleCategoryChange = (event) => {
@@ -51,7 +64,6 @@ export default function Products() {
   // };
 
   // const filteredProducts = filterProducts(products, selectedCategory);
-
 
   //range filter
   // const [filteredProducts, setFilteredProducts] = useState([]);
@@ -71,7 +83,14 @@ export default function Products() {
           id="noanim-tab-example"
           className="mb-3 productTab"
         >
-          <Tab eventKey="home" title=" Caviar">
+          <Tab
+            eventKey="home"
+            title={categoryname.map((item,index) => (
+              <div key={index}>
+                {item.name}
+              </div>
+            ))}
+          >
             <div className={styles.tableBorder}>
               <div className="container">
                 <div className="row">
@@ -98,7 +117,7 @@ export default function Products() {
                             style={{ display: "none" }}
                             value={0}
                           ></option>
-                          <option value="All">All</option>
+                          <option value="All">disable</option>
                           {/* {categories.map((category, index) => (
                             <option key={index} value={category}>
                               {category}
@@ -130,9 +149,9 @@ export default function Products() {
                             style={{ display: "none" }}
                             value={0}
                           ></option>
-                          <option value={10}>Ten</option>
-                          <option value={20}>Twenty</option>
-                          <option value={30}>Thirty</option>
+                          <option value={10}>disable</option>
+                          {/* <option value={20}>Twenty</option> */}
+                          {/* <option value={30}>Thirty</option> */}
                         </NativeSelect>
                       </FormControl>
                     </div>
@@ -159,9 +178,9 @@ export default function Products() {
                             style={{ display: "none" }}
                             value={0}
                           ></option>
-                          <option value={10}>Ten</option>
-                          <option value={20}>Twenty</option>
-                          <option value={30}>Thirty</option>
+                          <option value={10}>disable</option>
+                          {/* <option value={20}>Twenty</option> */}
+                          {/* <option value={30}>Thirty</option> */}
                         </NativeSelect>
                       </FormControl>
                     </div>
@@ -190,7 +209,7 @@ export default function Products() {
             <Cards products={products} /> /products filteredProductsla evez
             olunacaq oluncaq/
           </Tab>
-          <Tab eventKey="profile" title="Grocery"></Tab>
+          {/* <Tab eventKey="profile" title="Grocery"></Tab> */}
         </Tabs>
 
         <div className={styles.getInTouch}>

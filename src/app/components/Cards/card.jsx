@@ -11,158 +11,48 @@ export default function Cards({ products }) {
   const handleadd = (product) => {
     dispatch(add(product));
   };
+
   return (
     <div className={styles.Cards}>
       <div className="container">
-        <div className={`row ${styles.rowAll}`}>
-          {products.map((product,index) => (
-            <div key={product.id} className="col-lg-3 col-12">
-              <div className={styles.box}>
-                <div className={styles.boxUp}>
-                  <Image
-                    onClick={() => router.push(`/productdetail/${product.id}`)}
-                    width={289}
-                    height={0}
-                    src={`http://68.183.53.2:3000/images/${product.images[0].filename}`}
-                    alt=""
-                  />
-                  <div className={styles.line}></div>
+        {products.map((product, pIndex) => (
+          <div className={`row ${styles.rowAll}`}>
+            {product.variants.map((variant, vIndex) => (
+              <div className="col-lg-3 col-12">
+                <div key={vIndex} className={styles.box}>
+                  <div className={styles.boxUp}>
+                    {variant.product_attachments &&
+                    variant.product_attachments.length > 0 ? (
+                      <Image
+                        onClick={() =>
+                          router.push(`/productdetail/${product.guid}`)
+                        }
+                        width={289}
+                        height={0}
+                        src={variant.product_attachments[0].filePath}
+                        alt={variant.product_attachments[0].altText}
+                      />
+                    ) : (
+                      <p>No image available</p>
+                    )}
+                    <div className={styles.line}></div>
+                  </div>
+                  <div className={styles.boxDown}>
+                    <div className={styles.boxDowncontent}>
+                      <div className={styles.prNameEdit}>
+                        <h3>{`${product.name} ${variant.grams.weight} gr`}</h3>
+                      </div>
+                      <div className={styles.priceEdit}>
+                        <h3 className={styles.h3Edit}>{`$${variant.price}`}</h3>
+                      </div>
+                    </div>
+                    <p onClick={() => handleadd(product)}>Add to cart +</p>
+                  </div>
                 </div>
-                <div className={styles.boxDown}>
-                  <h3>{product.name}</h3>
-                  <h3 className={styles.h3Edit}>{product.details[0].price}</h3>
-                </div>
-                <p onClick={() => handleadd(product)}>Add to cart +</p>
               </div>
-            </div>
-          ))}
-          <div className="col-lg-3 col-12">
-            <div className={styles.box}>
-              <div className={styles.boxUp}>
-                <Image
-                  width={289}
-                  height={0}
-                  src="/assets/image/product2.png"
-                  alt=""
-                />
-                <div className={styles.line}></div>
-              </div>
-              <div className={styles.boxDown}>
-                <h3>Product Name</h3>
-                <h3 className={styles.h3Edit}>$60.00</h3>
-              </div>
-              <p>Add to cart +</p>
-            </div>
+            ))}
           </div>
-          <div className="col-lg-3 col-12">
-            <div className={styles.box}>
-              <div className={styles.boxUp}>
-                <Image
-                  width={289}
-                  height={0}
-                  src="/assets/image/product3.png"
-                  alt=""
-                />
-                <div className={styles.line}></div>
-              </div>
-              <div className={styles.boxDown}>
-                <h3>Product Name</h3>
-                <h3 className={styles.h3Edit}>$60.00</h3>
-              </div>
-              <p>Add to cart +</p>
-            </div>
-          </div>
-          <div className="col-lg-3 col-12">
-            <div className={styles.box}>
-              <div className={styles.boxUp}>
-                <Image
-                  width={289}
-                  height={0}
-                  src="/assets/image/product4.png"
-                  alt=""
-                />
-                <div className={styles.line}></div>
-              </div>
-              <div className={styles.boxDown}>
-                <h3>Product Name</h3>
-                <h3 className={styles.h3Edit}>$60.00</h3>
-              </div>
-              <p>Add to cart +</p>
-            </div>
-          </div>
-          <div className="col-lg-3 col-12">
-            <div className={styles.box}>
-              <div className={styles.boxUp}>
-                <Image
-                  width={289}
-                  height={0}
-                  src="/assets/image/product4.png"
-                  alt=""
-                />
-                <div className={styles.line}></div>
-              </div>
-              <div className={styles.boxDown}>
-                <h3>Product Name</h3>
-                <h3 className={styles.h3Edit}>$60.00</h3>
-              </div>
-              <p>Add to cart +</p>
-            </div>
-          </div>
-          <div className="col-lg-3 col-12">
-            <div className={styles.box}>
-              <div className={styles.boxUp}>
-                <Image
-                  width={289}
-                  height={0}
-                  src="/assets/image/product1.png"
-                  alt=""
-                />
-                <div className={styles.line}></div>
-              </div>
-              <div className={styles.boxDown}>
-                <h3>Product Name</h3>
-                <h3 className={styles.h3Edit}>$60.00</h3>
-              </div>
-              <p>Add to cart +</p>
-            </div>
-          </div>
-          <div className="col-lg-3 col-12">
-            <div className={styles.box}>
-              <div className={styles.boxUp}>
-                <Image
-                  width={289}
-                  height={0}
-                  src="/assets/image/product2.png"
-                  alt=""
-                />
-                <div className={styles.line}></div>
-              </div>
-              <div className={styles.boxDown}>
-                <h3>Product Name</h3>
-                <h3 className={styles.h3Edit}>$60.00</h3>
-              </div>
-              <p>Add to cart +</p>
-            </div>
-          </div>
-          <div className="col-lg-3 col-12">
-            <div className={styles.box}>
-              <div className={styles.boxUp}>
-                <Image
-                  width={289}
-                  height={0}
-                  src="/assets/image/product3.png"
-                  alt=""
-                />
-                <div className={styles.line}></div>
-              </div>
-              <div className={styles.boxDown}>
-                <h3>Product Name</h3>
-                <h3 className={styles.h3Edit}>$60.00</h3>
-              </div>
-              <p>Add to cart +</p>
-            </div>
-          </div>
-        </div>
+        ))}
       </div>
     </div>
   );

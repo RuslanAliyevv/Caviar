@@ -3,12 +3,11 @@
   background: #181818;
 }
 .BlDetail .caviarPhoto {
-  background-image: url("../../../../public/assets/image/redblackcaviar.png");
-  background-position: center;
-  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  /* background-image: url("../../../../public/assets/image/redblackcaviar.png"); */
   width: 90%;
   height: 100vh;
-  
 }
 .BlDetail h2 {
   color: #c9beb1;

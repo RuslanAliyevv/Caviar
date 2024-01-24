@@ -14,7 +14,7 @@ export default function Shopping() {
     dispatch(remove(id));
   };
   const calculateTotalPrice = (item) => {
-    return item.price * item.count;
+    return item.variants[0].price * item.count;
   };
 
   const handleMinus = (id) => {
@@ -45,25 +45,51 @@ export default function Shopping() {
                   <div
                     className={`d-flex flex-row justify-content-between align-items-center p-1  mt-4 px-3 rounded ${styles.border}`}
                   >
-                    <div className={`mr-1 d-flex align-items-center ${styles.imgBox}`}>
-                      <img
+                    <div
+                      className={`mr-1 d-flex align-items-center ${styles.imgBox}`}
+                    >
+                      {/* <img
                         style={{ position: "relative" }}
                         className={`rounded`}
-                        src={`http://68.183.53.2:3000/images/${item.images[0].filename}`}
+                        src={`http://68.183.53.2:3000/images/${item.images && item.images[0].filename}`}
 
                         alt={item.name}
                         width="100"
                         height="70"
-                      />
+                      /> */}
+                      {item &&
+                      item.variants &&
+                      item.variants[0] &&
+                      item.variants[0].product_attachments &&
+                      item.variants[0].product_attachments.length > 0 ? (
+                        <Image
+                          width={289}
+                          height={0}
+                          src={item.variants[0].product_attachments[0].filePath}
+                          alt={item.variants[0].product_attachments[0].altText}
+                        />
+                      ) : (
+                        <p>No image available</p>
+                      )}
                       <div className={styles.priceDiv}>
-                       <div className={styles.spanContentdiv}>
-                       <span className={`font-weight-bold ${styles.spanEdit}`}>
-                          {item.name} 28gr
-                        </span>
-                       </div>
+                        <div className={styles.spanContentdiv}>
+                          <span
+                            className={`font-weight-bold ${styles.spanEdit}`}
+                          >
+                            {item &&
+                              item.variants &&
+                              item.variants.length > 0 &&
+                              `${item.name} ${item.variants[0].grams.weight} gr`}
+                          </span>
+                        </div>
                         <h5
                           className={styles.priceEdit}
-                        >{`$ ${item.price}.00`}</h5>
+                        > {`$${
+                          item &&
+                          item.variants &&
+                          item.variants[0] &&
+                          item.variants[0].price
+                        }`}</h5>
                       </div>
                     </div>
 

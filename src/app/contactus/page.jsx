@@ -27,7 +27,7 @@ export default function ContactUs() {
     event.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/contact",
+        "http://68.183.53.2:3000/contacts",
         post
       );
       openModal("Message sent successfully!");

@@ -15,6 +15,11 @@
   line-height: normal;
   text-transform: uppercase;
 }
+.ProductDetail .detailImg{
+  object-fit: cover !important;
+  border-radius: 12px;
+  /* width: 85% !important; */
+}
 
 .contentImg {
   width: 100%;
@@ -176,8 +181,8 @@
   color: #c3924e;
 }
 .TopProducts img {
-  width: 100%;
   margin-top: 15px;
+  object-fit: cover;
 }
 .TopProducts h3 {
   color: #fff;
@@ -241,6 +246,8 @@
 .radioContainer input[type="radio"] {
   position: absolute;
   opacity: 0;
+  width: 100%;
+  height: 50px;
   cursor: pointer;
 }
 

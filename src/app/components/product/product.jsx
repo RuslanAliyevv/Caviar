@@ -42,19 +42,29 @@ export default function Product() {
         </div>
         <div className="container">
           <div className={`row ${styles.rowAll}`}>
-            {products.slice(0, 4).map((product) => (
-              <div key={product.id} className="col-lg-3 col-12">
+            {products.slice(0, 4).map((product, index) => (
+              <div key={index} className="col-lg-3 col-12">
                 <div className={styles.box}>
                   <div className={styles.boxUp}>
-                    <Image
-                      onClick={() =>
-                        router.push(`/productdetail/${product.id}`)
-                      }
-                      src={`http://68.183.53.2:3000/images/${product.images[0].filename}`}
-                      alt=""
-                      width={289}
-                      height={0}
-                    />
+                    {product &&
+                    product.variants &&
+                    product.variants[0] &&
+                    product.variants[0].product_attachments &&
+                    product.variants[0].product_attachments.length > 0 ? (
+                      <Image
+                        onClick={() =>
+                          router.push(`/productdetail/${product.guid}`)
+                        }
+                        width={289}
+                        height={0}
+                        src={
+                          product.variants[0].product_attachments[0].filePath
+                        }
+                        alt={product.variants[0].product_attachments[0].altText}
+                      />
+                    ) : (
+                      <p>No image available</p>
+                    )}
 
                     <div className={styles.line}></div>
                   </div>
@@ -62,13 +72,23 @@ export default function Product() {
                     <div className={styles.boxDowncontent}>
                       <div className={styles.prNameEdit}>
                         <h3>
-                          {product.name} {`${product.details[0].gram} gr`}
+                          {/* {product.name} {`${product.details[0].gram} gr`} */}
+                          {product &&
+                            product.variants &&
+                            product.variants.length > 0 &&
+                            `${product.name} ${product.variants[0].grams.weight} gr`}
                         </h3>
                       </div>
                       <div className={styles.priceEdit}>
-                        <h3
-                          className={styles.h3Edit}
-                        >{`$${product.details[0].price}`}</h3>
+                        <h3 className={styles.h3Edit}>
+                          {/* {`$${product.details[0].price}`} */}
+                          {`$${
+                            product &&
+                            product.variants &&
+                            product.variants[0] &&
+                            product.variants[0].price
+                          }`}
+                        </h3>
                       </div>
                     </div>
                     <p onClick={() => handleadd(product)}>Add to cart +</p>
