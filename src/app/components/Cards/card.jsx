@@ -15,17 +15,17 @@ export default function Cards({ products }) {
   return (
     <div className={styles.Cards}>
       <div className="container">
-        {products.map((product, pIndex) => (
-          <div className={`row ${styles.rowAll}`}>
-            {product.variants.map((variant, vIndex) => (
-              <div className="col-lg-3 col-12">
-                <div key={vIndex} className={styles.box}>
+        <div className="row">
+          {products.map((product, pIndex) => (
+            product.variants.map((variant, vIndex) => (
+              <div key={vIndex} className="col-lg-3 col-12">
+                <div className={styles.box}>
                   <div className={styles.boxUp}>
                     {variant.product_attachments &&
                     variant.product_attachments.length > 0 ? (
                       <Image
                         onClick={() =>
-                          router.push(`/productdetail/${product.guid}`)
+                          router.push(`/productdetail/${variant.guid}`)
                         }
                         width={289}
                         height={0}
@@ -46,13 +46,13 @@ export default function Cards({ products }) {
                         <h3 className={styles.h3Edit}>{`$${variant.price}`}</h3>
                       </div>
                     </div>
-                    <p onClick={() => handleadd(product)}>Add to cart +</p>
+                    <p onClick={() => handleadd(variant)}>Add to cart +</p>
                   </div>
                 </div>
               </div>
-            ))}
-          </div>
-        ))}
+            ))
+          ))}
+        </div>
       </div>
     </div>
   );

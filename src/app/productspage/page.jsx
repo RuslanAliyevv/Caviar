@@ -13,12 +13,43 @@ import NativeSelect from "@mui/material/NativeSelect";
 import MultiRangeSlider from "../components/multi/multirangeslider";
 
 export default function Products() {
-  const handleRangeChange = (event) => {
-    setSelectedValue(event.target.value);
-  };
-  const [selectedCategory, setSelectedCategory] = useState("");
   const [products, setproducts] = useState([]);
   const [categoryname, setCategoryname] = useState([]);
+  const [fish, setFish] = useState([]);
+  const [gram, setGram] = useState([]);
+
+  useEffect(() => {
+    const fetchGramOptions = async () => {
+      try {
+        const response = await axios.get(
+          "http://68.183.53.2:3000/product-gram/48ab9d6b-117c-4ba8-b288-8954da356902"
+        );
+        const data = response.data;
+        // const GramWeight = data.map((item) => item.weight);
+        setGram(data);
+      } catch (error) {
+        console.error("Error fetching fish options:", error);
+      }
+    };
+
+    fetchGramOptions();
+  }, []);
+
+  useEffect(() => {
+    const fetchFishOptions = async () => {
+      try {
+        const response = await axios.get(
+          "http://68.183.53.2:3000/sub-category/48ab9d6b-117c-4ba8-b288-8954da356902"
+        );
+        const data = response.data;
+        // const fishNames = data.map((item) => item.name);
+        setFish(data);
+      } catch (error) {
+        console.error("Error fetching fish options:", error);
+      }
+    };
+    fetchFishOptions();
+  }, []);
 
   const getCategoryname = async () => {
     try {
@@ -30,16 +61,20 @@ export default function Products() {
       console.error("Error Message:", error);
     }
   };
+
   useEffect(() => {
     getCategoryname();
   }, []);
 
   const getProducts = async () => {
     try {
-      const response = await axios.get("http://68.183.53.2:3000/products");
+      const response = await axios.get(
+        "http://68.183.53.2:3000/products/main-category/48ab9d6b-117c-4ba8-b288-8954da356902"
+      );
       const data = response.data;
       // console.log(response.data);
       setproducts(data);
+      setFilteredProducts(data);
     } catch (error) {
       console.error("Error Message:", error);
     }
@@ -51,6 +86,7 @@ export default function Products() {
 
   // Category filter
 
+  // const [selectedCategory, setSelectedCategory] = useState("");
   // const handleCategoryChange = (event) => {
   //   const value = event.target.value;
   //   setSelectedCategory(value === "All" ? "" : value);
@@ -66,13 +102,75 @@ export default function Products() {
   // const filteredProducts = filterProducts(products, selectedCategory);
 
   //range filter
-  // const [filteredProducts, setFilteredProducts] = useState([]);
-  // const RangeChange = (min, max) => {
-  //   const filteredProducts = products.filter(
-  //     (product) => product.price >= min && product.price <= max
-  //   );
-  //   setFilteredProducts(filteredProducts);
-  // };
+  const [filteredProducts, setFilteredProducts] = useState([]);
+  const RangeChange = (min, max) => {
+    const filteredProducts = products.filter((product) =>
+      product.variants.some((variant) => {
+        const price = parseFloat(variant.price);
+        return price >= min && price <= max;
+      })
+    );
+
+    const filteredProductsWithVariants = filteredProducts.map((product) => {
+      return {
+        ...product,
+        variants: product.variants.filter((variant) => {
+          const price = parseFloat(variant.price);
+          return price >= min && price <= max;
+        }),
+      };
+    });
+    setFilteredProducts(filteredProductsWithVariants);
+  };
+
+  const [selectedGram, setSelectedGram] = useState(null);
+  const [selectedFish, setSelectedFish] = useState(null);
+  const handleFishChange = (e) => {
+    const selectedGuid = e.target.value;
+    const selectedFish = fish.find((fish) => fish.guid === selectedGuid);
+
+    if (!selectedFish) {
+      setFilteredProducts([]);
+      return;
+    }
+
+    const filteredProducts = products.filter(
+      (product) => product.subCategory.name === selectedFish.name
+    );
+
+    setFilteredProducts(filteredProducts);
+  };
+
+  const handleGramChange = (e) => {
+    const selectedGuid = e.target.value;
+    const selectedGram = gram.find((gram) => gram.guid === selectedGuid);
+
+    if (!selectedGram) {
+      setFilteredProducts([]);
+      return;
+    }
+
+    const filteredProducts = products.filter((product) =>
+      product.variants.some(
+        (variant) =>
+          parseFloat(variant.grams?.weight) === parseFloat(selectedGram.weight)
+      )
+    );
+
+    const filteredProductsWithVariants = filteredProducts.map((product) => {
+      return {
+        ...product,
+        variants: product.variants.filter(
+          (variant) =>
+            parseFloat(variant.grams?.weight) ===
+            parseFloat(selectedGram.weight)
+        ),
+      };
+    });
+
+    setFilteredProducts(filteredProductsWithVariants);
+  };
+
   return (
     <>
       <div className={styles.Products}>
@@ -85,10 +183,8 @@ export default function Products() {
         >
           <Tab
             eventKey="home"
-            title={categoryname.map((item,index) => (
-              <div key={index}>
-                {item.name}
-              </div>
+            title={categoryname.map((item, index) => (
+              <div key={index}>{item.name}</div>
             ))}
           >
             <div className={styles.tableBorder}>
@@ -108,6 +204,7 @@ export default function Products() {
                           style={{ color: "#fff" }}
                           // value={selectedCategory}
                           // onChange={handleCategoryChange}
+                          onChange={handleGramChange}
                           inputProps={{
                             name: "categories",
                             id: "uncontrolled-native",
@@ -117,7 +214,11 @@ export default function Products() {
                             style={{ display: "none" }}
                             value={0}
                           ></option>
-                          <option value="All">disable</option>
+                          {gram.map((item, index) => (
+                            <option key={item.guid} value={item.guid}>
+                              {item.weight}
+                            </option>
+                          ))}
                           {/* {categories.map((category, index) => (
                             <option key={index} value={category}>
                               {category}
@@ -149,9 +250,16 @@ export default function Products() {
                             style={{ display: "none" }}
                             value={0}
                           ></option>
-                          <option value={10}>disable</option>
-                          {/* <option value={20}>Twenty</option> */}
-                          {/* <option value={30}>Thirty</option> */}
+                          {products.map((product, index) => (
+                            <option key={index}>
+                              {product.features && product.features.color
+                                ? product.features.color
+                                : "No Color"}
+                            </option>
+                          ))}
+                          {/* <option value={10}>Gold</option>
+                          <option value={20}>Red</option>
+                          <option value={30}>Black</option> */}
                         </NativeSelect>
                       </FormControl>
                     </div>
@@ -169,6 +277,7 @@ export default function Products() {
                         <NativeSelect
                           style={{ color: "#fff" }}
                           defaultValue={0}
+                          onChange={handleFishChange}
                           inputProps={{
                             name: "categories",
                             id: "uncontrolled-native",
@@ -178,7 +287,11 @@ export default function Products() {
                             style={{ display: "none" }}
                             value={0}
                           ></option>
-                          <option value={10}>disable</option>
+                          {fish.map((item, index) => (
+                            <option key={index} value={item.guid}>
+                              {item.name}
+                            </option>
+                          ))}
                           {/* <option value={20}>Twenty</option> */}
                           {/* <option value={30}>Thirty</option> */}
                         </NativeSelect>
@@ -196,9 +309,7 @@ export default function Products() {
                         <MultiRangeSlider
                           min={0}
                           max={1000}
-                          onChange={({ min, max }) =>
-                            `min = ${min}, max = ${max}`
-                          }
+                          onChange={({ min, max }) => RangeChange(min, max)}
                         />
                       </div>
                     </div>
@@ -206,8 +317,8 @@ export default function Products() {
                 </div>
               </div>
             </div>
-            <Cards products={products} /> /products filteredProductsla evez
-            olunacaq oluncaq/
+            <Cards products={filteredProducts} /> /products filteredProductsla
+            evez olunacaq oluncaq/
           </Tab>
           {/* <Tab eventKey="profile" title="Grocery"></Tab> */}
         </Tabs>

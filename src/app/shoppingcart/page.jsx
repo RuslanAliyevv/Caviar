@@ -14,7 +14,7 @@ export default function Shopping() {
     dispatch(remove(id));
   };
   const calculateTotalPrice = (item) => {
-    return item.variants[0].price * item.count;
+    return item && item.variants && item.variants[0] && item.variants[0].price * item.count;
   };
 
   const handleMinus = (id) => {
