@@ -39,7 +39,7 @@ export default function ProductDetail() {
   useEffect(() => {
     const fetchPost = async () => {
       try {
-        const response = await axios.get("http://68.183.53.2:3000/products");
+        const response = await axios.get("https://bbcaviar.com/api/v1/products");
         const data = response.data;
         setPost(data && data.find((u) => u.guid === guid));
       } catch (error) {

@@ -14,7 +14,7 @@ export default function Blogs() {
 
   const getProducts = async () => {
     try {
-      const response = await axios.get("http://68.183.53.2:3000/blogs");
+      const response = await axios.get("https://bbcaviar.com/api/v1/blogs");
       const data = response.data;
       setBlogs(data);
     } catch (error) {
@@ -49,7 +49,7 @@ export default function Blogs() {
                     <div className={styles.boxContent}>
                       <div
                         className={styles.imgBox}
-                       
+
                       >
                         {blog.blog_attachments &&
                         blog.blog_attachments.length > 0 ? (

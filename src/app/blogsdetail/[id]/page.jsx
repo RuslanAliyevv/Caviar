@@ -16,7 +16,7 @@ export default function BlogsDetail() {
   useEffect(() => {
     const fetchPost = async () => {
       try {
-        const response = await axios.get("http://68.183.53.2:3000/blogs");
+        const response = await axios.get("https://bbcaviar.com/api/v1/blogs");
         const data = response.data;
         setPost(data && data.find((u) => u.guid === guid));
       } catch (error) {

@@ -22,7 +22,7 @@ export default function Products() {
     const fetchGramOptions = async () => {
       try {
         const response = await axios.get(
-          "http://68.183.53.2:3000/product-gram/48ab9d6b-117c-4ba8-b288-8954da356902"
+          "https://bbcaviar.com/api/v1/product-gram/48ab9d6b-117c-4ba8-b288-8954da356902"
         );
         const data = response.data;
         // const GramWeight = data.map((item) => item.weight);
@@ -39,7 +39,7 @@ export default function Products() {
     const fetchFishOptions = async () => {
       try {
         const response = await axios.get(
-          "http://68.183.53.2:3000/sub-category/48ab9d6b-117c-4ba8-b288-8954da356902"
+          "https://bbcaviar.com/api/v1/sub-category/48ab9d6b-117c-4ba8-b288-8954da356902"
         );
         const data = response.data;
         // const fishNames = data.map((item) => item.name);
@@ -53,7 +53,7 @@ export default function Products() {
 
   const getCategoryname = async () => {
     try {
-      const response = await axios.get("http://68.183.53.2:3000/category/");
+      const response = await axios.get("https://bbcaviar.com/api/v1/category/");
       const data = response.data;
       // console.log(response.data);
       setCategoryname(data);
@@ -69,7 +69,7 @@ export default function Products() {
   const getProducts = async () => {
     try {
       const response = await axios.get(
-        "http://68.183.53.2:3000/products/main-category/48ab9d6b-117c-4ba8-b288-8954da356902"
+        "https://bbcaviar.com/api/v1/products/main-category/48ab9d6b-117c-4ba8-b288-8954da356902"
       );
       const data = response.data;
       // console.log(response.data);

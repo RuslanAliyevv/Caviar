@@ -27,7 +27,7 @@ export default function ContactUs() {
     event.preventDefault();
     try {
       const response = await axios.post(
-        "http://68.183.53.2:3000/contacts",
+        "https://bbcaviar.com/api/v1/contacts",
         post
       );
       openModal("Message sent successfully!");
