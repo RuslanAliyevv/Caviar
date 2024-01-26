@@ -23,9 +23,9 @@ export default function ProductDetail() {
 
   const [selectedGram, setSelectedGram] = useState("");
   const sortedVariants =
-    post.variants &&
-    post.variants.slice().sort((a, b) => a.grams.weight - b.grams.weight);
-
+  post && post.variants
+  ? post.variants.slice().sort((a, b) => a.grams.weight - b.grams.weight)
+  : [];
   useEffect(() => {
     if (post && post.variants && post.variants.length > 0 && !selectedGram) {
       setSelectedGram(post.variants[0].grams.weight);
@@ -215,7 +215,6 @@ export default function ProductDetail() {
                           {variant.grams.weight} gr
                         </label>
 
-                        {/* Eğer seçili gram, bu variant'ın gramı ise, bilgileri göster */}
                         {/* {selectedGram === variant.grams.weight && (
                               <div className={styles.selectedGramInfo}>
                                 <p>Price: ${variant.price}</p>

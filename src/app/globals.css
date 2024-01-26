@@ -80,6 +80,14 @@ button {
   right: 0;
   pointer-events: none;
 }
+.css-zrqpq1:before{
+  border-bottom: 2px solid #888 !important;
+
+}
+.css-zrqpq1:after{
+  border-bottom: 2px solid #888 !important;
+}
+
 
 /* .css-aqpgxn-MuiFormLabel-root-MuiInputLabel-root::after {
   font-family: "Roboto","Helvetica","Arial",sans-serif;
@@ -212,13 +220,16 @@ border: none !important;
   margin-top: 30px !important;
   margin-bottom: 50px !important;
   padding-left: 100px !important;
-  padding-right: 100px;
+  padding-right: 100px !important;
 }
 .productTab  .nav-link.active {
   background: transparent !important;
   border-bottom: 2px solid #c3924e !important;
   margin-left: -5px;
   width: 110% !important;
+}
+.nav-tabs{
+  padding-left: 0px !important;
 }
 
 

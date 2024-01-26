@@ -17,92 +17,43 @@ export default function Products() {
   const [categoryname, setCategoryname] = useState([]);
   const [fish, setFish] = useState([]);
   const [gram, setGram] = useState([]);
-
-  useEffect(() => {
-    const fetchGramOptions = async () => {
-      try {
-        const response = await axios.get(
-          "https://bbcaviar.com/api/v1/product-gram/48ab9d6b-117c-4ba8-b288-8954da356902"
-        );
-        const data = response.data;
-        // const GramWeight = data.map((item) => item.weight);
-        setGram(data);
-      } catch (error) {
-        console.error("Error fetching fish options:", error);
-      }
-    };
-
-    fetchGramOptions();
-  }, []);
-
-  useEffect(() => {
-    const fetchFishOptions = async () => {
-      try {
-        const response = await axios.get(
-          "https://bbcaviar.com/api/v1/sub-category/48ab9d6b-117c-4ba8-b288-8954da356902"
-        );
-        const data = response.data;
-        // const fishNames = data.map((item) => item.name);
-        setFish(data);
-      } catch (error) {
-        console.error("Error fetching fish options:", error);
-      }
-    };
-    fetchFishOptions();
-  }, []);
-
-  const getCategoryname = async () => {
-    try {
-      const response = await axios.get("https://bbcaviar.com/api/v1/category/");
-      const data = response.data;
-      // console.log(response.data);
-      setCategoryname(data);
-    } catch (error) {
-      console.error("Error Message:", error);
-    }
-  };
-
-  useEffect(() => {
-    getCategoryname();
-  }, []);
-
-  const getProducts = async () => {
-    try {
-      const response = await axios.get(
-        "https://bbcaviar.com/api/v1/products/main-category/48ab9d6b-117c-4ba8-b288-8954da356902"
-      );
-      const data = response.data;
-      // console.log(response.data);
-      setproducts(data);
-      setFilteredProducts(data);
-    } catch (error) {
-      console.error("Error Message:", error);
-    }
-  };
-  useEffect(() => {
-    getProducts();
-  }, []);
-  const categories = Array.from(new Set(products.map((res) => res.category)));
-
-  // Category filter
-
-  // const [selectedCategory, setSelectedCategory] = useState("");
-  // const handleCategoryChange = (event) => {
-  //   const value = event.target.value;
-  //   setSelectedCategory(value === "All" ? "" : value);
-  // };
-  // const filterProducts = (products, selectedCategory) => {
-  //   if (!selectedCategory) {
-  //     return products;
-  //   }
-
-  //   return products.filter((product) => product.category === selectedCategory);
-  // };
-
-  // const filteredProducts = filterProducts(products, selectedCategory);
-
-  //range filter
+  const [selectedGram, setSelectedGram] = useState(null);
+  const [selectedFish, setSelectedFish] = useState(null);
   const [filteredProducts, setFilteredProducts] = useState([]);
+
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const [gramResponse, fishResponse, categoryResponse, productsResponse] = await Promise.all([
+          axios.get("https://bbcaviar.com/api/v1/product-gram/48ab9d6b-117c-4ba8-b288-8954da356902"),
+          axios.get("https://bbcaviar.com/api/v1/sub-category/48ab9d6b-117c-4ba8-b288-8954da356902"),
+          axios.get("https://bbcaviar.com/api/v1/category/"),
+          axios.get("https://bbcaviar.com/api/v1/products/main-category/48ab9d6b-117c-4ba8-b288-8954da356902")
+        ]);
+
+        setGram(gramResponse.data);
+        setFish(fishResponse.data);
+        setCategoryname(categoryResponse.data);
+        setproducts(productsResponse.data);
+        setFilteredProducts(productsResponse.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+  
+
+ 
+
+
+
+  
+
+
+
   const RangeChange = (min, max) => {
     const filteredProducts = products.filter((product) =>
       product.variants.some((variant) => {
@@ -110,7 +61,6 @@ export default function Products() {
         return price >= min && price <= max;
       })
     );
-
     const filteredProductsWithVariants = filteredProducts.map((product) => {
       return {
         ...product,
@@ -123,52 +73,68 @@ export default function Products() {
     setFilteredProducts(filteredProductsWithVariants);
   };
 
-  const [selectedGram, setSelectedGram] = useState(null);
-  const [selectedFish, setSelectedFish] = useState(null);
+
+  
   const handleFishChange = (e) => {
     const selectedGuid = e.target.value;
-    const selectedFish = fish.find((fish) => fish.guid === selectedGuid);
-
-    if (!selectedFish) {
-      setFilteredProducts([]);
-      return;
+    if (selectedGuid === "all") {
+      setFilteredProducts(products);
+    } else {
+      const selectedFish = fish.find((fish) => fish.guid === selectedGuid);
+      if (!selectedFish) {
+        setFilteredProducts([]);
+        return;
+      }
+      const filteredProducts = products.filter(
+        (product) => product.subCategory.name === selectedFish.name
+      );
+      setFilteredProducts(filteredProducts);
     }
-
-    const filteredProducts = products.filter(
-      (product) => product.subCategory.name === selectedFish.name
-    );
-
-    setFilteredProducts(filteredProducts);
   };
+
 
   const handleGramChange = (e) => {
     const selectedGuid = e.target.value;
-    const selectedGram = gram.find((gram) => gram.guid === selectedGuid);
+    if (selectedGuid === "all") {
+      setFilteredProducts(products);
+    } else {
+      const selectedGram = gram.find((gram) => gram.guid === selectedGuid);
 
-    if (!selectedGram) {
-      setFilteredProducts([]);
-      return;
-    }
+      if (!selectedGram) {
+        setFilteredProducts([]);
+        return;
+      }
 
-    const filteredProducts = products.filter((product) =>
-      product.variants.some(
-        (variant) =>
-          parseFloat(variant.grams?.weight) === parseFloat(selectedGram.weight)
-      )
-    );
-
-    const filteredProductsWithVariants = filteredProducts.map((product) => {
-      return {
-        ...product,
-        variants: product.variants.filter(
+      const filteredProducts = products.filter((product) =>
+        product.variants.some(
           (variant) =>
             parseFloat(variant.grams?.weight) ===
             parseFloat(selectedGram.weight)
-        ),
-      };
-    });
+        )
+      );
+      const filteredProductsWithVariants = filteredProducts.map((product) => {
+        return {
+          ...product,
+          variants: product.variants.filter(
+            (variant) =>
+              parseFloat(variant.grams?.weight) ===
+              parseFloat(selectedGram.weight)
+          ),
+        };
+      });
+      setFilteredProducts(filteredProductsWithVariants);
+    }
+  };
 
-    setFilteredProducts(filteredProductsWithVariants);
+    
+  const handleColorChange = (e) => {
+    const selectedColor = e.target.value;
+    if (selectedColor === "all") {
+      setFilteredProducts(products);
+    } else {
+      const filteredProducts = products.filter((product) => product.features.color === selectedColor);
+      setFilteredProducts(filteredProducts);
+    }
   };
 
   return (
@@ -210,10 +176,7 @@ export default function Products() {
                             id: "uncontrolled-native",
                           }}
                         >
-                          <option
-                            style={{ display: "none" }}
-                            value={0}
-                          ></option>
+                          <option value="all">All</option>
                           {gram.map((item, index) => (
                             <option key={item.guid} value={item.guid}>
                               {item.weight}
@@ -241,22 +204,17 @@ export default function Products() {
                         <NativeSelect
                           style={{ color: "#fff" }}
                           defaultValue={0}
+                          onChange={handleColorChange}
                           inputProps={{
                             name: "categories",
                             id: "uncontrolled-native",
                           }}
                         >
-                          <option
-                            style={{ display: "none" }}
-                            value={0}
-                          ></option>
-                          {products.map((product, index) => (
-                            <option key={index}>
-                              {product.features && product.features.color
-                                ? product.features.color
-                                : "No Color"}
-                            </option>
-                          ))}
+                          <option value="all">All</option>
+                          <option value="gold">gold</option>
+                          <option value="black">black</option>
+                          <option value="red">red</option>
+                         
                           {/* <option value={10}>Gold</option>
                           <option value={20}>Red</option>
                           <option value={30}>Black</option> */}
@@ -283,10 +241,7 @@ export default function Products() {
                             id: "uncontrolled-native",
                           }}
                         >
-                          <option
-                            style={{ display: "none" }}
-                            value={0}
-                          ></option>
+                          <option value="all">All</option>
                           {fish.map((item, index) => (
                             <option key={index} value={item.guid}>
                               {item.name}

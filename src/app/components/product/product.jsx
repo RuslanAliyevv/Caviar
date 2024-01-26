@@ -16,7 +16,9 @@ export default function Product() {
 
   const getProducts = async () => {
     try {
-      const response = await axios.get("https://bbcaviar.com/api/v1/products/main-category/48ab9d6b-117c-4ba8-b288-8954da356902");
+      const response = await axios.get(
+        "https://bbcaviar.com/api/v1/products/main-category/48ab9d6b-117c-4ba8-b288-8954da356902"
+      );
       const data = response.data;
       setproducts(data);
     } catch (error) {
@@ -96,8 +98,8 @@ export default function Product() {
                 </div>
               </div>
             ))}
-
-            {/* <div className="col-lg-3 col-12">
+          </div>
+          {/* <div className="col-lg-3 col-12">
               <div className={styles.box}>
                 <div className={styles.boxUp}>
                   <img src="/assets/image/product3.png" alt="" />
@@ -108,12 +110,12 @@ export default function Product() {
                   <h3 className={styles.h3Edit}>$60.00</h3>
                 </div>
                 <p>Add to cart +</p>
-              </div>
-            </div>
-            <div className="col-lg-3 col-12">
-              <div className={styles.box}>
+                </div>
+                </div>
+                <div className="col-lg-3 col-12">
+                <div className={styles.box}>
                 <div className={styles.boxUp}>
-                  <img src="/assets/image/product4.png" alt="" />
+                <img src="/assets/image/product4.png" alt="" />
                   <div className={styles.line}></div>
                 </div>
                 <div className={styles.boxDown}>
@@ -123,7 +125,6 @@ export default function Product() {
                 <p>Add to cart +</p>
               </div>
             </div> */}
-          </div>
         </div>
         <div className={styles.forButton}>
           <Link href="./productspage">

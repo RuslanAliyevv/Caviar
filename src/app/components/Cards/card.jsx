@@ -25,7 +25,7 @@ export default function Cards({ products }) {
                     variant.product_attachments.length > 0 ? (
                       <Image
                         onClick={() =>
-                          router.push(`/productdetail/${variant.guid}`)
+                          router.push(`/productdetail/${product.guid}`)
                         }
                         width={289}
                         height={0}
