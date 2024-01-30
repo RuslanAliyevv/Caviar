@@ -76,7 +76,7 @@
   z-index: 222222;
   width: 40%;
  }  
- .hoverEdit{
+ /* .hoverEdit{
   position: relative;
  }
  .hoverEdit::before {
@@ -104,4 +104,4 @@ transition-duration: 1s !important;
   height: 100%;
   opacity: 0;
   width: 100%;
-}
+} */

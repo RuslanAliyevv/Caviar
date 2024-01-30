@@ -81,7 +81,7 @@
   }
   .Cards .line {
     position: absolute;
-    z-index: 9999;
+    z-index: 0;
     width: 1px;
     height: 140px;
     margin-left: 20px;
@@ -100,10 +100,11 @@
     transition: transform 0.3s ease;
     border-radius: 10px;
     margin-top: 15px;
+    cursor: pointer;
   }
-  .box:hover img {
+  /* .box:hover img {
     filter: grayscale(100%);
-  }
+  } */
   
   .Cards h3 {
     color: #fff;
@@ -114,7 +115,10 @@
     font-weight: 700 !important;
     line-height: normal;
   }
-  
+  .Cards .h3Edit{
+    margin-left: 0px !important;
+    width: 120px;
+  }
   .Cards .boxDowncontent {
     width: 100%;
     display: flex;
@@ -127,7 +131,7 @@
     height: 100px;
   }
   .Cards .prNameEdit {
-    width: 100%;
+    width: 62%;
     height: 40px;
   }
   .priceEdit {

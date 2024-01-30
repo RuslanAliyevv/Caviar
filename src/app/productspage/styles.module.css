@@ -2,6 +2,9 @@
   padding: 150px 0 0px 0px;
   background: #181818;
 }
+.tableBorder .container{
+  padding-left: 100px !important;
+}
 .Products h2 {
   color: #c9beb1;
   text-align: center;

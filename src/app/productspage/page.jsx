@@ -17,11 +17,12 @@ export default function Products() {
   const [categoryname, setCategoryname] = useState([]);
   const [fish, setFish] = useState([]);
   const [gram, setGram] = useState([]);
-  const [selectedGram, setSelectedGram] = useState(null);
-  const [selectedFish, setSelectedFish] = useState(null);
+  // const [selectedGram, setSelectedGram] = useState(null);
+  const [selectedFish, setSelectedFish] = useState("all");
+  const [selectedColor, setSelectedColor] = useState("all");
   const [filteredProducts, setFilteredProducts] = useState([]);
 
-
+  
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -55,87 +56,99 @@ export default function Products() {
 
 
   const RangeChange = (min, max) => {
-    const filteredProducts = products.filter((product) =>
-      product.variants.some((variant) => {
-        const price = parseFloat(variant.price);
-        return price >= min && price <= max;
-      })
-    );
-    const filteredProductsWithVariants = filteredProducts.map((product) => {
-      return {
-        ...product,
-        variants: product.variants.filter((variant) => {
-          const price = parseFloat(variant.price);
-          return price >= min && price <= max;
-        }),
-      };
+    const filteredProducts = products.filter((product) => {
+      const minPrice = product.variants.reduce((minPrice, currentVariant) => {
+        const price = parseFloat(currentVariant.price);
+        return price < parseFloat(minPrice) ? price : minPrice;
+      }, Infinity);
+  
+      if (minPrice > max || minPrice < min) {
+        return false;
+      }
+      const fishMatch = selectedFish === "all" || product.subCategory.name === selectedFish;
+      const colorMatch = selectedColor === "all" || product.features.color === selectedColor;
+      return fishMatch && colorMatch;
     });
-    setFilteredProducts(filteredProductsWithVariants);
+    setFilteredProducts(filteredProducts);
   };
+  
+  
+  
+    // const filteredProductsWithVariants = filteredProducts.map((product) => {
+    //   return {
+    //     ...product,
+    //     variants: product.variants.filter((variant) => {
+    //       const price = parseFloat(variant.price);
+    //       return price >= min && price <= max;
+    //     }),
+    //   };
+    // });
+    // setFilteredProducts(filteredProductsWithVariants);
 
 
   
+  useEffect(() => {
+    const filterProducts = () => {
+      let filtered = [...products];
+      if (selectedFish !== "all") {
+        filtered = filtered.filter(
+          (product) => product.subCategory.name === selectedFish
+        );
+      }
+      if (selectedColor !== "all") {
+        filtered = filtered.filter(
+          (product) => product.features.color === selectedColor
+        );
+      }
+      setFilteredProducts(filtered);
+    };
+
+    filterProducts();
+  }, [selectedFish, selectedColor, products]);
+
   const handleFishChange = (e) => {
-    const selectedGuid = e.target.value;
-    if (selectedGuid === "all") {
-      setFilteredProducts(products);
-    } else {
-      const selectedFish = fish.find((fish) => fish.guid === selectedGuid);
-      if (!selectedFish) {
-        setFilteredProducts([]);
-        return;
-      }
-      const filteredProducts = products.filter(
-        (product) => product.subCategory.name === selectedFish.name
-      );
-      setFilteredProducts(filteredProducts);
-    }
+    setSelectedFish(e.target.value);
   };
 
-
-  const handleGramChange = (e) => {
-    const selectedGuid = e.target.value;
-    if (selectedGuid === "all") {
-      setFilteredProducts(products);
-    } else {
-      const selectedGram = gram.find((gram) => gram.guid === selectedGuid);
-
-      if (!selectedGram) {
-        setFilteredProducts([]);
-        return;
-      }
-
-      const filteredProducts = products.filter((product) =>
-        product.variants.some(
-          (variant) =>
-            parseFloat(variant.grams?.weight) ===
-            parseFloat(selectedGram.weight)
-        )
-      );
-      const filteredProductsWithVariants = filteredProducts.map((product) => {
-        return {
-          ...product,
-          variants: product.variants.filter(
-            (variant) =>
-              parseFloat(variant.grams?.weight) ===
-              parseFloat(selectedGram.weight)
-          ),
-        };
-      });
-      setFilteredProducts(filteredProductsWithVariants);
-    }
+  const handleColorChange = (e) => {
+    setSelectedColor(e.target.value);
   };
+
+  // const handleGramChange = (e) => {
+  //   const selectedGuid = e.target.value;
+  //   if (selectedGuid === "all") {
+  //     setFilteredProducts(products);
+  //   } else {
+  //     const selectedGram = gram.find((gram) => gram.guid === selectedGuid);
+
+  //     if (!selectedGram) {
+  //       setFilteredProducts([]);
+  //       return;
+  //     }
+
+  //     const filteredProducts = products.filter((product) =>
+  //       product.variants.some(
+  //         (variant) =>
+  //           parseFloat(variant.grams?.weight) ===
+  //           parseFloat(selectedGram.weight)
+  //       )
+  //     );
+  //     const filteredProductsWithVariants = filteredProducts.map((product) => {
+  //       return {
+  //         ...product,
+  //         variants: product.variants.filter(
+  //           (variant) =>
+  //             parseFloat(variant.grams?.weight) ===
+  //             parseFloat(selectedGram.weight)
+  //         ),
+  //       };
+  //     });
+  //     setFilteredProducts(filteredProductsWithVariants);
+  //   }
+  // };
 
     
-  const handleColorChange = (e) => {
-    const selectedColor = e.target.value;
-    if (selectedColor === "all") {
-      setFilteredProducts(products);
-    } else {
-      const filteredProducts = products.filter((product) => product.features.color === selectedColor);
-      setFilteredProducts(filteredProducts);
-    }
-  };
+ 
 
   return (
     <>
@@ -154,44 +167,10 @@ export default function Products() {
             ))}
           >
             <div className={styles.tableBorder}>
-              <div className="container">
+              <div className={`container ${styles.container}`}>
                 <div className="row">
-                  <div className="col-lg-3">
-                    <div className="box">
-                      <FormControl fullWidth className={styles.formControl}>
-                        <InputLabel
-                          variant="standard"
-                          htmlFor="uncontrolled-native"
-                          className={styles.inputLabel}
-                        >
-                          Size
-                        </InputLabel>
-                        <NativeSelect
-                          style={{ color: "#fff" }}
-                          // value={selectedCategory}
-                          // onChange={handleCategoryChange}
-                          onChange={handleGramChange}
-                          inputProps={{
-                            name: "categories",
-                            id: "uncontrolled-native",
-                          }}
-                        >
-                          <option value="all">All</option>
-                          {gram.map((item, index) => (
-                            <option key={item.guid} value={item.guid}>
-                              {item.weight}
-                            </option>
-                          ))}
-                          {/* {categories.map((category, index) => (
-                            <option key={index} value={category}>
-                              {category}
-                            </option>
-                          ))} */}
-                        </NativeSelect>
-                      </FormControl>
-                    </div>
-                  </div>
-                  <div className="col-lg-3">
+                 
+                  <div className="col-lg-4">
                     <div className="box">
                       <FormControl className={styles.formControl} fullWidth>
                         <InputLabel
@@ -214,15 +193,13 @@ export default function Products() {
                           <option value="gold">gold</option>
                           <option value="black">black</option>
                           <option value="red">red</option>
-                         
-                          {/* <option value={10}>Gold</option>
-                          <option value={20}>Red</option>
-                          <option value={30}>Black</option> */}
                         </NativeSelect>
                       </FormControl>
                     </div>
                   </div>
-                  <div className="col-lg-3">
+                         
+                          
+                  <div className="col-lg-4">
                     <div className="box">
                       <FormControl className={styles.formControl} fullWidth>
                         <InputLabel
@@ -243,17 +220,16 @@ export default function Products() {
                         >
                           <option value="all">All</option>
                           {fish.map((item, index) => (
-                            <option key={index} value={item.guid}>
+                            <option key={index} value={item.name}>
                               {item.name}
                             </option>
                           ))}
-                          {/* <option value={20}>Twenty</option> */}
-                          {/* <option value={30}>Thirty</option> */}
                         </NativeSelect>
                       </FormControl>
                     </div>
                   </div>
-                  <div className="col-lg-3">
+                      
+                  <div className="col-lg-4">
                     <div className="box">
                       <div className={styles.priceBox}>
                         <label className={styles.priceLabel} htmlFor="">
@@ -272,8 +248,8 @@ export default function Products() {
                 </div>
               </div>
             </div>
-            <Cards products={filteredProducts} /> /products filteredProductsla
-            evez olunacaq oluncaq/
+            <Cards products={filteredProducts} /> 
+            
           </Tab>
           {/* <Tab eventKey="profile" title="Grocery"></Tab> */}
         </Tabs>

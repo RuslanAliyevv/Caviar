@@ -248,6 +248,12 @@ border: none !important;
     color: gold !important;
     display: none;
 }
+.css-e1mnrr{
+  display: none !important;
+}
+.css-zbwuqm{
+  display: none !important;
+}
 
 
 
@@ -418,6 +424,10 @@ border: none !important;
 
 
 
+input:-webkit-autofill,
+input:-webkit-autofill:focus {
+  transition: background-color 0s 600000s, color 0s 600000s !important;
+}
 
 
 

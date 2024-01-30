@@ -47,7 +47,7 @@ export default function ContactUs() {
               <Image
                 width={720}
                 height={480}
-                src="/assets/image/contactus.png"
+                src="/assets/image/contactstock.png"
                 alt=""
               />
             </div>

@@ -37,7 +37,7 @@ export default function Shopping() {
       <div className={styles.tableBorder}>
         {cartItems.length > 0 ? (
           cartItems.map((item) => (
-            <div key={item.id} className="container mt-4 mb-4">
+            <div key={item.guid} className="container mt-4 mb-4">
               <div
                 className={`d-flex justify-content-center row ${styles.box}`}
               >

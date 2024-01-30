@@ -8,8 +8,8 @@ import Carousel from "react-material-ui-carousel";
 
 const exampleItems = [
   {
-    name: "First Item",
-    description: "Description for first item",
+    name: "Jane Smith",
+    description: " I must say, BB Caviar has completely exceeded my expectations. The caviar is simply exceptional in taste and quality. Knowing that it's sourced sustainably makes the experience even more satisfying.",
   },
   {
     name: "Second Item",
@@ -44,10 +44,7 @@ export default function Aboutcn() {
             <div key={i} className={styles.content}>
               <div className={styles.pEdit}>
                 <p>
-                  I must say, BB Caviar has completely exceeded my expectations.
-                  The caviar is simply exceptional in taste and quality. Knowing
-                  that it's sourced sustainably makes the experience even more
-                  satisfying.
+                 {item.description}
                 </p>
               </div>
               <div className={styles.spanEdit}>
@@ -93,7 +90,7 @@ export default function Aboutcn() {
                 </span>
               </div>
               <div className={styles.Smith}>
-                <h5>Jane Smith</h5>
+                <h5>{item.name}</h5>
               </div>
             </div>
           ))}

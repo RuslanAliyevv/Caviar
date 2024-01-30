@@ -23,12 +23,16 @@ export default function ProductDetail() {
 
   const [selectedGram, setSelectedGram] = useState("");
   const sortedVariants =
-  post && post.variants
-  ? post.variants.slice().sort((a, b) => a.grams.weight - b.grams.weight)
-  : [];
+    post && post.variants
+      ? post.variants.slice().sort((a, b) => a.grams.weight - b.grams.weight)
+      : [];
   useEffect(() => {
     if (post && post.variants && post.variants.length > 0 && !selectedGram) {
-      setSelectedGram(post.variants[0].grams.weight);
+      const minGramVariant = post.variants.reduce((min, variant) => {
+        const weight = parseFloat(variant.grams.weight);
+        return weight < parseFloat(min.grams.weight) ? variant : min;
+      });
+      setSelectedGram(minGramVariant.grams.weight);
     }
   }, [post, selectedGram]);
 
@@ -39,9 +43,21 @@ export default function ProductDetail() {
   useEffect(() => {
     const fetchPost = async () => {
       try {
-        const response = await axios.get("https://bbcaviar.com/api/v1/products");
+        const response = await axios.get(
+          "https://bbcaviar.com/api/v1/products"
+        );
         const data = response.data;
-        setPost(data && data.find((u) => u.guid === guid));
+        let foundProduct;
+        for (let i = 0; i < data.length; i++) {
+          const product = data[i];
+          const variant = product.variants.find(
+            (variant) => variant.guid === guid
+          );
+          if (variant) {
+            foundProduct = { ...product, variants: product.variants };
+          }
+        }
+        setPost(foundProduct);
       } catch (error) {
         console.error("Error fetching product:", error);
       }
@@ -214,31 +230,10 @@ export default function ProductDetail() {
                         <label htmlFor={`radioInput${variant.grams.weight}`}>
                           {variant.grams.weight} gr
                         </label>
-
-                        {/* {selectedGram === variant.grams.weight && (
-                              <div className={styles.selectedGramInfo}>
-                                <p>Price: ${variant.price}</p>
-                                {variant.product_attachments &&
-                                  variant.product_attachments.length > 0 && (
-                                    <div className={styles.selectedGramImage}>
-                                      <Image
-                                        width={100}
-                                        height={100}
-                                        src={
-                                          variant.product_attachments[0]
-                                            .filePath
-                                        }
-                                        alt={
-                                          variant.product_attachments[0].altText
-                                        }
-                                      />
-                                    </div>
-                                  )}
-                              </div>
-                            )} */}
                       </div>
                     ))}
                 </div>
+
                 <div className="row align-items-baseline">
                   <div className="col-lg-6">
                     <div className={styles.qty}>
@@ -300,23 +295,8 @@ export default function ProductDetail() {
                         )}
                     </div>
                   ))}
-                {/* <h4>Taste the Elegance:</h4>
-                <p>
-                  Texture: Silky and smooth, offering a melt-in-the-mouth
-                  experience. Flavor: A perfect balance of rich buttery notes
-                  and a subtle nuttiness, creating a memorable taste sensation.
-                </p>
-                <h4>Key Features:</h4>
-                <p>
-                  Species: Genuine American Sturgeon (Acipenser species) <br />{" "}
-                  Origin: Ethically sourced from North American waters <br />{" "}
-                  Available Sizes: Choose from 28g, 50g, 150g, and 250g <br />{" "}
-                  Freshness Guaranteed: Best enjoyed within 4 weeks, stored
-                  under refrigeration <br />
-                  Packaging: Comes in specially sealed containers to ensure peak
-                  freshness
-                </p> */}
               </Tab>
+               
               <Tab eventKey="home" title="Additional Information">
                 {post &&
                   post.productAdditionalInformation &&
@@ -349,33 +329,13 @@ export default function ProductDetail() {
                       </div>
                     )
                   )}
-                {/* <p>
-                  Best enjoyed chilled, complemented by simple accompaniments
-                  like blinis, mild crème fraîche, and pairs wonderfully with
-                  champagne or select white wines. An exquisite garnish for
-                  canapés and a luxurious boost to dishes like pasta, eggs, or
-                  seafood.
-                </p>
-                <h4>Storage Tips:</h4>
-                <p>
-                  Keep refrigerated between 32°F and 36°F, preferably in the
-                  coldest section of your fridge. Consume within three days
-                  after opening for the best flavor.
-                </p>
-                <h4>Diet Compatibility:</h4>
-                <p>
-                  Contains fish (sturgeon) <br />
-                  Gluten-free and dairy-free friendly <br />
-                  Discover the distinct taste and quality of American Sturgeon
-                  Caviar, a culinary gem that adds a touch of luxury to every
-                  dish. 
-                </p> */}
               </Tab>
               <Tab eventKey="longer-tab" title="Review"></Tab>
             </Tabs>
           </div>
         </div>
       </section>
+              
 
       <section>
         <div className={styles.infoLine}></div>

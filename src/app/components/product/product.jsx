@@ -1,7 +1,8 @@
 "use client";
 import { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { add } from "../../Redux/CartSlice";
+// import { useDispatch } from "react-redux";
+// import { add } from "../../Redux/CartSlice";
+import AddtoCard from "../AddtoCardModal/[id]/addtocard";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import React from "react";
@@ -12,7 +13,27 @@ import Link from "next/link";
 export default function Product() {
   const router = useRouter();
   const [products, setproducts] = useState([]);
-  const dispatch = useDispatch();
+  const [openMock, setOpenMock] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState(null);
+ 
+
+  const handleAddToCartClick = (product) => {
+    setSelectedProduct(product.guid);
+    setOpenMock(true);
+  };
+
+  const getMinPrice = (variants) => {
+    let minPrice = Number.MAX_SAFE_INTEGER;
+  
+    variants.forEach((variant) => {
+      const price = parseFloat(variant.price);
+      if (!isNaN(price) && price < minPrice) {
+        minPrice = price;
+      }
+    });
+  
+    return minPrice;
+  };
 
   const getProducts = async () => {
     try {
@@ -20,6 +41,7 @@ export default function Product() {
         "https://bbcaviar.com/api/v1/products/main-category/48ab9d6b-117c-4ba8-b288-8954da356902"
       );
       const data = response.data;
+    
       setproducts(data);
     } catch (error) {
       console.error("Error Message:", error);
@@ -29,9 +51,9 @@ export default function Product() {
     getProducts();
   }, []);
 
-  const handleadd = (product) => {
-    dispatch(add(product));
-  };
+  // const handleadd = (product) => {
+  //   dispatch(add(product.variants[0]));
+  // };
 
   return (
     <>
@@ -55,7 +77,9 @@ export default function Product() {
                     product.variants[0].product_attachments.length > 0 ? (
                       <Image
                         onClick={() =>
-                          router.push(`/productdetail/${product.guid}`)
+                          router.push(
+                            `/productdetail/${product.variants[0].guid}`
+                          )
                         }
                         width={289}
                         height={0}
@@ -74,57 +98,32 @@ export default function Product() {
                     <div className={styles.boxDowncontent}>
                       <div className={styles.prNameEdit}>
                         <h3>
-                          {/* {product.name} {`${product.details[0].gram} gr`} */}
+                        
                           {product &&
                             product.variants &&
                             product.variants.length > 0 &&
-                            `${product.name} ${product.variants[0].grams.weight} gr`}
+                            `${product.name}`}
                         </h3>
                       </div>
                       <div className={styles.priceEdit}>
                         <h3 className={styles.h3Edit}>
-                          {/* {`$${product.details[0].price}`} */}
-                          {`$${
-                            product &&
-                            product.variants &&
-                            product.variants[0] &&
-                            product.variants[0].price
-                          }`}
+                          {`From $${getMinPrice(product.variants)}`}
                         </h3>
                       </div>
                     </div>
-                    <p onClick={() => handleadd(product)}>Add to cart +</p>
+                    <p
+                    className={styles.pEdit}
+                      onClick={() => handleAddToCartClick(product)}
+                    >
+                      Add to cart +
+                    </p>
+                    {openMock &&  <AddtoCard productId={selectedProduct} closeMock={setOpenMock} />}
                   </div>
                 </div>
               </div>
             ))}
           </div>
-          {/* <div className="col-lg-3 col-12">
-              <div className={styles.box}>
-                <div className={styles.boxUp}>
-                  <img src="/assets/image/product3.png" alt="" />
-                  <div className={styles.line}></div>
-                </div>
-                <div className={styles.boxDown}>
-                  <h3>Black Caviar 28 gr</h3>
-                  <h3 className={styles.h3Edit}>$60.00</h3>
-                </div>
-                <p>Add to cart +</p>
-                </div>
-                </div>
-                <div className="col-lg-3 col-12">
-                <div className={styles.box}>
-                <div className={styles.boxUp}>
-                <img src="/assets/image/product4.png" alt="" />
-                  <div className={styles.line}></div>
-                </div>
-                <div className={styles.boxDown}>
-                  <h3>Caviar Set</h3>
-                  <h3 className={styles.h3Edit}>$200.00</h3>
-                </div>
-                <p>Add to cart +</p>
-              </div>
-            </div> */}
+         
         </div>
         <div className={styles.forButton}>
           <Link href="./productspage">
