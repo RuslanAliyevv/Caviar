@@ -48,6 +48,7 @@ export default function AddtoCard({productId, closeMock }) {
 
   const handleGramChange = (event) => {
     setSelectedGram(event.target.value);
+    
   };
 
   const handleMinus = () => {
@@ -63,10 +64,9 @@ export default function AddtoCard({productId, closeMock }) {
   const handleAddToCart = () => {
     if (product) {
       dispatch(add(product));
-      // Modalı kapat
-      closeMock(false);
     }
   };
+   
 
   return (
     <div className={styles.Alert}>

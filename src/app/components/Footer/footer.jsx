@@ -76,7 +76,7 @@ export default function Footer() {
                         <span className={styles.firstSpan}>Categories</span>
                     </div>
                     <div className={styles.linkEdit}>
-                      <Link href="/aboutus">
+                      <Link href="/productspage">
                         <span>Caviar</span>
                       </Link>
                     </div>
@@ -100,7 +100,7 @@ export default function Footer() {
                       </Link>
                     </div>
                     <div className={styles.linkEdit}>
-                      <Link href="/blogspage">
+                      <Link href="/aboutus">
                         <span>Cancellations</span>
                       </Link>
                     </div>

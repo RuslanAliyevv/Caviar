@@ -17,21 +17,26 @@ export default function Products() {
   const [categoryname, setCategoryname] = useState([]);
   const [fish, setFish] = useState([]);
   const [gram, setGram] = useState([]);
-  // const [selectedGram, setSelectedGram] = useState(null);
   const [selectedFish, setSelectedFish] = useState("all");
   const [selectedColor, setSelectedColor] = useState("all");
   const [filteredProducts, setFilteredProducts] = useState([]);
 
-  
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [gramResponse, fishResponse, categoryResponse, productsResponse] = await Promise.all([
-          axios.get("https://bbcaviar.com/api/v1/product-gram/48ab9d6b-117c-4ba8-b288-8954da356902"),
-          axios.get("https://bbcaviar.com/api/v1/sub-category/48ab9d6b-117c-4ba8-b288-8954da356902"),
-          axios.get("https://bbcaviar.com/api/v1/category/"),
-          axios.get("https://bbcaviar.com/api/v1/products/main-category/48ab9d6b-117c-4ba8-b288-8954da356902")
-        ]);
+        const [gramResponse, fishResponse, categoryResponse, productsResponse] =
+          await Promise.all([
+            axios.get(
+              "https://bbcaviar.com/api/v1/product-gram/48ab9d6b-117c-4ba8-b288-8954da356902"
+            ),
+            axios.get(
+              "https://bbcaviar.com/api/v1/sub-category/48ab9d6b-117c-4ba8-b288-8954da356902"
+            ),
+            axios.get("https://bbcaviar.com/api/v1/category/"),
+            axios.get(
+              "https://bbcaviar.com/api/v1/products/main-category/48ab9d6b-117c-4ba8-b288-8954da356902"
+            ),
+          ]);
 
         setGram(gramResponse.data);
         setFish(fishResponse.data);
@@ -45,15 +50,6 @@ export default function Products() {
 
     fetchData();
   }, []);
-  
-
- 
-
-
-
-  
-
-
 
   const RangeChange = (min, max) => {
     const filteredProducts = products.filter((product) => {
@@ -61,35 +57,24 @@ export default function Products() {
         const price = parseFloat(currentVariant.price);
         return price < parseFloat(minPrice) ? price : minPrice;
       }, Infinity);
-  
+
       if (minPrice > max || minPrice < min) {
         return false;
       }
-      const fishMatch = selectedFish === "all" || product.subCategory.name === selectedFish;
-      const colorMatch = selectedColor === "all" || product.features.color === selectedColor;
+      const fishMatch =
+        selectedFish === "all" || product.subCategory.name === selectedFish;
+      const colorMatch =
+        selectedColor === "all" || product.features.color === selectedColor;
       return fishMatch && colorMatch;
     });
     setFilteredProducts(filteredProducts);
   };
-  
-  
-  
-    // const filteredProductsWithVariants = filteredProducts.map((product) => {
-    //   return {
-    //     ...product,
-    //     variants: product.variants.filter((variant) => {
-    //       const price = parseFloat(variant.price);
-    //       return price >= min && price <= max;
-    //     }),
-    //   };
-    // });
-    // setFilteredProducts(filteredProductsWithVariants);
 
-
-  
   useEffect(() => {
     const filterProducts = () => {
       let filtered = [...products];
+      
+
       if (selectedFish !== "all") {
         filtered = filtered.filter(
           (product) => product.subCategory.name === selectedFish
@@ -108,47 +93,12 @@ export default function Products() {
 
   const handleFishChange = (e) => {
     setSelectedFish(e.target.value);
+    
   };
 
   const handleColorChange = (e) => {
     setSelectedColor(e.target.value);
   };
-
-  // const handleGramChange = (e) => {
-  //   const selectedGuid = e.target.value;
-  //   if (selectedGuid === "all") {
-  //     setFilteredProducts(products);
-  //   } else {
-  //     const selectedGram = gram.find((gram) => gram.guid === selectedGuid);
-
-  //     if (!selectedGram) {
-  //       setFilteredProducts([]);
-  //       return;
-  //     }
-
-  //     const filteredProducts = products.filter((product) =>
-  //       product.variants.some(
-  //         (variant) =>
-  //           parseFloat(variant.grams?.weight) ===
-  //           parseFloat(selectedGram.weight)
-  //       )
-  //     );
-  //     const filteredProductsWithVariants = filteredProducts.map((product) => {
-  //       return {
-  //         ...product,
-  //         variants: product.variants.filter(
-  //           (variant) =>
-  //             parseFloat(variant.grams?.weight) ===
-  //             parseFloat(selectedGram.weight)
-  //         ),
-  //       };
-  //     });
-  //     setFilteredProducts(filteredProductsWithVariants);
-  //   }
-  // };
-
-    
- 
 
   return (
     <>
@@ -169,7 +119,6 @@ export default function Products() {
             <div className={styles.tableBorder}>
               <div className={`container ${styles.container}`}>
                 <div className="row">
-                 
                   <div className="col-lg-4">
                     <div className="box">
                       <FormControl className={styles.formControl} fullWidth>
@@ -197,8 +146,7 @@ export default function Products() {
                       </FormControl>
                     </div>
                   </div>
-                         
-                          
+
                   <div className="col-lg-4">
                     <div className="box">
                       <FormControl className={styles.formControl} fullWidth>
@@ -228,7 +176,7 @@ export default function Products() {
                       </FormControl>
                     </div>
                   </div>
-                      
+
                   <div className="col-lg-4">
                     <div className="box">
                       <div className={styles.priceBox}>
@@ -248,8 +196,7 @@ export default function Products() {
                 </div>
               </div>
             </div>
-            <Cards products={filteredProducts} /> 
-            
+            <Cards products={filteredProducts} />
           </Tab>
           {/* <Tab eventKey="profile" title="Grocery"></Tab> */}
         </Tabs>
@@ -263,7 +210,7 @@ export default function Products() {
               we're here to help and always eager to connect!
             </p>
           </div>
-          <button className={styles.buttonHover}>Call us</button>
+          <button className={styles.buttonHover}>Contact now</button>
         </div>
       </div>
     </>
