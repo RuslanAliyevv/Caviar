@@ -22,7 +22,7 @@ export default function Products() {
   const [selectedColor, setSelectedColor] = useState("all");
   const [filteredProducts, setFilteredProducts] = useState([]);
 
-  
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -45,13 +45,13 @@ export default function Products() {
 
     fetchData();
   }, []);
-  
-
- 
 
 
 
-  
+
+
+
+
 
 
 
@@ -61,7 +61,7 @@ export default function Products() {
         const price = parseFloat(currentVariant.price);
         return price < parseFloat(minPrice) ? price : minPrice;
       }, Infinity);
-  
+
       if (minPrice > max || minPrice < min) {
         return false;
       }
@@ -71,9 +71,9 @@ export default function Products() {
     });
     setFilteredProducts(filteredProducts);
   };
-  
-  
-  
+
+
+
     // const filteredProductsWithVariants = filteredProducts.map((product) => {
     //   return {
     //     ...product,
@@ -86,7 +86,7 @@ export default function Products() {
     // setFilteredProducts(filteredProductsWithVariants);
 
 
-  
+
   useEffect(() => {
     const filterProducts = () => {
       let filtered = [...products];
@@ -147,8 +147,8 @@ export default function Products() {
   //   }
   // };
 
-    
- 
+
+
 
   return (
     <>
@@ -169,7 +169,7 @@ export default function Products() {
             <div className={styles.tableBorder}>
               <div className={`container ${styles.container}`}>
                 <div className="row">
-                 
+
                   <div className="col-lg-4">
                     <div className="box">
                       <FormControl className={styles.formControl} fullWidth>
@@ -197,8 +197,8 @@ export default function Products() {
                       </FormControl>
                     </div>
                   </div>
-                         
-                          
+
+
                   <div className="col-lg-4">
                     <div className="box">
                       <FormControl className={styles.formControl} fullWidth>
@@ -228,7 +228,7 @@ export default function Products() {
                       </FormControl>
                     </div>
                   </div>
-                      
+
                   <div className="col-lg-4">
                     <div className="box">
                       <div className={styles.priceBox}>
@@ -239,7 +239,7 @@ export default function Products() {
                       <div className={styles.rangeBox}>
                         <MultiRangeSlider
                           min={0}
-                          max={1000}
+                          max={5000}
                           onChange={({ min, max }) => RangeChange(min, max)}
                         />
                       </div>
@@ -248,8 +248,8 @@ export default function Products() {
                 </div>
               </div>
             </div>
-            <Cards products={filteredProducts} /> 
-            
+            <Cards products={filteredProducts} />
+
           </Tab>
           {/* <Tab eventKey="profile" title="Grocery"></Tab> */}
         </Tabs>

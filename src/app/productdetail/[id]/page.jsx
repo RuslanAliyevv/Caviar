@@ -189,9 +189,9 @@ export default function ProductDetail() {
                           $
                         </h6>
                       )}
-                    <span className={styles.h5CheckOut}>Shipping</span>
+                    <span className={styles.h5CheckOut}>Free Shipping</span>
                     <span className={styles.h5CheckOut}>
-                      calculated at checkout.
+                     on all orders over $250
                     </span>
                     <div className={styles.line}></div>
                     <p className={styles.pStock}>
@@ -228,7 +228,9 @@ export default function ProductDetail() {
                           onChange={handleGramChange}
                         />
                         <label htmlFor={`radioInput${variant.grams.weight}`}>
-                          {parseInt(variant.grams.weight)} gr
+                          {parseInt(variant.grams.weight) >= 1000
+                              ? `${(parseInt(variant.grams.weight) / 1000)} kg`
+                              : `${parseInt(variant.grams.weight)} gr`}
                         </label>
                       </div>
                     ))}
