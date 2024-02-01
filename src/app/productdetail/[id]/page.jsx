@@ -228,7 +228,7 @@ export default function ProductDetail() {
                           onChange={handleGramChange}
                         />
                         <label htmlFor={`radioInput${variant.grams.weight}`}>
-                          {variant.grams.weight} gr
+                          {parseInt(variant.grams.weight)} gr
                         </label>
                       </div>
                     ))}
@@ -296,7 +296,7 @@ export default function ProductDetail() {
                     </div>
                   ))}
               </Tab>
-               
+
               <Tab eventKey="home" title="Additional Information">
                 {post &&
                   post.productAdditionalInformation &&
@@ -335,7 +335,7 @@ export default function ProductDetail() {
           </div>
         </div>
       </section>
-              
+
 
       <section>
         <div className={styles.infoLine}></div>

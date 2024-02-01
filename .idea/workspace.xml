@@ -5,16 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="309eab7d-c506-4270-9685-f99a8b7ea9d9" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/blinidetail/[id]/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/blinidetail/[id]/page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/blogsdetail/[id]/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/blogsdetail/[id]/page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/blogspage/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/blogspage/page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/blogs/blogs.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/blogs/blogs.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/product/product.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/product/product.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/contactus/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/contactus/page.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/productdetail/[id]/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/productdetail/[id]/page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/productspage/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/productspage/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/productdetail/[id]/styles.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/productdetail/[id]/styles.module.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,22 +38,22 @@
     <option name="showLibraryContents" value="true" />
     <option name="showMembers" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "star",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "reference.settingsDialog.application.dockerMachine",
-    "ts.external.directory.path": "C:\\Users\\Admin\\Desktop\\Nodejs\\caviar-frontend\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;star&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsDialog.application.dockerMachine&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Users/farhad/Desktop/caviar/caviar-frontend/node_modules/typescript/lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Docker.docker-compose.yml: Compose Deployment">
     <configuration name="APPP" type="docker-deploy" factoryName="dockerfile" temporary="true" server-name="Docker">
       <deployment type="dockerfile">
@@ -126,7 +119,8 @@
       <workItem from="1701073426162" duration="348000" />
       <workItem from="1701262267393" duration="17867000" />
       <workItem from="1701424007705" duration="599000" />
-      <workItem from="1706215071869" duration="401000" />
+      <workItem from="1706215071869" duration="8737000" />
+      <workItem from="1706757037077" duration="838000" />
     </task>
     <servers />
   </component>

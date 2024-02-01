@@ -9,7 +9,6 @@
   color: #c9beb1;
   text-align: center;
   font-family: "Montaga", serif;
-  font-size: 30px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
@@ -271,8 +270,11 @@
   border-radius: 5px;
 }
 .radioGroup {
-  display: flex;
-  gap: 30px; /* İstediğiniz boşluğu belirleyin */
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* Set the number of columns */
+  gap: 10px; /* Set the gap between items */
+  max-width: 800px; /* Set a maximum width for the grid if needed */
+  margin: 0 auto;
 }
 .TopProducts .buttonHover {
   color: #c3924e;
