@@ -40,11 +40,12 @@ export default function Footer() {
                         <label htmlFor="my">Email</label>
                       </div>
                      <Link className={styles.imgVector} href="/">
-                     <Image  width={26} height={20} src="/assets/image/vector.png" alt="" />
+                     <Image  loading="lazy"  width={26} height={20} src="/assets/image/vector.png" alt="" />
                      </Link>
                     </form>
                     <div className={styles.imgBorder}>
                       <Image
+                       loading="lazy"
                       width={64}
                       height={44}
                         className={styles.imgPay}
@@ -52,6 +53,7 @@ export default function Footer() {
                         alt=""
                       />
                       <Image
+                       loading="lazy"
                        width={64}
                        height={44}
                         className={styles.imgPay}
@@ -59,6 +61,7 @@ export default function Footer() {
                         alt=""
                       />
                       <Image
+                       loading="lazy"
                        width={64}
                        height={44}
                         className={styles.imgPay}
@@ -175,6 +178,7 @@ export default function Footer() {
                     <div className={styles.linkEdit}>
                       <div>
                         <Image
+                         loading="lazy"
                           width={28}
                           height={28}
                           className={styles.imgIcon}
@@ -182,6 +186,7 @@ export default function Footer() {
                           alt=""
                         />
                         <Image
+                         loading="lazy"
                          width={28}
                          height={28}
                           className={styles.imgIcon}
@@ -189,6 +194,7 @@ export default function Footer() {
                           alt=""
                         />
                         <Image
+                         loading="lazy"
                          width={28}
                          height={28}
                           className={styles.imgIcon}
@@ -213,7 +219,7 @@ export default function Footer() {
                 <div className={styles.box}>
                   <div className={styles.h5Edit}>
                   <h5>Powered by </h5>
-                  <Image style={{cursor:"pointer"}} onClick={handleKoikomclick} width={100} height={16} src="/assets/image/koikom.png" alt="" />
+                  <Image  loading="lazy" style={{cursor:"pointer"}} onClick={handleKoikomclick} width={100} height={16} src="/assets/image/koikom.png" alt="" />
                   </div>
                  
                 </div>

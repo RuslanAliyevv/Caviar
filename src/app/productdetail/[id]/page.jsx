@@ -10,18 +10,24 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "next/navigation";
 import Image from "next/image";
+import Spinner from "../../components/Spinner/spinner";
+import { useRouter } from "next/navigation";
+import AddtoCard from "../../components/AddtoCardModal/[id]/addtocard";
 
 export default function ProductDetail() {
-  const { id } = useParams();
-  const guid = id;
+  const router = useRouter();
+  const [isLoading, setIsLoading] = useState(true);
+  const [products, setproducts] = useState([]);
+  const [selectedGram, setSelectedGram] = useState("");
   const [post, setPost] = useState({
     title: "",
     product_attachments: [],
     price: "",
     grams: [],
   });
+  const { id } = useParams();
+  const guid = id;
 
-  const [selectedGram, setSelectedGram] = useState("");
   const sortedVariants =
     post && post.variants
       ? post.variants.slice().sort((a, b) => a.grams.weight - b.grams.weight)
@@ -35,10 +41,6 @@ export default function ProductDetail() {
       setSelectedGram(minGramVariant.grams.weight);
     }
   }, [post, selectedGram]);
-
-  const handleGramChange = (event) => {
-    setSelectedGram(event.target.value);
-  };
 
   useEffect(() => {
     const fetchPost = async () => {
@@ -58,12 +60,52 @@ export default function ProductDetail() {
           }
         }
         setPost(foundProduct);
+        setIsLoading(false);
       } catch (error) {
         console.error("Error fetching product:", error);
       }
     };
     fetchPost();
   }, [guid]);
+
+  const getProducts = async () => {
+    try {
+      const response = await axios.get(
+        "https://bbcaviar.com/api/v1/products/main-category/48ab9d6b-117c-4ba8-b288-8954da356902"
+      );
+      const data = response.data;
+
+      setproducts(data);
+    } catch (error) {
+      console.error("Error Message:", error);
+    }
+  };
+  useEffect(() => {
+    getProducts();
+  }, []);
+  const getMinPrice = (variants) => {
+    let minPrice = Number.MAX_SAFE_INTEGER;
+
+    variants.forEach((variant) => {
+      const price = parseFloat(variant.price);
+      if (!isNaN(price) && price < minPrice) {
+        minPrice = price;
+      }
+    });
+
+    return minPrice;
+  };
+  const [openMock, setOpenMock] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState(null);
+
+  const handleAddToCartClick = (product) => {
+    setSelectedProduct(product.guid);
+    setOpenMock(true);
+  };
+
+  const handleGramChange = (event) => {
+    setSelectedGram(event.target.value);
+  };
 
   const [count, setCount] = useState(1);
   const handleMinus = () => {
@@ -83,178 +125,194 @@ export default function ProductDetail() {
   };
   return (
     <>
-      <div className={styles.ProductDetail}>
-        <h2>Product Details</h2>
-        <div className={styles.backFone}></div>
-        <div className="container">
-          <div className={`row ${styles.rowAll}`}>
-            <div className="col-lg-5">
-              <div className="box">
-                <div className={styles.boxDiv}>
-                  {post &&
-                  post.variants &&
-                  post.variants.find(
-                    (variant) => variant.grams.weight === selectedGram
-                  ) &&
-                  post.variants.find(
-                    (variant) => variant.grams.weight === selectedGram
-                  ).product_attachments &&
-                  post.variants.find(
-                    (variant) => variant.grams.weight === selectedGram
-                  ).product_attachments.length > 0 ? (
-                    <Image
-                      className={styles.detailImg}
-                      width={390}
-                      height={450}
-                      src={
-                        post.variants.find(
-                          (variant) => variant.grams.weight === selectedGram
-                        ).product_attachments[0].filePath
-                      }
-                      alt={
-                        post.variants.find(
-                          (variant) => variant.grams.weight === selectedGram
-                        ).product_attachments[0].altText
-                      }
-                    />
-                  ) : (
-                    <p>No image available</p>
-                  )}
-                </div>
-              </div>
-            </div>
-            <div style={{ marginLeft: "0px" }} className="col-lg-6">
-              <div className={styles.box}>
-                <div className={styles.spanEdit}>
-                  <span>
-                    <Image
-                      width={20}
-                      height={20}
-                      src="/assets/image/staricon.png"
-                      alt=""
-                    />
-                  </span>
-                  <span>
-                    <Image
-                      width={20}
-                      height={20}
-                      src="/assets/image/staricon.png"
-                      alt=""
-                    />
-                  </span>
-                  <span>
-                    <Image
-                      width={20}
-                      height={20}
-                      src="/assets/image/staricon.png"
-                      alt=""
-                    />
-                  </span>
-                  <span>
-                    <Image
-                      width={20}
-                      height={20}
-                      src="/assets/image/staricon.png"
-                      alt=""
-                    />
-                  </span>
-                  <span>
-                    <Image
-                      width={20}
-                      height={20}
-                      src="/assets/image/staricon.png"
-                      alt=""
-                    />
-                  </span>
-                </div>
-                <div
-                  style={{ marginTop: "15px" }}
-                  className="row align-items-baseline"
-                >
-                  <div className="col-lg-8">
-                    <div className={styles.h3Edit}>
-                      <h3>{post && post.name} :</h3>
-                    </div>
+       {isLoading && <Spinner />}
+        <div className={styles.ProductDetail}>
+          <h2>Product Details</h2>
+          <div className={styles.backFone}></div>
+          <div className="container">
+            <div className={`row ${styles.rowAll}`}>
+              <div className="col-lg-5">
+                <div className="box">
+                  <div className={styles.boxDiv}>
                     {post &&
                       post.variants &&
                       post.variants.find(
                         (variant) => variant.grams.weight === selectedGram
-                      ) && (
-                        <h6>
-                          {
+                      ) &&
+                      post.variants.find(
+                        (variant) => variant.grams.weight === selectedGram
+                      ).product_attachments &&
+                      post.variants.find(
+                        (variant) => variant.grams.weight === selectedGram
+                      ).product_attachments.length > 0 && (
+                        <Image
+                          loading="lazy"
+                          className={styles.detailImg}
+                          width={390}
+                          height={450}
+                          src={
                             post.variants.find(
                               (variant) => variant.grams.weight === selectedGram
-                            ).price
+                            ).product_attachments[0].filePath
                           }
-                          $
-                        </h6>
+                          alt={
+                            post.variants.find(
+                              (variant) => variant.grams.weight === selectedGram
+                            ).product_attachments[0].altText
+                          }
+                        />
                       )}
-                    <span className={styles.h5CheckOut}>Shipping</span>
-                    <span className={styles.h5CheckOut}>
-                      calculated at checkout.
-                    </span>
-                    <div className={styles.line}></div>
-                    <p className={styles.pStock}>
-                      {post &&
-                        post.variants &&
-                        post.variants.length > 0 &&
-                        post.variants.map(
-                          (variant) =>
-                            variant.grams.weight === selectedGram &&
-                            `${variant.quantity} in stock, ready to ship.`
-                        )}
-                    </p>
                   </div>
-                  <div className="col-lg-4">
+                </div>
+              </div>
+              <div style={{ marginLeft: "0px" }} className="col-lg-6">
+                <div className={styles.box}>
+                  <div className={styles.spanEdit}>
                     <span>
                       <Image
-                        width={26}
-                        height={23}
-                        src="/assets/image/heart.png"
+                        loading="lazy"
+                        width={20}
+                        height={20}
+                        src="/assets/image/staricon.png"
+                        alt=""
+                      />
+                    </span>
+                    <span>
+                      <Image
+                        loading="lazy"
+                        width={20}
+                        height={20}
+                        src="/assets/image/staricon.png"
+                        alt=""
+                      />
+                    </span>
+                    <span>
+                      <Image
+                        loading="lazy"
+                        width={20}
+                        height={20}
+                        src="/assets/image/staricon.png"
+                        alt=""
+                      />
+                    </span>
+                    <span>
+                      <Image
+                        loading="lazy"
+                        width={20}
+                        height={20}
+                        src="/assets/image/staricon.png"
+                        alt=""
+                      />
+                    </span>
+                    <span>
+                      <Image
+                        loading="lazy"
+                        width={20}
+                        height={20}
+                        src="/assets/image/staricon.png"
                         alt=""
                       />
                     </span>
                   </div>
-                </div>
-                <div className={styles.radioGroup}>
-                  {sortedVariants &&
-                    sortedVariants.map((variant) => (
-                      <div className={styles.radioContainer} key={variant.guid}>
-                        <input
-                          type="radio"
-                          id={`radioInput${variant.grams.weight}`}
-                          value={variant.grams.weight}
-                          checked={selectedGram === variant.grams.weight}
-                          onChange={handleGramChange}
-                        />
-                        <label htmlFor={`radioInput${variant.grams.weight}`}>
-                          {variant.grams.weight} gr
-                        </label>
+                  <div
+                    style={{ marginTop: "15px" }}
+                    className="row align-items-baseline"
+                  >
+                    <div className="col-lg-9">
+                      <div className={styles.h3Edit}>
+                        <h3>{post && post.name} :</h3>
                       </div>
-                    ))}
-                </div>
-
-                <div className="row align-items-baseline">
-                  <div className="col-lg-6">
-                    <div className={styles.qty}>
-                      <span onClick={handleMinus}>-</span>
-                      <span style={{ marginLeft: "10px" }}>{count}</span>
-                      <span style={{ marginLeft: "10px" }} onClick={handlePlus}>
-                        +
+                      {post &&
+                        post.variants &&
+                        post.variants.find(
+                          (variant) => variant.grams.weight === selectedGram
+                        ) && (
+                          <h6>
+                            {
+                              post.variants.find(
+                                (variant) =>
+                                  variant.grams.weight === selectedGram
+                              ).price
+                            }
+                            $
+                          </h6>
+                        )}
+                      <span className={styles.h5CheckOut}>Free Shipping</span>
+                      <span className={styles.h5CheckOut}>
+                        on all orders over $250
+                      </span>
+                      <div className={styles.line}></div>
+                      <p className={styles.pStock}>
+                        {post &&
+                          post.variants &&
+                          post.variants.length > 0 &&
+                          post.variants.map(
+                            (variant) =>
+                              variant.grams.weight === selectedGram &&
+                              `${variant.quantity} in stock, ready to ship.`
+                          )}
+                      </p>
+                    </div>
+                    <div className="col-lg-3">
+                      <span>
+                        <Image
+                          loading="lazy"
+                          width={26}
+                          height={23}
+                          src="/assets/image/heart.png"
+                          alt=""
+                        />
                       </span>
                     </div>
                   </div>
-                  <div className="col-lg-6">
-                    <h5 onClick={handleadd} style={{ marginTop: "10px" }}>
-                      Add to Cart
-                    </h5>
+                  <div className={styles.radioGroup}>
+                    {sortedVariants &&
+                      sortedVariants.map((variant) => (
+                        <div
+                          className={styles.radioContainer}
+                          key={variant.guid}
+                        >
+                          <input
+                            type="radio"
+                            id={`radioInput${variant.grams.weight}`}
+                            value={variant.grams.weight}
+                            checked={selectedGram === variant.grams.weight}
+                            onChange={handleGramChange}
+                          />
+                          <label htmlFor={`radioInput${variant.grams.weight}`}>
+                            {parseInt(variant.grams.weight) >= 1000
+                              ? `${parseInt(variant.grams.weight) / 1000} kg`
+                              : `${parseInt(variant.grams.weight)}gr`}
+                          </label>
+                        </div>
+                      ))}
+                  </div>
+
+                  <div className="row align-items-baseline">
+                    <div className="col-lg-6">
+                      <div className={styles.qty}>
+                        <span onClick={handleMinus}>-</span>
+                        <span style={{ marginLeft: "10px" }}>{count}</span>
+                        <span
+                          style={{ marginLeft: "10px" }}
+                          onClick={handlePlus}
+                        >
+                          +
+                        </span>
+                      </div>
+                    </div>
+                    <div className="col-lg-6">
+                      <h5 onClick={handleadd} style={{ marginTop: "10px" }}>
+                        Add to Cart
+                      </h5>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      
 
       <section>
         <div className={styles.Content}>
@@ -296,7 +354,7 @@ export default function ProductDetail() {
                     </div>
                   ))}
               </Tab>
-               
+
               <Tab eventKey="home" title="Additional Information">
                 {post &&
                   post.productAdditionalInformation &&
@@ -335,7 +393,6 @@ export default function ProductDetail() {
           </div>
         </div>
       </section>
-              
 
       <section>
         <div className={styles.infoLine}></div>
@@ -402,81 +459,73 @@ export default function ProductDetail() {
             <div className="container">
               <h2>Top Products</h2>
               <div className={`row ${styles.rowAll}`}>
-                <div className="col-lg-3 col-12">
-                  <div className={styles.box}>
-                    <div className={styles.boxUp}>
-                      <Image
-                        width={289}
-                        height={434}
-                        src="/assets/image/product1.png"
-                        alt=""
-                      />
-                      <div className={styles.line}></div>
-                    </div>
-                    <div className={styles.boxDown}>
-                      <h3>Product Name</h3>
-                      <h3 className={styles.h3Edit}>$60.00</h3>
-                    </div>
-                    <p>Add to cart +</p>
-                  </div>
-                </div>
-                <div className="col-lg-3 col-12">
-                  <div className={styles.box}>
-                    <div className={styles.boxUp}>
-                      <Image
-                        width={289}
-                        height={434}
-                        src="/assets/image/product2.png"
-                        alt=""
-                      />
+                <>
+                  {products.slice(0, 4).map((product, index) => (
+                    <div key={index} className="col-lg-3 col-12">
+                      <div className={styles.box}>
+                        <div className={styles.boxUp}>
+                          {product &&
+                          product.variants &&
+                          product.variants[0] &&
+                          product.variants[0].product_attachments &&
+                          product.variants[0].product_attachments.length > 0 ? (
+                            <Image
+                              loading="lazy"
+                              onClick={() =>
+                                router.push(
+                                  `/productdetail/${product.variants[0].guid}`
+                                )
+                              }
+                              width={289}
+                              height={0}
+                              src={
+                                product.variants[0].product_attachments[0]
+                                  .filePath
+                              }
+                              alt={
+                                product.variants[0].product_attachments[0]
+                                  .altText
+                              }
+                            />
+                          ) : (
+                            <p>No image available</p>
+                          )}
 
-                      <div className={styles.line}></div>
+                          <div className={styles.line}></div>
+                        </div>
+                        <div className={styles.boxDown}>
+                          <div className={styles.boxDowncontent}>
+                            <div className={styles.prNameEdit}>
+                              <h3>
+                                {product &&
+                                  product.variants &&
+                                  product.variants.length > 0 &&
+                                  `${product.name}`}
+                              </h3>
+                            </div>
+                            <div className={styles.priceEdit}>
+                              <h3 className={styles.h3Edit}>
+                                {`From $${getMinPrice(product.variants)}`}
+                              </h3>
+                            </div>
+                          </div>
+                          <p
+                            className={styles.pEdit}
+                            onClick={() => handleAddToCartClick(product)}
+                          >
+                            Add to cart +
+                          </p>
+                          {openMock && (
+                            <AddtoCard
+                              productId={selectedProduct}
+                              closeMock={setOpenMock}
+                            />
+                          )}
+                        </div>
+                      </div>
                     </div>
-                    <div className={styles.boxDown}>
-                      <h3>Product Name</h3>
-                      <h3 className={styles.h3Edit}>$60.00</h3>
-                    </div>
-                    <p>Add to cart +</p>
-                  </div>
-                </div>
-                <div className="col-lg-3 col-12">
-                  <div className={styles.box}>
-                    <div className={styles.boxUp}>
-                      <Image
-                        width={289}
-                        height={434}
-                        src="/assets/image/product3.png"
-                        alt=""
-                      />
-
-                      <div className={styles.line}></div>
-                    </div>
-                    <div className={styles.boxDown}>
-                      <h3>Product Name</h3>
-                      <h3 className={styles.h3Edit}>$60.00</h3>
-                    </div>
-                    <p>Add to cart +</p>
-                  </div>
-                </div>
-                <div className="col-lg-3 col-12">
-                  <div className={styles.box}>
-                    <div className={styles.boxUp}>
-                      <Image
-                        width={289}
-                        height={434}
-                        src="/assets/image/product4.png"
-                        alt=""
-                      />
-
-                      <div className={styles.line}></div>
-                    </div>
-                    <div className={styles.boxDown}>
-                      <h3>Product Name</h3>
-                      <h3 className={styles.h3Edit}>$60.00</h3>
-                    </div>
-                    <p>Add to cart +</p>
-                  </div>
-                </div>
+                  ))}
+                </>
               </div>
             </div>
             <div className={styles.buttonEdit}>

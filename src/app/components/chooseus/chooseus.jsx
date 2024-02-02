@@ -29,7 +29,8 @@ export default function ChooseUs() {
               <div className={styles.box}>
                 <div className={styles.boxContent}>
                   <h5>Dedication to Sustainability</h5>
-                  <Image width={280} height={1} src="/assets/image/chooseline.png" alt="" />
+                       
+                  <Image loading="lazy"  width={280} height={1} src="/assets/image/chooseline.png"  alt="" />
 
                   <div className={styles.pEdit}>
                     <p>
@@ -47,7 +48,7 @@ export default function ChooseUs() {
               <div className={styles.box}>
                 <div className={styles.boxContent}>
                   <h5>Dedicated to Your Satisfaction</h5>
-                  <Image width={280} height={1} src="/assets/image/chooseline.png" alt="" />
+                  <Image loading="lazy" width={280} height={1} src="/assets/image/chooseline.png" alt="" />
 
                   <div className={styles.pEdit}>
                     <p>

@@ -66,6 +66,7 @@ export default function Header() {
                 <div className={styles.left}>
                   <Link href="/">
                     <Image
+                     loading="lazy"
                       width={64}
                       height={64}
                       src="/assets/image/bbcaviarlogo.svg"
@@ -109,6 +110,7 @@ export default function Header() {
                         <Link href="./wishlist">
                           <span className={styles.wishlist}>
                             <Image
+                             loading="lazy"
                               src="/assets/image/heart.png"
                               alt="heart"
                               width={23}
@@ -124,6 +126,7 @@ export default function Header() {
                         <Link href="/shoppingcart">
                           <span className={styles.shopSpan}>
                             <Image
+                             loading="lazy"
                               style={{ position: "relative" }}
                               src="/assets/image/shoppingcart.png"
                               alt="shopping"

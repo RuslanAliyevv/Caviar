@@ -5,11 +5,11 @@ import Image from "next/image";
 import { Paper, Box, Typography, Button } from "@mui/material";
 import Carousel from "react-material-ui-carousel";
 
-
 const exampleItems = [
   {
     name: "Jane Smith",
-    description: " I must say, BB Caviar has completely exceeded my expectations. The caviar is simply exceptional in taste and quality. Knowing that it's sourced sustainably makes the experience even more satisfying.",
+    description:
+      " I must say, BB Caviar has completely exceeded my expectations. The caviar is simply exceptional in taste and quality. Knowing that it's sourced sustainably makes the experience even more satisfying.",
   },
   {
     name: "Second Item",
@@ -43,13 +43,12 @@ export default function Aboutcn() {
           {exampleItems.map((item, i) => (
             <div key={i} className={styles.content}>
               <div className={styles.pEdit}>
-                <p>
-                 {item.description}
-                </p>
+                <p>{item.description}</p>
               </div>
               <div className={styles.spanEdit}>
                 <span>
                   <Image
+                    loading="lazy"
                     width={20}
                     height={20}
                     src="/assets/image/staricon.png"
@@ -58,6 +57,7 @@ export default function Aboutcn() {
                 </span>
                 <span>
                   <Image
+                    loading="lazy"
                     width={20}
                     height={20}
                     src="/assets/image/staricon.png"
@@ -66,6 +66,7 @@ export default function Aboutcn() {
                 </span>
                 <span>
                   <Image
+                    loading="lazy"
                     width={20}
                     height={20}
                     src="/assets/image/staricon.png"
@@ -74,6 +75,7 @@ export default function Aboutcn() {
                 </span>
                 <span>
                   <Image
+                    loading="lazy"
                     width={20}
                     height={20}
                     src="/assets/image/staricon.png"
@@ -82,6 +84,7 @@ export default function Aboutcn() {
                 </span>
                 <span>
                   <Image
+                    loading="lazy"
                     width={20}
                     height={20}
                     src="/assets/image/staricon.png"

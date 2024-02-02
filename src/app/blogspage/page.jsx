@@ -4,18 +4,21 @@ import styles from "./styles.module.css";
 import Image from "next/image";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-
+import Spinner from "../components/Spinner/spinner";
 import { useState, useEffect } from "react";
 
 export default function BlogsPage() {
+  const [isLoading, setIsLoading] = useState(true);
   const router = useRouter();
   const [blogs, setBlogs] = useState([]);
+
 
   const getProducts = async () => {
     try {
       const response = await axios.get("https://bbcaviar.com/api/v1/blogs");
       const data = response.data;
       setBlogs(data);
+      setIsLoading(false);
     } catch (error) {
       console.error("Error Message:", error);
     }
@@ -25,6 +28,7 @@ export default function BlogsPage() {
   }, []);
   return (
     <>
+      {/* {isLoading && <Spinner />} */}
       <div className={styles.Blogs}>
         <h2 className="text-center">Blogs</h2>
         <div className={styles.backFone}></div>
@@ -40,6 +44,7 @@ export default function BlogsPage() {
                       blog.blog_attachments.length > 0 ? (
                         <div className={styles.caviarPhoto}>
                           <Image
+                           loading="lazy"
                             width={450}
                             height={450}
                             src={blog.blog_attachments[0].filePath}

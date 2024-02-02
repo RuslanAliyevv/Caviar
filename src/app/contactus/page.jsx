@@ -45,6 +45,7 @@ export default function ContactUs() {
           <div className={`row ${styles.rowAll}`}>
             <div className="col-lg-5">
               <Image
+                loading="lazy"
                 width={720}
                 height={480}
                 src="/assets/image/contactstock.png"

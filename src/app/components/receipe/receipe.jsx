@@ -23,7 +23,7 @@ export default function Receipe() {
               <div className="col-lg-5">
                 <div className="box">
                   <div className={styles.boxImg}>
-                    <Image width={736} height={366} src="/assets/image/receipestock.png" alt="" />
+                    <Image  loading="lazy" width={736} height={366} src="/assets/image/receipestock.png" alt="" />
                   </div>
                 </div>
               </div>
@@ -48,7 +48,7 @@ export default function Receipe() {
                       <p>Omelet with Pressed Caviar and Sour Cream</p>
                     </div>
                     <div className={styles.omletImg}>
-                        <Image width={297} height={198} src="/assets/image/omlet1.png" alt="" />
+                        <Image  loading="lazy" width={297} height={198} src="/assets/image/omlet1.png" alt="" />
                     </div>
                     </div>
                   </div>
@@ -71,7 +71,7 @@ export default function Receipe() {
                       <p>Crispy Potato Galette with Dill Cream, Sturgeon and  Caviar</p>
                     </div>
                     <div className={styles.omletImg}>
-                    <Image width={297} height={198} src="/assets/image/omlet2.png" alt="" />
+                    <Image  loading="lazy" width={297} height={198} src="/assets/image/omlet2.png" alt="" />
 
                     </div>
                     </div>
@@ -95,7 +95,7 @@ export default function Receipe() {
                       <p>Fancy Deviled Eggs with Caviar and Crème Fraîche</p>
                     </div>
                     <div className={styles.omletImg}>
-                    <Image width={297} height={198} src="/assets/image/omlet3.png" alt="" />
+                    <Image  loading="lazy" width={297} height={198} src="/assets/image/omlet3.png" alt="" />
 
                     </div>
                     </div>

@@ -4,9 +4,12 @@ import styles from "./styles.module.css";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import Spinner from "../../components/Spinner/spinner";
 import { useParams } from "next/navigation";
 import Link from "next/link";
 export default function BlogsDetail() {
+  const [isLoading, setIsLoading] = useState(true);
+
   const { id } = useParams();
   const guid = id;
   const [post, setPost] = useState({
@@ -19,6 +22,7 @@ export default function BlogsDetail() {
         const response = await axios.get("https://bbcaviar.com/api/v1/blogs");
         const data = response.data;
         setPost(data && data.find((u) => u.guid === guid));
+        setIsLoading(false)
       } catch (error) {
         console.error("Error fetching product:", error);
       }
@@ -27,6 +31,7 @@ export default function BlogsDetail() {
   }, [guid]);
   return (
     <>
+    {isLoading && <Spinner />}
       <div className={styles.BlDetail}>
         <div className={styles.h2Edit}>
           <h2 className="text-center">{post && post.title}</h2>
@@ -106,6 +111,7 @@ export default function BlogsDetail() {
             post.blog_attachments.length > 0 ? (
               <div className={styles.caviarPhoto}>
                 <Image
+                 loading="lazy"
                   width={1060}
                   height={707}
                   src={post.blog_attachments[0].filePath}
@@ -224,6 +230,7 @@ export default function BlogsDetail() {
           </div>
         </div>
       </div>
+          
     </>
   );
 }

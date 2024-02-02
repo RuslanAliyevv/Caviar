@@ -47,16 +47,14 @@ export default function Blogs() {
                 <div key={blog.guid} className="col-lg-3">
                   <div className={styles.box}>
                     <div className={styles.boxContent}>
-                      <div
-                        className={styles.imgBox}
-
-                      >
+                      <div className={styles.imgBox}>
                         {blog.blog_attachments &&
                         blog.blog_attachments.length > 0 ? (
                           <Image
-                          onClick={() =>
-                            router.push(`/blogsdetail/${blog.guid}`)
-                          }
+                            loading="lazy"
+                            onClick={() =>
+                              router.push(`/blogsdetail/${blog.guid}`)
+                            }
                             width={400}
                             height={438}
                             src={blog.blog_attachments[0].filePath}

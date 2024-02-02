@@ -254,7 +254,7 @@
 }
 .radioGroup {
   display: flex;
-  gap: 5px; /* İstediğiniz boşluğu belirleyin */
+  gap: 2px;
 }
 
 
@@ -301,4 +301,10 @@
   0% { background-position: 0 0; }
   50% { background-position: 400% 0; }
   100% { background-position: 0 0; }
+}
+.spiner{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
 }

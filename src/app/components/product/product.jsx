@@ -76,6 +76,7 @@ export default function Product() {
                     product.variants[0].product_attachments &&
                     product.variants[0].product_attachments.length > 0 ? (
                       <Image
+                      loading="lazy"
                         onClick={() =>
                           router.push(
                             `/productdetail/${product.variants[0].guid}`

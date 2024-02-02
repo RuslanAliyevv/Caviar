@@ -56,7 +56,7 @@ export default function ContactFm() {
                   <div className="box">
                     <div className="left">
             
-                      <Image   width={611} height={430}  src="/assets/image/contactstock.png" alt="Tos" />
+                      <Image  loading="lazy"  width={611} height={430}  src="/assets/image/contactstock.png" alt="Tos" />
                     </div>
                   </div>
                 </div>
