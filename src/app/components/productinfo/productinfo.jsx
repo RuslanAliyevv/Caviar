@@ -17,7 +17,6 @@ export default function ProductInfo() {
                     Selection
                   </h2>
                   <div className={styles.pEdit}>
-                    {" "}
                     <p>
                       Are you ready for an exceptional culinary journey? Begin
                       your exploration of our exquisite caviar collection and

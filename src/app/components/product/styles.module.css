@@ -5,7 +5,6 @@
 }
 .Product h4 {
   color: #fff;
-  text-align: center;
   font-family: var(--montserrat);
   font-size: 20px;
   font-style: normal;
@@ -16,8 +15,6 @@
 .Product h2 {
   color: #c9beb1;
   margin-top: 5px;
-
-  text-align: center;
   font-family: "Montaga", serif;
   width: 50%;
   font-size: 30px;
@@ -26,6 +23,7 @@
   line-height: normal;
   text-transform: uppercase;
 }
+
 .Product .h2Edit {
   width: 100%;
   display: flex;
@@ -34,6 +32,7 @@
 .Product .rowAll {
   flex-flow: wrap;
   flex-direction: row;
+  margin-top: 10px;
   align-items: center;
 }
 .Product .line {
@@ -46,22 +45,19 @@
   background: #c3924e;
   color: #c3924e;
 }
+
 .Product .boxUp {
-  height: 408px;
-  width: 100%;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.06) !important;
+  width: 278px !important;
+  height: 378px !important;
 }
 .Product img {
-  width: 100%;
-  max-width: 100%;
-  height: 100% !important;
   transition: transform 0.3s ease;
-  border-radius: 10px;
+  object-fit: cover;
   margin-top: 15px;
   cursor: pointer;
 }
-/* .box:hover img {
-  filter: grayscale(100%);
-} */
 
 .Product h3 {
   color: #fff;
@@ -72,7 +68,7 @@
   font-weight: 700 !important;
   line-height: normal;
 }
-.Product .h3Edit{
+.Product .h3Edit {
   width: 120px;
   margin-left: 0px !important;
 }
@@ -85,7 +81,7 @@
   margin: 0;
 }
 .Product .boxDown {
-  margin-top: 30px;
+  margin-top: 20px;
   height: 100px;
 }
 .Product .prNameEdit {

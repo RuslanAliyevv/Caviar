@@ -1,156 +1,85 @@
-/* .Cards .rowAll {
-    flex-flow: wrap;
-    flex-direction: row;
-    align-items: center;
-  }
-  .Cards .line {
-    position: absolute;
-    z-index: 9999;
-    width: 1px;
-    height: 120px;
-    margin-left: 20px;
-    margin-top: -40px;
-    background: #c3924e;
-    color: #c3924e;
-  }
-  .Cards img {
-    width: 100%;
-    margin-top: 15px;
-  }
-  .Cards h3 {
-    color: #fff;
-    margin-left: 25px;
-    font-family: var(--montserrat);
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-  }
-  .Cards .h3Edit {
-    color: #fff;
-  
-    text-align: right;
-    font-family: var(--montserrat);
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: normal;
-  }
-  
-  .Cards .boxDown {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 30px;
-  }
-  .Cards .box {
-    position: relative;
-    margin-top: 20px;
-  }
-  .Cards .boxUp{
-    height: 408px;
-    width: 100%;
-  }
-  .Cards img{
-    width: 100%;
-    max-width: 100%;
-    height: 100% !important;
-    transition: transform 0.3s ease;
-    object-fit: fill;
-    margin-top: 15px;
-    border-radius: 10px;
-  }
-  .Cards p {
-    color: #c3924e;
-    text-transform: uppercase;
-    font-family: var(--montserrat);
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: normal;
-    margin-left: 25px;
-    margin-top: 10px;
-  }
- */
+.Cards .rowAll {
+  flex-flow: wrap;
+  flex-direction: row;
+  align-items: center;
+}
+.Cards .line {
+  position: absolute;
+  z-index: 0;
+  width: 1px;
+  height: 140px;
+  margin-left: 20px;
+  margin-top: -40px;
+  background: #c3924e;
+  color: #c3924e;
+}
+.Cards .boxUp {
+  margin-top: 20px;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.06) !important;
+  width: 278px !important;
+  height: 378px !important;
+}
+.Cards img {
+  max-width: 100%;
+  height: 100% !important;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+  border-radius: 10px;
+  cursor: pointer;
+}
 
-  .Cards .rowAll {
-    flex-flow: wrap;
-    flex-direction: row;
-    align-items: center;
-  }
-  .Cards .line {
-    position: absolute;
-    z-index: 0;
-    width: 1px;
-    height: 140px;
-    margin-left: 20px;
-    margin-top: -40px;
-    background: #c3924e;
-    color: #c3924e;
-  }
+.Cards h3 {
+  color: #fff;
+  margin-left: 25px;
+  font-family: var(--montserrat);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700 !important;
+  line-height: normal;
+}
+.Cards .h3Edit {
+  margin-left: 0px !important;
+  width: 120px;
+}
+.Cards .boxDowncontent {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0;
+}
+.Cards .boxDown {
+  margin-top: 20px;
+  height: 100px;
+}
+.Cards .prNameEdit {
+  width: 62%;
+  height: 40px;
+}
+.priceEdit {
+  width: 35%;
+  height: 40px;
+}
+
+.Cards .box {
+  position: relative;
+}
+.Cards p {
+  color: #c3924e;
+  text-transform: uppercase;
+  font-family: var(--montserrat);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700 !important;
+  line-height: normal;
+  margin-left: 25px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+@media screen and (min-width: 1200px) and (max-width: 1399px) {
   .Cards .boxUp {
-    height: 408px;
-    width: 100%;
+    width: 260px !important;
   }
-  .Cards img {
-    width: 100%;
-    max-width: 100%;
-    height: 100% !important;
-    transition: transform 0.3s ease;
-    border-radius: 10px;
-    margin-top: 15px;
-    cursor: pointer;
-  }
-  /* .box:hover img {
-    filter: grayscale(100%);
-  } */
-  
-  .Cards h3 {
-    color: #fff;
-    margin-left: 25px;
-    font-family: var(--montserrat);
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 700 !important;
-    line-height: normal;
-  }
-  .Cards .h3Edit{
-    margin-left: 0px !important;
-    width: 120px;
-  }
-  .Cards .boxDowncontent {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin: 0;
-  }
-  .Cards .boxDown {
-    margin-top: 30px;
-    height: 100px;
-  }
-  .Cards .prNameEdit {
-    width: 62%;
-    height: 40px;
-  }
-  .priceEdit {
-    width: 35%;
-    height: 40px;
-  }
-  
-  .Cards .box {
-    position: relative;
-  }
-  .Cards p {
-    color: #c3924e;
-    text-transform: uppercase;
-    font-family: var(--montserrat);
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 700 !important;
-    line-height: normal;
-    margin-left: 25px;
-    margin-top: 10px;
-    cursor: pointer;
-  }
+}

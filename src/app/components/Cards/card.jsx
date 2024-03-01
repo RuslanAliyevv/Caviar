@@ -9,10 +9,9 @@ import AddtoCard from "../AddtoCardModal/[id]/addtocard";
 import { useEffect } from "react";
 import Image from "next/image";
 export default function Cards({ products }) {
-
   const dispatch = useDispatch();
   const router = useRouter();
-  const handleadd = (product) => {  
+  const handleadd = (product) => {
     dispatch(add(product));
   };
   const [openMock, setOpenMock] = useState(false);
@@ -53,13 +52,12 @@ export default function Cards({ products }) {
                             `/productdetail/${product.variants[0].guid}`
                           )
                         }
-                        width={289}
-                        height={0}
+                        width={278}
+                        height={378}
                         src={
                           product.variants[0].product_attachments[0].filePath
                         }
                         alt={product.variants[0].product_attachments[0].altText}
-                        
                       />
                     </>
                   )}

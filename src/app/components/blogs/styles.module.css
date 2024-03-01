@@ -43,7 +43,6 @@
   justify-content: center;
 }
 .Blogs .contentDown img {
-  /* width: 637px; */
   height: 390px;
   object-fit: cover;
   border-radius: 5px;

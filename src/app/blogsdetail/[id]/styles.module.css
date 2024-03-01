@@ -5,7 +5,6 @@
 .BlDetail .caviarPhoto {
   display: flex;
   justify-content: center;
-  /* background-image: url("../../../../public/assets/image/redblackcaviar.png"); */
   width: 90%;
   height: 100vh;
 }

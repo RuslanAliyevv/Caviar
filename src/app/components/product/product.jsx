@@ -15,7 +15,6 @@ export default function Product() {
   const [products, setproducts] = useState([]);
   const [openMock, setOpenMock] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
- 
 
   const handleAddToCartClick = (product) => {
     setSelectedProduct(product.guid);
@@ -24,14 +23,14 @@ export default function Product() {
 
   const getMinPrice = (variants) => {
     let minPrice = Number.MAX_SAFE_INTEGER;
-  
+
     variants.forEach((variant) => {
       const price = parseFloat(variant.price);
       if (!isNaN(price) && price < minPrice) {
         minPrice = price;
       }
     });
-  
+
     return minPrice;
   };
 
@@ -41,7 +40,7 @@ export default function Product() {
         "https://bbcaviar.com/api/v1/products/main-category/48ab9d6b-117c-4ba8-b288-8954da356902"
       );
       const data = response.data;
-    
+
       setproducts(data);
     } catch (error) {
       console.error("Error Message:", error);
@@ -76,14 +75,14 @@ export default function Product() {
                     product.variants[0].product_attachments &&
                     product.variants[0].product_attachments.length > 0 ? (
                       <Image
-                      loading="lazy"
+                        loading="lazy"
                         onClick={() =>
                           router.push(
                             `/productdetail/${product.variants[0].guid}`
                           )
                         }
-                        width={289}
-                        height={0}
+                        width={278}
+                        height={378}
                         src={
                           product.variants[0].product_attachments[0].filePath
                         }
@@ -99,7 +98,6 @@ export default function Product() {
                     <div className={styles.boxDowncontent}>
                       <div className={styles.prNameEdit}>
                         <h3>
-                        
                           {product &&
                             product.variants &&
                             product.variants.length > 0 &&
@@ -113,18 +111,22 @@ export default function Product() {
                       </div>
                     </div>
                     <p
-                    className={styles.pEdit}
+                      className={styles.pEdit}
                       onClick={() => handleAddToCartClick(product)}
                     >
                       Add to cart +
                     </p>
-                    {openMock &&  <AddtoCard productId={selectedProduct} closeMock={setOpenMock} />}
+                    {openMock && (
+                      <AddtoCard
+                        productId={selectedProduct}
+                        closeMock={setOpenMock}
+                      />
+                    )}
                   </div>
                 </div>
               </div>
             ))}
           </div>
-         
         </div>
         <div className={styles.forButton}>
           <Link href="./productspage">

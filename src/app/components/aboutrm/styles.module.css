@@ -3,12 +3,9 @@
   padding: 150px 0 0 0;
   position: relative;
 }
-  
-
-
 .AboutRm h2 {
   color: #c9beb1;
-  font-family: 'Montaga', serif;
+  font-family: "Montaga", serif;
   width: 90%;
   font-size: 40px;
   font-style: normal;
@@ -22,7 +19,7 @@
   width: 100%;
   border-radius: 10px;
 }
- 
+
 .AboutRm h3 {
   color: #c9beb1;
 
@@ -68,40 +65,35 @@
   line-height: 24px; /* 133.333% */
 }
 
-
- .AboutRm .backGrCircle{
+.AboutRm .backGrCircle {
   position: absolute;
   top: -5%;
   right: 3%;
   z-index: 222222;
   width: 40%;
- }  
- /* .hoverEdit{
-  position: relative;
- }
- .hoverEdit::before {
-  right: 0;
-  opacity:0.7;
-  top: 0;
 }
-.hoverEdit::after {
-  bottom: 0;
-  opacity: 0.7;
-  left: 0;
+
+@media screen and (max-width: 768px) {
+  .AboutRm {
+    padding: 80px 0 0 0 !important;
+  }
+  .AboutRm h2 {
+    font-size: 22px !important;
+  }
+  .AboutRm .backGrCircle {
+    display: none;
+  }
+  .AboutRm .right {
+    margin-top: 40px;
+  }
+  .AboutRm h4 {
+    font-size: 20px;
+    width: 100%;
+  }
+  .AboutRm p {
+    font-size: 16px;
+    width: 100%;
+    margin-bottom: 30px;
+  }
 }
-.hoverEdit::before, .hoverEdit::after {
-  content: "";
-  background: #c3924e;
-  height: 0;
-  width: 0;
-  z-index: 1;
-  position: absolute;
-  -webkit-transition-duration: 1s !important;
-  -o-transition-duration: 1s;
-transition-duration: 1s !important;
-}
-.hoverEdit:hover::after, .hoverEdit:hover::before {
-  height: 100%;
-  opacity: 0;
-  width: 100%;
-} */
+

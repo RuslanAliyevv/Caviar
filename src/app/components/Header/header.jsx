@@ -7,9 +7,7 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 
-
 export default function Header() {
-
   const [active, setActive] = useState("nav__menu");
   const [icon, setIcon] = useState("nav__toggler");
   const navToggle = () => {
@@ -26,7 +24,6 @@ export default function Header() {
     setActive("nav__menu");
     setIcon("nav__toggler");
   };
-
 
   const [isClient, setIsClient] = useState(false);
 
@@ -66,7 +63,7 @@ export default function Header() {
                 <div className={styles.left}>
                   <Link href="/">
                     <Image
-                     loading="lazy"
+                      loading="lazy"
                       width={64}
                       height={64}
                       src="/assets/image/bbcaviarlogo.svg"
@@ -110,7 +107,7 @@ export default function Header() {
                         <Link href="./wishlist">
                           <span className={styles.wishlist}>
                             <Image
-                             loading="lazy"
+                              loading="lazy"
                               src="/assets/image/heart.png"
                               alt="heart"
                               width={23}
@@ -119,28 +116,26 @@ export default function Header() {
                           </span>
                         </Link>
                       </li>
-                     
-                     
                     </ul>
                     <li>
-                        <Link href="/shoppingcart">
-                          <span className={styles.shopSpan}>
-                            <Image
-                             loading="lazy"
-                              style={{ position: "relative" }}
-                              src="/assets/image/shoppingcart.png"
-                              alt="shopping"
-                              width={26}
-                              height={26}
-                            />
-                          </span>
-                        </Link>
-                      </li>
-                    <li className={styles.numberLi}>
-                        <span className={styles.number}>
-                          {isClient && item.length}
+                      <Link href="/shoppingcart">
+                        <span className={styles.shopSpan}>
+                          <Image
+                            loading="lazy"
+                            style={{ position: "relative" }}
+                            src="/assets/image/shoppingcart.png"
+                            alt="shopping"
+                            width={26}
+                            height={26}
+                          />
                         </span>
-                      </li>
+                      </Link>
+                    </li>
+                    <li className={styles.numberLi}>
+                      <span className={styles.number}>
+                        {isClient && item.length}
+                      </span>
+                    </li>
                     <div onClick={navToggle} className={icon}>
                       <div className="line1"></div>
                       <div className="line2"></div>

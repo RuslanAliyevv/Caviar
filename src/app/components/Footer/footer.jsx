@@ -1,11 +1,10 @@
- 'use client'
+"use client";
 import React from "react";
 import styles from "./styles.module.css";
 import Link from "next/link";
 import Image from "next/image";
 
 export default function Footer() {
-  
   const handleKoikomclick = () => {
     window.location.href = "https://www.koikom.com";
   };
@@ -39,31 +38,37 @@ export default function Footer() {
                         />
                         <label htmlFor="my">Email</label>
                       </div>
-                     <Link className={styles.imgVector} href="/">
-                     <Image  loading="lazy"  width={26} height={20} src="/assets/image/vector.png" alt="" />
-                     </Link>
+                      <Link className={styles.imgVector} href="/">
+                        <Image
+                          loading="lazy"
+                          width={26}
+                          height={20}
+                          src="/assets/image/vector.png"
+                          alt=""
+                        />
+                      </Link>
                     </form>
                     <div className={styles.imgBorder}>
                       <Image
-                       loading="lazy"
-                      width={64}
-                      height={44}
+                        loading="lazy"
+                        width={64}
+                        height={44}
                         className={styles.imgPay}
                         src="/assets/image/applepay.png"
                         alt=""
                       />
                       <Image
-                       loading="lazy"
-                       width={64}
-                       height={44}
+                        loading="lazy"
+                        width={64}
+                        height={44}
                         className={styles.imgPay}
                         src="/assets/image/googlepay.png"
                         alt=""
                       />
                       <Image
-                       loading="lazy"
-                       width={64}
-                       height={44}
+                        loading="lazy"
+                        width={64}
+                        height={44}
                         className={styles.imgPay}
                         src="/assets/image/shoppay.png"
                         alt=""
@@ -76,7 +81,7 @@ export default function Footer() {
                 <div className={styles.box}>
                   <div className={styles.boxContent}>
                     <div className={styles.linkEdit}>
-                        <span className={styles.firstSpan}>Categories</span>
+                      <span className={styles.firstSpan}>Categories</span>
                     </div>
                     <div className={styles.linkEdit}>
                       <Link href="/productspage">
@@ -90,7 +95,7 @@ export default function Footer() {
                 <div className={styles.box}>
                   <div className={styles.boxContent}>
                     <div className={styles.linkEdit}>
-                        <span className={styles.firstSpan}>Our Policy</span>
+                      <span className={styles.firstSpan}>Our Policy</span>
                     </div>
                     <div className={styles.linkEdit}>
                       <Link href="/aboutus">
@@ -114,7 +119,7 @@ export default function Footer() {
                 <div className={styles.box}>
                   <div className={styles.boxContent}>
                     <div className={styles.linkEdit}>
-                        <span className={styles.firstSpan}>Quick Links</span>
+                      <span className={styles.firstSpan}>Quick Links</span>
                     </div>
                     <div className={styles.linkEdit}>
                       <Link href="/aboutus">
@@ -153,7 +158,7 @@ export default function Footer() {
                 <div className={styles.box}>
                   <div className={styles.boxContent}>
                     <div className={styles.linkEdit}>
-                        <span className={styles.firstSpan}>Contact</span>
+                      <span className={styles.firstSpan}>Contact</span>
                     </div>
                     <div className={styles.linkEdit}>
                       <Link href="/">
@@ -178,7 +183,7 @@ export default function Footer() {
                     <div className={styles.linkEdit}>
                       <div>
                         <Image
-                         loading="lazy"
+                          loading="lazy"
                           width={28}
                           height={28}
                           className={styles.imgIcon}
@@ -186,17 +191,17 @@ export default function Footer() {
                           alt=""
                         />
                         <Image
-                         loading="lazy"
-                         width={28}
-                         height={28}
+                          loading="lazy"
+                          width={28}
+                          height={28}
                           className={styles.imgIcon}
                           src="/assets/image/facebookgold.png"
                           alt=""
                         />
                         <Image
-                         loading="lazy"
-                         width={28}
-                         height={28}
+                          loading="lazy"
+                          width={28}
+                          height={28}
                           className={styles.imgIcon}
                           src="/assets/image/instagramgold.png"
                           alt=""
@@ -218,10 +223,17 @@ export default function Footer() {
                 </div>
                 <div className={styles.box}>
                   <div className={styles.h5Edit}>
-                  <h5>Powered by </h5>
-                  <Image  loading="lazy" style={{cursor:"pointer"}} onClick={handleKoikomclick} width={100} height={16} src="/assets/image/koikom.png" alt="" />
+                    <h5>Powered by </h5>
+                    <Image
+                      loading="lazy"
+                      style={{ cursor: "pointer" }}
+                      onClick={handleKoikomclick}
+                      width={100}
+                      height={16}
+                      src="/assets/image/koikom.png"
+                      alt=""
+                    />
                   </div>
-                 
                 </div>
               </div>
             </div>

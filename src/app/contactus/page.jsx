@@ -63,17 +63,42 @@ export default function ContactUs() {
                       support your caviar journey.
                     </p>
                     <div className={styles.contactInfo}>
-                      <Image width={30} height={30} src="/assets/image/contactletter.png" alt="" />
+                      <Image
+                        width={30}
+                        height={30}
+                        src="/assets/image/contactletter.png"
+                        alt=""
+                      />
                       <span>deluxecaviar@gmail.com</span>
                     </div>
                     <div className={styles.contactInfo}>
-                      <Image width={30} height={30} src="/assets/image/contactphone.png" alt="" />
+                      <Image
+                        width={30}
+                        height={30}
+                        src="/assets/image/contactphone.png"
+                        alt=""
+                      />
                       <span>+01 434 346 34 64 36</span>
                     </div>
                     <div className={styles.iconInfo}>
-                      <Image width={30} height={30} src="/assets/image/contactinsta.png" alt="" />
-                      <Image width={30} height={30} src="/assets/image/contactlinkedin.png" alt="" />
-                      <Image width={30} height={30} src="/assets/image/contactcall.png" alt="" />
+                      <Image
+                        width={30}
+                        height={30}
+                        src="/assets/image/contactinsta.png"
+                        alt=""
+                      />
+                      <Image
+                        width={30}
+                        height={30}
+                        src="/assets/image/contactlinkedin.png"
+                        alt=""
+                      />
+                      <Image
+                        width={30}
+                        height={30}
+                        src="/assets/image/contactcall.png"
+                        alt=""
+                      />
                     </div>
                   </div>
                 </div>

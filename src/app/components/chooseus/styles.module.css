@@ -4,9 +4,7 @@
 }
 .ChooseUs h2 {
   color: #c9beb1;
-
   font-family: "Montaga", serif;
-
   font-size: 30px;
   font-style: normal;
   font-weight: 400;
@@ -52,4 +50,6 @@
   display: flex;
   justify-content: center;
 }
+
+
 

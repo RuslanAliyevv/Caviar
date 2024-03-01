@@ -14,10 +14,10 @@
   line-height: normal;
   text-transform: uppercase;
 }
-.ProductDetail .detailImg{
+.ProductDetail .detailImg {
   object-fit: cover !important;
   border-radius: 12px;
-  /* width: 85% !important; */
+  width: 386px !important;
 }
 
 .contentImg {
@@ -26,9 +26,12 @@
   border-radius: 10px;
 }
 .boxDiv {
+  border-radius: 10px;
+
+  background-color: rgba(55, 55, 55, 1);
   margin-top: -15px;
-  width: 466px;
-  height: 475px;
+  width: 386px;
+  height: 455px;
   object-fit: cover;
 }
 
@@ -158,8 +161,7 @@
   line-height: 28px; /* 155.556% */
 }
 
-/* //section 3 */
-
+/* //SECTION 3 */
 
 .TopProducts .rowAll {
   flex-flow: wrap;
@@ -179,7 +181,10 @@
 .TopProducts .boxUp {
   position: relative;
   height: 408px;
+  background-color: rgba(255, 255, 255, 0.06) !important;
+  border-radius: 10px;
   width: 100%;
+  margin-top: 20px;
 }
 .TopProducts img {
   width: 100%;
@@ -187,11 +192,8 @@
   height: 100% !important;
   transition: transform 0.3s ease;
   border-radius: 10px;
-  margin-top: 15px;
   cursor: pointer;
-
 }
-
 
 .TopProducts h3 {
   color: #fff;
@@ -202,7 +204,7 @@
   font-weight: 700 !important;
   line-height: normal;
 }
-.TopProducts .h3Edit{
+.TopProducts .h3Edit {
   width: 120px;
   margin-left: 0px !important;
 }
@@ -215,7 +217,7 @@
   margin: 0;
 }
 .TopProducts .boxDown {
-  margin-top: 30px;
+  margin-top: 20px;
   height: 100px;
 }
 .TopProducts .prNameEdit {
@@ -229,7 +231,6 @@
 
 .TopProducts .box {
   position: relative;
-
 }
 .TopProducts .pEdit {
   color: #c3924e;
@@ -272,13 +273,6 @@
   height: 100%;
   padding: 50px 0 50px 0;
 }
-
-
-
-
-
-
-
 
 .TopProducts h2 {
   color: #c9beb1;
@@ -465,24 +459,18 @@
   text-align: center !important;
 }
 
-
-
-
 @media screen and (min-width: 1200px) and (max-width: 1350px) {
-  .ProductDetail .box{
+  .ProductDetail .box {
     margin-left: 40px;
   }
-  .qty{
+  .qty {
     padding: 0px 8px !important;
   }
 }
 
-
-
-
-.movies{
+.movies {
   display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(180px,1fr));
-  grid-auto-rows:320px ;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  grid-auto-rows: 320px;
   gap: 24px;
 }

@@ -7,10 +7,14 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import Spinner from "../../Spinner/spinner";
+import { updateCart } from "../../../Redux/CartSlice";
 import { useParams } from "next/navigation";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { add } from "../../../Redux/CartSlice";
+
+
 export default function AddtoCard({ productId, closeMock }) {
+  const cartItems = useSelector((state) => state.cart);
   const [isLoading, setIsLoading] = useState(true);
   const router = useRouter();
   const [product, setProduct] = useState(null);
@@ -22,7 +26,9 @@ export default function AddtoCard({ productId, closeMock }) {
     product && product.variants
       ? product.variants.slice().sort((a, b) => a.grams.weight - b.grams.weight)
       : [];
-  useEffect(() => {
+
+      
+    useEffect(() => {
     if (
       product &&
       product.variants &&
@@ -68,8 +74,28 @@ export default function AddtoCard({ productId, closeMock }) {
   };
 
   const handleAddToCart = () => {
-    if (product) {
-      dispatch(add(product));
+    if (product && product.variants && product.variants.length > 0) {
+      const selectedVariant = product.variants.find(
+        (variant) => variant.grams.weight === selectedGram
+      );
+
+      if (selectedVariant) {
+        const updatedCart = [...cartItems]; 
+
+        const existingItemIndex = updatedCart.findIndex(
+          (item) => item.guid === selectedVariant.guid
+        );
+
+        if (existingItemIndex !== -1) {
+          updatedCart[existingItemIndex] = {
+            ...updatedCart[existingItemIndex],
+            count: updatedCart[existingItemIndex].count + count,
+          };
+        } else {
+          updatedCart.push({ ...selectedVariant, count });
+        }
+        dispatch(updateCart(updatedCart));
+      }
     }
   };
 
@@ -77,13 +103,9 @@ export default function AddtoCard({ productId, closeMock }) {
     <>
       <div className={styles.Alert}>
         <div className={styles.alertAll}>
-         
-          <div className={styles.spiner}>
-          {isLoading && <Spinner />}
-          </div>
+          <div className={styles.spiner}>{isLoading && <Spinner />}</div>
           {product && (
             <div className="container">
-
               <div className={styles.boxUp}>
                 <div className={`row ${styles.rowAll}`}>
                   <div className="col-lg-11 col-10">
@@ -128,8 +150,8 @@ export default function AddtoCard({ productId, closeMock }) {
                         <Image
                           loading="lazy"
                           className={styles.detailImg}
-                          width={390}
-                          height={450}
+                          width={278}
+                          height={378}
                           src={
                             product.variants.find(
                               (variant) => variant.grams.weight === selectedGram
@@ -209,7 +231,7 @@ export default function AddtoCard({ productId, closeMock }) {
                     <div className={styles.qty}>
                       <div className={styles.spanDiv}>
                         <span
-                          // onClick={() => handleMinus(item.id)}
+                          onClick={handleMinus}
                           style={{ marginRight: "5px" }}
                         >
                           -
@@ -220,15 +242,11 @@ export default function AddtoCard({ productId, closeMock }) {
                           style={{ color: "#fff" }}
                           className={`text-grey mt-2 mr-1 ml-1`}
                         >
-                          1 {/* {item.count} */}
+                          {count}
                         </h5>
                       </div>
                       <div className={styles.spanDiv}>
-                        <span
-                        //  onClick={() => handlePlus(item.id)}
-                        >
-                          +
-                        </span>
+                        <span onClick={handlePlus}>+</span>
                       </div>
                     </div>
                     <h5

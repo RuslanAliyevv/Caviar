@@ -21,7 +21,7 @@ export default function ContactFm() {
     // name: "",
     email: "",
     message: "",
-    contact_type:"Contact"
+    contact_type: "Contact",
   });
   const handleInput = (event) => {
     setPost({ ...post, [event.target.name]: event.target.value });
@@ -55,8 +55,13 @@ export default function ContactFm() {
                 <div className="col-lg-6">
                   <div className="box">
                     <div className="left">
-            
-                      <Image  loading="lazy"  width={611} height={430}  src="/assets/image/contactstock.png" alt="Tos" />
+                      <Image
+                        loading="lazy"
+                        width={611}
+                        height={430}
+                        src="/assets/image/contactstock.png"
+                        alt="Tos"
+                      />
                     </div>
                   </div>
                 </div>

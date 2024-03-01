@@ -10,11 +10,10 @@ import Select from "@mui/material/Select";
 import InputLabel from "@mui/material/InputLabel";
 import FormControl from "@mui/material/FormControl";
 import NativeSelect from "@mui/material/NativeSelect";
-import MultiRangeSlider from "../components/multi/multirangeslider";
+import MultiRangeSlider from "../components/multirange/multirangeslider";
 import Spinner from "../components/Spinner/spinner";
 export default function Products() {
   const [isLoading, setIsLoading] = useState(true);
-
   const [products, setproducts] = useState([]);
   const [categoryname, setCategoryname] = useState([]);
   const [fish, setFish] = useState([]);
@@ -22,6 +21,7 @@ export default function Products() {
   const [selectedFish, setSelectedFish] = useState("all");
   const [selectedColor, setSelectedColor] = useState("all");
   const [filteredProducts, setFilteredProducts] = useState([]);
+
 
   useEffect(() => {
     const fetchData = async () => {

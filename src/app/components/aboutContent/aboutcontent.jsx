@@ -98,9 +98,9 @@ export default function Aboutcn() {
             </div>
           ))}
         </Carousel>
-
         <div className={styles.subtract}>{/* //For Image */}</div>
       </div>
     </>
   );
 }
+

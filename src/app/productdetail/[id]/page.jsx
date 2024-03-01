@@ -1,12 +1,14 @@
 "use client";
 import React from "react";
-import { useDispatch } from "react-redux";
 import { add } from "../../Redux/CartSlice";
 import styles from "./styles.module.css";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { updateCart } from "../../Redux/CartSlice";
+
 import axios from "axios";
 import { useParams } from "next/navigation";
 import Image from "next/image";
@@ -16,6 +18,7 @@ import AddtoCard from "../../components/AddtoCardModal/[id]/addtocard";
 
 export default function ProductDetail() {
   const router = useRouter();
+  const cartItems = useSelector((state) => state.cart);
   const [isLoading, setIsLoading] = useState(true);
   const [products, setproducts] = useState([]);
   const [selectedGram, setSelectedGram] = useState("");
@@ -118,201 +121,218 @@ export default function ProductDetail() {
   };
   const dispatch = useDispatch();
 
-  const handleadd = () => {
-    if (post) {
-      dispatch(add(post));
+  const handleAddToCart = () => {
+    if (post && post.variants && post.variants.length > 0) {
+      const selectedVariant = post.variants.find(
+        (variant) => variant.grams.weight === selectedGram
+      );
+
+      if (selectedVariant) {
+        // Seçilen miktar kadar ürün ekle
+        const updatedCart = [...cartItems]; // Sepetin kopyasını al
+
+        const existingItemIndex = updatedCart.findIndex(
+          (item) => item.guid === selectedVariant.guid
+        );
+
+        if (existingItemIndex !== -1) {
+          // Sepette varsa, miktarı güncelle
+          updatedCart[existingItemIndex] = {
+            ...updatedCart[existingItemIndex],
+            count: updatedCart[existingItemIndex].count + count,
+          };
+        } else {
+          // Sepette yoksa, yeni öğe olarak ekle
+          updatedCart.push({ ...selectedVariant, count });
+        }
+
+        // Güncellenmiş sepeti redux store'a gönder
+        dispatch(updateCart(updatedCart));
+      }
     }
   };
   return (
     <>
-       {isLoading && <Spinner />}
-        <div className={styles.ProductDetail}>
-          <h2>Product Details</h2>
-          <div className={styles.backFone}></div>
-          <div className="container">
-            <div className={`row ${styles.rowAll}`}>
-              <div className="col-lg-5">
-                <div className="box">
-                  <div className={styles.boxDiv}>
+      {isLoading && <Spinner />}
+      <div className={styles.ProductDetail}>
+        <h2>Product Details</h2>
+        <div className={styles.backFone}></div>
+        <div className="container">
+          <div className={`row ${styles.rowAll}`}>
+            <div className="col-lg-5">
+              <div className="box">
+                <div className={styles.boxDiv}>
+                  {post &&
+                    post.variants &&
+                    post.variants.find(
+                      (variant) => variant.grams.weight === selectedGram
+                    ) &&
+                    post.variants.find(
+                      (variant) => variant.grams.weight === selectedGram
+                    ).product_attachments &&
+                    post.variants.find(
+                      (variant) => variant.grams.weight === selectedGram
+                    ).product_attachments.length > 0 && (
+                      <Image
+                        loading="lazy"
+                        className={styles.detailImg}
+                        width={390}
+                        height={450}
+                        src={
+                          post.variants.find(
+                            (variant) => variant.grams.weight === selectedGram
+                          ).product_attachments[0].filePath
+                        }
+                        alt={
+                          post.variants.find(
+                            (variant) => variant.grams.weight === selectedGram
+                          ).product_attachments[0].altText
+                        }
+                      />
+                    )}
+                </div>
+              </div>
+            </div>
+            <div style={{ marginLeft: "0px" }} className="col-lg-6">
+              <div className={styles.box}>
+                <div className={styles.spanEdit}>
+                  <span>
+                    <Image
+                      loading="lazy"
+                      width={20}
+                      height={20}
+                      src="/assets/image/staricon.png"
+                      alt=""
+                    />
+                  </span>
+                  <span>
+                    <Image
+                      loading="lazy"
+                      width={20}
+                      height={20}
+                      src="/assets/image/staricon.png"
+                      alt=""
+                    />
+                  </span>
+                  <span>
+                    <Image
+                      loading="lazy"
+                      width={20}
+                      height={20}
+                      src="/assets/image/staricon.png"
+                      alt=""
+                    />
+                  </span>
+                  <span>
+                    <Image
+                      loading="lazy"
+                      width={20}
+                      height={20}
+                      src="/assets/image/staricon.png"
+                      alt=""
+                    />
+                  </span>
+                  <span>
+                    <Image
+                      loading="lazy"
+                      width={20}
+                      height={20}
+                      src="/assets/image/staricon.png"
+                      alt=""
+                    />
+                  </span>
+                </div>
+                <div
+                  style={{ marginTop: "15px" }}
+                  className="row align-items-baseline"
+                >
+                  <div className="col-lg-9">
+                    <div className={styles.h3Edit}>
+                      <h3>{post && post.name} :</h3>
+                    </div>
                     {post &&
                       post.variants &&
                       post.variants.find(
                         (variant) => variant.grams.weight === selectedGram
-                      ) &&
-                      post.variants.find(
-                        (variant) => variant.grams.weight === selectedGram
-                      ).product_attachments &&
-                      post.variants.find(
-                        (variant) => variant.grams.weight === selectedGram
-                      ).product_attachments.length > 0 && (
-                        <Image
-                          loading="lazy"
-                          className={styles.detailImg}
-                          width={390}
-                          height={450}
-                          src={
+                      ) && (
+                        <h6>
+                          {
                             post.variants.find(
                               (variant) => variant.grams.weight === selectedGram
-                            ).product_attachments[0].filePath
+                            ).price
                           }
-                          alt={
-                            post.variants.find(
-                              (variant) => variant.grams.weight === selectedGram
-                            ).product_attachments[0].altText
-                          }
-                        />
+                          $
+                        </h6>
                       )}
-                  </div>
-                </div>
-              </div>
-              <div style={{ marginLeft: "0px" }} className="col-lg-6">
-                <div className={styles.box}>
-                  <div className={styles.spanEdit}>
-                    <span>
-                      <Image
-                        loading="lazy"
-                        width={20}
-                        height={20}
-                        src="/assets/image/staricon.png"
-                        alt=""
-                      />
+                    <span className={styles.h5CheckOut}>Free Shipping</span>
+                    <span className={styles.h5CheckOut}>
+                      on all orders over $250
                     </span>
-                    <span>
-                      <Image
-                        loading="lazy"
-                        width={20}
-                        height={20}
-                        src="/assets/image/staricon.png"
-                        alt=""
-                      />
-                    </span>
-                    <span>
-                      <Image
-                        loading="lazy"
-                        width={20}
-                        height={20}
-                        src="/assets/image/staricon.png"
-                        alt=""
-                      />
-                    </span>
-                    <span>
-                      <Image
-                        loading="lazy"
-                        width={20}
-                        height={20}
-                        src="/assets/image/staricon.png"
-                        alt=""
-                      />
-                    </span>
-                    <span>
-                      <Image
-                        loading="lazy"
-                        width={20}
-                        height={20}
-                        src="/assets/image/staricon.png"
-                        alt=""
-                      />
-                    </span>
-                  </div>
-                  <div
-                    style={{ marginTop: "15px" }}
-                    className="row align-items-baseline"
-                  >
-                    <div className="col-lg-9">
-                      <div className={styles.h3Edit}>
-                        <h3>{post && post.name} :</h3>
-                      </div>
+                    <div className={styles.line}></div>
+                    <p className={styles.pStock}>
                       {post &&
                         post.variants &&
-                        post.variants.find(
-                          (variant) => variant.grams.weight === selectedGram
-                        ) && (
-                          <h6>
-                            {
-                              post.variants.find(
-                                (variant) =>
-                                  variant.grams.weight === selectedGram
-                              ).price
-                            }
-                            $
-                          </h6>
+                        post.variants.length > 0 &&
+                        post.variants.map(
+                          (variant) =>
+                            variant.grams.weight === selectedGram &&
+                            `${variant.quantity} in stock, ready to ship.`
                         )}
-                      <span className={styles.h5CheckOut}>Free Shipping</span>
-                      <span className={styles.h5CheckOut}>
-                        on all orders over $250
-                      </span>
-                      <div className={styles.line}></div>
-                      <p className={styles.pStock}>
-                        {post &&
-                          post.variants &&
-                          post.variants.length > 0 &&
-                          post.variants.map(
-                            (variant) =>
-                              variant.grams.weight === selectedGram &&
-                              `${variant.quantity} in stock, ready to ship.`
-                          )}
-                      </p>
-                    </div>
-                    <div className="col-lg-3">
-                      <span>
-                        <Image
-                          loading="lazy"
-                          width={26}
-                          height={23}
-                          src="/assets/image/heart.png"
-                          alt=""
+                    </p>
+                  </div>
+                  <div className="col-lg-3">
+                    <span>
+                      <Image
+                        loading="lazy"
+                        width={26}
+                        height={23}
+                        src="/assets/image/heart.png"
+                        alt=""
+                      />
+                    </span>
+                  </div>
+                </div>
+                <div className={styles.radioGroup}>
+                  {sortedVariants &&
+                    sortedVariants.map((variant) => (
+                      <div className={styles.radioContainer} key={variant.guid}>
+                        <input
+                          type="radio"
+                          id={`radioInput${variant.grams.weight}`}
+                          value={variant.grams.weight}
+                          checked={selectedGram === variant.grams.weight}
+                          onChange={handleGramChange}
                         />
+                        <label htmlFor={`radioInput${variant.grams.weight}`}>
+                          {parseInt(variant.grams.weight) >= 1000
+                            ? `${parseInt(variant.grams.weight) / 1000} kg`
+                            : `${parseInt(variant.grams.weight)}gr`}
+                        </label>
+                      </div>
+                    ))}
+                </div>
+
+                <div className="row align-items-baseline">
+                  <div className="col-lg-6">
+                    <div className={styles.qty}>
+                      <span onClick={handleMinus}>-</span>
+                      <span style={{ marginLeft: "10px" }}>{count}</span>
+                      <span style={{ marginLeft: "10px" }} onClick={handlePlus}>
+                        +
                       </span>
                     </div>
                   </div>
-                  <div className={styles.radioGroup}>
-                    {sortedVariants &&
-                      sortedVariants.map((variant) => (
-                        <div
-                          className={styles.radioContainer}
-                          key={variant.guid}
-                        >
-                          <input
-                            type="radio"
-                            id={`radioInput${variant.grams.weight}`}
-                            value={variant.grams.weight}
-                            checked={selectedGram === variant.grams.weight}
-                            onChange={handleGramChange}
-                          />
-                          <label htmlFor={`radioInput${variant.grams.weight}`}>
-                            {parseInt(variant.grams.weight) >= 1000
-                              ? `${parseInt(variant.grams.weight) / 1000} kg`
-                              : `${parseInt(variant.grams.weight)}gr`}
-                          </label>
-                        </div>
-                      ))}
-                  </div>
-
-                  <div className="row align-items-baseline">
-                    <div className="col-lg-6">
-                      <div className={styles.qty}>
-                        <span onClick={handleMinus}>-</span>
-                        <span style={{ marginLeft: "10px" }}>{count}</span>
-                        <span
-                          style={{ marginLeft: "10px" }}
-                          onClick={handlePlus}
-                        >
-                          +
-                        </span>
-                      </div>
-                    </div>
-                    <div className="col-lg-6">
-                      <h5 onClick={handleadd} style={{ marginTop: "10px" }}>
-                        Add to Cart
-                      </h5>
-                    </div>
+                  <div className="col-lg-6">
+                    <h5 onClick={handleAddToCart} style={{ marginTop: "10px" }}>
+                      Add to Cart
+                    </h5>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      
+      </div>
 
       <section>
         <div className={styles.Content}>

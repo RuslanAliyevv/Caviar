@@ -34,7 +34,7 @@
   height: 100%;
 }
 .aboutContent h4 {
-  color: #C9BEB1;
+  color: #c9beb1;
   width: 100%;
   font-family: var(--montserrat);
   font-size: 22px;
@@ -42,7 +42,7 @@
   font-weight: 700 !important;
   line-height: normal;
 }
-.aboutContent h4:nth-last-child(1){
+.aboutContent h4:nth-last-child(1) {
   color: #c3924e !important;
 }
 
@@ -58,6 +58,6 @@
   line-height: 28px;
 }
 
-.About .aboutContent{
+.About .aboutContent {
   padding-left: 110px !important;
 }
