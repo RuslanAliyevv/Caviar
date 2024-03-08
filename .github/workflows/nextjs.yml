@@ -3,7 +3,7 @@ name: Deploy caviar-front to EC2
 on:
   push:
     branches:
-      - master
+      - star
 
 jobs:
   deploy:
