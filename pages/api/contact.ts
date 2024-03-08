@@ -5,7 +5,7 @@ export default async function handler(req:Request, res:Response) {
     console.log(req.body)
     if (req.method === 'POST') {
         try {
-            const backendResponse = await axios.post('http://ec2-18-130-240-204.eu-west-2.compute.amazonaws.com:3000/contact/form', {
+            const backendResponse = await axios.post('http://167.71.86.5:3000/contact/form', {
                 "name": req.body.name,
                 "email": req.body.email,
                 "message": req.body.message,
