@@ -37,7 +37,7 @@ export default function Product() {
   const getProducts = async () => {
     try {
       const response = await axios.get(
-        "https://bbcaviar.com/api/v1/products/main-category/48ab9d6b-117c-4ba8-b288-8954da356902"
+        "https://bbcaviar.com/api/v1/products/main-category/8fc4b1a4-28dd-49bc-ab4c-b2bb71a8c843"
       );
       const data = response.data;
 
