@@ -8,7 +8,7 @@ export default function ProductInfo() {
     <>
       <div className={styles.PrInfo}>
         <div className="container">
-          <div className="row">
+          <div className={`row ${styles.rowAll}`}>
             <div className="col-lg-5">
               <div className="box">
                 <div className="left">

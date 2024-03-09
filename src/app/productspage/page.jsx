@@ -22,21 +22,20 @@ export default function Products() {
   const [selectedColor, setSelectedColor] = useState("all");
   const [filteredProducts, setFilteredProducts] = useState([]);
 
-
   useEffect(() => {
     const fetchData = async () => {
       try {
         const [gramResponse, fishResponse, categoryResponse, productsResponse] =
           await Promise.all([
             axios.get(
-              "https://bbcaviar.com/api/v1/product-gram/48ab9d6b-117c-4ba8-b288-8954da356902"
+              "https://bbcaviar.com/api/v1/product-gram/8fc4b1a4-28dd-49bc-ab4c-b2bb71a8c843"
             ),
             axios.get(
-              "https://bbcaviar.com/api/v1/sub-category/48ab9d6b-117c-4ba8-b288-8954da356902"
+              "https://bbcaviar.com/api/v1/sub-category/8fc4b1a4-28dd-49bc-ab4c-b2bb71a8c843"
             ),
             axios.get("https://bbcaviar.com/api/v1/category/"),
             axios.get(
-              "https://bbcaviar.com/api/v1/products/main-category/48ab9d6b-117c-4ba8-b288-8954da356902"
+              "https://bbcaviar.com/api/v1/products/main-category/8fc4b1a4-28dd-49bc-ab4c-b2bb71a8c843"
             ),
           ]);
 
@@ -103,119 +102,118 @@ export default function Products() {
 
   return (
     <>
-       {isLoading && <Spinner />}
-        <div className={styles.Products}>
-          <h2>PRODUCT</h2>
-          <Tabs
-            defaultActiveKey="home"
-            transition={false}
-            id="noanim-tab-example"
-            className="mb-3 productTab"
+      {isLoading && <Spinner />}
+      <div className={styles.Products}>
+        <h2>PRODUCT</h2>
+        <Tabs
+          defaultActiveKey="home"
+          transition={false}
+          id="noanim-tab-example"
+          className="mb-3 productTab"
+        >
+          <Tab
+            eventKey="home"
+            title={categoryname.map((item, index) => (
+              <div key={index}>{item.name}</div>
+            ))}
           >
-            <Tab
-              eventKey="home"
-              title={categoryname.map((item, index) => (
-                <div key={index}>{item.name}</div>
-              ))}
-            >
-              <div className={styles.tableBorder}>
-                <div className={`container ${styles.container}`}>
-                  <div className="row">
-                    <div className="col-lg-4">
-                      <div className="box">
-                        <FormControl className={styles.formControl} fullWidth>
-                          <InputLabel
-                            variant="standard"
-                            htmlFor="uncontrolled-native"
-                            className={styles.inputLabel}
-                          >
-                            Color
-                          </InputLabel>
-                          <NativeSelect
-                            style={{ color: "#fff" }}
-                            defaultValue={0}
-                            onChange={handleColorChange}
-                            inputProps={{
-                              name: "categories",
-                              id: "uncontrolled-native",
-                            }}
-                          >
-                            <option value="all">All</option>
-                            <option value="gold">gold</option>
-                            <option value="black">black</option>
-                            <option value="red">red</option>
-                          </NativeSelect>
-                        </FormControl>
-                      </div>
+            <div className={styles.tableBorder}>
+              <div className={`container ${styles.container}`}>
+                <div className="row">
+                  <div className="col-lg-4">
+                    <div className="box">
+                      <FormControl className={styles.formControl} fullWidth>
+                        <InputLabel
+                          variant="standard"
+                          htmlFor="uncontrolled-native"
+                          className={styles.inputLabel}
+                        >
+                          Color
+                        </InputLabel>
+                        <NativeSelect
+                          style={{ color: "#fff" }}
+                          defaultValue={0}
+                          onChange={handleColorChange}
+                          inputProps={{
+                            name: "categories",
+                            id: "uncontrolled-native",
+                          }}
+                        >
+                          <option value="all">All</option>
+                          <option value="gold">gold</option>
+                          <option value="black">black</option>
+                          <option value="red">red</option>
+                        </NativeSelect>
+                      </FormControl>
                     </div>
+                  </div>
 
-                    <div className="col-lg-4">
-                      <div className="box">
-                        <FormControl className={styles.formControl} fullWidth>
-                          <InputLabel
-                            variant="standard"
-                            htmlFor="uncontrolled-native"
-                            className={styles.inputLabel}
-                          >
-                            Fish
-                          </InputLabel>
-                          <NativeSelect
-                            style={{ color: "#fff" }}
-                            defaultValue={0}
-                            onChange={handleFishChange}
-                            inputProps={{
-                              name: "categories",
-                              id: "uncontrolled-native",
-                            }}
-                          >
-                            <option value="all">All</option>
-                            {fish.map((item, index) => (
-                              <option key={index} value={item.name}>
-                                {item.name}
-                              </option>
-                            ))}
-                          </NativeSelect>
-                        </FormControl>
-                      </div>
+                  <div className="col-lg-4">
+                    <div className="box">
+                      <FormControl className={styles.formControl} fullWidth>
+                        <InputLabel
+                          variant="standard"
+                          htmlFor="uncontrolled-native"
+                          className={styles.inputLabel}
+                        >
+                          Fish
+                        </InputLabel>
+                        <NativeSelect
+                          style={{ color: "#fff" }}
+                          defaultValue={0}
+                          onChange={handleFishChange}
+                          inputProps={{
+                            name: "categories",
+                            id: "uncontrolled-native",
+                          }}
+                        >
+                          <option value="all">All</option>
+                          {fish.map((item, index) => (
+                            <option key={index} value={item.name}>
+                              {item.name}
+                            </option>
+                          ))}
+                        </NativeSelect>
+                      </FormControl>
                     </div>
+                  </div>
 
-                    <div className="col-lg-4">
-                      <div className="box">
-                        <div className={styles.priceBox}>
-                          <label className={styles.priceLabel} htmlFor="">
-                            Price
-                          </label>
-                        </div>
-                        <div className={styles.rangeBox}>
-                          <MultiRangeSlider
-                            min={0}
-                            max={5000}
-                            onChange={({ min, max }) => RangeChange(min, max)}
-                          />
-                        </div>
+                  <div className="col-lg-4">
+                    <div className="box">
+                      <div className={styles.priceBox}>
+                        <label className={styles.priceLabel} htmlFor="">
+                          Price
+                        </label>
+                      </div>
+                      <div className={styles.rangeBox}>
+                        <MultiRangeSlider
+                          min={0}
+                          max={5000}
+                          onChange={({ min, max }) => RangeChange(min, max)}
+                        />
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <Cards products={filteredProducts} />
-            </Tab>
-            {/* <Tab eventKey="profile" title="Grocery"></Tab> */}
-          </Tabs>
-
-          <div className={styles.getInTouch}>
-            <h2>Get in Touch with Us!</h2>
-            <div className={styles.pEdit}>
-              <p>
-                Questions or thoughts about our caviar? Our BB Caviar team is
-                ready to assist. Reach out to us for any inquiries or feedback –
-                we're here to help and always eager to connect!
-              </p>
             </div>
-            <button className={styles.buttonHover}>Contact now</button>
+            <Cards products={filteredProducts} />
+          </Tab>
+          {/* <Tab eventKey="profile" title="Grocery"></Tab> */}
+        </Tabs>
+
+        <div className={styles.getInTouch}>
+          <h2>Get in Touch with Us!</h2>
+          <div className={styles.pEdit}>
+            <p>
+              Questions or thoughts about our caviar? Our BB Caviar team is
+              ready to assist. Reach out to us for any inquiries or feedback –
+              we're here to help and always eager to connect!
+            </p>
           </div>
+          <button className={styles.buttonHover}>Contact now</button>
         </div>
-      
+      </div>
     </>
   );
 }
