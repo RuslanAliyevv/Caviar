@@ -187,7 +187,7 @@
   margin-top: 20px;
 }
 .TopProducts img {
-  width: 100%;
+  /* width: 100%; */
   max-width: 100%;
   height: 100% !important;
   transition: transform 0.3s ease;
@@ -205,7 +205,7 @@
   line-height: normal;
 }
 .TopProducts .h3Edit {
-  width: 120px;
+  width: 90px;
   margin-left: 0px !important;
 }
 
@@ -338,14 +338,13 @@
   text-transform: uppercase;
   border-radius: 6px;
   border: 2px solid #c3924e;
-  margin-top: 15px;
   cursor: pointer;
   position: relative;
   z-index: 0;
 }
 .TopProducts .buttonEdit {
   text-align: center;
-  margin-top: 40px;
+  margin-top: 30px;
 }
 .buttonHover:before {
   content: "";

@@ -87,12 +87,12 @@ export default function ContactUs() {
                         src="/assets/image/contactinsta.png"
                         alt=""
                       />
-                      <Image
+                      {/* <Image
                         width={30}
                         height={30}
                         src="/assets/image/contactlinkedin.png"
                         alt=""
-                      />
+                      /> */}
                       <Image
                         width={30}
                         height={30}

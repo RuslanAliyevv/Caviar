@@ -8,13 +8,13 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { updateCart } from "../../Redux/CartSlice";
-
 import axios from "axios";
 import { useParams } from "next/navigation";
 import Image from "next/image";
 import Spinner from "../../components/Spinner/spinner";
 import { useRouter } from "next/navigation";
 import AddtoCard from "../../components/AddtoCardModal/[id]/addtocard";
+
 
 export default function ProductDetail() {
   const router = useRouter();

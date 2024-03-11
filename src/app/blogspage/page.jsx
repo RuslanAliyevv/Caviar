@@ -6,12 +6,10 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 import Spinner from "../components/Spinner/spinner";
 import { useState, useEffect } from "react";
-
 export default function BlogsPage() {
   const [isLoading, setIsLoading] = useState(true);
   const router = useRouter();
   const [blogs, setBlogs] = useState([]);
-
 
   const getProducts = async () => {
     try {
@@ -28,7 +26,7 @@ export default function BlogsPage() {
   }, []);
   return (
     <>
-      {/* {isLoading && <Spinner />} */}
+      {isLoading && <Spinner />}
       <div className={styles.Blogs}>
         <h2 className="text-center">Blogs</h2>
         <div className={styles.backFone}></div>
@@ -44,11 +42,14 @@ export default function BlogsPage() {
                       blog.blog_attachments.length > 0 ? (
                         <div className={styles.caviarPhoto}>
                           <Image
-                           loading="lazy"
+                            loading="lazy"
                             width={450}
                             height={450}
                             src={blog.blog_attachments[0].filePath}
                             alt={blog.blog_attachments[0].altText}
+                            onClick={() =>
+                              router.push(`/blogsdetail/${blog.guid}`)
+                            }
                           />
                         </div>
                       ) : (

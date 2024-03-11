@@ -71,7 +71,7 @@ export default function Receipe() {
                   <div className="col-lg-3">
                     <div className={styles.downBoxLeft}>
                       <div className={styles.number}>
-                        <h4>01</h4>
+                        <h4>02</h4>
                         <h5>of 06</h5>
                       </div>
                       <div className={styles.line}></div>
@@ -103,7 +103,7 @@ export default function Receipe() {
                   <div className="col-lg-3">
                     <div className={styles.downBoxLeft}>
                       <div className={styles.number}>
-                        <h4>01</h4>
+                        <h4>03</h4>
                         <h5>of 06</h5>
                       </div>
                       <div className={styles.line}></div>

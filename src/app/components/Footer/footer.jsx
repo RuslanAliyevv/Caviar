@@ -182,14 +182,14 @@ export default function Footer() {
                     </div>
                     <div className={styles.linkEdit}>
                       <div>
-                        <Image
+                        {/* <Image
                           loading="lazy"
                           width={28}
                           height={28}
                           className={styles.imgIcon}
                           src="/assets/image/linkedingold.png"
                           alt=""
-                        />
+                        /> */}
                         <Image
                           loading="lazy"
                           width={28}
