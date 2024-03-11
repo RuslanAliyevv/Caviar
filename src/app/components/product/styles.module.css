@@ -49,14 +49,15 @@
 .Product .boxUp {
   border-radius: 10px;
   background-color: rgba(255, 255, 255, 0.06) !important;
-  width: 278px !important;
+  width: 295px !important;
   height: 378px !important;
 }
 .Product img {
   transition: transform 0.3s ease;
   object-fit: cover;
-  margin-top: 15px;
+  margin-top: 0px;
   cursor: pointer;
+  width: 290px;
 }
 
 .Product h3 {
@@ -189,5 +190,14 @@
   }
   100% {
     background-position: 0 0;
+  }
+}
+
+@media screen and (min-width: 1200px) and (max-width: 1400px) {
+  .Product img {
+    width: 250px;
+  }
+  .Product .boxUp {
+    width: 260px !important;
   }
 }

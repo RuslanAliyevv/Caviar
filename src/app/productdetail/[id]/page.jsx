@@ -15,7 +15,6 @@ import Spinner from "../../components/Spinner/spinner";
 import { useRouter } from "next/navigation";
 import AddtoCard from "../../components/AddtoCardModal/[id]/addtocard";
 
-
 export default function ProductDetail() {
   const router = useRouter();
   const cartItems = useSelector((state) => state.cart);
@@ -188,6 +187,8 @@ export default function ProductDetail() {
                             (variant) => variant.grams.weight === selectedGram
                           ).product_attachments[0].altText
                         }
+                        onLoad={() => setIsLoading(false)}
+                        onError={() => setIsLoading(false)}
                       />
                     )}
                 </div>

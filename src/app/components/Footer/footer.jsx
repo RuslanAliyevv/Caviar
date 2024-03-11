@@ -8,6 +8,21 @@ export default function Footer() {
   const handleKoikomclick = () => {
     window.location.href = "https://www.koikom.com";
   };
+  const phoneNumber = "+1(929)289-0812";
+  const handleCallClick = () => {
+    window.location.href = `tel:${phoneNumber}`;
+  };
+  const handleMessageClick = () => {
+    window.location.href = "https://bestblackcaviar1965@gmail.com";
+  };
+  const handleInstaClick = () => {
+    window.location.href =
+      "https://www.instagram.com/b.bestcaviar?igsh=MzRlODBiNWFlZA==";
+  };
+  const handleFacebookClick = () => {
+    window.location.href =
+      "https://www.facebook.com/profile.php?id=61552535425181";
+  };
 
   return (
     <>
@@ -162,19 +177,23 @@ export default function Footer() {
                     </div>
                     <div className={styles.linkEdit}>
                       <Link href="/">
-                        <span>Phone: 24325242</span>
+                        <span onClick={handleCallClick}>
+                          Phone: +1(929)289-0813
+                        </span>
                       </Link>
                     </div>
                     <div className={styles.linkEdit}>
                       <Link href="/">
-                        <span>caviar@email.com</span>
+                        <span onClick={handleMessageClick}>
+                          bestblackcaviar1965@gmail.com
+                        </span>
                       </Link>
                     </div>
-                    <div className={styles.linkEdit}>
+                    {/* <div className={styles.linkEdit}>
                       <Link href="/">
                         <span>Address: California</span>
                       </Link>
-                    </div>
+                    </div> */}
                     <div className={styles.linkEdit}>
                       <Link href="/">
                         <span>W/h: 09:00 - 18:00</span>
@@ -191,20 +210,24 @@ export default function Footer() {
                           alt=""
                         /> */}
                         <Image
+                          style={{ cursor: "pointer" }}
                           loading="lazy"
                           width={28}
                           height={28}
                           className={styles.imgIcon}
                           src="/assets/image/facebookgold.png"
                           alt=""
+                          onClick={handleFacebookClick}
                         />
                         <Image
+                          style={{ cursor: "pointer" }}
                           loading="lazy"
                           width={28}
                           height={28}
                           className={styles.imgIcon}
                           src="/assets/image/instagramgold.png"
                           alt=""
+                          onClick={handleInstaClick}
                         />
                       </div>
                     </div>

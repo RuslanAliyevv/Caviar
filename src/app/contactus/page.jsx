@@ -6,6 +6,22 @@ import axios from "axios";
 import Image from "next/image";
 
 export default function ContactUs() {
+  const phoneNumber = "+1(929)289-0812";
+  const handleCallClick = () => {
+    window.location.href = `tel:${phoneNumber}`;
+  };
+  const handleMessageClick = () => {
+    window.location.href = "https://bestblackcaviar1965@gmail.com";
+  };
+  const handleInstaClick = () => {
+    window.location.href =
+      "https://www.instagram.com/b.bestcaviar?igsh=MzRlODBiNWFlZA==";
+  };
+  const handleFacebookClick = () => {
+    window.location.href =
+      "https://www.facebook.com/profile.php?id=61552535425181";
+  };
+
   const [showModal, setShowModal] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
   const openModal = (message) => {
@@ -64,28 +80,43 @@ export default function ContactUs() {
                     </p>
                     <div className={styles.contactInfo}>
                       <Image
+                      style={{cursor:"pointer"}}
                         width={30}
                         height={30}
-                        src="/assets/image/contactletter.png"
+                        src="/assets/image/contactletter.svg"
                         alt=""
                       />
-                      <span>deluxecaviar@gmail.com</span>
+                      <span
+                        style={{ cursor: "pointer" }}
+                        onClick={handleMessageClick}
+                      >
+                        bestblackcaviar1965@gmail.com
+                      </span>
                     </div>
                     <div className={styles.contactInfo}>
                       <Image
+                        style={{ cursor: "pointer" }}
                         width={30}
                         height={30}
-                        src="/assets/image/contactphone.png"
+                        src="/assets/image/contactphone.svg"
+                        onClick={handleCallClick}
                         alt=""
                       />
-                      <span>+01 434 346 34 64 36</span>
+                      <span
+                        style={{ cursor: "pointer" }}
+                        onClick={handleCallClick}
+                      >
+                        +1(929)289-0813
+                      </span>
                     </div>
                     <div className={styles.iconInfo}>
                       <Image
+                        style={{ cursor: "pointer" }}
                         width={30}
                         height={30}
-                        src="/assets/image/contactinsta.png"
+                        src="/assets/image/contactinsta.svg"
                         alt=""
+                        onClick={handleInstaClick}
                       />
                       {/* <Image
                         width={30}
@@ -94,10 +125,12 @@ export default function ContactUs() {
                         alt=""
                       /> */}
                       <Image
+                        style={{ cursor: "pointer" }}
                         width={30}
                         height={30}
-                        src="/assets/image/contactcall.png"
+                        src="/assets/image/contactfacebook.svg"
                         alt=""
+                        onClick={handleFacebookClick}
                       />
                     </div>
                   </div>
