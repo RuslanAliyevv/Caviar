@@ -34,6 +34,8 @@ export default function ProductDetail() {
     post && post.variants
       ? post.variants.slice().sort((a, b) => a.grams.weight - b.grams.weight)
       : [];
+
+
   useEffect(() => {
     if (post && post.variants && post.variants.length > 0 && !selectedGram) {
       const minGramVariant = post.variants.reduce((min, variant) => {

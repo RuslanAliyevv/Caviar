@@ -76,3 +76,60 @@
     display: none;
   }
 }
+
+.Header ul {
+  transition: all 0.35s ease;
+}
+
+.Header li {
+  display: inline-block;
+}
+
+.Header .nav span::before,
+.Header .nav span::after {
+  content: "";
+  height: 14px;
+  width: 14px;
+  position: absolute;
+  transition: all 0.35s ease;
+  opacity: 0;
+}
+
+.nav span::before {
+  content: "";
+  right: 0;
+  top: -15px;
+  border-top: 3px solid gold;
+  border-right: 3px solid gold;
+  transform: translate(-100%, 50%);
+}
+
+.nav span:after {
+  content: "";
+  left: 0;
+  bottom: -15px;
+  border-bottom: 3px solid gold;
+  border-left: 3px solid gold;
+  transform: translate(100%, -50%);
+}
+
+.nav span:hover:before,
+.nav span:hover:after {
+  transform: translate(0, 0);
+  opacity: 1;
+}
+
+.nav span:hover {
+  color: gold;
+}
+
+.nav .numberLi span:hover {
+  color: #fff !important;
+}
+.nav .number::before {
+  border: none !important;
+}
+
+.nav .number:after {
+  border: none !important;
+}

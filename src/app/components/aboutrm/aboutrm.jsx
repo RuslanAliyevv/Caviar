@@ -20,6 +20,10 @@ export default function AboutRm() {
                     src="/assets/image/aboutrm3.png"
                     alt=""
                   />
+                  <figcaption>
+                    <h3>ABOUT US</h3>
+                  </figcaption>
+                  <Link className={styles.a} href="/aboutus"></Link>
                 </div>
               </div>
             </div>

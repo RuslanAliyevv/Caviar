@@ -91,6 +91,13 @@ export default function Product() {
                     ) : (
                       <p>No image available</p>
                     )}
+                    <div className={styles.borderone}>
+                      <div></div>
+                    </div>
+                    <div className={styles.bordertwo}>
+                      <div></div>
+                    </div>
+                    <a href="#"></a>
 
                     <div className={styles.line}></div>
                   </div>

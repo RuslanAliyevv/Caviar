@@ -419,6 +419,8 @@ button {
   transform: rotate(45deg) translate(-15px, -5px);
 }
 
+
+
 input:-webkit-autofill,
 input:-webkit-autofill:focus {
   transition: background-color 0s 600000s, color 0s 600000s !important;

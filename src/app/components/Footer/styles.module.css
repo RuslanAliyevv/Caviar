@@ -255,8 +255,23 @@
   }
 }
 
-@media screen and (min-width: 1200px) and (max-width: 1400px) {
+@media screen and (min-width: 1200px) and (max-width: 1332px) {
   .Footer form img {
     right: -40px !important;
+  }
+  .Footer .linkEdit span {
+    font-size: 14px;
+  }
+  .Footer .linkEdit {
+  }
+}
+@media screen and (min-width: 1400px) and (max-width: 1485px) {
+  .Footer form img {
+    right: -40px !important;
+  }
+  .Footer .linkEdit span {
+    font-size: 15px;
+  }
+  .Footer .linkEdit {
   }
 }

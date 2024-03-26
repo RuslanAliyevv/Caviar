@@ -37,7 +37,17 @@ export default function ProductInfo() {
               <div className="box">
                 <div className="right">
                   <div className={styles.hoverEdit}>
-                    <Image   loading="lazy" width={655} height={501} src="/assets/image/productinfo.png" alt="" />
+                    <Image
+                      loading="lazy"
+                      width={655}
+                      height={501}
+                      src="/assets/image/productinfo.png"
+                      alt=""
+                    />
+                    <figcaption>
+                      <h3>SHOP NOW</h3>
+                    </figcaption>
+                    <Link className={styles.a} href="/productspage"></Link>
                   </div>
                 </div>
               </div>
@@ -46,7 +56,7 @@ export default function ProductInfo() {
         </div>
         <div className={styles.backGrCircle}>
           <Image
-           loading="lazy"
+            loading="lazy"
             height={870}
             width={800}
             src="/assets/image/circle02.png"

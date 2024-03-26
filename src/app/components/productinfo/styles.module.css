@@ -127,6 +127,7 @@
 
 .hoverEdit {
   position: relative;
+  border-radius: 10px !important;
 }
 /* .hoverEdit::before {
   right: 0;
@@ -156,3 +157,114 @@
   opacity: 0;
   width: 100%;
 } */
+
+.hoverEdit {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  color: #ffffff;
+  background-color: #b06f09;
+  transform: translateZ(0);
+  background-image: -webkit-linear-gradient(
+    bottom,
+    rgba(0, 0, 0, 0.5) 0%,
+    transparent 100%
+  );
+  background-image: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.5) 0%,
+    transparent 100%
+  );
+}
+.hoverEdit * {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: all 0.35s ease-in;
+  transition: all 0.35s ease-in;
+  width: 100% !important;
+}
+.hoverEdit img {
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
+  -webkit-transform-origin: 100% 0;
+  -ms-transform-origin: 100% 0;
+  transform-origin: 100% 0;
+}
+.hoverEdit figcaption {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: -1;
+}
+.hoverEdit h3 {
+  -webkit-transform-origin: 100% 100%;
+  -ms-transform-origin: 100% 100%;
+  transform-origin: 100% 100%;
+  font-size: 1.8em;
+  padding: 0 0 100px 0;
+  margin: 0 100px 0 0;
+  font-weight: 900;
+  text-align: right;
+  -webkit-transform: rotate(-57deg);
+  transform: rotate(-57deg);
+}
+.hoverEdit .a {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+}
+.hoverEdit:hover img,
+.hoverEdit.hover img {
+  -webkit-animation: snip1367 1s linear forwards;
+  animation: snip1367 1s linear forwards;
+  -webkit-animation-iteration-count: 1;
+  animation-iteration-count: 1;
+}
+@-webkit-keyframes snip1367 {
+  32% {
+    -webkit-transform: rotate(-72deg);
+    transform: rotate(-72deg);
+  }
+  50% {
+    -webkit-transform: rotate(-50deg);
+    transform: rotate(-50deg);
+  }
+  70% {
+    -webkit-transform: rotate(-58deg);
+    transform: rotate(-58deg);
+  }
+  85% {
+    -webkit-transform: rotate(-56deg);
+    transform: rotate(-56deg);
+  }
+  100% {
+    -webkit-transform: rotate(-57deg);
+    transform: rotate(-57deg);
+  }
+}
+@keyframes snip1367 {
+  32% {
+    -webkit-transform: rotate(-72deg);
+    transform: rotate(-72deg);
+  }
+  50% {
+    -webkit-transform: rotate(-50deg);
+    transform: rotate(-50deg);
+  }
+  70% {
+    -webkit-transform: rotate(-58deg);
+    transform: rotate(-58deg);
+  }
+  85% {
+    -webkit-transform: rotate(-56deg);
+    transform: rotate(-56deg);
+  }
+  100% {
+    -webkit-transform: rotate(-57deg);
+    transform: rotate(-57deg);
+  }
+}

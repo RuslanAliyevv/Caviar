@@ -201,3 +201,124 @@
     width: 260px !important;
   }
 }
+
+.boxUp {
+  position: relative;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+/* .boxUp .borderone {
+  position: absolute;
+  opacity: 0.45;
+} */
+.boxUp .bordertwo {
+  position: absolute;
+  opacity: 0.45;
+}
+/* .boxUp .borderone:before,
+.boxUp .borderone:after,
+.boxUp .borderone div:before,
+.boxUp .borderone div:after {
+  background-color: #f5b043;
+  position: absolute;
+  content: "";
+  display: block;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+} */
+.boxUp .bordertwo:before,
+.boxUp .bordertwo:after,
+.boxUp .bordertwo div:before,
+.boxUp .bordertwo div:after {
+  background-color: #f5b043;
+  position: absolute;
+  content: "";
+  display: block;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+.boxUp .bordertwo:after {
+  width: 0;
+  height: 1px;
+}
+.boxUp .bordertwo:before,
+.boxUp .bordertwo:after {
+  width: 0;
+  height: 1px;
+}
+/* .boxUp .borderone div:before,
+.boxUp .borderone div:after {
+  width: 1px;
+  height: 0;
+} */
+.boxUp .bordertwo div:before,
+.boxUp .bordertwo div:after {
+  width: 1px;
+  height: 0;
+}
+/* .boxUp .borderone {
+  left: 0;
+  top: 0;
+  right: 0px;
+  bottom: 0px;
+  border-radius: 12px;
+} */
+/* .boxUp .borderone:before,
+.boxUp .borderone div:before {
+  left: 0;
+  top: 0;
+} */
+/* .boxUp .borderone:after,
+.boxUp .borderone div:after {
+  bottom: 0;
+  right: 0;
+} */
+.boxUp .bordertwo {
+  left: 0px;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+}
+.boxUp .bordertwo:before,
+.boxUp .bordertwo div:before {
+  right: 0;
+  top: 0;
+}
+.boxUp .bordertwo:after,
+.boxUp .bordertwo div:after {
+  bottom: 0;
+  left: 0;
+}
+.boxUp a {
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  position: absolute;
+  z-index: 1;
+}
+/* .boxUp:hover .borderone:before,
+.boxUp.hover .borderone:before,
+.boxUp:hover .borderone:after,
+.boxUp.hover .borderone:after {
+  width: 100%;
+} */
+.boxUp:hover .bordertwo:before,
+.boxUp.hover .bordertwo:before,
+.boxUp:hover .bordertwo:after,
+.boxUp.hover .bordertwo:after {
+  width: 100%;
+}
+/* .boxUp:hover .borderone div:before,
+.boxUp.hover .borderone div:before,
+.boxUp:hover .borderone div:after,
+.boxUp.hover .borderone div:after {
+  height: 100%;
+} */
+.boxUp:hover .bordertwo div:before,
+.boxUp.hover .bordertwo div:before,
+.boxUp:hover .bordertwo div:after,
+.boxUp.hover .bordertwo div:after {
+  height: 100%;
+}
