@@ -6,6 +6,22 @@ import axios from "axios";
 import Image from "next/image";
 
 export default function ContactUs() {
+  const phoneNumber = "+1(929)289-0812";
+  const handleCallClick = () => {
+    window.location.href = `tel:${phoneNumber}`;
+  };
+  const handleMessageClick = () => {
+    window.location.href = "https://bestblackcaviar1965@gmail.com";
+  };
+  const handleInstaClick = () => {
+    window.location.href =
+      "https://www.instagram.com/b.bestcaviar?igsh=MzRlODBiNWFlZA==";
+  };
+  const handleFacebookClick = () => {
+    window.location.href =
+      "https://www.facebook.com/profile.php?id=61552535425181";
+  };
+
   const [showModal, setShowModal] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
   const openModal = (message) => {
@@ -27,7 +43,7 @@ export default function ContactUs() {
     event.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/contact",
+        "https://bbcaviar.com/api/v1/contacts",
         post
       );
       openModal("Message sent successfully!");
@@ -45,9 +61,10 @@ export default function ContactUs() {
           <div className={`row ${styles.rowAll}`}>
             <div className="col-lg-5">
               <Image
+                loading="lazy"
                 width={720}
                 height={480}
-                src="/assets/image/contactus.png"
+                src="/assets/image/contactstock.png"
                 alt=""
               />
             </div>
@@ -62,17 +79,59 @@ export default function ContactUs() {
                       support your caviar journey.
                     </p>
                     <div className={styles.contactInfo}>
-                      <Image width={30} height={30} src="/assets/image/contactletter.png" alt="" />
-                      <span>deluxecaviar@gmail.com</span>
+                      <Image
+                      style={{cursor:"pointer"}}
+                        width={30}
+                        height={30}
+                        src="/assets/image/contactletter.svg"
+                        alt=""
+                      />
+                      <span
+                        style={{ cursor: "pointer" }}
+                        onClick={handleMessageClick}
+                      >
+                        bestblackcaviar1965@gmail.com
+                      </span>
                     </div>
                     <div className={styles.contactInfo}>
-                      <Image width={30} height={30} src="/assets/image/contactphone.png" alt="" />
-                      <span>+01 434 346 34 64 36</span>
+                      <Image
+                        style={{ cursor: "pointer" }}
+                        width={30}
+                        height={30}
+                        src="/assets/image/contactphone.svg"
+                        onClick={handleCallClick}
+                        alt=""
+                      />
+                      <span
+                        style={{ cursor: "pointer" }}
+                        onClick={handleCallClick}
+                      >
+                        +1(929)289-0813
+                      </span>
                     </div>
                     <div className={styles.iconInfo}>
-                      <Image width={30} height={30} src="/assets/image/contactinsta.png" alt="" />
-                      <Image width={30} height={30} src="/assets/image/contactlinkedin.png" alt="" />
-                      <Image width={30} height={30} src="/assets/image/contactcall.png" alt="" />
+                      <Image
+                        style={{ cursor: "pointer" }}
+                        width={30}
+                        height={30}
+                        src="/assets/image/contactinsta.svg"
+                        alt=""
+                        onClick={handleInstaClick}
+                      />
+                      {/* <Image
+                        width={30}
+                        height={30}
+                        src="/assets/image/contactlinkedin.png"
+                        alt=""
+                      /> */}
+                      <Image
+                        style={{ cursor: "pointer" }}
+                        width={30}
+                        height={30}
+                        src="/assets/image/contactfacebook.svg"
+                        alt=""
+                        onClick={handleFacebookClick}
+                      />
                     </div>
                   </div>
                 </div>

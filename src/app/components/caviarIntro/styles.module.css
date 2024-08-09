@@ -14,7 +14,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.70);
+  background-color: rgba(0, 0, 0, 0.7);
   z-index: -1;
 }
 .Intro h1 {
@@ -29,10 +29,16 @@
 .Intro span {
   color: #c3924e;
 }
+.Intro .pEdit {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
 .Intro p {
   color: #fff;
   font-family: var(--montserrat);
   font-size: 20px;
+  width: 40%;
   font-style: normal;
   font-weight: 300;
   line-height: normal;
@@ -72,15 +78,13 @@
   color: #fff;
   text-align: center;
 }
-.Intro a{
-}
-.wrapper{
+
+.wrapper {
   position: relative;
   overflow: hidden;
   z-index: 1;
   transition: 0.5s;
 }
-
 
 /* //for hover button */
 
@@ -90,11 +94,22 @@
   z-index: 0;
 }
 .buttonHover:before {
-  content: '';
-  background: linear-gradient(45deg, #FFD700, #8B4513, #DAA520, #D2691E, #eac625, #FF4500, #ff9100, rgb(250, 172, 4), #FFD700);
+  content: "";
+  background: linear-gradient(
+    45deg,
+    #ffd700,
+    #8b4513,
+    #daa520,
+    #d2691e,
+    #eac625,
+    #ff4500,
+    #ff9100,
+    rgb(250, 172, 4),
+    #ffd700
+  );
   position: absolute;
   top: -2px;
-  left:-2px;
+  left: -2px;
   background-size: 400%;
   z-index: -1;
   filter: blur(5px);
@@ -102,7 +117,7 @@
   height: calc(100% + 4px);
   animation: glowing 20s linear infinite;
   opacity: 0;
-  transition: opacity .3s ease-in-out;
+  transition: opacity 0.3s ease-in-out;
   border-radius: 10px;
 }
 .buttonHover:active:after {
@@ -115,7 +130,7 @@
 
 .buttonHover:after {
   z-index: -1;
-  content: '';
+  content: "";
   position: absolute;
   width: 100%;
   height: 100%;
@@ -126,16 +141,27 @@
 }
 
 @keyframes glowing {
-  0% { background-position: 0 0; }
-  50% { background-position: 400% 0; }
-  100% { background-position: 0 0; }
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 400% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
 }
 
-
-
-
- 
-
-
-
-
+@media screen and (max-width: 768px) {
+  .Intro h1 {
+    font-size: 24px;
+  }
+  .Intro p {
+    font-size: 17px !important;
+    width: 90% !important;
+  }
+  .Intro button {
+    width: 230px !important;
+    margin-top: 45px !important;
+  }
+}

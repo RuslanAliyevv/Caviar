@@ -8,19 +8,23 @@ export default function CaviarIntro() {
       <div className={styles.Intro}>
         <div className={styles.overlay}></div>
         <div className={styles.introContent}>
-          <h1>
-            Experience luxury with <br />
-            <span>BB Caviar</span>, a story of elegance and <br /> tradition.
-          </h1>
-          <p>
-            At BB Caviar, we take immense pride in our unwavering <br /> commitment to
-            natural quality and ensuring the utmost <br /> customer satisfaction.
-          </p>
-            <div className={styles.wrapper}>
-          <Link href="/productspage">
+          <div className={styles.h1Edit}>
+            <h1>
+              Experience luxury with <br />
+              <span>BB Caviar</span>, a story of elegance and <br /> tradition.
+            </h1>
+          </div>
+          <div className={styles.pEdit}>
+            <p>
+              At BB Caviar, we take immense pride in our unwavering commitment
+              to natural quality and ensuring the utmost customer satisfaction.
+            </p>
+          </div>
+          <div className={styles.wrapper}>
+            <Link href="/productspage">
               <button className={styles.buttonHover}>shop now</button>
-          </Link>
-            </div>
+            </Link>
+          </div>
         </div>
       </div>
     </>

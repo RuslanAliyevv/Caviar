@@ -23,7 +23,13 @@ export default function Receipe() {
               <div className="col-lg-5">
                 <div className="box">
                   <div className={styles.boxImg}>
-                    <Image width={736} height={366} src="/assets/image/receipestock.png" alt="" />
+                    <Image
+                      loading="lazy"
+                      width={736}
+                      height={366}
+                      src="/assets/image/receipestock.png"
+                      alt=""
+                    />
                   </div>
                 </div>
               </div>
@@ -32,48 +38,30 @@ export default function Receipe() {
           <div className={styles.Down}>
             <div className="row">
               <div className="col-lg-4">
-              <div className="row">
+                <div className="row">
                   <div className="col-lg-3">
                     <div className={styles.downBoxLeft}>
-                     <div className={styles.number}>
-                     <h4>01</h4>
-                      <h5>of 06</h5>
-                     </div>
-                    <div className={styles.line}></div>
+                      <div className={styles.number}>
+                        <h4>01</h4>
+                        <h5>of 06</h5>
+                      </div>
+                      <div className={styles.line}></div>
                     </div>
                   </div>
-                  <div style={{position:"relative"}} className="col-lg-7">
+                  <div style={{ position: "relative" }} className="col-lg-7">
                     <div className={styles.downBoxRight}>
-                    <div className={styles.pEdit}>
-                      <p>Omelet with Pressed Caviar and Sour Cream</p>
-                    </div>
-                    <div className={styles.omletImg}>
-                        <Image width={297} height={198} src="/assets/image/omlet1.png" alt="" />
-                    </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-4">
-                <div className="row">
-                  <div className="col-lg-3">
-                  <div className={styles.downBoxLeft}>
-                     <div className={styles.number}>
-                     <h4>01</h4>
-                      <h5>of 06</h5>
-                     </div>
-                    <div className={styles.line}></div>
-                    </div>
-                  </div>
-                  <div style={{position:"relative"}} className="col-lg-8">
-                  <div className={styles.downBoxRight}>
-                    <div className={styles.pEdit}>
-                      <p>Crispy Potato Galette with Dill Cream, Sturgeon and  Caviar</p>
-                    </div>
-                    <div className={styles.omletImg}>
-                    <Image width={297} height={198} src="/assets/image/omlet2.png" alt="" />
-
-                    </div>
+                      <div className={styles.pEdit}>
+                        <p>Omelet with Pressed Caviar and Sour Cream</p>
+                      </div>
+                      <div className={styles.omletImg}>
+                        <Image
+                          loading="lazy"
+                          width={297}
+                          height={198}
+                          src="/assets/image/omlet1.png"
+                          alt=""
+                        />
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -81,23 +69,60 @@ export default function Receipe() {
               <div className="col-lg-4">
                 <div className="row">
                   <div className="col-lg-3">
-                  <div className={styles.downBoxLeft}>
-                     <div className={styles.number}>
-                     <h4>01</h4>
-                      <h5>of 06</h5>
-                     </div>
-                    <div className={styles.line}></div>
+                    <div className={styles.downBoxLeft}>
+                      <div className={styles.number}>
+                        <h4>02</h4>
+                        <h5>of 06</h5>
+                      </div>
+                      <div className={styles.line}></div>
                     </div>
                   </div>
-                  <div style={{position:"relative"}} className="col-lg-8">
-                  <div className={styles.downBoxRight}>
-                    <div className={styles.pEdit}>
-                      <p>Fancy Deviled Eggs with Caviar and Crème Fraîche</p>
+                  <div style={{ position: "relative" }} className="col-lg-8">
+                    <div className={styles.downBoxRight}>
+                      <div className={styles.pEdit}>
+                        <p>
+                          Crispy Potato Galette with Dill Cream, Sturgeon and
+                          Caviar
+                        </p>
+                      </div>
+                      <div className={styles.omletImg}>
+                        <Image
+                          loading="lazy"
+                          width={297}
+                          height={198}
+                          src="/assets/image/omlet2.png"
+                          alt=""
+                        />
+                      </div>
                     </div>
-                    <div className={styles.omletImg}>
-                    <Image width={297} height={198} src="/assets/image/omlet3.png" alt="" />
-
+                  </div>
+                </div>
+              </div>
+              <div className="col-lg-4">
+                <div className="row">
+                  <div className="col-lg-3">
+                    <div className={styles.downBoxLeft}>
+                      <div className={styles.number}>
+                        <h4>03</h4>
+                        <h5>of 06</h5>
+                      </div>
+                      <div className={styles.line}></div>
                     </div>
+                  </div>
+                  <div style={{ position: "relative" }} className="col-lg-8">
+                    <div className={styles.downBoxRight}>
+                      <div className={styles.pEdit}>
+                        <p>Fancy Deviled Eggs with Caviar and Crème Fraîche</p>
+                      </div>
+                      <div className={styles.omletImg}>
+                        <Image
+                          loading="lazy"
+                          width={297}
+                          height={198}
+                          src="/assets/image/omlet3.png"
+                          alt=""
+                        />
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -106,7 +131,10 @@ export default function Receipe() {
           </div>
         </div>
         <div className={`text-center`}>
-           <Link href="/blini"> <button className={styles.buttonHover}>See all</button></Link>
+          <Link href="/blini">
+            {" "}
+            <button className={styles.buttonHover}>See all</button>
+          </Link>
         </div>
       </div>
     </>

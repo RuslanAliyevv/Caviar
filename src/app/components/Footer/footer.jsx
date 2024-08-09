@@ -1,13 +1,27 @@
- 'use client'
+"use client";
 import React from "react";
 import styles from "./styles.module.css";
 import Link from "next/link";
 import Image from "next/image";
 
 export default function Footer() {
-  
   const handleKoikomclick = () => {
     window.location.href = "https://www.koikom.com";
+  };
+  const phoneNumber = "+1(929)289-0812";
+  const handleCallClick = () => {
+    window.location.href = `tel:${phoneNumber}`;
+  };
+  const handleMessageClick = () => {
+    window.location.href = "https://bestblackcaviar1965@gmail.com";
+  };
+  const handleInstaClick = () => {
+    window.location.href =
+      "https://www.instagram.com/b.bestcaviar?igsh=MzRlODBiNWFlZA==";
+  };
+  const handleFacebookClick = () => {
+    window.location.href =
+      "https://www.facebook.com/profile.php?id=61552535425181";
   };
 
   return (
@@ -39,28 +53,37 @@ export default function Footer() {
                         />
                         <label htmlFor="my">Email</label>
                       </div>
-                     <Link className={styles.imgVector} href="/">
-                     <Image  width={26} height={20} src="/assets/image/vector.png" alt="" />
-                     </Link>
+                      <Link className={styles.imgVector} href="/">
+                        <Image
+                          loading="lazy"
+                          width={26}
+                          height={20}
+                          src="/assets/image/vector.png"
+                          alt=""
+                        />
+                      </Link>
                     </form>
                     <div className={styles.imgBorder}>
                       <Image
-                      width={64}
-                      height={44}
+                        loading="lazy"
+                        width={64}
+                        height={44}
                         className={styles.imgPay}
                         src="/assets/image/applepay.png"
                         alt=""
                       />
                       <Image
-                       width={64}
-                       height={44}
+                        loading="lazy"
+                        width={64}
+                        height={44}
                         className={styles.imgPay}
                         src="/assets/image/googlepay.png"
                         alt=""
                       />
                       <Image
-                       width={64}
-                       height={44}
+                        loading="lazy"
+                        width={64}
+                        height={44}
                         className={styles.imgPay}
                         src="/assets/image/shoppay.png"
                         alt=""
@@ -73,10 +96,10 @@ export default function Footer() {
                 <div className={styles.box}>
                   <div className={styles.boxContent}>
                     <div className={styles.linkEdit}>
-                        <span className={styles.firstSpan}>Categories</span>
+                      <span className={styles.firstSpan}>Categories</span>
                     </div>
                     <div className={styles.linkEdit}>
-                      <Link href="/aboutus">
+                      <Link href="/productspage">
                         <span>Caviar</span>
                       </Link>
                     </div>
@@ -87,7 +110,7 @@ export default function Footer() {
                 <div className={styles.box}>
                   <div className={styles.boxContent}>
                     <div className={styles.linkEdit}>
-                        <span className={styles.firstSpan}>Our Policy</span>
+                      <span className={styles.firstSpan}>Our Policy</span>
                     </div>
                     <div className={styles.linkEdit}>
                       <Link href="/aboutus">
@@ -100,7 +123,7 @@ export default function Footer() {
                       </Link>
                     </div>
                     <div className={styles.linkEdit}>
-                      <Link href="/blogspage">
+                      <Link href="/aboutus">
                         <span>Cancellations</span>
                       </Link>
                     </div>
@@ -111,7 +134,7 @@ export default function Footer() {
                 <div className={styles.box}>
                   <div className={styles.boxContent}>
                     <div className={styles.linkEdit}>
-                        <span className={styles.firstSpan}>Quick Links</span>
+                      <span className={styles.firstSpan}>Quick Links</span>
                     </div>
                     <div className={styles.linkEdit}>
                       <Link href="/aboutus">
@@ -150,23 +173,27 @@ export default function Footer() {
                 <div className={styles.box}>
                   <div className={styles.boxContent}>
                     <div className={styles.linkEdit}>
-                        <span className={styles.firstSpan}>Contact</span>
+                      <span className={styles.firstSpan}>Contact</span>
                     </div>
                     <div className={styles.linkEdit}>
                       <Link href="/">
-                        <span>Phone: 24325242</span>
+                        <span onClick={handleCallClick}>
+                          Phone: +1(929)289-0813
+                        </span>
                       </Link>
                     </div>
                     <div className={styles.linkEdit}>
                       <Link href="/">
-                        <span>caviar@email.com</span>
+                        <span onClick={handleMessageClick}>
+                          bestblackcaviar1965@gmail.com
+                        </span>
                       </Link>
                     </div>
-                    <div className={styles.linkEdit}>
+                    {/* <div className={styles.linkEdit}>
                       <Link href="/">
                         <span>Address: California</span>
                       </Link>
-                    </div>
+                    </div> */}
                     <div className={styles.linkEdit}>
                       <Link href="/">
                         <span>W/h: 09:00 - 18:00</span>
@@ -174,26 +201,33 @@ export default function Footer() {
                     </div>
                     <div className={styles.linkEdit}>
                       <div>
-                        <Image
+                        {/* <Image
+                          loading="lazy"
                           width={28}
                           height={28}
                           className={styles.imgIcon}
                           src="/assets/image/linkedingold.png"
                           alt=""
-                        />
+                        /> */}
                         <Image
-                         width={28}
-                         height={28}
+                          style={{ cursor: "pointer" }}
+                          loading="lazy"
+                          width={28}
+                          height={28}
                           className={styles.imgIcon}
                           src="/assets/image/facebookgold.png"
                           alt=""
+                          onClick={handleFacebookClick}
                         />
                         <Image
-                         width={28}
-                         height={28}
+                          style={{ cursor: "pointer" }}
+                          loading="lazy"
+                          width={28}
+                          height={28}
                           className={styles.imgIcon}
                           src="/assets/image/instagramgold.png"
                           alt=""
+                          onClick={handleInstaClick}
                         />
                       </div>
                     </div>
@@ -212,10 +246,17 @@ export default function Footer() {
                 </div>
                 <div className={styles.box}>
                   <div className={styles.h5Edit}>
-                  <h5>Powered by </h5>
-                  <Image style={{cursor:"pointer"}} onClick={handleKoikomclick} width={100} height={16} src="/assets/image/koikom.png" alt="" />
+                    <h5>Powered by </h5>
+                    <Image
+                      loading="lazy"
+                      style={{ cursor: "pointer" }}
+                      onClick={handleKoikomclick}
+                      width={100}
+                      height={16}
+                      src="/assets/image/koikom.png"
+                      alt=""
+                    />
                   </div>
-                 
                 </div>
               </div>
             </div>

@@ -14,13 +14,17 @@ export default function AboutRm() {
                 <div className={styles.h2Edit}>
                   <h2>A Fusion of Excellence and Tradition</h2>
                 </div>
-             <div className={styles.hoverEdit}>
-             <img
-                  className={`mt-2 ${styles.imgEdit}`}
-                  src="/assets/image/aboutrm3.png"
-                  alt=""
-                />
-             </div>
+                <div className={styles.hoverEdit}>
+                  <img
+                    className={`mt-2 ${styles.imgEdit}`}
+                    src="/assets/image/aboutrm3.png"
+                    alt=""
+                  />
+                  <figcaption>
+                    <h3>ABOUT US</h3>
+                  </figcaption>
+                  <Link className={styles.a} href="/aboutus"></Link>
+                </div>
               </div>
             </div>
             <div className="col-lg-6">
@@ -31,23 +35,25 @@ export default function AboutRm() {
                     We are dedicated to excellence in the world of caviar.
                   </h4>
                 </div>
-               <div className={styles.pEdit}>
-               <p>
-                  With a rich heritage, a commitment to quality, and a legacy of
-                  sustainability, we invite you to join us on a culinary journey
-                  like no other. <br /> Our commitment to quality is unwavering. We
-                  take immense pride in sourcing caviar that's free from
-                  hormones, antibiotics, dyes, or preservatives, ensuring a pure
-                  and authentic taste experience. Our legacy spans generations,
-                  and our expertise is reflected in every jar we produce.
-                </p>
-               </div>
+                <div className={styles.pEdit}>
+                  <p>
+                    With a rich heritage, a commitment to quality, and a legacy
+                    of sustainability, we invite you to join us on a culinary
+                    journey like no other. <br /> Our commitment to quality is
+                    unwavering. We take immense pride in sourcing caviar that's
+                    free from hormones, antibiotics, dyes, or preservatives,
+                    ensuring a pure and authentic taste experience. Our legacy
+                    spans generations, and our expertise is reflected in every
+                    jar we produce.
+                  </p>
+                </div>
                 <Link href="/aboutus">
                   <span>Read more</span>
                 </Link>
                 <Image
                   style={{ marginLeft: "5px" }}
                   height={15}
+                  loading="lazy"
                   width={15}
                   unoptimized
                   src="/assets/image/readmoreicon.png"
@@ -58,14 +64,14 @@ export default function AboutRm() {
           </div>
         </div>
         <div className={styles.backGrCircle}>
-          <Image 
-          src="./assets/image/circle01.png"
-          height={800}
-          width={800}
-          unoptimized
-          alt="readmore"
+          <Image
+            src="./assets/image/circle01.png"
+            height={800}
+            width={800}
+            loading="lazy"
+            unoptimized
+            alt="readmore"
           />
-
         </div>
       </div>
     </>

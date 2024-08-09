@@ -15,9 +15,10 @@ export default function BliniDetail() {
       }, 1800);
     };
     const [post, setPost] = useState({
-      name: "",
+      // name: "",
       email: "",
       message: "",
+      contact_type : 'Receipt',
     });
     const handleInput = (event) => {
       setPost({ ...post, [event.target.name]: event.target.value });
@@ -26,11 +27,11 @@ export default function BliniDetail() {
       event.preventDefault();
       try {
         const response = await axios.post(
-          "http://localhost:3000/api/contact",
+          "https://bbcaviar.com/api/v1/contacts",
           post
         );
         openModal("Message sent successfully!");
-  
+
         console.log(response.data);
       } catch (error) {
         console.error("Error making POST request:", error);
@@ -95,8 +96,8 @@ export default function BliniDetail() {
                   <div className={styles.inputBox}>
                     <input
                       onChange={handleInput}
-                      name="name"
-                      value={post.name}
+                      name="email"
+                      value={post.email}
                       id="my1"
                       className={styles.input}
                       placeholder=""
@@ -160,7 +161,7 @@ export default function BliniDetail() {
           </div>
         </div>
         <div className={styles.tableBorder}>
-              
+
             <div className="container">
             <div className={styles.h2Edit}>
                <h2>Recommended</h2>

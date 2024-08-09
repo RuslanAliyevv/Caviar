@@ -16,7 +16,6 @@
 .Header li {
   list-style: none;
   margin-left: 45px;
-
 }
 
 .Header .right span {
@@ -32,31 +31,105 @@
   display: inline-block;
   margin-left: 10px !important;
 }
-.numberLi{
+.numberLi {
   margin-left: 0px !important;
 }
+.nav {
+  display: flex;
+}
 @media screen and (min-width: 1200px) and (max-width: 1350px) {
-  .Header .right{
+  .Header .right {
     margin-left: -20px !important;
   }
-  .Header li{
+  .Header li {
     margin-left: 40px !important;
   }
-  .Header .number{
+  .Header .number {
     margin-left: -30px !important;
   }
 }
-/* @media screen and (min-width: 800px) and (max-width: 1400px) {
-  .Header {
-    padding: 20px 0px 10px 0px;
-  }
 
-  .Header .left a span {
-    font-size: 24px;
+@media screen and (max-width: 1024px) {
+  .left img {
+    width: 100px !important;
+    height: 100px !important;
   }
+  .rowAll {
+    align-items: center !important;
+  }
+  .right {
+    display: flex;
+    justify-content: flex-end;
+  }
+  .nav li img {
+    display: block;
+    margin-right: 10px;
+    width: 45px;
+    height: 45px;
+  }
+  .number {
+    position: relative !important;
+    right: 60% !important;
+    top: 0;
+  }
+  .wishlist {
+    display: none;
+  }
+}
 
-  .Header .right span {
-    margin-left: 25px;
-    font-size: 16px;
-  }
-} */
+.Header ul {
+  transition: all 0.35s ease;
+}
+
+.Header li {
+  display: inline-block;
+}
+
+.Header .nav span::before,
+.Header .nav span::after {
+  content: "";
+  height: 14px;
+  width: 14px;
+  position: absolute;
+  transition: all 0.35s ease;
+  opacity: 0;
+}
+
+.nav span::before {
+  content: "";
+  right: 0;
+  top: -15px;
+  border-top: 3px solid gold;
+  border-right: 3px solid gold;
+  transform: translate(-100%, 50%);
+}
+
+.nav span:after {
+  content: "";
+  left: 0;
+  bottom: -15px;
+  border-bottom: 3px solid gold;
+  border-left: 3px solid gold;
+  transform: translate(100%, -50%);
+}
+
+.nav span:hover:before,
+.nav span:hover:after {
+  transform: translate(0, 0);
+  opacity: 1;
+}
+
+.nav span:hover {
+  color: gold;
+}
+
+.nav .numberLi span:hover {
+  color: #fff !important;
+}
+.nav .number::before {
+  border: none !important;
+}
+
+.nav .number:after {
+  border: none !important;
+}

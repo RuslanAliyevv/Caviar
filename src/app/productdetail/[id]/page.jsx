@@ -1,42 +1,115 @@
 "use client";
 import React from "react";
-import { useDispatch } from "react-redux";
 import { add } from "../../Redux/CartSlice";
 import styles from "./styles.module.css";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { updateCart } from "../../Redux/CartSlice";
 import axios from "axios";
 import { useParams } from "next/navigation";
 import Image from "next/image";
+import Spinner from "../../components/Spinner/spinner";
+import { useRouter } from "next/navigation";
+import AddtoCard from "../../components/AddtoCardModal/[id]/addtocard";
 
 export default function ProductDetail() {
-  const [selectedOption, setSelectedOption] = useState(null);
-  const { id } = useParams();
+  const router = useRouter();
+  const cartItems = useSelector((state) => state.cart);
+  const [isLoading, setIsLoading] = useState(true);
+  const [products, setproducts] = useState([]);
+  const [selectedGram, setSelectedGram] = useState("");
   const [post, setPost] = useState({
-    name: "",
-    images: [],
+    title: "",
+    product_attachments: [],
     price: "",
+    grams: [],
   });
+  const { id } = useParams();
+  const guid = id;
 
-  const handleRadioChange = (index) => {
-    setSelectedOption(index);
-  };
+  const sortedVariants =
+    post && post.variants
+      ? post.variants.slice().sort((a, b) => a.grams.weight - b.grams.weight)
+      : [];
 
-  // const radioOptions = [10, 11, 12, 13, 14];
+
+  useEffect(() => {
+    if (post && post.variants && post.variants.length > 0 && !selectedGram) {
+      const minGramVariant = post.variants.reduce((min, variant) => {
+        const weight = parseFloat(variant.grams.weight);
+        return weight < parseFloat(min.grams.weight) ? variant : min;
+      });
+      setSelectedGram(minGramVariant.grams.weight);
+    }
+  }, [post, selectedGram]);
+
   useEffect(() => {
     const fetchPost = async () => {
       try {
-        const response = await axios.get("http://68.183.53.2:3000/products");
+        const response = await axios.get(
+          "https://bbcaviar.com/api/v1/products"
+        );
         const data = response.data;
-        setPost(data && data.find((u) => u.id === Number(id)));
+        let foundProduct;
+        for (let i = 0; i < data.length; i++) {
+          const product = data[i];
+          const variant = product.variants.find(
+            (variant) => variant.guid === guid
+          );
+          if (variant) {
+            foundProduct = { ...product, variants: product.variants };
+          }
+        }
+        setPost(foundProduct);
+        setIsLoading(false);
       } catch (error) {
         console.error("Error fetching product:", error);
       }
     };
     fetchPost();
-  }, [id]);
+  }, [guid]);
+
+  const getProducts = async () => {
+    try {
+      const response = await axios.get(
+        "https://bbcaviar.com/api/v1/products/main-category/8fc4b1a4-28dd-49bc-ab4c-b2bb71a8c843"
+      );
+      const data = response.data;
+
+      setproducts(data);
+    } catch (error) {
+      console.error("Error Message:", error);
+    }
+  };
+  useEffect(() => {
+    getProducts();
+  }, []);
+  const getMinPrice = (variants) => {
+    let minPrice = Number.MAX_SAFE_INTEGER;
+
+    variants.forEach((variant) => {
+      const price = parseFloat(variant.price);
+      if (!isNaN(price) && price < minPrice) {
+        minPrice = price;
+      }
+    });
+
+    return minPrice;
+  };
+  const [openMock, setOpenMock] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState(null);
+
+  const handleAddToCartClick = (product) => {
+    setSelectedProduct(product.guid);
+    setOpenMock(true);
+  };
+
+  const handleGramChange = (event) => {
+    setSelectedGram(event.target.value);
+  };
 
   const [count, setCount] = useState(1);
   const handleMinus = () => {
@@ -49,13 +122,39 @@ export default function ProductDetail() {
   };
   const dispatch = useDispatch();
 
-  const handleadd = () => {
-    if (post) {
-      dispatch(add(post));
+  const handleAddToCart = () => {
+    if (post && post.variants && post.variants.length > 0) {
+      const selectedVariant = post.variants.find(
+        (variant) => variant.grams.weight === selectedGram
+      );
+
+      if (selectedVariant) {
+        // Seçilen miktar kadar ürün ekle
+        const updatedCart = [...cartItems]; // Sepetin kopyasını al
+
+        const existingItemIndex = updatedCart.findIndex(
+          (item) => item.guid === selectedVariant.guid
+        );
+
+        if (existingItemIndex !== -1) {
+          // Sepette varsa, miktarı güncelle
+          updatedCart[existingItemIndex] = {
+            ...updatedCart[existingItemIndex],
+            count: updatedCart[existingItemIndex].count + count,
+          };
+        } else {
+          // Sepette yoksa, yeni öğe olarak ekle
+          updatedCart.push({ ...selectedVariant, count });
+        }
+
+        // Güncellenmiş sepeti redux store'a gönder
+        dispatch(updateCart(updatedCart));
+      }
     }
   };
   return (
     <>
+      {isLoading && <Spinner />}
       <div className={styles.ProductDetail}>
         <h2>Product Details</h2>
         <div className={styles.backFone}></div>
@@ -64,21 +163,45 @@ export default function ProductDetail() {
             <div className="col-lg-5">
               <div className="box">
                 <div className={styles.boxDiv}>
-                  {post.images && post.images.length > 0 && (
-                    <img
-                      className={styles.contentImg}
-                      src={`http://68.183.53.2:3000/images/${post.images[0].filename}`}
-                      alt=""
-                    />
-                  )}
+                  {post &&
+                    post.variants &&
+                    post.variants.find(
+                      (variant) => variant.grams.weight === selectedGram
+                    ) &&
+                    post.variants.find(
+                      (variant) => variant.grams.weight === selectedGram
+                    ).product_attachments &&
+                    post.variants.find(
+                      (variant) => variant.grams.weight === selectedGram
+                    ).product_attachments.length > 0 && (
+                      <Image
+                        loading="lazy"
+                        className={styles.detailImg}
+                        width={390}
+                        height={450}
+                        src={
+                          post.variants.find(
+                            (variant) => variant.grams.weight === selectedGram
+                          ).product_attachments[0].filePath
+                        }
+                        alt={
+                          post.variants.find(
+                            (variant) => variant.grams.weight === selectedGram
+                          ).product_attachments[0].altText
+                        }
+                        onLoad={() => setIsLoading(false)}
+                        onError={() => setIsLoading(false)}
+                      />
+                    )}
                 </div>
               </div>
             </div>
-            <div style={{ marginLeft: "0px" }} className="col-lg-7">
+            <div style={{ marginLeft: "0px" }} className="col-lg-6">
               <div className={styles.box}>
                 <div className={styles.spanEdit}>
                   <span>
                     <Image
+                      loading="lazy"
                       width={20}
                       height={20}
                       src="/assets/image/staricon.png"
@@ -87,6 +210,7 @@ export default function ProductDetail() {
                   </span>
                   <span>
                     <Image
+                      loading="lazy"
                       width={20}
                       height={20}
                       src="/assets/image/staricon.png"
@@ -95,6 +219,7 @@ export default function ProductDetail() {
                   </span>
                   <span>
                     <Image
+                      loading="lazy"
                       width={20}
                       height={20}
                       src="/assets/image/staricon.png"
@@ -103,6 +228,7 @@ export default function ProductDetail() {
                   </span>
                   <span>
                     <Image
+                      loading="lazy"
                       width={20}
                       height={20}
                       src="/assets/image/staricon.png"
@@ -111,6 +237,7 @@ export default function ProductDetail() {
                   </span>
                   <span>
                     <Image
+                      loading="lazy"
                       width={20}
                       height={20}
                       src="/assets/image/staricon.png"
@@ -122,25 +249,44 @@ export default function ProductDetail() {
                   style={{ marginTop: "15px" }}
                   className="row align-items-baseline"
                 >
-                  <div className="col-lg-8">
+                  <div className="col-lg-9">
                     <div className={styles.h3Edit}>
-                      <h3>{post.name} :</h3>
+                      <h3>{post && post.name} :</h3>
                     </div>
-                    {post.details && post.details.length > 0 && (
-                      <h6>{post.details[0].price}</h6>
-                    )}
-                    <span className={styles.h5CheckOut}>Shipping</span>
+                    {post &&
+                      post.variants &&
+                      post.variants.find(
+                        (variant) => variant.grams.weight === selectedGram
+                      ) && (
+                        <h6>
+                          {
+                            post.variants.find(
+                              (variant) => variant.grams.weight === selectedGram
+                            ).price
+                          }
+                          $
+                        </h6>
+                      )}
+                    <span className={styles.h5CheckOut}>Free Shipping</span>
                     <span className={styles.h5CheckOut}>
-                      calculated at checkout.
+                      on all orders over $250
                     </span>
                     <div className={styles.line}></div>
                     <p className={styles.pStock}>
-                      107 in stock, ready to ship.
+                      {post &&
+                        post.variants &&
+                        post.variants.length > 0 &&
+                        post.variants.map(
+                          (variant) =>
+                            variant.grams.weight === selectedGram &&
+                            `${variant.quantity} in stock, ready to ship.`
+                        )}
                     </p>
                   </div>
-                  <div className="col-lg-4">
+                  <div className="col-lg-3">
                     <span>
                       <Image
+                        loading="lazy"
                         width={26}
                         height={23}
                         src="/assets/image/heart.png"
@@ -150,20 +296,25 @@ export default function ProductDetail() {
                   </div>
                 </div>
                 <div className={styles.radioGroup}>
-                  {post && post.price && (
-                    <div className={styles.radioContainer}>
-                      <input
-                        type="radio"
-                        id={`radioInput${post.price}`}
-                        checked={selectedOption === post.price}
-                        onChange={() => handleRadioChange(post.price)}
-                      />
-                      <label htmlFor={`radioInput${post.price}`}>
-                        {post.details[0].gram} gr
-                      </label>
-                    </div>
-                  )}
+                  {sortedVariants &&
+                    sortedVariants.map((variant) => (
+                      <div className={styles.radioContainer} key={variant.guid}>
+                        <input
+                          type="radio"
+                          id={`radioInput${variant.grams.weight}`}
+                          value={variant.grams.weight}
+                          checked={selectedGram === variant.grams.weight}
+                          onChange={handleGramChange}
+                        />
+                        <label htmlFor={`radioInput${variant.grams.weight}`}>
+                          {parseInt(variant.grams.weight) >= 1000
+                            ? `${parseInt(variant.grams.weight) / 1000} kg`
+                            : `${parseInt(variant.grams.weight)}gr`}
+                        </label>
+                      </div>
+                    ))}
                 </div>
+
                 <div className="row align-items-baseline">
                   <div className="col-lg-6">
                     <div className={styles.qty}>
@@ -175,7 +326,9 @@ export default function ProductDetail() {
                     </div>
                   </div>
                   <div className="col-lg-6">
-                    <h5 onClick={handleadd} style={{ marginTop: "10px" }}>Add to Cart</h5>
+                    <h5 onClick={handleAddToCart} style={{ marginTop: "10px" }}>
+                      Add to Cart
+                    </h5>
                   </div>
                 </div>
               </div>
@@ -194,54 +347,69 @@ export default function ProductDetail() {
               justify
             >
               <Tab eventKey="profile" title=" Description">
-                <p>
-                  Delight in the luxurious taste of American Sturgeon Caviar, a
-                  top choice for caviar aficionados. Harvested from the pristine
-                  North American waters, this caviar is a symbol of gastronomic
-                  opulence. Each grain promises a smooth, buttery texture and a
-                  rich, nuanced flavor, ideal for enhancing any special occasion
-                  or adding a touch of sophistication to your culinary
-                  creations.
-                </p>
-                <h4>Taste the Elegance:</h4>
-                <p>
-                  Texture: Silky and smooth, offering a melt-in-the-mouth
-                  experience. Flavor: A perfect balance of rich buttery notes
-                  and a subtle nuttiness, creating a memorable taste sensation.
-                </p>
-                <h4>Key Features:</h4>
-                <p>
-                  Species: Genuine American Sturgeon (Acipenser species) <br />{" "}
-                  Origin: Ethically sourced from North American waters <br />{" "}
-                  Available Sizes: Choose from 28g, 50g, 150g, and 250g <br />{" "}
-                  Freshness Guaranteed: Best enjoyed within 4 weeks, stored
-                  under refrigeration <br />
-                  Packaging: Comes in specially sealed containers to ensure peak
-                  freshness
-                </p>
+                {post &&
+                  post.productDescription &&
+                  post.productDescription.map((description, index) => (
+                    <div key={index}>
+                      <p>{description.description}</p>
+                      {description.productDescriptionRows &&
+                        description.productDescriptionRows.map(
+                          (row, rowIndex) => (
+                            <div key={rowIndex}>
+                              <h4>{row.title}</h4>
+                              {row.description.includes("*") ? (
+                                <p>
+                                  {row.description
+                                    .split("*")
+                                    .map((item, index) => (
+                                      <span key={index}>
+                                        {item}
+                                        <br />
+                                      </span>
+                                    ))}
+                                </p>
+                              ) : (
+                                <p>{row.description}</p>
+                              )}
+                            </div>
+                          )
+                        )}
+                    </div>
+                  ))}
               </Tab>
+
               <Tab eventKey="home" title="Additional Information">
-                <p>
-                  Best enjoyed chilled, complemented by simple accompaniments
-                  like blinis, mild crème fraîche, and pairs wonderfully with
-                  champagne or select white wines. An exquisite garnish for
-                  canapés and a luxurious boost to dishes like pasta, eggs, or
-                  seafood.
-                </p>
-                <h4>Storage Tips:</h4>
-                <p>
-                  Keep refrigerated between 32°F and 36°F, preferably in the
-                  coldest section of your fridge. Consume within three days
-                  after opening for the best flavor.
-                </p>
-                <h4>Diet Compatibility:</h4>
-                <p>
-                  Contains fish (sturgeon) <br />
-                  Gluten-free and dairy-free friendly <br />
-                  Discover the distinct taste and quality of American Sturgeon
-                  Caviar, a culinary gem that adds a touch of luxury to every
-                  dish. 
-                </p>
+                {post &&
+                  post.productAdditionalInformation &&
+                  post.productAdditionalInformation.map(
+                    (description, index) => (
+                      <div key={index}>
+                        <p>{description.description}</p>
+                        {description.productAdditionalInformationRows &&
+                          description.productAdditionalInformationRows.map(
+                            (row, rowIndex) => (
+                              <div key={rowIndex}>
+                                <h4>{row.title}</h4>
+                                {row.description.includes("*") ? (
+                                  <p>
+                                    {row.description
+                                      .split("*")
+                                      .map((item, index) => (
+                                        <span key={index}>
+                                          {item}
+                                          <br />
+                                        </span>
+                                      ))}
+                                  </p>
+                                ) : (
+                                  <p>{row.description}</p>
+                                )}
+                              </div>
+                            )
+                          )}
+                      </div>
+                    )
+                  )}
               </Tab>
               <Tab eventKey="longer-tab" title="Review"></Tab>
             </Tabs>
@@ -314,81 +482,73 @@ export default function ProductDetail() {
             <div className="container">
               <h2>Top Products</h2>
               <div className={`row ${styles.rowAll}`}>
-                <div className="col-lg-3 col-12">
-                  <div className={styles.box}>
-                    <div className={styles.boxUp}>
-                      <Image
-                        width={289}
-                        height={434}
-                        src="/assets/image/product1.png"
-                        alt=""
-                      />
-                      <div className={styles.line}></div>
-                    </div>
-                    <div className={styles.boxDown}>
-                      <h3>Product Name</h3>
-                      <h3 className={styles.h3Edit}>$60.00</h3>
-                    </div>
-                    <p>Add to cart +</p>
-                  </div>
-                </div>
-                <div className="col-lg-3 col-12">
-                  <div className={styles.box}>
-                    <div className={styles.boxUp}>
-                      <Image
-                        width={289}
-                        height={434}
-                        src="/assets/image/product2.png"
-                        alt=""
-                      />
+                <>
+                  {products.slice(0, 4).map((product, index) => (
+                    <div key={index} className="col-lg-3 col-12">
+                      <div className={styles.box}>
+                        <div className={styles.boxUp}>
+                          {product &&
+                          product.variants &&
+                          product.variants[0] &&
+                          product.variants[0].product_attachments &&
+                          product.variants[0].product_attachments.length > 0 ? (
+                            <Image
+                              loading="lazy"
+                              onClick={() =>
+                                router.push(
+                                  `/productdetail/${product.variants[0].guid}`
+                                )
+                              }
+                              width={289}
+                              height={0}
+                              src={
+                                product.variants[0].product_attachments[0]
+                                  .filePath
+                              }
+                              alt={
+                                product.variants[0].product_attachments[0]
+                                  .altText
+                              }
+                            />
+                          ) : (
+                            <p>No image available</p>
+                          )}
 
-                      <div className={styles.line}></div>
+                          <div className={styles.line}></div>
+                        </div>
+                        <div className={styles.boxDown}>
+                          <div className={styles.boxDowncontent}>
+                            <div className={styles.prNameEdit}>
+                              <h3>
+                                {product &&
+                                  product.variants &&
+                                  product.variants.length > 0 &&
+                                  `${product.name}`}
+                              </h3>
+                            </div>
+                            <div className={styles.priceEdit}>
+                              <h3 className={styles.h3Edit}>
+                                {`From $${getMinPrice(product.variants)}`}
+                              </h3>
+                            </div>
+                          </div>
+                          <p
+                            className={styles.pEdit}
+                            onClick={() => handleAddToCartClick(product)}
+                          >
+                            Add to cart +
+                          </p>
+                          {openMock && (
+                            <AddtoCard
+                              productId={selectedProduct}
+                              closeMock={setOpenMock}
+                            />
+                          )}
+                        </div>
+                      </div>
                     </div>
-                    <div className={styles.boxDown}>
-                      <h3>Product Name</h3>
-                      <h3 className={styles.h3Edit}>$60.00</h3>
-                    </div>
-                    <p>Add to cart +</p>
-                  </div>
-                </div>
-                <div className="col-lg-3 col-12">
-                  <div className={styles.box}>
-                    <div className={styles.boxUp}>
-                      <Image
-                        width={289}
-                        height={434}
-                        src="/assets/image/product3.png"
-                        alt=""
-                      />
-
-                      <div className={styles.line}></div>
-                    </div>
-                    <div className={styles.boxDown}>
-                      <h3>Product Name</h3>
-                      <h3 className={styles.h3Edit}>$60.00</h3>
-                    </div>
-                    <p>Add to cart +</p>
-                  </div>
-                </div>
-                <div className="col-lg-3 col-12">
-                  <div className={styles.box}>
-                    <div className={styles.boxUp}>
-                      <Image
-                        width={289}
-                        height={434}
-                        src="/assets/image/product4.png"
-                        alt=""
-                      />
-
-                      <div className={styles.line}></div>
-                    </div>
-                    <div className={styles.boxDown}>
-                      <h3>Product Name</h3>
-                      <h3 className={styles.h3Edit}>$60.00</h3>
-                    </div>
-                    <p>Add to cart +</p>
-                  </div>
-                </div>
+                  ))}
+                </>
               </div>
             </div>
             <div className={styles.buttonEdit}>

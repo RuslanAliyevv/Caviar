@@ -10,59 +10,99 @@ import Select from "@mui/material/Select";
 import InputLabel from "@mui/material/InputLabel";
 import FormControl from "@mui/material/FormControl";
 import NativeSelect from "@mui/material/NativeSelect";
-import MultiRangeSlider from "../components/multi/multirangeslider";
-
+import MultiRangeSlider from "../components/multirange/multirangeslider";
+import Spinner from "../components/Spinner/spinner";
 export default function Products() {
-  const handleRangeChange = (event) => {
-    setSelectedValue(event.target.value);
-  };
-  const [selectedCategory, setSelectedCategory] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
   const [products, setproducts] = useState([]);
+  const [categoryname, setCategoryname] = useState([]);
+  const [fish, setFish] = useState([]);
+  const [gram, setGram] = useState([]);
+  const [selectedFish, setSelectedFish] = useState("all");
+  const [selectedColor, setSelectedColor] = useState("all");
+  const [filteredProducts, setFilteredProducts] = useState([]);
 
-
-  const getProducts = async () => {
-    try {
-      const response = await axios.get("http://68.183.53.2:3000/products");
-      const data = response.data;
-      // console.log(response.data);
-      setproducts(data);
-    } catch (error) {
-      console.error("Error Message:", error);
-    }
-  };
   useEffect(() => {
-    getProducts();
+    const fetchData = async () => {
+      try {
+        const [gramResponse, fishResponse, categoryResponse, productsResponse] =
+          await Promise.all([
+            axios.get(
+              "https://bbcaviar.com/api/v1/product-gram/8fc4b1a4-28dd-49bc-ab4c-b2bb71a8c843"
+            ),
+            axios.get(
+              "https://bbcaviar.com/api/v1/sub-category/8fc4b1a4-28dd-49bc-ab4c-b2bb71a8c843"
+            ),
+            axios.get("https://bbcaviar.com/api/v1/category/"),
+            axios.get(
+              "https://bbcaviar.com/api/v1/products/main-category/8fc4b1a4-28dd-49bc-ab4c-b2bb71a8c843"
+            ),
+          ]);
+
+        setGram(gramResponse.data);
+        setFish(fishResponse.data);
+        setCategoryname(categoryResponse.data);
+        setproducts(productsResponse.data);
+        setFilteredProducts(productsResponse.data);
+        setIsLoading(false);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
   }, []);
-  const categories = Array.from(new Set(products.map((res) => res.category)));
 
+  const RangeChange = (min, max) => {
+    const filteredProducts = products.filter((product) => {
+      const minPrice = product.variants.reduce((minPrice, currentVariant) => {
+        const price = parseFloat(currentVariant.price);
+        return price < parseFloat(minPrice) ? price : minPrice;
+      }, Infinity);
 
-  // Category filter
+      if (minPrice > max || minPrice < min) {
+        return false;
+      }
+      const fishMatch =
+        selectedFish === "all" || product.subCategory.name === selectedFish;
+      const colorMatch =
+        selectedColor === "all" || product.features.color === selectedColor;
+      return fishMatch && colorMatch;
+    });
+    setFilteredProducts(filteredProducts);
+  };
 
-  // const handleCategoryChange = (event) => {
-  //   const value = event.target.value;
-  //   setSelectedCategory(value === "All" ? "" : value);
-  // };
-  // const filterProducts = (products, selectedCategory) => {
-  //   if (!selectedCategory) {
-  //     return products;
-  //   }
+  useEffect(() => {
+    const filterProducts = () => {
+      let filtered = [...products];
 
-  //   return products.filter((product) => product.category === selectedCategory);
-  // };
+      if (selectedFish !== "all") {
+        filtered = filtered.filter(
+          (product) => product.subCategory.name === selectedFish
+        );
+      }
+      if (selectedColor !== "all") {
+        filtered = filtered.filter(
+          (product) => product.features.color === selectedColor
+        );
+      }
+      setFilteredProducts(filtered);
+    };
 
-  // const filteredProducts = filterProducts(products, selectedCategory);
+    filterProducts();
+  }, [selectedFish, selectedColor, products]);
 
+  const handleFishChange = (e) => {
+    setSelectedFish(e.target.value);
+  };
 
-  //range filter
-  // const [filteredProducts, setFilteredProducts] = useState([]);
-  // const RangeChange = (min, max) => {
-  //   const filteredProducts = products.filter(
-  //     (product) => product.price >= min && product.price <= max
-  //   );
-  //   setFilteredProducts(filteredProducts);
-  // };
+  const handleColorChange = (e) => {
+    setSelectedColor(e.target.value);
+  };
+
   return (
     <>
+      {isLoading && <Spinner />}
       <div className={styles.Products}>
         <h2>PRODUCT</h2>
         <Tabs
@@ -71,44 +111,16 @@ export default function Products() {
           id="noanim-tab-example"
           className="mb-3 productTab"
         >
-          <Tab eventKey="home" title=" Caviar">
+          <Tab
+            eventKey="home"
+            title={categoryname.map((item, index) => (
+              <div key={index}>{item.name}</div>
+            ))}
+          >
             <div className={styles.tableBorder}>
-              <div className="container">
+              <div className={`container ${styles.container}`}>
                 <div className="row">
-                  <div className="col-lg-3">
-                    <div className="box">
-                      <FormControl fullWidth className={styles.formControl}>
-                        <InputLabel
-                          variant="standard"
-                          htmlFor="uncontrolled-native"
-                          className={styles.inputLabel}
-                        >
-                          Size
-                        </InputLabel>
-                        <NativeSelect
-                          style={{ color: "#fff" }}
-                          // value={selectedCategory}
-                          // onChange={handleCategoryChange}
-                          inputProps={{
-                            name: "categories",
-                            id: "uncontrolled-native",
-                          }}
-                        >
-                          <option
-                            style={{ display: "none" }}
-                            value={0}
-                          ></option>
-                          <option value="All">All</option>
-                          {/* {categories.map((category, index) => (
-                            <option key={index} value={category}>
-                              {category}
-                            </option>
-                          ))} */}
-                        </NativeSelect>
-                      </FormControl>
-                    </div>
-                  </div>
-                  <div className="col-lg-3">
+                  <div className="col-lg-4">
                     <div className="box">
                       <FormControl className={styles.formControl} fullWidth>
                         <InputLabel
@@ -121,23 +133,22 @@ export default function Products() {
                         <NativeSelect
                           style={{ color: "#fff" }}
                           defaultValue={0}
+                          onChange={handleColorChange}
                           inputProps={{
                             name: "categories",
                             id: "uncontrolled-native",
                           }}
                         >
-                          <option
-                            style={{ display: "none" }}
-                            value={0}
-                          ></option>
-                          <option value={10}>Ten</option>
-                          <option value={20}>Twenty</option>
-                          <option value={30}>Thirty</option>
+                          <option value="all">All</option>
+                          <option value="gold">gold</option>
+                          <option value="black">black</option>
+                          <option value="red">red</option>
                         </NativeSelect>
                       </FormControl>
                     </div>
                   </div>
-                  <div className="col-lg-3">
+
+                  <div className="col-lg-4">
                     <div className="box">
                       <FormControl className={styles.formControl} fullWidth>
                         <InputLabel
@@ -150,23 +161,24 @@ export default function Products() {
                         <NativeSelect
                           style={{ color: "#fff" }}
                           defaultValue={0}
+                          onChange={handleFishChange}
                           inputProps={{
                             name: "categories",
                             id: "uncontrolled-native",
                           }}
                         >
-                          <option
-                            style={{ display: "none" }}
-                            value={0}
-                          ></option>
-                          <option value={10}>Ten</option>
-                          <option value={20}>Twenty</option>
-                          <option value={30}>Thirty</option>
+                          <option value="all">All</option>
+                          {fish.map((item, index) => (
+                            <option key={index} value={item.name}>
+                              {item.name}
+                            </option>
+                          ))}
                         </NativeSelect>
                       </FormControl>
                     </div>
                   </div>
-                  <div className="col-lg-3">
+
+                  <div className="col-lg-4">
                     <div className="box">
                       <div className={styles.priceBox}>
                         <label className={styles.priceLabel} htmlFor="">
@@ -176,10 +188,8 @@ export default function Products() {
                       <div className={styles.rangeBox}>
                         <MultiRangeSlider
                           min={0}
-                          max={1000}
-                          onChange={({ min, max }) =>
-                            `min = ${min}, max = ${max}`
-                          }
+                          max={5000}
+                          onChange={({ min, max }) => RangeChange(min, max)}
                         />
                       </div>
                     </div>
@@ -187,10 +197,9 @@ export default function Products() {
                 </div>
               </div>
             </div>
-            <Cards products={products} /> /products filteredProductsla evez
-            olunacaq oluncaq/
+            <Cards products={filteredProducts} />
           </Tab>
-          <Tab eventKey="profile" title="Grocery"></Tab>
+          {/* <Tab eventKey="profile" title="Grocery"></Tab> */}
         </Tabs>
 
         <div className={styles.getInTouch}>
@@ -202,7 +211,7 @@ export default function Products() {
               we're here to help and always eager to connect!
             </p>
           </div>
-          <button className={styles.buttonHover}>Call us</button>
+          <button className={styles.buttonHover}>Contact now</button>
         </div>
       </div>
     </>

@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const getInitialCartState = () => {
   try {
-    if (typeof window !== 'undefined') {
+    if (typeof window !== "undefined") {
       const storedCart = localStorage.getItem("cart");
       return storedCart ? JSON.parse(storedCart) : [];
     }
@@ -18,6 +18,9 @@ const cartSlice = createSlice({
   name: "Cart",
   initialState: getInitialCartState(),
   reducers: {
+    updateCart: (state, action) => {
+      return action.payload;
+    },
     add(state, action) {
       const existingItem = state.find((item) => item.id === action.payload.id);
 
@@ -33,7 +36,7 @@ const cartSlice = createSlice({
         console.error("Error storing cart data in localStorage:", error);
       }
     },
-    
+
     remove(state, action) {
       const updatedCart = state.filter((item) => item.id !== action.payload);
 

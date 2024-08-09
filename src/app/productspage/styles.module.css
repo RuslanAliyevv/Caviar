@@ -2,6 +2,9 @@
   padding: 150px 0 0px 0px;
   background: #181818;
 }
+.tableBorder .container {
+  padding-left: 100px !important;
+}
 .Products h2 {
   color: #c9beb1;
   text-align: center;
@@ -16,7 +19,7 @@
 .Products .tableBorder {
   /* height: 200px; */
   height: 100%;
-  padding: 100px 0px 100px 60px;
+  padding: 60px 0px 40px 60px;
   width: 100%;
   background: #2b2b2b;
 }
@@ -163,11 +166,9 @@
   font-weight: 400;
   line-height: normal;
 }
-.priceBox{
+.priceBox {
   margin-top: -27px;
 }
-
-
 
 .rangeBox {
   position: relative;
@@ -179,7 +180,6 @@
   width: 100%;
 }
 
-
 .rangeBox label {
   display: block;
   text-align: left;
@@ -188,15 +188,14 @@
   color: #c3924e !important;
 }
 
-
 .rangeInput {
   appearance: none;
-  height: 2px; 
-  background: #C9BEB1; 
+  height: 2px;
+  background: #c9beb1;
   outline: none;
   opacity: 0.7;
   transition: opacity 0.2s;
-  border-radius: 5px; 
+  border-radius: 5px;
 }
 
 .rangeInput:hover {
@@ -205,10 +204,10 @@
 
 .rangeInput::-webkit-slider-thumb {
   appearance: none;
-  width: 10px; 
-  height: 10px; 
-  background: #fff; 
-  border-radius: 50%; 
+  width: 10px;
+  height: 10px;
+  background: #fff;
+  border-radius: 50%;
   cursor: pointer;
   transition: background 0.3s;
 }
@@ -217,5 +216,27 @@
   background: #c3924e;
 }
 
+@media screen and (max-width: 768px) {
+  /* for Dropdown responsive */
+  .Products .tableBorder {
+    height: 100%;
+    padding: 40px 0px 54px 0px;
+    width: 100%;
+    background: #2b2b2b;
+  }
+  .priceLabel {
+    margin-top: 20px !important;
+  }
+  .Products .container {
+    padding-left: 65px !important;
+  }
+
+  .Products .box {
+    margin-top: 20px !important;
+  }
+  .rangeBox {
+    margin-left: -10px;
+  }
+}
 
 

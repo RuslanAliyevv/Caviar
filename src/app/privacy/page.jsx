@@ -5,7 +5,7 @@ export default function Privacy() {
   return (
     <>
       <div className={styles.Privacy}>
-          <h2 className="text-center">Privacy and policy</h2>
+        <h2 className="text-center">Privacy and policy</h2>
         <div className={styles.privacyContent}>
           <div className={styles.pEdit}>
             <p>

@@ -8,7 +8,7 @@ export default function ProductInfo() {
     <>
       <div className={styles.PrInfo}>
         <div className="container">
-          <div className="row">
+          <div className={`row ${styles.rowAll}`}>
             <div className="col-lg-5">
               <div className="box">
                 <div className="left">
@@ -17,7 +17,6 @@ export default function ProductInfo() {
                     Selection
                   </h2>
                   <div className={styles.pEdit}>
-                    {" "}
                     <p>
                       Are you ready for an exceptional culinary journey? Begin
                       your exploration of our exquisite caviar collection and
@@ -38,7 +37,17 @@ export default function ProductInfo() {
               <div className="box">
                 <div className="right">
                   <div className={styles.hoverEdit}>
-                    <Image width={655} height={501} src="/assets/image/productinfo.png" alt="" />
+                    <Image
+                      loading="lazy"
+                      width={655}
+                      height={501}
+                      src="/assets/image/productinfo.png"
+                      alt=""
+                    />
+                    <figcaption>
+                      <h3>SHOP NOW</h3>
+                    </figcaption>
+                    <Link className={styles.a} href="/productspage"></Link>
                   </div>
                 </div>
               </div>
@@ -47,6 +56,7 @@ export default function ProductInfo() {
         </div>
         <div className={styles.backGrCircle}>
           <Image
+            loading="lazy"
             height={870}
             width={800}
             src="/assets/image/circle02.png"

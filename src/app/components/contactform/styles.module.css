@@ -7,7 +7,7 @@
   position: relative;
   z-index: 1;
 }
-.Large img{
+.Large img {
   width: 100%;
 }
 .overlay {
@@ -17,7 +17,7 @@
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.58);
-  z-index: -1; 
+  z-index: -1;
 }
 .Large {
   padding-top: 210px !important;
@@ -119,14 +119,14 @@
   border-radius: 5px;
   animation: slideInRight 0.5s ease-out;
   display: flex;
- 
+
   align-items: center;
   justify-content: center;
-  width: 350px; 
+  width: 350px;
 }
-.modalContent span{
+.modalContent span {
   color: #181818;
-  font-family:var(--montserrat);
+  font-family: var(--montserrat);
   margin-left: 5px;
   font-size: 20px;
   font-style: normal;
@@ -137,9 +137,9 @@
   display: inline;
   width: 24px;
   height: 24px;
-  fill: #4caf50; 
+  fill: #4caf50;
 }
-/* Animasyon */
+/* Animation */
 @keyframes slideInRight {
   0% {
     transform: translateX(100%);
@@ -150,18 +150,6 @@
     opacity: 1;
   }
 }
-
-/* @keyframes slideOutRight {
-  100% {
-    transform: translateX(100%);
-
-    opacity: 1;
-  }
-  100% {
-    transform: translateX(0);
-    opacity: 0;
-  }
-} */
 
 .contactBorder button {
   background: #c3924e;
@@ -257,12 +245,11 @@
   }
 }
 
-
 @media screen and (min-width: 1200px) and (max-width: 1399px) {
-  .Large .inputBox{
+  .Large .inputBox {
     width: 460px !important;
   }
-  .Large .right{
+  .Large .right {
     width: 483px !important;
   }
 }

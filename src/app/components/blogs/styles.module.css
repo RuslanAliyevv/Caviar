@@ -39,14 +39,12 @@
   font-weight: 300;
   line-height: normal;
 }
-
 .Blogs .rowAll2 {
   justify-content: center;
 }
 .Blogs .contentDown img {
-  width: 100%;
-  height: 450px;
-  /* object-fit: cover; */
+  height: 390px;
+  object-fit: cover;
   border-radius: 5px;
 }
 .Blogs .contentDown .box {
@@ -61,7 +59,7 @@
 
 .Blogs .contentDown span {
   position: absolute;
-  bottom: 17%;
+  bottom: 18%;
   display: block;
   color: #c9beb1;
   transform: rotate(-90deg);
@@ -89,9 +87,8 @@
 .boxContent{
   position:relative;
   background:#000;
-  /* float:left; */
   width: 100%;
-  height: 450px;
+  height: 390px;
   margin:15px;
   box-sizing:border-box;
   overflow:hidden;
@@ -135,6 +132,7 @@
 }
 .Blogs .boxContent .imgBox {
   position:relative;
+  z-index: 444444;
 }
 .Blogs .boxContent .imgBox img {
   width:100%;

@@ -18,9 +18,10 @@ export default function ContactFm() {
   };
 
   const [post, setPost] = useState({
-    name: "",
+    // name: "",
     email: "",
     message: "",
+    contact_type: "Contact",
   });
   const handleInput = (event) => {
     setPost({ ...post, [event.target.name]: event.target.value });
@@ -29,7 +30,7 @@ export default function ContactFm() {
     event.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/contact",
+        "http://68.183.53.2:3000/contacts",
         post
       );
       openModal("Message sent successfully!");
@@ -54,8 +55,13 @@ export default function ContactFm() {
                 <div className="col-lg-6">
                   <div className="box">
                     <div className="left">
-            
-                      <Image   width={611} height={430}  src="/assets/image/contactstock.png" alt="Tos" />
+                      <Image
+                        loading="lazy"
+                        width={611}
+                        height={430}
+                        src="/assets/image/contactstock.png"
+                        alt="Tos"
+                      />
                     </div>
                   </div>
                 </div>
@@ -67,8 +73,8 @@ export default function ContactFm() {
                         <div className={styles.inputBox}>
                           <input
                             onChange={handleInput}
-                            name="name"
-                            value={post.name}
+                            name="email"
+                            value={post.email}
                             id="my"
                             className={styles.input}
                             placeholder=""
